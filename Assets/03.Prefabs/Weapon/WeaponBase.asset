@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _type: 0
   _damage: 1
-  _attackCool: 0.1
+  _attackCool: 0.2
   _reloadTIme: 1
   _hitCurcleError: 0
   _maxBullet: 10
