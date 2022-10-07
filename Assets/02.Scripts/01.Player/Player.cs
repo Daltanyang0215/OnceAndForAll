@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,7 +18,7 @@ public class Player : MonoBehaviour
     [Header("Move")]
     public float moveSpeed;
     private float _forwad, _right;
-    private bool _fire, _reload;
+    private bool _isFire, _isReload;
     private Vector3 _moveVec;
 
     [Space]        
@@ -28,6 +29,16 @@ public class Player : MonoBehaviour
     [SerializeField] private float _rotateXSpeed;
     private float _rotateX, _rotateY;
 
+    //[Space]
+    //[Header("TowerBuild")]
+    [SerializeField] private bool _isBuild; 
+
+    private void Start()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
     void Update()
     {
         GetInput();
@@ -35,9 +46,12 @@ public class Player : MonoBehaviour
         Fire();
         Reload();
         WeaponChange();
+        UIUpdata();
     }
 
-    void FixedUpdate()
+
+
+    private void FixedUpdate()
     {
         Move();
     }
@@ -46,15 +60,20 @@ public class Player : MonoBehaviour
     {
         _forwad = Input.GetAxisRaw("Vertical");
         _right = Input.GetAxisRaw("Horizontal");
-        _fire = Input.GetButton("Fire1");
-        _reload = Input.GetButtonDown("ReLoad");
+        _isFire = Input.GetButton("Fire1");
+        _isReload = Input.GetButtonDown("ReLoad");
 
         _rotateY = Input.GetAxis("Mouse X");
         _rotateX = Input.GetAxis("Mouse Y");
+
+        _isBuild = Input.GetButton("BuildTower");
     }
 
-    void CameraRotate()
+    // 카메라 회전
+    private void CameraRotate()
     {
+        if (_isBuild) return;
+
         float tmp_x = _cameraAnchor.eulerAngles.x - _rotateX * _rotateXSpeed;
         float tmp_y = transform.eulerAngles.y + _rotateY * _rotateYSpeed;
 
@@ -67,25 +86,34 @@ public class Player : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, tmp_y, 0);
     }
 
+    // 방향키 이동
     private void Move()
     {
         _moveVec = new Vector3(_right, 0, _forwad).normalized;
         transform.Translate(_moveVec * moveSpeed * Time.fixedDeltaTime);
     }
 
+    // 공격
     private void Fire()
     {
-        if (_fire == false) return;
-
+        if (_isFire == false
+            || _isBuild) 
+            return;
+        
         weapons[_currentWeaponsIndex].Attack();
     }
+
+    // 재장전
     private void Reload()
     {
-        if (_reload == false) return;
+        if (_isReload == false
+             || _isBuild)
+            return;
 
         weapons[_currentWeaponsIndex].Reload();
     }
 
+    // 무기 교체
     private void WeaponChange()
     {
         int weaponIndex = _currentWeaponsIndex;
@@ -104,5 +132,11 @@ public class Player : MonoBehaviour
             weapons[weaponIndex].gameObject.SetActive(false);
             weapons[_currentWeaponsIndex].gameObject.SetActive(true);
         }
+    }
+
+    // UI 관련 함수 모음
+        private void UIUpdata()
+    {
+        MainUIManager.instance.isShowBuildCircle = _isBuild;
     }
 }

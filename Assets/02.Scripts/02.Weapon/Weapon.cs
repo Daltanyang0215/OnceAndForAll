@@ -14,8 +14,7 @@ public class Weapon : MonoBehaviour
     private float _attackCoolTimer;
     private float _reLoadTimer;
 
-    [SerializeField] private Camera _camera;
-    
+    private Camera _camera;
     private RaycastHit _hit;
 
     // 공격 쿨타임인지 확인
@@ -25,11 +24,19 @@ public class Weapon : MonoBehaviour
 
     private void Start()
     {
+        _camera = Camera.main;
         _currentBullet = _weaponInfo.MaxBullet;
         _attackCoolTimer = _weaponInfo.AttackCool;
         _reLoadTimer = _weaponInfo.ReloadTIme;
     }
-
+    private void OnEnable()
+    {
+        // play animation
+    }
+    private void OnDisable()
+    {
+        ReloadTimeReset();
+    }
     private void Update()
     {
         // 공격 타이머
@@ -62,7 +69,7 @@ public class Weapon : MonoBehaviour
 
     }
 
-    // 공격
+    // 공격 (player script call 전용)
     public virtual void Attack()
     {
         if (_isAttackCool) return;
@@ -82,38 +89,31 @@ public class Weapon : MonoBehaviour
             
             if (Physics.Raycast(_camera.transform.position,_camera.transform.forward, out _hit,200f))
             {
-                Destroy( Instantiate(_hitParticale,_hit.point,Quaternion.identity),0.2f);
+                // 레이포인트에 이펙트 소환
+                Destroy( Instantiate(_hitParticale,_hit.point,Quaternion.identity).gameObject,0.3f);
             }
             _currentBullet--;
             _fireParticale.Play();
-
         }
         else
         {
             Debug.Log("탄약부족");
         }
-
     }
 
+    // 재장전 (player script call 전용)
     public void Reload()
     {
         _isReloading=true;
         Debug.Log("재장전 중");
     }
 
+    // 재장전 실패
     private void ReloadTimeReset()
     {
 
         _isReloading = false;
         _reLoadTimer = _weaponInfo.ReloadTIme;
     }
-    private void OnEnable()
-    {
-        // play animation
-    }
-
-    private void OnDisable()
-    {
-        ReloadTimeReset();
-    }
+    
 }
