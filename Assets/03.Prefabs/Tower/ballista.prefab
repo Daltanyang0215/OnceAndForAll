@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 1220729412519334236}
   - component: {fileID: 2897528778732643743}
   - component: {fileID: 1632003639172458586}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: ballista
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52,7 +52,7 @@ MonoBehaviour:
   detectRange: 0
   _targetLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1048576
 --- !u!136 &1632003639172458586
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 2630454562303707705}
   - component: {fileID: 6736278849605500071}
   - component: {fileID: 2916674527648424056}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -161,7 +161,7 @@ GameObject:
   - component: {fileID: 37668290547809062}
   - component: {fileID: 3938822859319769363}
   - component: {fileID: 9138430176770980574}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: "\uD050\uBE0C.001"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -244,7 +244,7 @@ GameObject:
   - component: {fileID: 5377683600977817197}
   - component: {fileID: 5860355808779877305}
   - component: {fileID: 9012628469442868565}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: "\uD050\uBE0C"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
