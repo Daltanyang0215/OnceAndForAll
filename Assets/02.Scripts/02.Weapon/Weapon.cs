@@ -1,16 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class Weapon : MonoBehaviour
 {
     [SerializeField] private WeaponInfo _weaponInfo;
 
     [SerializeField] private Transform _firePoint;
+    [SerializeField] private TMP_Text _bulletCountText;
     [SerializeField] private ParticleSystem _fireParticale;
     [SerializeField] private ParticleSystem _hitParticale;
 
     private int _currentBullet;
+    private int CurrentBullet
+    {
+        get
+        {
+            return _currentBullet;
+        }
+        set
+        {
+            _currentBullet = value;
+            _bulletCountText.text = _currentBullet.ToString();
+        }
+    }
     private float _attackCoolTimer;
     private float _reLoadTimer;
 
@@ -25,7 +38,7 @@ public class Weapon : MonoBehaviour
     private void Start()
     {
         _camera = Camera.main;
-        _currentBullet = _weaponInfo.MaxBullet;
+        CurrentBullet = _weaponInfo.MaxBullet;
         _attackCoolTimer = _weaponInfo.AttackCool;
         _reLoadTimer = _weaponInfo.ReloadTIme;
     }
@@ -58,7 +71,7 @@ public class Weapon : MonoBehaviour
             if (_reLoadTimer < 0)
             {
                 ReloadTimeReset();
-                _currentBullet = _weaponInfo.MaxBullet;
+                CurrentBullet = _weaponInfo.MaxBullet;
                 Debug.Log("재장전 완료");
             }
             else
@@ -83,16 +96,23 @@ public class Weapon : MonoBehaviour
         _attackCoolTimer = _weaponInfo.AttackCool;
         ReloadTimeReset();
 
-        if(_currentBullet > 0)
+        if(CurrentBullet > 0)
         {
             Debug.Log("빵");
             
             if (Physics.Raycast(_camera.transform.position,_camera.transform.forward, out _hit,200f))
             {
                 // 레이포인트에 이펙트 소환
-                Destroy( Instantiate(_hitParticale,_hit.point,Quaternion.identity).gameObject,0.3f);
+                GameObject go = ObjectPool.Instance.Spawn("HitEffect", _hit.point);
+                ObjectPool.Instance.Return(go, 0.3f);
+                //Destroy( Instantiate(_hitParticale,_hit.point,Quaternion.identity).gameObject,0.3f);
+
+                if(_hit.collider.TryGetComponent<Enemy>(out Enemy enemy))
+                {
+                    enemy.Hit(_weaponInfo.Damage);
+                }
             }
-            _currentBullet--;
+            CurrentBullet--;
             _fireParticale.Play();
         }
         else

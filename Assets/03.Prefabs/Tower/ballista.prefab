@@ -47,9 +47,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97f76fd91f8320b4ca5bb0c1e2b79aa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _info: {fileID: 0}
-  rotatePoint: {fileID: 0}
-  detectRange: 0
+  _info: {fileID: 11400000, guid: 04755e06f2ed4bc4d8f2414331ce9f55, type: 2}
+  rotatePoint: {fileID: 5377683600977817197}
+  detectRange: 15
   _targetLayer:
     serializedVersion: 2
     m_Bits: 1048576
