@@ -77,10 +77,13 @@ public class MainUIManager : MonoBehaviour
     {
         _towerBuilder.gameObject.SetActive(show);
     }
+
+    // 타워빌드에 타워 정보 전달 용
+    // (ui -> 메인 ui(전달) -> 타워빌더)
     public void SetTowerBilder(TowerInfo towerInfo)
     {
-        
-        // 타워빌드에 타워 설정
+
+        _towerBuilder.SetBuilderTower(towerInfo);
     }
 
     #endregion

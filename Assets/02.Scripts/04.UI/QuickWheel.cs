@@ -29,7 +29,7 @@ public class QuickWheel : MonoBehaviour
             seletindex = seletindex >= 8 ? 0 : seletindex;
 
             // 해당 인덱스에서 좌클릭시 연동된 타워를 타워빌더에게 보내주고 설치
-            if (Input.GetMouseButtonUp(0))
+            if (Input.GetMouseButtonUp(0) && _towerInfos[seletindex] != null)
             {
                 MainUIManager.instance.isShowBuilder = true;
                 MainUIManager.instance.SetTowerBilder(_towerInfos[seletindex]);

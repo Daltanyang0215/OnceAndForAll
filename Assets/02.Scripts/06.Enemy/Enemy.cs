@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
 
     private float _moveSpeed;
 
-    public int EnemyHealth
+    private int EnemyHealth
     {
         get { return _enemyHealth; }
         set

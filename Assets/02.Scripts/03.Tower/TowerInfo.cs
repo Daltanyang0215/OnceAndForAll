@@ -26,4 +26,7 @@ public class TowerInfo : ScriptableObject
 
     [SerializeField] private int _SellCost;
     public int SellCost => _SellCost;
+
+    [SerializeField] private GameObject _towerPrefab;
+    public GameObject TowerPrefab => _towerPrefab;
 }

@@ -9,9 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1220729412519334236}
-  m_Layer: 0
-  m_Name: ballista_Ghost
-  m_TagString: Untagged
+  - component: {fileID: 2897528778732643743}
+  - component: {fileID: 1632003639172458586}
+  m_Layer: 15
+  m_Name: Test
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,11 +30,46 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2630454562303707705}
+  - {fileID: 2418137076313467414}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2086921583911847123
+--- !u!114 &2897528778732643743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1998250517882883046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97f76fd91f8320b4ca5bb0c1e2b79aa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _info: {fileID: 11400000, guid: 04755e06f2ed4bc4d8f2414331ce9f55, type: 2}
+  rotatePoint: {fileID: 0}
+  detectRange: 15
+  _targetLayer:
+    serializedVersion: 2
+    m_Bits: 1048576
+  _blockLayer:
+    serializedVersion: 2
+    m_Bits: 0
+--- !u!136 &1632003639172458586
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1998250517882883046}
+  m_Material: {fileID: 13400000, guid: 6a7df7c7dbd11314a8e8e6cdac974500, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1.6
+  m_Height: 8
+  m_Direction: 1
+  m_Center: {x: 0, y: 2.5, z: 0}
+--- !u!1 &5087388381274615882
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,46 +77,46 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2630454562303707705}
-  - component: {fileID: 6736278849605500071}
-  - component: {fileID: 2916674527648424056}
+  - component: {fileID: 2418137076313467414}
+  - component: {fileID: 5242408253196861830}
+  - component: {fileID: 1205131524298915049}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Rock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2630454562303707705
+--- !u!4 &2418137076313467414
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2086921583911847123}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5999999, y: 1.5999999, z: 1.5999999}
-  m_ConstrainProportionsScale: 1
+  m_GameObject: {fileID: 5087388381274615882}
+  m_LocalRotation: {x: -0, y: -0.70710677, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.16000001, y: 0.16000001, z: 0.16000001}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1220729412519334236}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &6736278849605500071
+--- !u!33 &5242408253196861830
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2086921583911847123}
-  m_Mesh: {fileID: 4013275331872712965, guid: fb63fd8193be88f4fbd7d059032b6b31, type: 3}
---- !u!23 &2916674527648424056
+  m_GameObject: {fileID: 5087388381274615882}
+  m_Mesh: {fileID: 4013275331872712965, guid: 3de2eec823bf3e7408d989ad41e1c3f9, type: 3}
+--- !u!23 &1205131524298915049
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2086921583911847123}
+  m_GameObject: {fileID: 5087388381274615882}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -93,7 +130,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 30c1b2f8793071a4c9d33db12ed15a5b, type: 2}
+  - {fileID: -876546973899608171, guid: 3de2eec823bf3e7408d989ad41e1c3f9, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

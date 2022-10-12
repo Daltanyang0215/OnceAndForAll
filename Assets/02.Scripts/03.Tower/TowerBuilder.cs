@@ -6,7 +6,7 @@ public class TowerBuilder : MonoBehaviour
 {
 
     [SerializeField] private GameObject _ghostTower;
-    [SerializeField] private GameObject _Tower;
+    [SerializeField] private GameObject _tower;
     [SerializeField] private LayerMask _groundLayer;
 
     [SerializeField] private Color _possibleColor;
@@ -54,7 +54,7 @@ public class TowerBuilder : MonoBehaviour
                     // 좌클릭시 타워 설치
                     if (Input.GetMouseButtonUp(0))
                     {
-                        Instantiate(_Tower, tmpVec, Quaternion.identity);
+                        Instantiate(_tower, tmpVec, Quaternion.identity);
 
                         // 좌시프트를 누르는 동안에는 타워빌더가 안꺼지게 설정
                         if (!Input.GetKey(KeyCode.LeftShift))
@@ -76,5 +76,10 @@ public class TowerBuilder : MonoBehaviour
             // 레이포인트에 이펙트 소환
             _ghostTower.transform.position = tmpVec;
         }
+    }
+
+    public void SetBuilderTower(TowerInfo towerInfo)
+    {
+        _tower = towerInfo.TowerPrefab;
     }
 }

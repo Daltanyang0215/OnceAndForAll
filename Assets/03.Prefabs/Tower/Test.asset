@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 779b2d49608312646a416bb3b25a9489, type: 3}
-  m_Name: Ballista
+  m_Name: Test
   m_EditorClassIdentifier: 
   _type: 0
   _damage: 10
@@ -18,5 +18,5 @@ MonoBehaviour:
   _AttackRange: 15
   _BuyCost: 100
   _SellCost: 80
-  _towerPrefab: {fileID: 1998250517882883046, guid: 6f1e0aa8740b41449a7e82e0159f42f0,
+  _towerPrefab: {fileID: 1998250517882883046, guid: 11ef1d4a37cd19544bb2f76013cb6f77,
     type: 3}
