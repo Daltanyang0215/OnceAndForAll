@@ -56,14 +56,10 @@ public class Enemy : MonoBehaviour
         GetComponent<SphereCollider>().enabled = false;
     }
 
-    private void OnEnable()
-    {
-        _navi.SetDestination(target.position);   
-    }
-
     private void FixedUpdate()
     {
         //transform.Translate(transform.forward * -_moveSpeed*Time.fixedDeltaTime);
+        _navi.SetDestination(target.position);   
         
         // 마지노선 도착
         if(transform.position.z < -3f)
