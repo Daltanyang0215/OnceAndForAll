@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 6114868974215210244}
   - component: {fileID: -2568781129365170793}
   - component: {fileID: 8462468011650753377}
+  - component: {fileID: 7826818532487475249}
   m_Layer: 20
   m_Name: TestMonster
   m_TagString: Enemy
@@ -130,6 +131,28 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!195 &7826818532487475249
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 946122636926815124}
+  m_Enabled: 1
+  m_AgentTypeID: -1372625422
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 50
+  avoidancePriority: 50
+  m_AngularSpeed: 480
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 0
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 0
 --- !u!1 &946144424628998692
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,6 +6,7 @@ public class TowerProjectile : Tower
 {
     [SerializeField] private Transform[] _firePoints;
     [SerializeField] private int _damage;
+    [SerializeField] private int _projectileSpeed;
 
     [SerializeField] private float _reloadTime;
     private float _reloadTimer;
@@ -39,7 +40,7 @@ public class TowerProjectile : Tower
         {
             GameObject bullet = ObjectPool.Instance.Spawn("BalistaBult", _firePoints[i].position);
             bullet.GetComponent<ProjectileBullet>().SetUp(target,
-                                                          30.0f,
+                                                          _projectileSpeed,
                                                           _damage,
                                                           false,
                                                           _blockLayer,

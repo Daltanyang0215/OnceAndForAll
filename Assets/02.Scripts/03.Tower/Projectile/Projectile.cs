@@ -28,7 +28,8 @@ public class Projectile : MonoBehaviour
         this.touchLayer = touchLayer;
         this.targetLayer = targetLayer;
 
-        tr.LookAt(this.target);
+        tr.LookAt(this.target.position + Vector3.up*0.5f);
+        _isHit = false;
     }
 
     private void Awake()

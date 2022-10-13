@@ -14,7 +14,13 @@ public class MainGameManager : MonoBehaviour
 
             return instance; }
     }
-    
+
+    [SerializeField] private int _money;
+    public int Money
+    {
+        get { return _money; }
+        set { _money = value; }
+    }
 
     private enum GameFlowState
     {

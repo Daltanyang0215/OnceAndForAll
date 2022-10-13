@@ -2,14 +2,17 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private EnemyInfo _enemyInfo;
     private Animator _animator;
 
+    public Transform target;
+    private NavMeshAgent _navi;
+
     private int _enemyHealth;
-    private int _enemyHealthMax;
 
     private float _moveSpeed;
 
@@ -20,8 +23,8 @@ public class Enemy : MonoBehaviour
         {
             _enemyHealth = value;
 
-            if (_enemyHealth > _enemyHealthMax)
-                _enemyHealth = _enemyHealthMax;
+            if (_enemyHealth > _enemyInfo.EnemyHealth)
+                _enemyHealth = _enemyInfo.EnemyHealth;
 
             if (_enemyHealth <= 0)
             {
@@ -34,15 +37,17 @@ public class Enemy : MonoBehaviour
     public float MoveSpeed
     {
         get { return _moveSpeed; }
-        set { _moveSpeed = value; }
+        set { _moveSpeed = value;
+            _navi.speed = _moveSpeed;
+        }
     }
 
     private void Awake()
     {
         _animator = GetComponent<Animator>();
+        _navi = GetComponent<NavMeshAgent>();
 
-        _enemyHealthMax = _enemyInfo.EnemyHealth;
-        EnemyHealth = _enemyHealthMax;
+        EnemyHealth = _enemyInfo.EnemyHealth;
         MoveSpeed = _enemyInfo.EnemySpeed;
     }
     private void Die()
@@ -51,10 +56,15 @@ public class Enemy : MonoBehaviour
         GetComponent<SphereCollider>().enabled = false;
     }
 
+    private void OnEnable()
+    {
+        _navi.SetDestination(target.position);   
+    }
+
     private void FixedUpdate()
     {
-        transform.Translate(transform.forward * -_moveSpeed*Time.fixedDeltaTime);
-
+        //transform.Translate(transform.forward * -_moveSpeed*Time.fixedDeltaTime);
+        
         // 마지노선 도착
         if(transform.position.z < -3f)
         {

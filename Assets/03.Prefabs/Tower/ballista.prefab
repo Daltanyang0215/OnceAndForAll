@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1220729412519334236}
   - component: {fileID: 1632003639172458586}
   - component: {fileID: 5106971640185486847}
+  - component: {fileID: 1014642993826847895}
   m_Layer: 15
   m_Name: ballista
   m_TagString: Tower
@@ -72,7 +73,24 @@ MonoBehaviour:
   _firePoints:
   - {fileID: 5668349957455814780}
   _damage: 2
+  _projectileSpeed: 50
   _reloadTime: 1
+--- !u!208 &1014642993826847895
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1998250517882883046}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 1.6, y: 4, z: 1.6}
+  m_MoveThreshold: 1
+  m_Carve: 1
+  m_CarveOnlyStationary: 0
+  m_Center: {x: 0, y: 2.5, z: 0}
+  m_TimeToStationary: 2
 --- !u!1 &3628020751354030367
 GameObject:
   m_ObjectHideFlags: 0
@@ -84,9 +102,9 @@ GameObject:
   - component: {fileID: 8890160465085774167}
   - component: {fileID: 5399934710032570704}
   - component: {fileID: 3985601949571696238}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Anchor
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -166,9 +184,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5668349957455814780}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: FirePoint
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -199,9 +217,9 @@ GameObject:
   - component: {fileID: 2418137076313467414}
   - component: {fileID: 5242408253196861830}
   - component: {fileID: 1205131524298915049}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Rock
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -283,9 +301,9 @@ GameObject:
   - component: {fileID: 2208073138530437988}
   - component: {fileID: 8700655832897150826}
   - component: {fileID: 2554222034584842513}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Bow
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

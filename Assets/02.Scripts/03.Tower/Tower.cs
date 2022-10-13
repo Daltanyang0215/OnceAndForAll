@@ -21,7 +21,7 @@ public class Tower : MonoBehaviour
         {
             target = cols[0].transform;
             
-            rotatePoint.LookAt(target.position + Vector3.up);
+            rotatePoint.LookAt(target);
         }
         else
         {
