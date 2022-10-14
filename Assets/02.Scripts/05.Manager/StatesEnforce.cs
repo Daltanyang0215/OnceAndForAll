@@ -23,6 +23,7 @@ public class StatesEnforce
         set { _enemyHealthGain = value; }
     }
 
+    // 적 이동속도 배율
     private static float _enemySpeedGain = 1;
     public static float enemySpeedGain
     {
