@@ -9,13 +9,11 @@ public class Enemy : MonoBehaviour
     [SerializeField] private EnemyInfo _enemyInfo;
     private Animator _animator;
 
-    public Transform target;
     private NavMeshAgent _navi;
+    public Transform target;
+    private Vector3 _targetpos;
 
     private int _enemyHealth;
-
-    private float _moveSpeed;
-
     private int EnemyHealth
     {
         get { return _enemyHealth; }
@@ -33,11 +31,13 @@ public class Enemy : MonoBehaviour
         }
     }
 
-
+    private float _moveSpeed;
     public float MoveSpeed
     {
         get { return _moveSpeed; }
-        set { _moveSpeed = value;
+        set
+        {
+            _moveSpeed = value;
             _navi.speed = _moveSpeed;
         }
     }
@@ -52,6 +52,7 @@ public class Enemy : MonoBehaviour
     }
     private void Die()
     {
+        MainGameManager.Instance.Money += _enemyInfo.Money;
         _animator.SetTrigger("Die");
         GetComponent<SphereCollider>().enabled = false;
     }
@@ -59,16 +60,19 @@ public class Enemy : MonoBehaviour
     private void FixedUpdate()
     {
         //transform.Translate(transform.forward * -_moveSpeed*Time.fixedDeltaTime);
-        _navi.SetDestination(target.position);   
-        
+        _targetpos = target.position;
+        _targetpos.x = transform.position.x;
+        _navi.SetDestination(_targetpos);
+
         // 마지노선 도착
-        if(transform.position.z < -3f)
+        if (transform.position.z < -3f)
         {
+            MainGameManager.Instance.Health--;
             PoolReturn();
         }
     }
 
-    // 데미지 용
+    // 피격 용
     public void Hit(int damage)
     {
         _animator.SetTrigger("Hit");
@@ -80,6 +84,7 @@ public class Enemy : MonoBehaviour
     {
         ObjectPool.Instance.Return(this.gameObject);
         GetComponent<SphereCollider>().enabled = false;
+        MainGameManager.Instance.LevelEndCheck();
     }
 
 

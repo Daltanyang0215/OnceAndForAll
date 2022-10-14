@@ -17,7 +17,7 @@ GameObject:
   m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1220729412519334236
 Transform:
@@ -69,11 +69,11 @@ MonoBehaviour:
     m_Bits: 1048576
   _blockLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 33280
   _firePoints:
   - {fileID: 5668349957455814780}
   _damage: 2
-  _projectileSpeed: 50
+  _projectileSpeed: 70
   _reloadTime: 1
 --- !u!208 &1014642993826847895
 NavMeshObstacle:
@@ -107,7 +107,7 @@ GameObject:
   m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8890160465085774167
 Transform:
@@ -189,7 +189,7 @@ GameObject:
   m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5668349957455814780
 Transform:
@@ -222,7 +222,7 @@ GameObject:
   m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2418137076313467414
 Transform:
@@ -306,7 +306,7 @@ GameObject:
   m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2208073138530437988
 Transform:

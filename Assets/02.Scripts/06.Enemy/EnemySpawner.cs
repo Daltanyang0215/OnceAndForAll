@@ -33,6 +33,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private List<SpawnElement> _spawners = new List<SpawnElement>();
 
     private bool _isSpawning = false;
+    public bool isSpawning => _isSpawning;
 
     private float _timer;
     private int _poolIndex; // 풀 인덱스
@@ -71,7 +72,7 @@ public class EnemySpawner : MonoBehaviour
 
         if (_timer < 0)
         {
-            ObjectPool.Instance.Spawn(_spawners[_poolIndex].Name, RanPos).GetComponent<Enemy>().target = _target;
+            ObjectPool.Instance.Spawn(_spawners[_poolIndex].Name, RanPos,transform).GetComponent<Enemy>().target = _target;
             _spawnIndex++;
 
             // 스폰한 회수가 현재 풀요소의 소환 수보다 크거나 같은지

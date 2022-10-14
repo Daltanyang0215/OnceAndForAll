@@ -60,6 +60,30 @@ public class ObjectPool : MonoBehaviour
         go.transform.SetParent(null);
         return go;
     }
+    public GameObject Spawn(string name, Vector3 spawnPoint,Transform parent)
+    {
+        if (spawnedQueuePaires.ContainsKey(name) == false)
+            return null;
+
+        if (spawnedQueuePaires[name].Count == 0)
+        {
+            PoolElement poolElement = _poolElements.Find(element => element.name == name);
+            if (poolElement != null)
+            {
+                for (int i = 0; i < Math.Ceiling(Mathf.Log10(poolElement.num)); i++)
+                {
+                    InstantiatePoolElement(poolElement);
+
+                }
+            }
+        }
+
+        GameObject go = spawnedQueuePaires[name].Dequeue();
+        go.transform.position = spawnPoint;
+        go.SetActive(true);
+        go.transform.SetParent(parent);
+        return go;
+    }
     public GameObject Spawn(string name, Vector3 spawnPoint, Quaternion rotation)
     {
         if (spawnedQueuePaires.ContainsKey(name) == false)
@@ -83,6 +107,31 @@ public class ObjectPool : MonoBehaviour
         go.transform.rotation = rotation;
         go.SetActive(true);
         go.transform.SetParent(null);
+        return go;
+    }
+    public GameObject Spawn(string name, Vector3 spawnPoint, Quaternion rotation, Transform parent)
+    {
+        if (spawnedQueuePaires.ContainsKey(name) == false)
+            return null;
+
+        if (spawnedQueuePaires[name].Count == 0)
+        {
+            PoolElement poolElement = _poolElements.Find(element => element.name == name);
+            if (poolElement != null)
+            {
+                for (int i = 0; i < Math.Ceiling(Mathf.Log10(poolElement.num)); i++)
+                {
+                    InstantiatePoolElement(poolElement);
+
+                }
+            }
+        }
+
+        GameObject go = spawnedQueuePaires[name].Dequeue();
+        go.transform.position = spawnPoint;
+        go.transform.rotation = rotation;
+        go.SetActive(true);
+        go.transform.SetParent(parent);
         return go;
     }
     public void Return(GameObject obj)

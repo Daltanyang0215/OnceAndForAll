@@ -15,7 +15,7 @@ public class QuickWheel : MonoBehaviour
     [Header("Icon")]
     [SerializeField] private Transform _towerIconsTransform;
     [SerializeField] private TowerInfo[] _towerInfos = new TowerInfo[8];
-    private int _deforeindex=9;
+    private int _deforeindex = 9;
 
 
     private void Update()
@@ -29,17 +29,18 @@ public class QuickWheel : MonoBehaviour
         {
 
             // 중앙에서 마우스 포지션간에 각도를 계산  / 12시 0=8', 3시 : 2, 6시 : 4, 9시 : 6
-            seletindex = ((int)(Quaternion.FromToRotation(Vector3.up, Input.mousePosition - screenCenter).eulerAngles.z / 22.5f) + 1) / 2 ;
-            seletindex = 8-seletindex;
+            seletindex = ((int)(Quaternion.FromToRotation(Vector3.up, Input.mousePosition - screenCenter).eulerAngles.z / 22.5f) + 1) / 2;
+            seletindex = 8 - seletindex;
             // 8 이상이면 0으로 수정
             seletindex = seletindex >= 8 ? 0 : seletindex;
 
             // 해당 인덱스에서 좌클릭시 연동된 타워를 타워빌더에게 보내주고 설치
-            if (Input.GetMouseButtonUp(0) && _towerInfos[seletindex] != null)
+            if (Input.GetMouseButtonUp(0) &&
+                _towerInfos[seletindex] != null)
             {
                 MainUIManager.instance.isShowBuilder = true;
                 MainUIManager.instance.SetTowerBilder(_towerInfos[seletindex]);
-                
+
                 gameObject.SetActive(false);
             }
         }
@@ -93,6 +94,16 @@ public class QuickWheel : MonoBehaviour
         {
             _towerName.text = _towerInfos[index].name;
             _towerCost.text = $"$ {_towerInfos[index].BuyCost}";
+
+            // 재화 확인 후 돈 부족시 빨간 색으로
+            if (MainGameManager.Instance.Money < _towerInfos[index].BuyCost)
+            {
+                _towerCost.color = Color.red;
+            }
+            else
+            {
+                _towerCost.color = Color.black;
+            }
         }
         else
         {

@@ -13,10 +13,13 @@ public class Tower : MonoBehaviour
     [SerializeField] protected LayerMask _blockLayer;
     protected Transform target;
 
+    
+
     protected virtual void Update()
     {
         Collider[] cols = Physics.OverlapSphere(transform.position, detectRange, _targetLayer);
 
+        
         if (cols.Length > 0)
         {
             target = cols[0].transform;

@@ -6,7 +6,7 @@ public class TowerBuilder : MonoBehaviour
 {
 
     [SerializeField] private GameObject _ghostTower;
-    [SerializeField] private GameObject _tower;
+    [SerializeField] private TowerInfo _tower;
     [SerializeField] private LayerMask _groundLayer;
 
     [SerializeField] private Color _possibleColor;
@@ -48,17 +48,26 @@ public class TowerBuilder : MonoBehaviour
                 if (tmpVec.x > _leftdownPoint.x && tmpVec.x < _rightppPoint.x &&
                     tmpVec.z > _leftdownPoint.y && tmpVec.z < _rightppPoint.y)
                 {
-                    // 생상을 가능으로 변경
-                    _ghostTower.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = _possibleColor;
-
-                    // 좌클릭시 타워 설치
-                    if (Input.GetMouseButtonUp(0))
+                    if (MainGameManager.Instance.Money >= _tower.BuyCost)
                     {
-                        Instantiate(_tower, tmpVec, Quaternion.identity);
+                        // 생상을 가능으로 변경
+                        _ghostTower.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = _possibleColor;
 
-                        // 좌시프트를 누르는 동안에는 타워빌더가 안꺼지게 설정
-                        if (!Input.GetKey(KeyCode.LeftShift))
-                            MainUIManager.instance.isShowBuilder = false;
+                        // 좌클릭시 타워 설치
+                        if (Input.GetMouseButtonUp(0))
+                        {
+                            Instantiate(_tower.TowerPrefab, tmpVec, Quaternion.identity);
+
+                            MainGameManager.Instance.Money -= _tower.BuyCost;
+
+                            // 좌시프트를 누르는 동안에는 타워빌더가 안꺼지게 설정
+                            if (!Input.GetKey(KeyCode.LeftShift))
+                                MainUIManager.instance.isShowBuilder = false;
+                        }
+                    }
+                    else
+                    {
+                        _ghostTower.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = _impossibleColor;
                     }
                 }
                 else
@@ -80,6 +89,6 @@ public class TowerBuilder : MonoBehaviour
 
     public void SetBuilderTower(TowerInfo towerInfo)
     {
-        _tower = towerInfo.TowerPrefab;
+        _tower = towerInfo;
     }
 }

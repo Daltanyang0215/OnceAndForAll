@@ -39,9 +39,6 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-
         _rb = GetComponent<Rigidbody>();
     }
 
@@ -151,5 +148,10 @@ public class Player : MonoBehaviour
     private void UIUpdata()
     {
         MainUIManager.instance.isShowBuildCircle = _isShowBuilder;
+    }
+
+    public void PlayerStop()
+    {
+        _rb.velocity = Vector3.zero;
     }
 }
