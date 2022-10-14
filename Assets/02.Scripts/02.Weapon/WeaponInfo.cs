@@ -13,7 +13,7 @@ public class WeaponInfo : ScriptableObject
     public WeaponType Type => _type;
 
     [SerializeField] private int _damage;
-    public int Damage => _damage;
+    public int Damage => (int)(_damage * StatesEnforce.weaponDamageGain);
 
     [SerializeField] private float _attackCool;
     public float AttackCool => _attackCool;
@@ -29,4 +29,5 @@ public class WeaponInfo : ScriptableObject
 
     [SerializeField] private float _rebound;
     public float Rebound => _rebound;
+
 }

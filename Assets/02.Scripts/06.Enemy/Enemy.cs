@@ -47,9 +47,14 @@ public class Enemy : MonoBehaviour
         _animator = GetComponent<Animator>();
         _navi = GetComponent<NavMeshAgent>();
 
+    }
+
+    private void OnEnable()
+    {
         EnemyHealth = _enemyInfo.EnemyHealth;
         MoveSpeed = _enemyInfo.EnemySpeed;
     }
+
     private void Die()
     {
         MainGameManager.Instance.Money += _enemyInfo.Money;

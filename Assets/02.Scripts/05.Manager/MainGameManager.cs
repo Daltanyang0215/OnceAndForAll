@@ -69,7 +69,7 @@ public class MainGameManager : MonoBehaviour
 
                     ObjectPool.Instance.InstantiateAllPoolElement();
                     //state = GameFlowState.WAITING_START;
-                    EnemySpawner.instance.SpawnPoolAdd("TestMonster", 10, 3f, 1f);
+                    //EnemySpawner.instance.SpawnPoolAdd("TestMonster", 10, 3f, 1f);
                     EnemySpawner.instance.SpawnPoolAdd("TestMonster", 5, 0.1f, 5f);
 
                     Player.Instance.enabled = true;
@@ -109,8 +109,10 @@ public class MainGameManager : MonoBehaviour
                 {
                     Debug.Log("라운드 종료");
                     MainUIManager.instance.IsShowReward = true;
+                    
                     Player.Instance.PlayerStop();
                     Player.Instance.enabled = false;
+
                     Cursor.visible = true;
                     Cursor.lockState = CursorLockMode.None;
 
@@ -151,8 +153,17 @@ public class MainGameManager : MonoBehaviour
         }
     }
 
+    public void RewardSelectAfter()
+    {
+        Player.Instance.enabled = true;
+        Cursor.visible = false;
+
+        state = GameFlowState.ROUND_START;
+    }
+
     private void LevelFail()
     {
         state = GameFlowState.LEVEL_FAIL;
     }
+
 }

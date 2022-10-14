@@ -30,7 +30,7 @@ public class MainUIManager : MonoBehaviour
                 if (_isShowBuildCircle)
                 {
                     ShowTowerBuildCircle(true);
-                    isShowBuilder=false;
+                    isShowBuilder = false;
                 }
                 else
                 {
@@ -61,14 +61,7 @@ public class MainUIManager : MonoBehaviour
             if (_isShowBuilder != value)
             {
                 _isShowBuilder = value;
-                if (_isShowBuilder)
-                {
-                    ShowTowerBuilder(true);
-                }
-                else
-                {
-                    ShowTowerBuilder(false);
-                }
+                    ShowTowerBuilder(_isShowBuilder);
             }
             CheckAllUIClose();
         }
@@ -114,19 +107,14 @@ public class MainUIManager : MonoBehaviour
     public bool IsShowReward
     {
         get { return _isShowReward; }
-        set { 
+        set
+        {
             // 입력이 바뀔때 이미지 띄우기
             if (_isShowReward != value)
             {
                 _isShowReward = value;
-                if (_isShowReward)
-                {
-                    ShowReward(true);
-                }
-                else
-                {
-                    ShowReward(false);
-                }
+
+                ShowReward(_isShowReward);
             }
             CheckAllUIClose();
         }
@@ -139,7 +127,8 @@ public class MainUIManager : MonoBehaviour
     public void OnSelectReward(int index)
     {
         Debug.Log(index);
-        _isShowReward = false;
+        IsShowReward = false;
+        MainGameManager.Instance.RewardSelectAfter();
     }
     #endregion
 
