@@ -14,6 +14,19 @@ public class StatesEnforce
             _weaponDamageGain = value;
         }
     }
+    // 무기 공격력 배율
+    private static float _playerMoveSpeedGain = 1;
+    public static float PlayerMoveSpeedGain
+    {
+        get
+        {
+            return _playerMoveSpeedGain;
+        }
+        set
+        {
+            _playerMoveSpeedGain = value;
+        }
+    }
 
     // 적 체력 배율
     private static float _enemyHealthGain = 1;

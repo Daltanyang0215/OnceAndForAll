@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
 
     [Header("Move")]
     public float moveSpeed;
+    private float MoveSpeedGain => StatesEnforce.PlayerMoveSpeedGain;
     private float _forwad, _right;
     private bool _isFire, _isReload;
     private Vector3 _moveVec;
@@ -96,7 +97,7 @@ public class Player : MonoBehaviour
 
         // 바라보는 방향으로 무브벡터 회전
         _moveVec = Quaternion.AngleAxis(transform.rotation.eulerAngles.y, Vector3.up) * _moveVec;
-        _rb.velocity = _moveVec * moveSpeed;
+        _rb.velocity = _moveVec * moveSpeed* MoveSpeedGain;
     }
 
     // 공격

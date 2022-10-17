@@ -109,7 +109,7 @@ public class Weapon : MonoBehaviour
 
                 if(_hit.collider.TryGetComponent<Enemy>(out Enemy enemy))
                 {
-                    enemy.Hit(_weaponInfo.Damage);
+                    enemy.Hit((int)(_weaponInfo.Damage*StatesEnforce.weaponDamageGain));
                 }
             }
             CurrentBullet--;

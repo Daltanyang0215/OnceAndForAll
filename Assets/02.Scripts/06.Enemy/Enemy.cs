@@ -14,6 +14,8 @@ public class Enemy : MonoBehaviour
     private Vector3 _targetpos;
 
     private int _enemyHealth;
+    private int _enemyMaxHealth;
+
     private int EnemyHealth
     {
         get { return _enemyHealth; }
@@ -21,8 +23,9 @@ public class Enemy : MonoBehaviour
         {
             _enemyHealth = value;
 
-            if (_enemyHealth > _enemyInfo.EnemyHealth)
-                _enemyHealth = _enemyInfo.EnemyHealth;
+            // 최대체력 확장
+            if (_enemyHealth > _enemyMaxHealth)
+                _enemyMaxHealth = value;
 
             if (_enemyHealth <= 0)
             {
@@ -51,8 +54,8 @@ public class Enemy : MonoBehaviour
 
     private void OnEnable()
     {
-        EnemyHealth = _enemyInfo.EnemyHealth;
-        MoveSpeed = _enemyInfo.EnemySpeed;
+        EnemyHealth =(int)( _enemyInfo.EnemyHealth * StatesEnforce.enemyHealthGain);
+        MoveSpeed = _enemyInfo.EnemySpeed * StatesEnforce.enemySpeedGain;
     }
 
     private void Die()
