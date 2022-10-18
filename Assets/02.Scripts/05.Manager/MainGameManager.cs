@@ -59,6 +59,9 @@ public class MainGameManager : MonoBehaviour
         }
     }
 
+
+    [SerializeField] private List<AddEffectList> _effects = new List<AddEffectList>();
+
     private void Update()
     {
         switch (state)
@@ -69,8 +72,8 @@ public class MainGameManager : MonoBehaviour
 
                     ObjectPool.Instance.InstantiateAllPoolElement();
                     //state = GameFlowState.WAITING_START;
-                    //EnemySpawner.instance.SpawnPoolAdd("TestMonster", 10, 3f, 1f);
-                    EnemySpawner.instance.SpawnPoolAdd("TestMonster", 5, 0.1f, 5f);
+                    EnemySpawner.instance.SpawnPoolAdd("TestMonster", 10, 1f, 1f);
+                    EnemySpawner.instance.SpawnPoolAdd("TestMonster", 5, 0.1f, 2f);
 
                     Player.Instance.enabled = true;
                     Cursor.visible = false;
