@@ -54,20 +54,20 @@ public class Enemy : MonoBehaviour
 
     private void OnEnable()
     {
-        EnemyHealth =(int)( _enemyInfo.EnemyHealth * StatesEnforce.enemyHealthGain);
-        MoveSpeed = _enemyInfo.EnemySpeed * StatesEnforce.enemySpeedGain;
+        GetComponent<SphereCollider>().enabled = true;
+        EnemyHealth =(int)(_enemyInfo.EnemyHealth * StatesEnforce.Instance.enemyHealthGain);
+        MoveSpeed = (int)(_enemyInfo.EnemySpeed*StatesEnforce.Instance.enemySpeedGain);
     }
 
     private void Die()
     {
-        MainGameManager.Instance.Money += _enemyInfo.Money;
+        MainGameManager.Instance.Money += (int)(_enemyInfo.Money * StatesEnforce.Instance.enemyMoneyGain);
         _animator.SetTrigger("Die");
         GetComponent<SphereCollider>().enabled = false;
     }
 
     private void FixedUpdate()
     {
-        //transform.Translate(transform.forward * -_moveSpeed*Time.fixedDeltaTime);
         _targetpos = target.position;
         _targetpos.x = transform.position.x;
         _navi.SetDestination(_targetpos);
@@ -91,7 +91,6 @@ public class Enemy : MonoBehaviour
     public void PoolReturn()
     {
         ObjectPool.Instance.Return(this.gameObject);
-        GetComponent<SphereCollider>().enabled = false;
         MainGameManager.Instance.LevelEndCheck();
     }
 

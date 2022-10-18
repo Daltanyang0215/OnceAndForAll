@@ -62,17 +62,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _info: {fileID: 11400000, guid: 04755e06f2ed4bc4d8f2414331ce9f55, type: 2}
-  rotatePoint: {fileID: 2208073138530437988}
-  detectRange: 20
-  _targetLayer:
+  _rotatePoint: {fileID: 2208073138530437988}
+  attackRange: 15
+  targetLayer:
     serializedVersion: 2
     m_Bits: 1048576
-  _blockLayer:
+  blockLayer:
     serializedVersion: 2
     m_Bits: 33280
+  _damage: 2
   _firePoints:
   - {fileID: 5668349957455814780}
-  _damage: 2
   _projectileSpeed: 70
   _reloadTime: 1
 --- !u!208 &1014642993826847895

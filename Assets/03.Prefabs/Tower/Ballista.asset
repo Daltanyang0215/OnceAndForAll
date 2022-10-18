@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Ballista
   m_EditorClassIdentifier: 
   _type: 0
-  _damage: 10
+  _damage: 1
   _AttackCool: 1
   _AttackRange: 15
   _BuyCost: 100

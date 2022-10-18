@@ -8,6 +8,7 @@ public class TowerBuilder : MonoBehaviour
     [SerializeField] private GameObject _ghostTower;
     [SerializeField] private TowerInfo _tower;
     [SerializeField] private LayerMask _groundLayer;
+    [SerializeField] private Transform _towerParnets;
 
     [SerializeField] private Color _possibleColor;
     [SerializeField] private Color _impossibleColor;
@@ -56,7 +57,7 @@ public class TowerBuilder : MonoBehaviour
                         // 좌클릭시 타워 설치
                         if (Input.GetMouseButtonUp(0))
                         {
-                            Instantiate(_tower.TowerPrefab, tmpVec, Quaternion.identity);
+                            Instantiate(_tower.TowerPrefab, tmpVec, Quaternion.identity, _towerParnets);
 
                             MainGameManager.Instance.Money -= _tower.BuyCost;
 

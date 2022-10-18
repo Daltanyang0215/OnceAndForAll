@@ -229,7 +229,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &82164996
 MonoBehaviour:
@@ -530,6 +530,7 @@ GameObject:
   - component: {fileID: 179909836}
   - component: {fileID: 179909838}
   - component: {fileID: 179909839}
+  - component: {fileID: 179909840}
   m_Layer: 0
   m_Name: MainGameManager
   m_TagString: Untagged
@@ -564,7 +565,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &179909838
 MonoBehaviour:
@@ -601,6 +602,25 @@ MonoBehaviour:
   - name: BalistaBult
     prefab: {fileID: 272754515727314201, guid: 8b124dcd43a674c48b50223632abf797, type: 3}
     num: 100
+--- !u!114 &179909840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179909835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cf82d823662bcd43bdd1d590eddc1aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _weaponDamageGain: 1
+  _playerMoveSpeedGain: 1
+  _towerDamageGain: 1
+  _towerRangeGain: 1
+  _enemyHealthGain: 1
+  _enemySpeedGain: 1
+  _enemyMoneyGain: 1
 --- !u!1 &184039633
 GameObject:
   m_ObjectHideFlags: 0
@@ -4208,6 +4228,50 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &1113793712
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1113793713}
+  - component: {fileID: 1113793714}
+  m_Layer: 0
+  m_Name: Towers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1113793713
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1113793712}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1113793714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1113793712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b00d9318f61d1047a9a46b4f5e601e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1116877024
 GameObject:
   m_ObjectHideFlags: 0
@@ -6382,7 +6446,6 @@ MonoBehaviour:
   _rotateX_Max: 80
   _rotateYSpeed: 1
   _rotateXSpeed: 1
-  _isShowBuilder: 0
 --- !u!4 &1580478832
 Transform:
   m_ObjectHideFlags: 0
@@ -7343,6 +7406,7 @@ MonoBehaviour:
   _groundLayer:
     serializedVersion: 2
     m_Bits: 33280
+  _towerParnets: {fileID: 1113793713}
   _possibleColor: {r: 0.5, g: 1, b: 0.5, a: 0.2509804}
   _impossibleColor: {r: 1, g: 0.5, b: 0.5, a: 0.2509804}
   _leftdownPoint: {x: -17.6, y: -2.6}
@@ -7361,7 +7425,7 @@ Transform:
   m_Children:
   - {fileID: 2066058635}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1760036720
 GameObject:
@@ -8834,7 +8898,7 @@ Transform:
   m_GameObject: {fileID: 2694266053503944196}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 23.06, y: 3.65, z: -8.18}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1898692264246527963}

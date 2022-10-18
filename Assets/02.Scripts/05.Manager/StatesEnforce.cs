@@ -1,9 +1,16 @@
-
-public class StatesEnforce
+using UnityEngine;
+public class StatesEnforce : MonoBehaviour
 {
+    public static StatesEnforce Instance;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     // 무기 공격력 배율
-    private static float _weaponDamageGain = 1;
-    public static float weaponDamageGain
+    [SerializeField] private float _weaponDamageGain = 1;
+    public float weaponDamageGain
     {
         get
         {
@@ -14,9 +21,9 @@ public class StatesEnforce
             _weaponDamageGain = value;
         }
     }
-    // 무기 공격력 배율
-    private static float _playerMoveSpeedGain = 1;
-    public static float PlayerMoveSpeedGain
+    // 플레이어 이동속도 배율
+    [SerializeField] private float _playerMoveSpeedGain = 1;
+    public float PlayerMoveSpeedGain
     {
         get
         {
@@ -28,19 +35,54 @@ public class StatesEnforce
         }
     }
 
+    // 타워 공격력 배율
+    [SerializeField] private float _towerDamageGain = 1;
+    public float TowerDamageGain
+    {
+        get
+        {
+            return _towerDamageGain;
+        }
+        set
+        {
+            _towerDamageGain = value;
+        }
+    }
+    // 타워 사거리 배율
+    [SerializeField] private float _towerRangeGain = 1;
+    public float TowerRangeGain
+    {
+        get
+        {
+            return _towerRangeGain;
+        }
+        set
+        {
+            _towerRangeGain = value;
+        }
+    }
+
     // 적 체력 배율
-    private static float _enemyHealthGain = 1;
-    public static float enemyHealthGain
+    [SerializeField] private float _enemyHealthGain = 1;
+    public float enemyHealthGain
     {
         get { return _enemyHealthGain; }
         set { _enemyHealthGain = value; }
     }
 
     // 적 이동속도 배율
-    private static float _enemySpeedGain = 1;
-    public static float enemySpeedGain
+    [SerializeField] private float _enemySpeedGain = 1;
+    public float enemySpeedGain
     {
         get { return _enemySpeedGain; }
         set { _enemySpeedGain = value; }
+    }
+
+    // 적 획득 골드 배율
+    [SerializeField] private float _enemyMoneyGain = 1;
+    public float enemyMoneyGain
+    {
+        get { return _enemyMoneyGain; }
+        set { _enemyMoneyGain = value; }
     }
 }

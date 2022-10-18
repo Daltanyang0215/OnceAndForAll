@@ -5,7 +5,6 @@ using UnityEngine;
 public class TowerProjectile : Tower
 {
     [SerializeField] private Transform[] _firePoints;
-    [SerializeField] private int _damage;
     [SerializeField] private int _projectileSpeed;
 
     [SerializeField] private float _reloadTime;
@@ -43,8 +42,8 @@ public class TowerProjectile : Tower
                                                           _projectileSpeed,
                                                           _damage,
                                                           false,
-                                                          _blockLayer,
-                                                          _targetLayer);
+                                                          blockLayer,
+                                                          targetLayer);
         }
     }
 }

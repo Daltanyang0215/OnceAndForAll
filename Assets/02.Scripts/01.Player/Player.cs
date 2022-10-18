@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
 
     [Header("Move")]
     public float moveSpeed;
-    private float MoveSpeedGain => StatesEnforce.PlayerMoveSpeedGain;
+    private float MoveSpeedGain;
     private float _forwad, _right;
     private bool _isFire, _isReload;
     private Vector3 _moveVec;
@@ -33,8 +33,7 @@ public class Player : MonoBehaviour
 
     //[Space]
     //[Header("TowerBuild")]
-    [SerializeField] private bool _isShowBuilder;
-
+    private bool _isShowBuilder;
     private bool _isShowUI;
     public bool isShowUI { set { _isShowUI = value; } }
 
@@ -154,5 +153,12 @@ public class Player : MonoBehaviour
     public void PlayerStop()
     {
         _rb.velocity = Vector3.zero;
+    }
+
+    // 강화 데이터 적용
+    public void OnStatesEnforce()
+    {
+        MoveSpeedGain = StatesEnforce.Instance.PlayerMoveSpeedGain;
+        weapons[_currentWeaponsIndex].StateInit();
     }
 }

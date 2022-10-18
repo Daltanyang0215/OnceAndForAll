@@ -13,7 +13,7 @@ public class WeaponInfo : ScriptableObject
     public WeaponType Type => _type;
 
     [SerializeField] private int _damage;
-    public int Damage => (int)(_damage * StatesEnforce.weaponDamageGain);
+    public int Damage => (int)(_damage * StatesEnforce.Instance.weaponDamageGain);
 
     [SerializeField] private float _attackCool;
     public float AttackCool => _attackCool;

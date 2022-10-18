@@ -30,10 +30,62 @@ public class Weapon : MonoBehaviour
     private Camera _camera;
     private RaycastHit _hit;
 
+    private int _damage;
+
     // 공격 쿨타임인지 확인
     protected bool _isAttackCool;
     // 재장전 중인지 확인
     private bool _isReloading;
+
+    // 공격 (player script call 전용)
+    public virtual void Attack()
+    {
+        if (_isAttackCool) return;
+
+        // 디버그
+        if (_isReloading) Debug.Log("재장전 취소");
+
+        //
+
+        _isAttackCool = true;
+        _attackCoolTimer = _weaponInfo.AttackCool;
+        ReloadTimeReset();
+
+        if (CurrentBullet > 0)
+        {
+            Debug.Log("빵");
+
+            if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, out _hit, 200f))
+            {
+                // 레이포인트에 이펙트 소환
+                GameObject go = ObjectPool.Instance.Spawn("HitEffect", _hit.point);
+                ObjectPool.Instance.Return(go, 0.3f);
+
+                if (_hit.collider.TryGetComponent(out Enemy enemy))
+                {
+                    enemy.Hit(_damage);
+                }
+            }
+            CurrentBullet--;
+            _fireParticale.Play();
+        }
+        else
+        {
+            Debug.Log("탄약부족");
+        }
+    }
+
+    // 재장전 (player script call 전용)
+    public void Reload()
+    {
+        _isReloading = true;
+        Debug.Log("재장전 중");
+    }
+
+    public void StateInit()
+    {
+        _damage = (int)(_weaponInfo.Damage * StatesEnforce.Instance.weaponDamageGain);
+    }
 
     private void Start()
     {
@@ -44,6 +96,7 @@ public class Weapon : MonoBehaviour
     }
     private void OnEnable()
     {
+        StateInit();
         // play animation
     }
     private void OnDisable()
@@ -82,52 +135,6 @@ public class Weapon : MonoBehaviour
 
     }
 
-    // 공격 (player script call 전용)
-    public virtual void Attack()
-    {
-        if (_isAttackCool) return;
-
-        // 디버그
-        if(_isReloading) Debug.Log("재장전 취소");
-        
-        //
-
-        _isAttackCool = true;
-        _attackCoolTimer = _weaponInfo.AttackCool;
-        ReloadTimeReset();
-
-        if(CurrentBullet > 0)
-        {
-            Debug.Log("빵");
-            
-            if (Physics.Raycast(_camera.transform.position,_camera.transform.forward, out _hit,200f))
-            {
-                // 레이포인트에 이펙트 소환
-                GameObject go = ObjectPool.Instance.Spawn("HitEffect", _hit.point);
-                ObjectPool.Instance.Return(go, 0.3f);
-                //Destroy( Instantiate(_hitParticale,_hit.point,Quaternion.identity).gameObject,0.3f);
-
-                if(_hit.collider.TryGetComponent<Enemy>(out Enemy enemy))
-                {
-                    enemy.Hit((int)(_weaponInfo.Damage*StatesEnforce.weaponDamageGain));
-                }
-            }
-            CurrentBullet--;
-            _fireParticale.Play();
-        }
-        else
-        {
-            Debug.Log("탄약부족");
-        }
-    }
-
-    // 재장전 (player script call 전용)
-    public void Reload()
-    {
-        _isReloading=true;
-        Debug.Log("재장전 중");
-    }
-
     // 재장전 실패
     private void ReloadTimeReset()
     {
@@ -135,5 +142,5 @@ public class Weapon : MonoBehaviour
         _isReloading = false;
         _reLoadTimer = _weaponInfo.ReloadTIme;
     }
-    
+
 }

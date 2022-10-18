@@ -91,6 +91,9 @@ public class MainGameManager : MonoBehaviour
                 break;
             case GameFlowState.ROUND_START:
                 {
+                    // 강화 적용
+                    Player.Instance.OnStatesEnforce();
+                    TowerManager.instance.OnStatesEnforce();
                     state = GameFlowState.ENEMYSPAWN;
                 }
                 break;

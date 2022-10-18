@@ -8,10 +8,10 @@ public class EnemyInfo : ScriptableObject
     public int EnemyID => _enemyID;
 
     [SerializeField] private int _enemyHealth;
-    public int EnemyHealth => (int)(_enemyHealth * StatesEnforce.enemyHealthGain);
+    public int EnemyHealth => _enemyHealth;
 
     [SerializeField] private float _enemySpeed;
-    public float EnemySpeed => (int)(_enemySpeed * StatesEnforce.enemySpeedGain);
+    public float EnemySpeed => _enemySpeed;
 
     [SerializeField] private int _money;
     public int Money => _money;
