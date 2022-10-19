@@ -1,11 +1,16 @@
+using System.Collections.Generic;
 using UnityEngine;
-public class StatesEnforce : MonoBehaviour
+public class StatesEnforce
 {
-    public static StatesEnforce Instance;
-
-    private void Awake()
+    private static StatesEnforce _instance;
+    public static StatesEnforce Instance
     {
-        Instance = this;
+        get { 
+            if (_instance == null)
+            {
+                _instance = new StatesEnforce();
+            }
+            return _instance; }
     }
 
     // 무기 공격력 배율

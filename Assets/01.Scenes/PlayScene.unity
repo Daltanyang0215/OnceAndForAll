@@ -614,6 +614,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cf82d823662bcd43bdd1d590eddc1aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _effects: 
   _weaponDamageGain: 1
   _playerMoveSpeedGain: 1
   _towerDamageGain: 1
@@ -1514,7 +1515,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 389401220}
-  m_Mesh: {fileID: 4300010, guid: 860793eb3324391468f1c120a75ec049, type: 3}
+  m_Mesh: {fileID: 650616068347329756, guid: bf3c7613ced40c5498fbcd7bac4b5784, type: 3}
 --- !u!23 &389401224
 MeshRenderer:
   m_ObjectHideFlags: 0
