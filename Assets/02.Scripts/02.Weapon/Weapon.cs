@@ -42,7 +42,7 @@ public class Weapon : MonoBehaviour
     {
         if (_isAttackCool) return;
 
-        // 디버그
+        // 디버그. 장전 애니메이션 추가 시 삭제 예정
         if (_isReloading) Debug.Log("재장전 취소");
 
         //
@@ -53,8 +53,6 @@ public class Weapon : MonoBehaviour
 
         if (CurrentBullet > 0)
         {
-            Debug.Log("빵");
-
             if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, out _hit, 200f))
             {
                 // 레이포인트에 이펙트 소환
@@ -82,11 +80,13 @@ public class Weapon : MonoBehaviour
         Debug.Log("재장전 중");
     }
 
-    public void StateInit()
+    // 강화 적용
+    public void EnforceApply()
     {
         _damage = _weaponInfo.Damage * StatesEnforce.Instance.weaponDamageGain;
     }
 
+    // 초기화
     private void Start()
     {
         _camera = Camera.main;
@@ -94,15 +94,18 @@ public class Weapon : MonoBehaviour
         _attackCoolTimer = _weaponInfo.AttackCool;
         _reLoadTimer = _weaponInfo.ReloadTIme;
     }
+
     private void OnEnable()
     {
-        StateInit();
+        EnforceApply();
         // play animation
     }
+
     private void OnDisable()
     {
         ReloadTimeReset();
     }
+
     private void Update()
     {
         // 공격 타이머

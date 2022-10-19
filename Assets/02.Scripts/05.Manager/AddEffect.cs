@@ -4,7 +4,6 @@ using UnityEngine;
 
 public enum AddEffectList
 {
-    //AllDamage,
     PlayerMoveSpeed,
     AllWeaponDamage,
     AllTowerDamage,
@@ -65,7 +64,7 @@ public class AddEffect : ScriptableObject
                 break;
             case AddEffectList.EnemyCount:
                 {
-                    EnemySpawner.instance.SpawnPoolAdd("TestMonster", (int)_gain, 0.1f, 5f);
+                    EnemySpawner.instance.SpawnPoolAdd("TestMonster", (int)_gain, 0.1f, 1f);
                 }
                 break;
             default:

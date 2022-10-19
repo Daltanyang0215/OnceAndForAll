@@ -11,28 +11,28 @@ public class Player : MonoBehaviour
         Instance = this;
     }
 
+    [Space]
     [Header("Weapon")]
     public Weapon[] weapons;
     private int _currentWeaponsIndex;
+    private bool _isFire, _isReload; // 입력용
 
+    [Space]
     [Header("Move")]
     public float moveSpeed;
-    private float MoveSpeedGain;
-    private float _forwad, _right;
-    private bool _isFire, _isReload;
+    private float MoveSpeedGain; // 강화 정도
+    private float _forwad, _right; // 입력용
     private Vector3 _moveVec;
     private Rigidbody _rb;
 
     [Space]
     [Header("Camera")]
     [SerializeField] private Transform _cameraAnchor;
-    [SerializeField] private float _rotateX_Min, _rotateX_Max;
-    [SerializeField] private float _rotateYSpeed;
-    [SerializeField] private float _rotateXSpeed;
-    private float _rotateX, _rotateY;
+    [SerializeField] private float _rotateX_Min, _rotateX_Max; // 상하 회전 최대 값
+    [SerializeField] private float _rotateXSpeed,_rotateYSpeed; // 감도
+    private float _rotateX, _rotateY;// 입력용
 
-    //[Space]
-    //[Header("TowerBuild")]
+    // UI
     private bool _isShowBuilder;
     private bool _isShowUI;
     public bool isShowUI { set { _isShowUI = value; } }
@@ -137,6 +137,7 @@ public class Player : MonoBehaviour
             _currentWeaponsIndex = 1;
             Debug.Log($"Changed weapons 2");
         }
+
         if (weaponIndex != _currentWeaponsIndex)
         {
             weapons[weaponIndex].gameObject.SetActive(false);
@@ -156,9 +157,9 @@ public class Player : MonoBehaviour
     }
 
     // 강화 데이터 적용
-    public void OnStatesEnforce()
+    public void EnforceApply()
     {
         MoveSpeedGain = StatesEnforce.Instance.PlayerMoveSpeedGain;
-        weapons[_currentWeaponsIndex].StateInit();
+        weapons[_currentWeaponsIndex].EnforceApply();
     }
 }

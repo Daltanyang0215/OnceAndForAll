@@ -9,8 +9,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private EnemyInfo _enemyInfo;
     private Animator _animator;
 
-    private NavMeshAgent _navi;
     public Transform target;
+    private NavMeshAgent _navi;
     private Vector3 _targetpos;
 
     private float _enemyHealth;
@@ -49,11 +49,11 @@ public class Enemy : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         _navi = GetComponent<NavMeshAgent>();
-
     }
 
     private void OnEnable()
     {
+        // 몬스터 소환시 강화 적용
         GetComponent<SphereCollider>().enabled = true;
         EnemyHealth =_enemyInfo.EnemyHealth * StatesEnforce.Instance.enemyHealthGain;
         MoveSpeed = _enemyInfo.EnemySpeed*StatesEnforce.Instance.enemySpeedGain;

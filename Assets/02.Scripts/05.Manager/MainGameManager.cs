@@ -35,6 +35,8 @@ public class MainGameManager : MonoBehaviour
 
     private GameFlowState state;
 
+    [SerializeField] private int _currentRound;
+
     [SerializeField] private int _health;
     public int Health
     {
@@ -97,9 +99,11 @@ public class MainGameManager : MonoBehaviour
                 break;
             case GameFlowState.ROUND_START:
                 {
+                    _currentRound++;
+
                     EnemySpawner.instance.SpawnPoolAdd("TestMonster", 5, 0.2f, 1f);
                     // 강화 적용
-                    Player.Instance.OnStatesEnforce();
+                    Player.Instance.EnforceApply();
                     TowerManager.instance.OnStatesEnforce();
                     state = GameFlowState.ENEMYSPAWN;
                 }
@@ -121,14 +125,17 @@ public class MainGameManager : MonoBehaviour
 
                     SelectEffect();
                     MainUIManager.instance.IsShowReward = true;
-                    
+
                     Player.Instance.PlayerStop();
                     Player.Instance.enabled = false;
 
                     Cursor.visible = true;
                     Cursor.lockState = CursorLockMode.None;
 
-                    state = GameFlowState.ROUND_REWARD;
+                    if (_currentRound > 10)
+                        state = GameFlowState.LEVEL_SUCCESS;
+                    else
+                        state = GameFlowState.ROUND_REWARD;
                 }
                 break;
             case GameFlowState.ROUND_REWARD:
@@ -137,12 +144,12 @@ public class MainGameManager : MonoBehaviour
                 break;
             case GameFlowState.LEVEL_SUCCESS:
                 {
-
+                    Debug.Log("게임 종료. 미션 성공");
                 }
                 break;
             case GameFlowState.LEVEL_FAIL:
                 {
-
+                    Debug.Log("게임 종료. 미션 실패");
                 }
                 break;
             case GameFlowState.WAITING_USER:
@@ -158,6 +165,7 @@ public class MainGameManager : MonoBehaviour
     // 라운드가 종료되었는지 확인
     public void RoundEndCheck()
     {
+        // 적 소환이 종료 되었으며, 현재 남은 몬스터가 없을때 라운드 종료
         if (EnemySpawner.instance.isSpawning == false
             && EnemySpawner.instance.transform.childCount == 0)
         {
@@ -165,7 +173,41 @@ public class MainGameManager : MonoBehaviour
         }
     }
 
-    // 보상 선택이후 콜
+
+    // 라운드 종료 후 보상 선택 선정
+    private void SelectEffect()
+    {
+        // 긍정효과 선택
+        List<int> selectindex = new List<int>(_positiveEffectList.Count);
+        int tmpindex = 0;
+        for (int i = 0; i < _positiveEffectList.Count; i++)
+        {
+            selectindex[i] =i;
+        }
+        for (int i = 0; i < _positiveEffect.Length; i++)
+        {
+            tmpindex = selectindex[Random.Range(0, selectindex.Count + 1)];
+            selectindex.Remove(tmpindex);
+            _positiveEffect[i] = _positiveEffectList[tmpindex];
+            MainUIManager.instance.SettingRewardText(i * 2, _positiveEffect[i].GetInfomation());
+        }
+
+        // 부정효과 선택
+        selectindex = new List<int>(_negativeEffectList.Count);
+        for (int i = 0; i < _negativeEffectList.Count; i++)
+        {
+            selectindex[i] = i;
+        }
+        for (int i = 0; i < _negativeEffect.Length; i++)
+        {
+            tmpindex = selectindex[Random.Range(0, selectindex.Count + 1)];
+            selectindex.Remove(tmpindex);
+            _negativeEffect[i] = _negativeEffectList[tmpindex];
+            MainUIManager.instance.SettingRewardText(i * 2 + 1, _negativeEffect[i].GetInfomation());
+        }
+    }
+    
+    // 보상 선택이후 진행 사항 (UI에서 콜) / index -> 버튼 번호
     public void RewardSelectAfter(int index)
     {
         _positiveEffect[index].OnApply();
@@ -177,43 +219,9 @@ public class MainGameManager : MonoBehaviour
 
         state = GameFlowState.ROUND_START;
     }
-    // 라운드 종료 후 보상 선택 선정
-    private void SelectEffect()
-    {
-        List<int> selectindex=new List<int>();
-        int tmpindex = 0;
-        for (int i = 0; i < _positiveEffectList.Count; i++)
-        {
-            selectindex.Add(i);
-        }
-
-        for (int i = 0; i < _positiveEffect.Length; i++)
-        {
-            tmpindex = selectindex[Random.Range(0,selectindex.Count+1)];
-            Debug.Log(tmpindex);
-            selectindex.Remove(tmpindex);
-            _positiveEffect[i] = _positiveEffectList[tmpindex];
-            MainUIManager.instance.SettingRewardText(i*2, _positiveEffect[i].GetInfomation());
-        }
-
-        selectindex.Clear();
-        for (int i = 0; i < _negativeEffectList.Count; i++)
-        {
-            selectindex.Add(i);
-        }
-
-        for (int i = 0; i < _negativeEffect.Length; i++)
-        {
-            tmpindex = selectindex[Random.Range(0, selectindex.Count+1)];
-            selectindex.Remove(tmpindex);
-            _negativeEffect[i] = _negativeEffectList[tmpindex];
-            MainUIManager.instance.SettingRewardText(i * 2+1, _negativeEffect[i].GetInfomation());
-        }
-    }
 
     private void LevelFail()
     {
         state = GameFlowState.LEVEL_FAIL;
     }
-
 }
