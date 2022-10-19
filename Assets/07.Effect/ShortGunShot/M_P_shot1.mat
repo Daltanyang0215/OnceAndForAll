@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: M_P_shot1
-  m_Shader: {fileID: -6465566751694194690, guid: 4d44e12ae23faf8489d18c11eab730b3,
+  m_Shader: {fileID: -6465566751694194690, guid: d2a97dc54b3237d4bb95d70e0931dd71,
     type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -35,7 +35,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _B_Tex:
-        m_Texture: {fileID: 2800000, guid: 91ea9ea9b3c6daa4496c65d8fedb605d, type: 3}
+        m_Texture: {fileID: 2800000, guid: 8b9c0fe10301bc748b3f7c9e78cd7a2f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:

@@ -30,7 +30,7 @@ public class Weapon : MonoBehaviour
     private Camera _camera;
     private RaycastHit _hit;
 
-    private int _damage;
+    private float _damage;
 
     // 공격 쿨타임인지 확인
     protected bool _isAttackCool;
@@ -84,7 +84,7 @@ public class Weapon : MonoBehaviour
 
     public void StateInit()
     {
-        _damage = (int)(_weaponInfo.Damage * StatesEnforce.Instance.weaponDamageGain);
+        _damage = _weaponInfo.Damage * StatesEnforce.Instance.weaponDamageGain;
     }
 
     private void Start()

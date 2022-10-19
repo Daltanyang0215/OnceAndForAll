@@ -12,7 +12,7 @@ public class Tower : MonoBehaviour
     [SerializeField] protected LayerMask blockLayer;
     protected Transform target;
 
-    [SerializeField] protected int _damage;
+    [SerializeField] protected float _damage;
 
     private void Start()
     {
@@ -21,7 +21,7 @@ public class Tower : MonoBehaviour
 
     public void StateInit()
     {
-        _damage = (int)(_info.Damage * StatesEnforce.Instance.TowerDamageGain);
+        _damage = _info.Damage * StatesEnforce.Instance.TowerDamageGain;
         attackRange = _info.AttackRange * StatesEnforce.Instance.TowerRangeGain;
     }
 

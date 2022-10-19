@@ -13,10 +13,10 @@ public class Enemy : MonoBehaviour
     public Transform target;
     private Vector3 _targetpos;
 
-    private int _enemyHealth;
-    private int _enemyMaxHealth;
+    private float _enemyHealth;
+    private float _enemyMaxHealth;
 
-    private int EnemyHealth
+    private float EnemyHealth
     {
         get { return _enemyHealth; }
         set
@@ -55,8 +55,8 @@ public class Enemy : MonoBehaviour
     private void OnEnable()
     {
         GetComponent<SphereCollider>().enabled = true;
-        EnemyHealth =(int)(_enemyInfo.EnemyHealth * StatesEnforce.Instance.enemyHealthGain);
-        MoveSpeed = (int)(_enemyInfo.EnemySpeed*StatesEnforce.Instance.enemySpeedGain);
+        EnemyHealth =_enemyInfo.EnemyHealth * StatesEnforce.Instance.enemyHealthGain;
+        MoveSpeed = _enemyInfo.EnemySpeed*StatesEnforce.Instance.enemySpeedGain;
     }
 
     private void Die()
@@ -81,7 +81,7 @@ public class Enemy : MonoBehaviour
     }
 
     // ÇÇ°Ý ¿ë
-    public void Hit(int damage)
+    public void Hit(float damage)
     {
         _animator.SetTrigger("Hit");
         EnemyHealth -= damage;
@@ -91,7 +91,7 @@ public class Enemy : MonoBehaviour
     public void PoolReturn()
     {
         ObjectPool.Instance.Return(this.gameObject);
-        MainGameManager.Instance.LevelEndCheck();
+        MainGameManager.Instance.RoundEndCheck();
     }
 
 

@@ -9,13 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6da69f06f0006a240a3bddb779e522e1, type: 3}
-  m_Name: WeaponBase 1
+  m_Script: {fileID: 11500000, guid: 413a6e9c64111624296216ecb8fb9157, type: 3}
+  m_Name: EnemyCount
   m_EditorClassIdentifier: 
-  _type: 0
-  _damage: 1
-  _attackCool: 1
-  _reloadTIme: 1
-  _hitCurcleError: 0
-  _maxBullet: 30
-  _rebound: 0.01
+  _effect: 7
+  _gain: 5
+  _infomation: EnemyCount

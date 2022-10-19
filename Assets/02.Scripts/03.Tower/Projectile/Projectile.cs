@@ -7,7 +7,7 @@ public class Projectile : MonoBehaviour
     private bool _isGuided;
     protected bool _isHit;
     private float _speed;
-    protected int damage;
+    protected float damage;
     protected LayerMask touchLayer;
     protected LayerMask targetLayer;
     protected Transform target;
@@ -16,7 +16,7 @@ public class Projectile : MonoBehaviour
 
     public void SetUp(Transform target,
                       float speed,
-                      int damage,
+                      float damage,
                       bool isGuided,
                       LayerMask touchLayer,
                       LayerMask targetLayer)

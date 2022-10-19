@@ -5,24 +5,26 @@ using UnityEngine;
 public enum AddEffectList
 {
     //AllDamage,
+    PlayerMoveSpeed,
     AllWeaponDamage,
     AllTowerDamage,
-    PlayerMoveSpeed,
-    TowerRange,
+    AllTowerRange,
     EnemyHealth,
     EnemyMoveSpeed,
     EnemyMoney,
     EnemyCount
 }
 
-[CreateAssetMenu(fileName ="AddEffectBase",menuName = "AddEffect/EffectBase")]
+[CreateAssetMenu(fileName = "AddEffectBase", menuName = "AddEffect/EffectBase")]
 public class AddEffect : ScriptableObject
 {
     [SerializeField] private AddEffectList _effect;
     [SerializeField] private float _gain;
     [SerializeField] private string _infomation;
 
-    public void Apply()
+    public string GetInfomation() => _infomation;
+
+    public void OnApply()
     {
         switch (_effect)
         {
@@ -33,7 +35,7 @@ public class AddEffect : ScriptableObject
                 break;
             case AddEffectList.AllTowerDamage:
                 {
-                    StatesEnforce.Instance.TowerDamageGain*=_gain;
+                    StatesEnforce.Instance.TowerDamageGain *= _gain;
                 }
                 break;
             case AddEffectList.PlayerMoveSpeed:
@@ -41,7 +43,7 @@ public class AddEffect : ScriptableObject
                     StatesEnforce.Instance.PlayerMoveSpeedGain *= _gain;
                 }
                 break;
-            case AddEffectList.TowerRange:
+            case AddEffectList.AllTowerRange:
                 {
                     StatesEnforce.Instance.TowerRangeGain *= _gain;
                 }
@@ -61,7 +63,7 @@ public class AddEffect : ScriptableObject
                     StatesEnforce.Instance.enemyMoneyGain *= _gain;
                 }
                 break;
-                case AddEffectList.EnemyCount:
+            case AddEffectList.EnemyCount:
                 {
                     EnemySpawner.instance.SpawnPoolAdd("TestMonster", (int)_gain, 0.1f, 5f);
                 }
@@ -70,5 +72,5 @@ public class AddEffect : ScriptableObject
                 break;
         }
     }
-   
+
 }

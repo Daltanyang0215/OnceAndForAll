@@ -16,6 +16,8 @@ public class MainGameManager : MonoBehaviour
         }
     }
 
+    public StatesEnforce Enforce = new StatesEnforce();
+
     private enum GameFlowState
     {
         IDLE,
@@ -60,7 +62,10 @@ public class MainGameManager : MonoBehaviour
     }
 
 
-    [SerializeField] private List<AddEffectList> _effects = new List<AddEffectList>();
+    [SerializeField] private List<AddEffect> _positiveEffectList = new List<AddEffect>();
+    [SerializeField] private List<AddEffect> _negativeEffectList = new List<AddEffect>();
+    private AddEffect[] _positiveEffect = new AddEffect[3];
+    private AddEffect[] _negativeEffect = new AddEffect[3];
 
     private void Update()
     {
@@ -72,8 +77,6 @@ public class MainGameManager : MonoBehaviour
 
                     ObjectPool.Instance.InstantiateAllPoolElement();
                     //state = GameFlowState.WAITING_START;
-                    EnemySpawner.instance.SpawnPoolAdd("TestMonster", 10, 1f, 1f);
-                    EnemySpawner.instance.SpawnPoolAdd("TestMonster", 5, 0.1f, 2f);
 
                     Player.Instance.enabled = true;
                     Cursor.visible = false;
@@ -94,6 +97,7 @@ public class MainGameManager : MonoBehaviour
                 break;
             case GameFlowState.ROUND_START:
                 {
+                    EnemySpawner.instance.SpawnPoolAdd("TestMonster", 5, 0.2f, 1f);
                     // 강화 적용
                     Player.Instance.OnStatesEnforce();
                     TowerManager.instance.OnStatesEnforce();
@@ -114,6 +118,8 @@ public class MainGameManager : MonoBehaviour
             case GameFlowState.ROUND_END:
                 {
                     Debug.Log("라운드 종료");
+
+                    SelectEffect();
                     MainUIManager.instance.IsShowReward = true;
                     
                     Player.Instance.PlayerStop();
@@ -127,7 +133,6 @@ public class MainGameManager : MonoBehaviour
                 break;
             case GameFlowState.ROUND_REWARD:
                 {
-                    Debug.Log("라운드 종료");
                 }
                 break;
             case GameFlowState.LEVEL_SUCCESS:
@@ -150,7 +155,8 @@ public class MainGameManager : MonoBehaviour
         }
     }
 
-    public void LevelEndCheck()
+    // 라운드가 종료되었는지 확인
+    public void RoundEndCheck()
     {
         if (EnemySpawner.instance.isSpawning == false
             && EnemySpawner.instance.transform.childCount == 0)
@@ -159,12 +165,50 @@ public class MainGameManager : MonoBehaviour
         }
     }
 
-    public void RewardSelectAfter()
+    // 보상 선택이후 콜
+    public void RewardSelectAfter(int index)
     {
+        _positiveEffect[index].OnApply();
+        _negativeEffect[index].OnApply();
+
         Player.Instance.enabled = true;
         Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
 
         state = GameFlowState.ROUND_START;
+    }
+    // 라운드 종료 후 보상 선택 선정
+    private void SelectEffect()
+    {
+        List<int> selectindex=new List<int>();
+        int tmpindex = 0;
+        for (int i = 0; i < _positiveEffectList.Count; i++)
+        {
+            selectindex.Add(i);
+        }
+
+        for (int i = 0; i < _positiveEffect.Length; i++)
+        {
+            tmpindex = selectindex[Random.Range(0,selectindex.Count+1)];
+            Debug.Log(tmpindex);
+            selectindex.Remove(tmpindex);
+            _positiveEffect[i] = _positiveEffectList[tmpindex];
+            MainUIManager.instance.SettingRewardText(i*2, _positiveEffect[i].GetInfomation());
+        }
+
+        selectindex.Clear();
+        for (int i = 0; i < _negativeEffectList.Count; i++)
+        {
+            selectindex.Add(i);
+        }
+
+        for (int i = 0; i < _negativeEffect.Length; i++)
+        {
+            tmpindex = selectindex[Random.Range(0, selectindex.Count+1)];
+            selectindex.Remove(tmpindex);
+            _negativeEffect[i] = _negativeEffectList[tmpindex];
+            MainUIManager.instance.SettingRewardText(i * 2+1, _negativeEffect[i].GetInfomation());
+        }
     }
 
     private void LevelFail()

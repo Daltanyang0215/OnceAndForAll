@@ -8,7 +8,7 @@ public class StatesEnforce
         get { 
             if (_instance == null)
             {
-                _instance = new StatesEnforce();
+                _instance = MainGameManager.Instance.Enforce;
             }
             return _instance; }
     }
@@ -26,6 +26,7 @@ public class StatesEnforce
             _weaponDamageGain = value;
         }
     }
+
     // 플레이어 이동속도 배율
     [SerializeField] private float _playerMoveSpeedGain = 1;
     public float PlayerMoveSpeedGain
@@ -53,6 +54,7 @@ public class StatesEnforce
             _towerDamageGain = value;
         }
     }
+
     // 타워 사거리 배율
     [SerializeField] private float _towerRangeGain = 1;
     public float TowerRangeGain

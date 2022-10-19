@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 413a6e9c64111624296216ecb8fb9157, type: 3}
   m_Name: TowerRange
   m_EditorClassIdentifier: 
-  _effect: 0
-  _gain: 0
-  _infomation: 
+  _effect: 3
+  _gain: 1.5
+  _infomation: TowerRange

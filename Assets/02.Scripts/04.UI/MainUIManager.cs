@@ -103,6 +103,7 @@ public class MainUIManager : MonoBehaviour
 
     #region Reward
     [SerializeField] private Transform _reward;
+    [SerializeField] private List<TMP_Text> _rewardText;
     private bool _isShowReward;
     public bool IsShowReward
     {
@@ -124,11 +125,16 @@ public class MainUIManager : MonoBehaviour
     {
         _reward.gameObject.SetActive(show);
     }
+
+    public void SettingRewardText(int index , string infomation)
+    {
+        _rewardText[index].text = infomation;
+    }
+
     public void OnSelectReward(int index)
     {
-        Debug.Log(index);
         IsShowReward = false;
-        MainGameManager.Instance.RewardSelectAfter();
+        MainGameManager.Instance.RewardSelectAfter(index);
     }
     #endregion
 
