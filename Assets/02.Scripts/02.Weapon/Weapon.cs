@@ -27,7 +27,7 @@ public class Weapon : MonoBehaviour
     private float _reLoadTimer;
 
     protected Camera maincamera;
-    private RaycastHit _hit;
+    protected RaycastHit _hit;
 
     protected float damage;
 
@@ -93,7 +93,7 @@ public class Weapon : MonoBehaviour
     }
 
     // 강화 적용
-    public void EnforceApply()
+    public virtual void EnforceApply()
     {
         damage = weaponInfo.Damage * StatesEnforce.Instance.weaponDamageGain;
     }

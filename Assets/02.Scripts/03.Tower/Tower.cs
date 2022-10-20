@@ -6,7 +6,8 @@ public class Tower : MonoBehaviour
 {
     [SerializeField] private TowerInfo _info;
 
-    [SerializeField] private Transform _rotatePoint;
+    [SerializeField] private Transform _rotateXPoint;
+    [SerializeField] private Transform _rotateYPoint;
     [SerializeField] protected float attackRange;
     [SerializeField] protected LayerMask targetLayer;
     [SerializeField] protected LayerMask blockLayer;
@@ -33,8 +34,12 @@ public class Tower : MonoBehaviour
         if (cols.Length > 0)
         {
             target = cols[0].transform;
-            
-            _rotatePoint.LookAt(target);
+
+            Vector3 tmp = target.position;
+            tmp.y = _rotateYPoint.position.y;
+            _rotateYPoint.LookAt(tmp);
+
+            _rotateXPoint.LookAt(target);
         }
         else
         {

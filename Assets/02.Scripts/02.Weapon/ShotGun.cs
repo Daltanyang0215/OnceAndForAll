@@ -17,14 +17,25 @@ public class ShotGun : Weapon
         Collider[] hits = Physics.OverlapSphere(Player.Instance.transform.position, shotGunInfo.ShotRange);
         foreach (var hit in hits)
         {
+            // 각도 및 범위 확인
             Vector3 tmp = hit.transform.position+Vector3.up - maincamera.transform.position;
             if(Vector3.Angle(tmp, maincamera.transform.forward) < shotGunInfo.HitCurcleError)
             {
-                if(hit.TryGetComponent(out Enemy enemy))
+                // 장애물 확인
+                if (Physics.Raycast(maincamera.transform.position, hit.transform.position - maincamera.transform.position, out _hit, 200f))
                 {
-                    enemy.Hit(damage);
+                    if (_hit.collider.TryGetComponent(out Enemy enemy))
+                    {
+                        enemy.Hit(damage);
+                    }
                 }
             }
         }
+    }
+
+    public override void EnforceApply()
+    {
+        base.EnforceApply();
+
     }
 }
