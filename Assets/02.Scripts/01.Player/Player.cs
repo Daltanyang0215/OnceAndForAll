@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float _rotateX_Min, _rotateX_Max; // 상하 회전 최대 값
     [SerializeField] private float _rotateXSpeed,_rotateYSpeed; // 감도
     private float _rotateX, _rotateY;// 입력용
+    private float _rebound; // 총 반동용
 
     // UI
     private bool _isShowBuilder;
@@ -76,14 +77,16 @@ public class Player : MonoBehaviour
     {
         if (_isShowBuilder) return;
 
-        float tmp_x = _cameraAnchor.eulerAngles.x - _rotateX * _rotateXSpeed;
+        float tmp_x = _cameraAnchor.eulerAngles.x - _rotateX * _rotateXSpeed - _rebound;
         float tmp_y = transform.eulerAngles.y + _rotateY * _rotateYSpeed;
 
         tmp_x = tmp_x > 180 ? tmp_x - 360 : tmp_x; // 오일러 0~360 -> -180~180 으로 전환
         tmp_y = tmp_y > 180 ? tmp_y - 360 : tmp_y; // 오일러 0~360 -> -180~180 으로 전환
 
         tmp_x = Mathf.Clamp(tmp_x, _rotateX_Min, _rotateX_Max);
-
+        
+        _rebound = 0; //총기 반동 초기화
+        
         _cameraAnchor.rotation = Quaternion.Euler(tmp_x, transform.eulerAngles.y, 0);
         transform.rotation = Quaternion.Euler(0, tmp_y, 0);
     }
@@ -107,7 +110,7 @@ public class Player : MonoBehaviour
             || _isShowUI)
             return;
 
-        weapons[_currentWeaponsIndex].Attack();
+        _rebound= weapons[_currentWeaponsIndex].Attack();
     }
 
     // 재장전

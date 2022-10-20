@@ -94,5 +94,12 @@ public class Enemy : MonoBehaviour
         MainGameManager.Instance.RoundEndCheck();
     }
 
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other != null
+            && other.gameObject.layer == LayerMask.NameToLayer("Water"))
+        {
+            Debug.Log("hit");
+        }
+    }
 }

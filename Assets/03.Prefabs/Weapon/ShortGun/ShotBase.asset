@@ -9,13 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6da69f06f0006a240a3bddb779e522e1, type: 3}
-  m_Name: WeaponBase
+  m_Script: {fileID: 11500000, guid: 7e9fa5be569bdea43b46a4ec5fb0adf4, type: 3}
+  m_Name: ShotBase
   m_EditorClassIdentifier: 
-  _type: 0
-  _damage: 1
-  _attackCool: 0.05
-  _reloadTIme: 1
-  _hitCurcleError: 0
-  _maxBullet: 60
-  _rebound: 0.01
+  _type: 1
+  _damage: 10
+  _attackCool: 1
+  _reloadTIme: 0.5
+  _hitCurcleError: 10
+  _maxBullet: 5
+  _rebound: 0
+  _shotBulletCount: 20
+  _shotRange: 20

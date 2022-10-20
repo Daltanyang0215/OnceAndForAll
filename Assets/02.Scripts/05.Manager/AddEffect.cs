@@ -21,7 +21,7 @@ public class AddEffect : ScriptableObject
     [SerializeField] private float _gain;
     [SerializeField] private string _infomation;
 
-    public string GetInfomation() => _infomation;
+    public string GetInfomation() => $"{_infomation} * {_gain}";
 
     public void OnApply()
     {

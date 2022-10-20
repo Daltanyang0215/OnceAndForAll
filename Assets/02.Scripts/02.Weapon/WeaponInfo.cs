@@ -3,7 +3,7 @@ using UnityEngine;
 public enum WeaponType
 {
     Rifle,
-    Shothun,
+    Shotgun,
     Sniper
 }
 [CreateAssetMenu(fileName = "WeaponBase",menuName ="Weapon/WeaponBase")]
