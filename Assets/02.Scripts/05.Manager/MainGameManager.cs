@@ -77,6 +77,7 @@ public class MainGameManager : MonoBehaviour
                 {
                     MainUIManager.instance.OnPlayDataUIInit();
                     ObjectPool.Instance.InstantiateAllPoolElement();
+                        MainUIManager.instance.ShowTutorial(true);
 
                     state = GameFlowState.WAITING_START;
                 }
@@ -85,7 +86,7 @@ public class MainGameManager : MonoBehaviour
                 {
                     if (Input.GetKeyDown(KeyCode.Return))
                     {
-                        MainUIManager.instance.CloseTutorial();
+                        MainUIManager.instance.ShowTutorial(false);
 
                         Cursor.visible = false;
                         Cursor.lockState = CursorLockMode.Locked;

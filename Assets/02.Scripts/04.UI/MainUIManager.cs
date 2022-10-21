@@ -14,9 +14,9 @@ public class MainUIManager : MonoBehaviour
 
     [SerializeField] private Transform _tutorial;
 
-    public void CloseTutorial()
+    public void ShowTutorial(bool show)
     {
-        _tutorial.gameObject.SetActive(false);
+        _tutorial.gameObject.SetActive(show);
     }
 
     #region TowerBuildCircle
