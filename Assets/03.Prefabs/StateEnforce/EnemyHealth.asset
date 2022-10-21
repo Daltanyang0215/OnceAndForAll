@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: EnemyHealth
   m_EditorClassIdentifier: 
   _effect: 4
-  _gain: 1.5
-  _infomation: EnemyHealth
+  _gain: 1.2
+  _infomation: "\uBAAC\uC2A4\uD130 \uCCB4\uB825 \uBC30\uC728"

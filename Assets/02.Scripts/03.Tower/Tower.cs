@@ -15,12 +15,12 @@ public class Tower : MonoBehaviour
 
     [SerializeField] protected float _damage;
 
-    private void Start()
+    protected virtual void Start()
     {
-        StateInit();
+        Onapply();
     }
 
-    public void StateInit()
+    public virtual void Onapply()
     {
         _damage = _info.Damage * StatesEnforce.Instance.TowerDamageGain;
         attackRange = _info.AttackRange * StatesEnforce.Instance.TowerRangeGain;

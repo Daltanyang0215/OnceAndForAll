@@ -76,20 +76,25 @@ public class MainGameManager : MonoBehaviour
             case GameFlowState.IDLE:
                 {
                     MainUIManager.instance.OnPlayDataUIInit();
-
                     ObjectPool.Instance.InstantiateAllPoolElement();
-                    //state = GameFlowState.WAITING_START;
 
-                    Player.Instance.enabled = true;
-                    Cursor.visible = false;
-                    Cursor.lockState = CursorLockMode.Locked;
-
-                    state = GameFlowState.ROUND_START;
+                    state = GameFlowState.WAITING_START;
                 }
                 break;
             case GameFlowState.WAITING_START:
                 {
+                    if (Input.GetKeyDown(KeyCode.Return))
+                    {
+                        MainUIManager.instance.CloseTutorial();
 
+                        Cursor.visible = false;
+                        Cursor.lockState = CursorLockMode.Locked;
+                        Player.Instance.enabled = true;
+
+
+
+                        state = GameFlowState.ROUND_START;
+                    }
                 }
                 break;
             case GameFlowState.LEVEL_START:
@@ -101,7 +106,7 @@ public class MainGameManager : MonoBehaviour
                 {
                     _currentRound++;
 
-                    EnemySpawner.instance.SpawnPoolAdd("TestMonster", 1, 0.2f, 1f);
+                    EnemySpawner.instance.SpawnPoolAdd("TestMonster", 2, 0.2f, 0.5f);
                     // 강화 적용
                     Player.Instance.EnforceApply();
                     TowerManager.instance.OnStatesEnforce();

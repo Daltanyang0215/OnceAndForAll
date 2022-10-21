@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ProjectileBullet : Projectile
 {
-    [SerializeField] private string _explosionEffect;
-    [SerializeField] private bool _isShowEffect;
+    [SerializeField] protected string explosionEffect;
+    [SerializeField] protected bool isShowEffect;
 
     [SerializeField] private int _attackCount;
 
@@ -30,9 +30,9 @@ public class ProjectileBullet : Projectile
                 ObjectPool.Instance.Return(gameObject, 1f);
         }
 
-        if (_isShowEffect)
+        if (isShowEffect)
         {
-            ObjectPool.Instance.Return(ObjectPool.Instance.Spawn(_explosionEffect, tr.position), 0.5f);
+            ObjectPool.Instance.Return(ObjectPool.Instance.Spawn(explosionEffect, tr.position), 0.5f);
         }
     }
 }

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: EnemySpeed
   m_EditorClassIdentifier: 
   _effect: 5
-  _gain: 1.5
-  _infomation: EnemySpeed
+  _gain: 1.1
+  _infomation: "\uBAAC\uC2A4\uD130 \uC774\uB3D9\uC18D\uB3C4"

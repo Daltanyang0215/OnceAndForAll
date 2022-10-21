@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: EnemyMoney
   m_EditorClassIdentifier: 
   _effect: 6
-  _gain: 1.5
-  _infomation: EnemyMoney
+  _gain: 1.2
+  _infomation: "\uBAAC\uC2A4\uD130 \uD68D\uB4DD \uACE8\uB4DC"

@@ -5,6 +5,7 @@ using UnityEngine;
 public class TowerProjectile : Tower
 {
     [SerializeField] private Transform[] _firePoints;
+    [SerializeField] private string _bulletName;
     [SerializeField] private int _projectileSpeed;
 
     [SerializeField] private float _reloadTime;
@@ -37,7 +38,7 @@ public class TowerProjectile : Tower
     {
         for (int i = 0; i < _firePoints.Length; i++)
         {
-            GameObject bullet = ObjectPool.Instance.Spawn("BalistaBult", _firePoints[i].position);
+            GameObject bullet = ObjectPool.Instance.Spawn(_bulletName, _firePoints[i].position);
             bullet.GetComponent<ProjectileBullet>().SetUp(target,
                                                           _projectileSpeed,
                                                           _damage,

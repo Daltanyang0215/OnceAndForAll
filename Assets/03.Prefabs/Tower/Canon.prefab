@@ -344,7 +344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cb491ff4f04e9b4c8822373d7b332c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _info: {fileID: 11400000, guid: 04755e06f2ed4bc4d8f2414331ce9f55, type: 2}
+  _info: {fileID: 11400000, guid: 4063d07c2df8d454883a7b5c5eee9bb1, type: 2}
   _rotateXPoint: {fileID: 8502837247387332629}
   _rotateYPoint: {fileID: 1424459543527784998}
   attackRange: 15
@@ -357,7 +357,8 @@ MonoBehaviour:
   _damage: 2
   _firePoints:
   - {fileID: 2742276549780314893}
-  _projectileSpeed: 70
+  _bulletName: CanonBoom
+  _projectileSpeed: 40
   _reloadTime: 1
 --- !u!208 &7399484360852269030
 NavMeshObstacle:

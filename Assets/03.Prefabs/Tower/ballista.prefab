@@ -74,6 +74,7 @@ MonoBehaviour:
   _damage: 2
   _firePoints:
   - {fileID: 5668349957455814780}
+  _bulletName: BalistaBult
   _projectileSpeed: 70
   _reloadTime: 1
 --- !u!208 &1014642993826847895

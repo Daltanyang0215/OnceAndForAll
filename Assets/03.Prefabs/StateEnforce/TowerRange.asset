@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: TowerRange
   m_EditorClassIdentifier: 
   _effect: 3
-  _gain: 1.5
-  _infomation: TowerRange
+  _gain: 1.2
+  _infomation: "\uBAA8\uB4E0 \uD0C0\uC6CC \uC0AC\uAC70\uB9AC"

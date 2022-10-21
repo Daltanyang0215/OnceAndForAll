@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: TowerDamage
   m_EditorClassIdentifier: 
   _effect: 2
-  _gain: 1.5
-  _infomation: TowerDamage
+  _gain: 1.2
+  _infomation: "\uBAA8\uB4E0 \uD0C0\uC6CC \uACF5\uACA9\uB825"

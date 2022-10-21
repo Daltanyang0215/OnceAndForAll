@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: WeaponDamage
   m_EditorClassIdentifier: 
   _effect: 1
-  _gain: 1.5
-  _infomation: WeaponDamage
+  _gain: 1.2
+  _infomation: "\uBAA8\uB4E0 \uBB34\uAE30 \uACF5\uACA9\uB825"

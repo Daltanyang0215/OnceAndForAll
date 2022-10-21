@@ -87,7 +87,7 @@ public class Weapon : MonoBehaviour
     // 재장전 (player script call 전용)
     public void Reload()
     {
-        if (_isAttackCool) return;
+        //if (_isAttackCool) return;
         _isReloading = true;
         Debug.Log("재장전 중");
     }

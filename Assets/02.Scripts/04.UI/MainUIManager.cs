@@ -12,6 +12,13 @@ public class MainUIManager : MonoBehaviour
         instance = this;
     }
 
+    [SerializeField] private Transform _tutorial;
+
+    public void CloseTutorial()
+    {
+        _tutorial.gameObject.SetActive(false);
+    }
+
     #region TowerBuildCircle
     [SerializeField] private QuickWheel _towerBuildCircle;
     private bool _isShowBuildCircle;

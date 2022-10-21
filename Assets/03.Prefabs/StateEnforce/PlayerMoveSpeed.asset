@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: PlayerMoveSpeed
   m_EditorClassIdentifier: 
   _effect: 0
-  _gain: 1.5
-  _infomation: PlayerMoveSpeed
+  _gain: 1.1
+  _infomation: "\uD50C\uB808\uC774\uC5B4 \uC774\uB3D9\uC18D\uB3C4"

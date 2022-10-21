@@ -40,8 +40,7 @@ public class Enemy : MonoBehaviour
         get { return _moveSpeed; }
         set
         {
-            _moveSpeed = value;
-            _navi.speed = _moveSpeed;
+            _navi.speed = value;
         }
     }
 
@@ -56,13 +55,14 @@ public class Enemy : MonoBehaviour
         // 몬스터 소환시 강화 적용
         GetComponent<SphereCollider>().enabled = true;
         EnemyHealth =_enemyInfo.EnemyHealth * StatesEnforce.Instance.enemyHealthGain;
-        MoveSpeed = _enemyInfo.EnemySpeed*StatesEnforce.Instance.enemySpeedGain;
+        _moveSpeed = _enemyInfo.EnemySpeed*StatesEnforce.Instance.enemySpeedGain;
+        MoveSpeed = _moveSpeed;
     }
 
     private void Die()
     {
         MainGameManager.Instance.Money += (int)(_enemyInfo.Money * StatesEnforce.Instance.enemyMoneyGain);
-        _animator.SetTrigger("Die");
+        _animator.SetTrigger("DoDie");
         GetComponent<SphereCollider>().enabled = false;
     }
 
@@ -81,10 +81,26 @@ public class Enemy : MonoBehaviour
     }
 
     // 피격 용
-    public void Hit(float damage)
+    public bool Hit(float damage)
     {
-        _animator.SetTrigger("Hit");
+        if (damage < 0) return false;
+        _animator.SetTrigger("DoHit");
         EnemyHealth -= damage;
+
+        if (EnemyHealth < 0) return true;
+        return false;
+    }
+
+    public void Slow(bool isslow)
+    {
+        if (isslow)
+        {
+            MoveSpeed = _moveSpeed*0.5f;
+        }
+        else
+        {
+            MoveSpeed = _moveSpeed;
+        }
     }
 
     // 애니메이션 종료 시 오브젝트 풀 리턴 용
