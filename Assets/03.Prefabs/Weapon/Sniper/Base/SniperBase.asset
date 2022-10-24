@@ -18,5 +18,5 @@ MonoBehaviour:
   _reloadTIme: 1
   _hitCurcleError: 0
   _maxBullet: 10
-  _rebound: 20
+  _rebound: 10
   _zoomGain: 2

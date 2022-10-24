@@ -8,7 +8,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] private Transform _firePoint;
     [SerializeField] private TMP_Text _bulletCountText;
     [SerializeField] protected ParticleSystem fireParticale;
-    private Animator _animator;
+    protected Animator animator;
 
     private int _currentBullet;
     private int CurrentBullet
@@ -55,7 +55,7 @@ public class Weapon : MonoBehaviour
                 _attackCoolTimer = weaponInfo.AttackCool;
                 Shot();
                 CurrentBullet--;
-                _animator.SetTrigger("Shot");
+                animator.SetTrigger("Shot");
                 fireParticale.Play();
                 return weaponInfo.Rebound;
             }
@@ -110,7 +110,7 @@ public class Weapon : MonoBehaviour
         CurrentBullet = weaponInfo.MaxBullet;
         _attackCoolTimer = weaponInfo.AttackCool;
         _reLoadTimer = weaponInfo.ReloadTIme;
-        _animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
     }
 
     protected virtual void OnEnable()

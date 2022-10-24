@@ -5,7 +5,6 @@ using UnityEngine;
 public class Sniper : Weapon
 {
     private SniperInfo _sniperInfo;
-
     private bool _isZoom;
     private float _originFOV;
     public override void WaeponAction()
@@ -41,13 +40,19 @@ public class Sniper : Weapon
     {
         if (show)
         {
+            animator.SetBool("Zoom", true);
             maincamera.fieldOfView = _originFOV / _sniperInfo.ZoomGain;
             MainUIManager.instance.ShowWeaponCircle(weaponInfo.Type, true);
+            // ÀÚ½Ä0 -> ·»´õ·¯
+            transform.GetChild(0).gameObject.SetActive(false);
         }
         else
         {
+            animator.SetBool("Zoom", false);
             maincamera.fieldOfView = _originFOV;
             MainUIManager.instance.ShowWeaponCircle(weaponInfo.Type, false);
+            // ÀÚ½Ä0 -> ·»´õ·¯
+            transform.GetChild(0).gameObject.SetActive(true);
         }
     }
 
