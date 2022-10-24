@@ -20,6 +20,8 @@ public class MainUIManager : MonoBehaviour
     }
 
     #region TowerBuildCircle
+    [Space]
+    [Header("TowerBuildCircle")]
     [SerializeField] private QuickWheel _towerBuildCircle;
     private bool _isShowBuildCircle;
     public bool isShowBuildCircle
@@ -54,6 +56,8 @@ public class MainUIManager : MonoBehaviour
     #endregion
 
     #region TowerBuilder
+    [Space]
+    [Header("TowerBuilder")]
     [SerializeField] private TowerBuilder _towerBuilder;
     private bool _isShowBuilder;
     public bool isShowBuilder
@@ -89,8 +93,12 @@ public class MainUIManager : MonoBehaviour
     #endregion
 
     #region PlayerDataUI
+    [Space]
+    [Header("PlayerUI")]
     [SerializeField] private TMP_Text _healthText;
     [SerializeField] private TMP_Text _moneyText;
+    [SerializeField] private GameObject _shotGunCircle;
+    [SerializeField] private GameObject _sniperCircle;
 
     public void SetHealthText(int health)
     {
@@ -106,9 +114,30 @@ public class MainUIManager : MonoBehaviour
         _healthText.text = MainGameManager.Instance.Health.ToString();
         _moneyText.text = MainGameManager.Instance.Money.ToString();
     }
+
+    public void ShowWeaponCircle(WeaponType type , bool show)
+    {
+        switch (type)
+        {
+            case WeaponType.Rifle:
+                break;
+            case WeaponType.Shotgun:
+                Debug.Log("¼¦°Ç");
+                _shotGunCircle.SetActive(show);
+                break;
+            case WeaponType.Sniper:
+                _sniperCircle.SetActive(show);
+                break;
+            default:
+                break;
+        }
+
+    }
     #endregion
 
     #region Reward
+    [Space]
+    [Header("Reward")]
     [SerializeField] private Transform _reward;
     [SerializeField] private List<TMP_Text> _rewardText;
     private bool _isShowReward;

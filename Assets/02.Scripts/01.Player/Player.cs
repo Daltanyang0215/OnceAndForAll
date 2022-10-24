@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     [Header("Weapon")]
     public Weapon[] weapons;
     private int _currentWeaponsIndex;
-    private bool _isFire, _isReload; // 입력용
+    private bool _isFire, _isReload, _isAction; // 입력용
 
     [Space]
     [Header("Move")]
@@ -29,11 +29,12 @@ public class Player : MonoBehaviour
     [Header("Camera")]
     [SerializeField] private Transform _cameraAnchor;
     [SerializeField] private float _rotateX_Min, _rotateX_Max; // 상하 회전 최대 값
-    [SerializeField] private float _rotateXSpeed,_rotateYSpeed; // 감도
+    [SerializeField] private float _rotateXSpeed, _rotateYSpeed; // 감도
     private float _rotateX, _rotateY;// 입력용
     private float _rebound; // 총 반동용
 
-    // UI
+    [Space]
+    [Header("UI")]
     private bool _isShowBuilder;
     private bool _isShowUI;
     public bool isShowUI { set { _isShowUI = value; } }
@@ -47,11 +48,13 @@ public class Player : MonoBehaviour
     {
         GetInput();
         CameraRotate();
+        WeaponAction();
         Fire();
         Reload();
         WeaponChange();
         UIUpdata();
     }
+
 
 
     private void FixedUpdate()
@@ -64,6 +67,7 @@ public class Player : MonoBehaviour
         _forwad = Input.GetAxisRaw("Vertical");
         _right = Input.GetAxisRaw("Horizontal");
         _isFire = Input.GetButton("Fire1");
+        _isAction = Input.GetButtonDown("Fire2");
         _isReload = Input.GetButtonDown("ReLoad");
 
         _rotateY = Input.GetAxis("Mouse X");
@@ -84,25 +88,24 @@ public class Player : MonoBehaviour
         tmp_y = tmp_y > 180 ? tmp_y - 360 : tmp_y; // 오일러 0~360 -> -180~180 으로 전환
 
         tmp_x = Mathf.Clamp(tmp_x, _rotateX_Min, _rotateX_Max);
-        
+
         _rebound = 0; //총기 반동 초기화
-        
+
         _cameraAnchor.rotation = Quaternion.Euler(tmp_x, transform.eulerAngles.y, 0);
         transform.rotation = Quaternion.Euler(0, tmp_y, 0);
     }
 
-    // 방향키 이동
-    private void Move()
+    // 무기 특수 키 (마우스 우 클릭)
+    private void WeaponAction()
     {
-        _moveVec = new Vector3(_right, 0, _forwad).normalized;
-        //transform.Translate(_moveVec * moveSpeed * Time.fixedDeltaTime);
-
-        // 바라보는 방향으로 무브벡터 회전
-        _moveVec = Quaternion.AngleAxis(transform.rotation.eulerAngles.y, Vector3.up) * _moveVec;
-        _rb.velocity = _moveVec * moveSpeed* MoveSpeedGain;
+        // 공격키가 안눌렸거나, 타워 빌드 중이나, UI가 켜져있는 상태이면 리턴
+        if (_isAction == false
+            || _isShowUI)
+            return;
+        weapons[_currentWeaponsIndex].WaeponAction();
     }
 
-    // 공격
+    // 공격(마우스 좌 클릭)
     private void Fire()
     {
         // 공격키가 안눌렸거나, 타워 빌드 중이나, UI가 켜져있는 상태이면 리턴
@@ -110,7 +113,7 @@ public class Player : MonoBehaviour
             || _isShowUI)
             return;
 
-        _rebound= weapons[_currentWeaponsIndex].Attack();
+        _rebound = weapons[_currentWeaponsIndex].Attack();
     }
 
     // 재장전
@@ -140,12 +143,28 @@ public class Player : MonoBehaviour
             _currentWeaponsIndex = 1;
             Debug.Log($"Changed weapons 2");
         }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            _currentWeaponsIndex = 2;
+            Debug.Log($"Changed weapons 3");
+        }
 
         if (weaponIndex != _currentWeaponsIndex)
         {
             weapons[weaponIndex].gameObject.SetActive(false);
             weapons[_currentWeaponsIndex].gameObject.SetActive(true);
         }
+    }
+
+    // 방향키 이동
+    private void Move()
+    {
+        _moveVec = new Vector3(_right, 0, _forwad).normalized;
+        //transform.Translate(_moveVec * moveSpeed * Time.fixedDeltaTime);
+
+        // 바라보는 방향으로 무브벡터 회전
+        _moveVec = Quaternion.AngleAxis(transform.rotation.eulerAngles.y, Vector3.up) * _moveVec;
+        _rb.velocity = _moveVec * moveSpeed * MoveSpeedGain;
     }
 
     // UI 관련 함수 모음

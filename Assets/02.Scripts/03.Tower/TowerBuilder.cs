@@ -8,6 +8,7 @@ public class TowerBuilder : MonoBehaviour
     [SerializeField] private GameObject _ghostTower;
     [SerializeField] private TowerInfo _tower;
     [SerializeField] private LayerMask _groundLayer;
+    [SerializeField] private LayerMask _blockLayer;
     [SerializeField] private Transform _towerParnets;
 
     [SerializeField] private Color _possibleColor;
@@ -18,6 +19,7 @@ public class TowerBuilder : MonoBehaviour
     [SerializeField] private Vector2 _rightppPoint;
     private Camera _camera;
     private RaycastHit _hit;
+    private Vector3 tmpVec;
 
     private void Start()
     {
@@ -28,23 +30,22 @@ public class TowerBuilder : MonoBehaviour
     {
         if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, out _hit, 200f, _groundLayer))
         {
-            Vector3 tmpVec = Vector3.zero;
+            tmpVec = Vector3.zero;
+
+            // 2.5f 단위로 그리드 동작
+            tmpVec = _hit.point;
+            tmpVec.x = Mathf.RoundToInt(tmpVec.x * 0.4f) * 2.5f;
+            tmpVec.y = 0;
+            tmpVec.z = Mathf.RoundToInt(tmpVec.z * 0.4f) * 2.5f;
 
 
             // 레이가 타워 인지 확인 타워이면 불가능으로 컬러 변경
-            if (_hit.collider.tag == "Tower")
+            if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, 200f, _blockLayer))
             {
-                tmpVec = _hit.collider.transform.position;
-                _ghostTower.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = _impossibleColor;
+                    _ghostTower.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = _impossibleColor;
             }
             else
             {
-                // 2.5f 단위로 그리드 동작
-                tmpVec = _hit.point;
-                tmpVec.x = Mathf.RoundToInt(tmpVec.x * 0.4f) * 2.5f;
-                tmpVec.y = 0;
-                tmpVec.z = Mathf.RoundToInt(tmpVec.z * 0.4f) * 2.5f;
-
                 // 타워가 설치가능한 위치를 벗어났는지 확인
                 if (tmpVec.x > _leftdownPoint.x && tmpVec.x < _rightppPoint.x &&
                     tmpVec.z > _leftdownPoint.y && tmpVec.z < _rightppPoint.y)
@@ -75,6 +76,7 @@ public class TowerBuilder : MonoBehaviour
                 {
                     _ghostTower.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = _impossibleColor;
                 }
+
             }
 
             // 우클릭시 타워 설치 취소

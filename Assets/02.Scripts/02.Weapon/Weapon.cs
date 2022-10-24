@@ -68,6 +68,11 @@ public class Weapon : MonoBehaviour
         return 0;
     }
 
+    public virtual void WaeponAction()
+    {
+
+    }
+
     // 실제 공격 로직. 상속으로 오버로드 할 수 있게 설계
     protected virtual void Shot()
     {
@@ -85,7 +90,7 @@ public class Weapon : MonoBehaviour
     }
 
     // 재장전 (player script call 전용)
-    public void Reload()
+    public virtual void Reload()
     {
         //if (_isAttackCool) return;
         _isReloading = true;
@@ -108,13 +113,13 @@ public class Weapon : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         EnforceApply();
         // play animation
     }
 
-    private void OnDisable()
+    protected virtual void OnDisable()
     {
         ReloadTimeReset();
     }
