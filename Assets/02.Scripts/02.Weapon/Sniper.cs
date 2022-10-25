@@ -36,15 +36,20 @@ public class Sniper : Weapon
         base.EnforceApply();
     }
 
+    // 애니메이션에서 스코프 바라볼때 화면이 전환되게, public 으로 사용
+    public void ZoomIN()
+    {
+        maincamera.fieldOfView = _originFOV / _sniperInfo.ZoomGain;
+        MainUIManager.instance.ShowWeaponCircle(weaponInfo.Type, true);
+        // 자식0 -> 렌더러
+        transform.GetChild(0).gameObject.SetActive(false);
+    }
+
     private void Zoom(bool show)
     {
         if (show)
         {
             animator.SetBool("Zoom", true);
-            maincamera.fieldOfView = _originFOV / _sniperInfo.ZoomGain;
-            MainUIManager.instance.ShowWeaponCircle(weaponInfo.Type, true);
-            // 자식0 -> 렌더러
-            transform.GetChild(0).gameObject.SetActive(false);
         }
         else
         {
