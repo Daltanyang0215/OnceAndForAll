@@ -11,14 +11,18 @@ public enum TargetType
 }
 public abstract class TowerTargetingBase : TowerBase
 {
+    [Space]
+    [Header("RotateAnchor")]
     [SerializeField] private Transform _rotateX;
     [SerializeField] private Transform _rotateY;
-    [SerializeField] private Transform _FirePoint;
+    [SerializeField] protected Transform firePoint;
 
+    [Space]
+    [Header("TargetType")]
     [SerializeField] private TargetType _targetType;
 
-    protected Transform target;
-    protected List<Collider> cols = new List<Collider>();
+    [SerializeField] protected Transform target;
+    protected Collider[] cols;
 
     public abstract override void OnApply();
 
@@ -27,22 +31,39 @@ public abstract class TowerTargetingBase : TowerBase
     protected override void Update()
     {
         base.Update();
+
         if (_isLoading == false)
         {
             // 타겟이 없다면 새로운 타겟을 검색
             if (target == null)
             {
-                cols.AddRange(Physics.OverlapSphere(transform.position, attackRange, targetLayer));
-                if (cols.Count > 0)
+                
+                // 주위 몬스터 스캔
+                cols = Physics.OverlapSphere(transform.position, attackRange, targetLayer);
+
+                // 주위 몬스터가 감지되면
+                if (cols.Length > 0)
                 {
+                    // 디폴트 0 번 넣기
+                    target = cols[0].transform;
+                    // 타겟팅 타입에 따라 타겟 변경
                     switch (_targetType)
                     {
                         case TargetType.First:
-                            cols.Sort((x, y) => x.transform.position.z.CompareTo(x.transform.position.z));
+                            // z 값이 제일 작은 몬스터 검색
+                            for (int i = 0; i < cols.Length; i++)
+                            {
+                                if (cols[i].transform.position.z < target.position.z)
+                                    target = cols[i].transform;
+                            }
                             break;
                         case TargetType.Last:
-                            cols.Sort((x, y) => x.transform.position.z.CompareTo(x.transform.position.z));
-                            cols.Reverse();
+                            // z 값이 제일 큰 몬스터 검색
+                            for (int i = 0; i < cols.Length; i++)
+                            {
+                                if (cols[i].transform.position.z > target.position.z)
+                                    target = cols[i].transform;
+                            }
                             break;
                         case TargetType.Strong:
                             break;
@@ -51,16 +72,6 @@ public abstract class TowerTargetingBase : TowerBase
                         default:
                             break;
                     }
-
-                    target = cols[0].transform;
-
-                    // y 축 회전
-                    Vector3 tmp = target.position;
-                    tmp.y = _rotateY.position.y;
-                    _rotateY.LookAt(tmp);
-
-                    // x 축 회전
-                    _rotateX.LookAt(target);
                 }
                 else
                 {
@@ -71,7 +82,8 @@ public abstract class TowerTargetingBase : TowerBase
             else
             {
                 // 타겟의 활성화 상태를 확인 후 활성화 일시에 공격
-                if (target.gameObject.activeSelf)
+                if (target.gameObject.activeSelf &&
+                    Vector3.Distance(target.position , transform.position)<attackRange)
                 {
                     _isLoading = true;
                     Attack();
@@ -80,6 +92,18 @@ public abstract class TowerTargetingBase : TowerBase
                 {
                     target = null;
                 }
+            }
+
+            // 축 회전 용
+            if (target != null)
+            {
+                // y 축 회전
+                Vector3 tmp = target.position;
+                tmp.y = _rotateY.position.y;
+                _rotateY.LookAt(tmp);
+
+                // x 축 회전
+                _rotateX.LookAt(target);
             }
         }
     }

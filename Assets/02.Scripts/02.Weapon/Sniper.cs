@@ -7,6 +7,32 @@ public class Sniper : Weapon
     private SniperInfo _sniperInfo;
     private bool _isZoom;
     private float _originFOV;
+    
+    //private int _zoomLevel;
+    //private int zoomLevel
+    //{
+    //    get
+    //    {
+    //        return _zoomLevel;
+    //    }
+    //    set
+    //    {
+    //        _zoomLevel = value;
+
+    //        switch (_zoomLevel)
+    //        {
+    //            case 0:
+    //                break;
+    //            case 1:
+    //                break;
+    //            case 2:
+    //                break;
+    //            default:
+    //                break;
+    //        }
+    //    }
+    //}
+
     public override void WaeponAction()
     {
         // 줌 이였을때 해제 함
@@ -19,7 +45,6 @@ public class Sniper : Weapon
         {
             _isZoom = true;
         }
-
         Zoom(_isZoom);
 
     }
@@ -67,7 +92,7 @@ public class Sniper : Weapon
         _sniperInfo = weaponInfo as SniperInfo;
         _originFOV = maincamera.fieldOfView;
     }
-    
+
     protected override void OnDisable()
     {
         base.OnDisable();

@@ -11,7 +11,7 @@ public abstract class TowerBase : MonoBehaviour
     [SerializeField] protected LayerMask blockLayer;
 
     [SerializeField] protected float attackRange;
-    protected float reloadTime;
+    [SerializeField] protected float reloadTime;
     protected bool _isLoading;
 
     protected float timer;
