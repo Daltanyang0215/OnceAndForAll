@@ -23,6 +23,7 @@ public class Weapon : MonoBehaviour
             _bulletCountText.text = _currentBullet.ToString();
         }
     }
+
     private float _attackCoolTimer;
     private float _reLoadTimer;
 
@@ -54,7 +55,6 @@ public class Weapon : MonoBehaviour
             {
                 _attackCoolTimer = weaponInfo.AttackCool;
                 Shot();
-                CurrentBullet--;
                 animator.SetTrigger("Shot");
                 fireParticale.Play();
                 return weaponInfo.Rebound;
@@ -99,6 +99,8 @@ public class Weapon : MonoBehaviour
     // 실제 공격 로직. 상속으로 오버로드 할 수 있게 설계
     protected virtual void Shot()
     {
+        CurrentBullet--;
+
         if (Physics.Raycast(maincamera.transform.position, maincamera.transform.forward, out _hit, 200f))
         {
             // 레이포인트에 이펙트 소환

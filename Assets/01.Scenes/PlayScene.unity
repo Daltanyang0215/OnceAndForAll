@@ -5126,6 +5126,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1333616952}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1274647578 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -4721136747726768282, guid: 71ed7fa08a18b4e41bdd2894654d897b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1333616952}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3d52eda397e4bc44b0b7bc7e167751f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1302120987
 GameObject:
   m_ObjectHideFlags: 0
@@ -5344,6 +5356,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: laser
+      objectReference: {fileID: 0}
+    - target: {fileID: 2674654828461627205, guid: 71ed7fa08a18b4e41bdd2894654d897b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71ed7fa08a18b4e41bdd2894654d897b, type: 3}
@@ -6570,6 +6587,7 @@ MonoBehaviour:
   weapons:
   - {fileID: 1742463756}
   - {fileID: 2046129671}
+  - {fileID: 1274647578}
   - {fileID: 1747907307}
   moveSpeed: 10
   _cameraAnchor: {fileID: 1694683962}
@@ -9295,7 +9313,7 @@ PrefabInstance:
     - target: {fileID: 2674654828461627205, guid: 7223f10592c200a469e66584fb2cf25b,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4392549375977250682, guid: 7223f10592c200a469e66584fb2cf25b,
         type: 3}
