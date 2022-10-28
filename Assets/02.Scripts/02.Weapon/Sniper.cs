@@ -56,9 +56,9 @@ public class Sniper : Weapon
         Zoom(false);
     }
 
-    public override void EnforceApply()
+    public override void OnApply()
     {
-        base.EnforceApply();
+        base.OnApply();
     }
 
     // 애니메이션에서 스코프 바라볼때 화면이 전환되게, public 으로 사용

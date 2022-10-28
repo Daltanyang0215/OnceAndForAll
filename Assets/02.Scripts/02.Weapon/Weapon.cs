@@ -67,10 +67,33 @@ public class Weapon : MonoBehaviour
         }
         return 0;
     }
+    // 재장전 (player script call 전용)
+    public virtual void Reload()
+    {
+        //if (_isAttackCool) return;
+        _isReloading = true;
+        Debug.Log("재장전 중");
+    }
 
+    // 강화 적용
+    public virtual void OnApply()
+    {
+        damage = weaponInfo.Damage * StatesEnforce.Instance.weaponDamageGain;
+    }
+    // 특수기
     public virtual void WaeponAction()
     {
 
+    }
+
+    // 초기화 . 상속으로 초기화 대상을 늘릴 수 있게
+    protected virtual void Start()
+    {
+        maincamera = Camera.main;
+        CurrentBullet = weaponInfo.MaxBullet;
+        _attackCoolTimer = weaponInfo.AttackCool;
+        _reLoadTimer = weaponInfo.ReloadTIme;
+        animator = GetComponent<Animator>();
     }
 
     // 실제 공격 로직. 상속으로 오버로드 할 수 있게 설계
@@ -89,33 +112,9 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    // 재장전 (player script call 전용)
-    public virtual void Reload()
-    {
-        //if (_isAttackCool) return;
-        _isReloading = true;
-        Debug.Log("재장전 중");
-    }
-
-    // 강화 적용
-    public virtual void EnforceApply()
-    {
-        damage = weaponInfo.Damage * StatesEnforce.Instance.weaponDamageGain;
-    }
-
-    // 초기화
-    protected virtual void Start()
-    {
-        maincamera = Camera.main;
-        CurrentBullet = weaponInfo.MaxBullet;
-        _attackCoolTimer = weaponInfo.AttackCool;
-        _reLoadTimer = weaponInfo.ReloadTIme;
-        animator = GetComponent<Animator>();
-    }
-
     protected virtual void OnEnable()
     {
-        EnforceApply();
+        OnApply();
         // play animation
     }
 

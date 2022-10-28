@@ -45,9 +45,9 @@ CapsuleCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.1
-  m_Height: 1
+  m_Height: 2
   m_Direction: 2
-  m_Center: {x: 0, y: 0, z: -0.2}
+  m_Center: {x: 0, y: 0, z: -0.5}
 --- !u!114 &5899716538671712851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,7 +60,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd0bc048581fdca47837dcd66c627501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosionEffect: {fileID: 0}
+  explosionEffect: 
+  isShowEffect: 0
   _attackCount: 1
 --- !u!1 &6121481063250042421
 GameObject:

@@ -107,22 +107,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 867e786277224cd42957acbc79b74778, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _towerInfo: {fileID: 11400000, guid: 04755e06f2ed4bc4d8f2414331ce9f55, type: 2}
+  towerInfo: {fileID: 11400000, guid: 04755e06f2ed4bc4d8f2414331ce9f55, type: 2}
   targetLayer:
     serializedVersion: 2
     m_Bits: 1048576
   blockLayer:
     serializedVersion: 2
     m_Bits: 33280
+  damage: 0
   attackRange: 15
   reloadTime: 1
   _rotateX: {fileID: 2208073138530437988}
   _rotateY: {fileID: 8890160465085774167}
   firePoint: {fileID: 5668349957455814780}
   _targetType: 0
+  target: {fileID: 0}
   _bulletName: BalistaBult
   _projectileSpeed: 70
-  _projectileDamage: 1
 --- !u!1 &3628020751354030367
 GameObject:
   m_ObjectHideFlags: 0

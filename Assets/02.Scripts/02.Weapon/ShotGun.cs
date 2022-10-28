@@ -33,9 +33,9 @@ public class ShotGun : Weapon
         }
     }
 
-    public override void EnforceApply()
+    public override void OnApply()
     {
-        base.EnforceApply();
+        base.OnApply();
     }
 
     protected override void OnEnable()

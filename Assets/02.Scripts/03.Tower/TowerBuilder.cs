@@ -11,6 +11,7 @@ public class TowerBuilder : MonoBehaviour
     [SerializeField] private LayerMask _blockLayer;
     [SerializeField] private Transform _towerParnets;
 
+    // 상태 색상
     [SerializeField] private Color _possibleColor;
     [SerializeField] private Color _impossibleColor;
 
@@ -28,7 +29,7 @@ public class TowerBuilder : MonoBehaviour
     }
     private void Update()
     {
-        if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, out _hit, 200f, _groundLayer))
+        if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, out _hit, 2000f, _groundLayer))
         {
             tmpVec = Vector3.zero;
 
@@ -38,9 +39,8 @@ public class TowerBuilder : MonoBehaviour
             tmpVec.y = 0;
             tmpVec.z = Mathf.RoundToInt(tmpVec.z * 0.4f) * 2.5f;
 
-
             // 레이가 타워 인지 확인 타워이면 불가능으로 컬러 변경
-            if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, 200f, _blockLayer))
+            if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, 2000f, _blockLayer))
             {
                     _ghostTower.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = _impossibleColor;
             }
@@ -76,7 +76,6 @@ public class TowerBuilder : MonoBehaviour
                 {
                     _ghostTower.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = _impossibleColor;
                 }
-
             }
 
             // 우클릭시 타워 설치 취소

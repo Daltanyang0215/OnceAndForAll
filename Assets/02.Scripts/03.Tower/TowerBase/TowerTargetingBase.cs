@@ -21,7 +21,7 @@ public abstract class TowerTargetingBase : TowerBase
     [Header("TargetType")]
     [SerializeField] private TargetType _targetType;
 
-    [SerializeField] protected Transform target;
+    protected Transform target;
     protected Collider[] cols;
 
     public abstract override void OnApply();
@@ -32,70 +32,54 @@ public abstract class TowerTargetingBase : TowerBase
     {
         base.Update();
 
-        if (_isLoading == false)
+        // 타겟이 없다면 새로운 타겟을 검색
+        if (target == null)
         {
-            // 타겟이 없다면 새로운 타겟을 검색
-            if (target == null)
+            // 주위 몬스터 스캔
+            if (Physics.CheckSphere(transform.position, attackRange, targetLayer))
             {
-                
-                // 주위 몬스터 스캔
-                cols = Physics.OverlapSphere(transform.position, attackRange, targetLayer);
-
                 // 주위 몬스터가 감지되면
-                if (cols.Length > 0)
+                cols = Physics.OverlapSphere(transform.position, attackRange, targetLayer);
+                // 디폴트 0 번 넣기
+                target = cols[0].transform;
+                // 타겟팅 타입에 따라 타겟 변경
+                switch (_targetType)
                 {
-                    // 디폴트 0 번 넣기
-                    target = cols[0].transform;
-                    // 타겟팅 타입에 따라 타겟 변경
-                    switch (_targetType)
-                    {
-                        case TargetType.First:
-                            // z 값이 제일 작은 몬스터 검색
-                            for (int i = 0; i < cols.Length; i++)
-                            {
-                                if (cols[i].transform.position.z < target.position.z)
-                                    target = cols[i].transform;
-                            }
-                            break;
-                        case TargetType.Last:
-                            // z 값이 제일 큰 몬스터 검색
-                            for (int i = 0; i < cols.Length; i++)
-                            {
-                                if (cols[i].transform.position.z > target.position.z)
-                                    target = cols[i].transform;
-                            }
-                            break;
-                        case TargetType.Strong:
-                            break;
-                        case TargetType.weak:
-                            break;
-                        default:
-                            break;
-                    }
-                }
-                else
-                {
-                    target = null;
+                    case TargetType.First:
+                        // z 값이 제일 작은 몬스터 검색
+                        for (int i = 0; i < cols.Length; i++)
+                        {
+                            if (cols[i].transform.position.z < target.position.z)
+                                target = cols[i].transform;
+                        }
+                        break;
+                    case TargetType.Last:
+                        // z 값이 제일 큰 몬스터 검색
+                        for (int i = 0; i < cols.Length; i++)
+                        {
+                            if (cols[i].transform.position.z > target.position.z)
+                                target = cols[i].transform;
+                        }
+                        break;
+                    case TargetType.Strong:
+                        break;
+                    case TargetType.weak:
+                        break;
+                    default:
+                        break;
                 }
             }
-            // 타겟이 있다면 공격 관련 동작
-            else
+        }
+        // 타겟이 있다면 공격 관련 동작
+        else
+        {
+            // 타겟이 비활성화 상태이나, 공격거리를 벗어나면 타겟에서 해제
+            if (target.gameObject.activeSelf == false ||
+                Vector3.Distance(target.position, transform.position) > attackRange)
             {
-                // 타겟의 활성화 상태를 확인 후 활성화 일시에 공격
-                if (target.gameObject.activeSelf &&
-                    Vector3.Distance(target.position , transform.position)<attackRange)
-                {
-                    _isLoading = true;
-                    Attack();
-                }
-                else
-                {
-                    target = null;
-                }
+                target = null;
             }
-
-            // 축 회전 용
-            if (target != null)
+            else
             {
                 // y 축 회전
                 Vector3 tmp = target.position;
@@ -104,6 +88,13 @@ public abstract class TowerTargetingBase : TowerBase
 
                 // x 축 회전
                 _rotateX.LookAt(target);
+                // 재장전이 완료되어 공격을 시도
+
+                if (_isLoading == false)
+                {
+                    _isLoading = true;
+                    Attack();
+                }
             }
         }
     }

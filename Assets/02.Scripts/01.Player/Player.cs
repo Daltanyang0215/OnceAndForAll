@@ -36,6 +36,7 @@ public class Player : MonoBehaviour
     [Space]
     [Header("UI")]
     private bool _isShowBuilder;
+    private bool _isTowerDestroy;
     private bool _isShowUI;
     public bool isShowUI { set { _isShowUI = value; } }
 
@@ -74,6 +75,7 @@ public class Player : MonoBehaviour
         _rotateX = Input.GetAxis("Mouse Y");
 
         _isShowBuilder = Input.GetButton("BuildTower");
+        _isTowerDestroy = Input.GetKeyDown(KeyCode.F);
     }
 
     // 카메라 회전
@@ -182,6 +184,6 @@ public class Player : MonoBehaviour
     public void EnforceApply()
     {
         MoveSpeedGain = StatesEnforce.Instance.PlayerMoveSpeedGain;
-        weapons[_currentWeaponsIndex].EnforceApply();
+        weapons[_currentWeaponsIndex].OnApply();
     }
 }
