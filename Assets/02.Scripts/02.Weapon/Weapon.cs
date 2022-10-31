@@ -11,7 +11,7 @@ public class Weapon : MonoBehaviour
     protected Animator animator;
 
     private int _currentBullet;
-    private int CurrentBullet
+    protected int currentBullet
     {
         get
         {
@@ -19,7 +19,7 @@ public class Weapon : MonoBehaviour
         }
         set
         {
-            _currentBullet = value;
+            _currentBullet = value < 0 ? 0 : value;
             _bulletCountText.text = _currentBullet.ToString();
         }
     }
@@ -47,7 +47,7 @@ public class Weapon : MonoBehaviour
         }
         set
         {
-            if(_isWeaponAction != value)
+            if (_isWeaponAction != value)
             {
                 _isWeaponAction = value;
                 WaeponAction(_isWeaponAction);
@@ -69,9 +69,9 @@ public class Weapon : MonoBehaviour
             ReloadTimeReset();
             _isAttackCool = true;
 
-            if (CurrentBullet > 0)
+            if (currentBullet > 0)
             {
-                CurrentBullet--;
+                currentBullet--;
                 _attackCoolTimer = weaponInfo.AttackCool;
                 Shot();
                 animator.SetTrigger("Shot");
@@ -109,9 +109,9 @@ public class Weapon : MonoBehaviour
     protected virtual void Start()
     {
         maincamera = Camera.main;
-        CurrentBullet = weaponInfo.MaxBullet;
+        currentBullet = weaponInfo.MaxBullet;
         _attackCoolTimer = weaponInfo.AttackCool;
-        _reLoadTimer = weaponInfo.ReloadTIme;
+        _reLoadTimer = weaponInfo.ReloadTime;
         animator = GetComponent<Animator>();
     }
 
@@ -163,7 +163,7 @@ public class Weapon : MonoBehaviour
             if (_reLoadTimer < 0)
             {
                 ReloadTimeReset();
-                CurrentBullet = weaponInfo.MaxBullet;
+                currentBullet = weaponInfo.MaxBullet;
                 Debug.Log("재장전 완료");
             }
             else
@@ -179,7 +179,7 @@ public class Weapon : MonoBehaviour
     {
 
         _isReloading = false;
-        _reLoadTimer = weaponInfo.ReloadTIme;
+        _reLoadTimer = weaponInfo.ReloadTime;
     }
 
 }

@@ -5,28 +5,60 @@ using UnityEngine;
 public class Laser : Weapon
 {
     [SerializeField] private ParticleSystem _chargeParticle;
+    [SerializeField] private LineRenderer _beemLine;
 
     private bool _isCharge;
 
-    protected override void WaeponAction(bool isAction )
+    protected override void WaeponAction(bool isAction)
     {
         if (_isCharge)
         {
             animator.SetBool("DoCharge", false);
-            fireParticale.Stop();
+            _beemLine.gameObject.SetActive(false);
+            _chargeParticle.Stop();
             _isCharge = false;
         }
         else
         {
             animator.SetBool("DoCharge", true);
-            fireParticale.Play();
+            _beemLine.gameObject.SetActive(true);
+            _chargeParticle.Play();
             _isCharge = true;
         }
     }
-
+    // 애니메이션에서 call 할 함수
+    public void ShotLaserSubBullet()
+    {
+        currentBullet--;
+        // 탄약이 없다면 레이저 종료
+        if(currentBullet <= 0)
+        {
+            _beemLine.gameObject.SetActive(false);
+            _chargeParticle.Stop();
+        }
+    }
+    // 애니메이션에서 call 할 함수
     public void ShotLaser()
     {
-        Shot();
+        if(currentBullet <= 0) return;
+
+        if (Physics.Raycast(maincamera.transform.position, maincamera.transform.forward, out _hit, 200f))
+        {
+            // 레이포인트에 이펙트 소환
+            GameObject go = ObjectPool.Instance.Spawn("HitEffect", _hit.point);
+            ObjectPool.Instance.Return(go, 0.3f);
+
+            if (_hit.collider.TryGetComponent(out Enemy enemy))
+            {
+                enemy.Hit(damage * 0.1f);
+            }
+        }
+    }
+
+    protected override void Shot()
+    {
+        base.Shot();
+        currentBullet -= 9;
     }
 
     public override void Reload()

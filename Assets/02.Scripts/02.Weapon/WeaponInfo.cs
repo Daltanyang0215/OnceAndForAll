@@ -18,8 +18,8 @@ public class WeaponInfo : ScriptableObject
     [SerializeField] private float _attackCool;
     public float AttackCool => _attackCool;
     
-    [SerializeField] private float _reloadTIme;
-    public float ReloadTIme => _reloadTIme;
+    [SerializeField] private float _reloadTime;
+    public float ReloadTime => _reloadTime;
     
     [SerializeField] private float _hitCurcleError;
     public float HitCurcleError => _hitCurcleError;

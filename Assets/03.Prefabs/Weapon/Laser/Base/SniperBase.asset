@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: SniperBase
   m_EditorClassIdentifier: 
   _type: 2
-  _damage: 20
+  _damage: 10
   _attackCool: 1
-  _reloadTIme: 1
+  _reloadTime: 1
   _hitCurcleError: 0
-  _maxBullet: 10
-  _rebound: 10
+  _maxBullet: 200
+  _rebound: 5
   _zoomGain: 2

@@ -15,7 +15,7 @@ MonoBehaviour:
   _type: 2
   _damage: 20
   _attackCool: 1
-  _reloadTIme: 1
+  _reloadTime: 1
   _hitCurcleError: 0
   _maxBullet: 10
   _rebound: 10
