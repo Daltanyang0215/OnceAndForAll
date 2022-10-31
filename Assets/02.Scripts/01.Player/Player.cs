@@ -68,7 +68,7 @@ public class Player : MonoBehaviour
         _forwad = Input.GetAxisRaw("Vertical");
         _right = Input.GetAxisRaw("Horizontal");
         _isFire = Input.GetButton("Fire1");
-        _isAction = Input.GetButtonDown("Fire2");
+        _isAction = Input.GetButton("Fire2");
         _isReload = Input.GetButtonDown("ReLoad");
 
         _rotateY = Input.GetAxis("Mouse X");
@@ -93,6 +93,7 @@ public class Player : MonoBehaviour
 
         _rebound = 0; //총기 반동 초기화
 
+        // 직접적인 카메라 회전 코드
         _cameraAnchor.rotation = Quaternion.Euler(tmp_x, transform.eulerAngles.y, 0);
         transform.rotation = Quaternion.Euler(0, tmp_y, 0);
     }
@@ -101,10 +102,11 @@ public class Player : MonoBehaviour
     private void WeaponAction()
     {
         // 공격키가 안눌렸거나, 타워 빌드 중이나, UI가 켜져있는 상태이면 리턴
-        if (_isAction == false
-            || _isShowUI)
+        if (_isShowUI)
             return;
-        weapons[_currentWeaponsIndex].WaeponAction();
+
+        // 무기에 특수기 관련 키 입력 전달
+        weapons[_currentWeaponsIndex].isWeaponAction = _isAction;
     }
 
     // 공격(마우스 좌 클릭)

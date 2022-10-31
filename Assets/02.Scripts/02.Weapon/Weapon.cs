@@ -37,6 +37,24 @@ public class Weapon : MonoBehaviour
     // 재장전 중인지 확인
     private bool _isReloading;
 
+    // 특수기 관련 토글
+    private bool _isWeaponAction;
+    public bool isWeaponAction
+    {
+        get
+        {
+            return _isWeaponAction;
+        }
+        set
+        {
+            if(_isWeaponAction != value)
+            {
+                _isWeaponAction = value;
+                WaeponAction(_isWeaponAction);
+            }
+        }
+    }
+
     // 공격 (player script call 전용)
     public float Attack()
     {
@@ -49,10 +67,11 @@ public class Weapon : MonoBehaviour
             //
 
             ReloadTimeReset();
+            _isAttackCool = true;
 
-                _isAttackCool = true;
             if (CurrentBullet > 0)
             {
+                CurrentBullet--;
                 _attackCoolTimer = weaponInfo.AttackCool;
                 Shot();
                 animator.SetTrigger("Shot");
@@ -81,7 +100,7 @@ public class Weapon : MonoBehaviour
         damage = weaponInfo.Damage * StatesEnforce.Instance.weaponDamageGain;
     }
     // 특수기
-    public virtual void WaeponAction()
+    protected virtual void WaeponAction(bool isAction)
     {
 
     }
@@ -99,8 +118,6 @@ public class Weapon : MonoBehaviour
     // 실제 공격 로직. 상속으로 오버로드 할 수 있게 설계
     protected virtual void Shot()
     {
-        CurrentBullet--;
-
         if (Physics.Raycast(maincamera.transform.position, maincamera.transform.forward, out _hit, 200f))
         {
             // 레이포인트에 이펙트 소환

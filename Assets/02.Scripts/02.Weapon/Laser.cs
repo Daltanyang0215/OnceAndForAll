@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class Laser : Weapon
 {
+    [SerializeField] private ParticleSystem _chargeParticle;
+
     private bool _isCharge;
-    
-    public override void WaeponAction()
+
+    protected override void WaeponAction(bool isAction )
     {
         if (_isCharge)
         {
@@ -22,6 +24,11 @@ public class Laser : Weapon
         }
     }
 
+    public void ShotLaser()
+    {
+        Shot();
+    }
+
     public override void Reload()
     {
         base.Reload();
@@ -31,8 +38,6 @@ public class Laser : Weapon
     {
         base.OnApply();
     }
-
-    
 
     protected override void Start()
     {

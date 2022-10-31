@@ -272,6 +272,7 @@ MonoBehaviour:
   _firePoint: {fileID: 512521465355173922}
   _bulletCountText: {fileID: 2167529194154134831}
   fireParticale: {fileID: 7514376098218481556}
+  _chargeParticle: {fileID: 0}
 --- !u!1 &3037345604941959018
 GameObject:
   m_ObjectHideFlags: 0
@@ -785,6 +786,11 @@ PrefabInstance:
         type: 3}
       propertyPath: InitialModule.startSize.scalar
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2414962553106167597, guid: e6e98a88f0cca5048a8fcc6045424ac7,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 2414962553106167598, guid: e6e98a88f0cca5048a8fcc6045424ac7,
         type: 3}

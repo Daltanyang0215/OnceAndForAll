@@ -7,7 +7,7 @@ public class Sniper : Weapon
     private SniperInfo _sniperInfo;
     private bool _isZoom;
     private float _originFOV;
-    
+
     //private int _zoomLevel;
     //private int zoomLevel
     //{
@@ -18,7 +18,6 @@ public class Sniper : Weapon
     //    set
     //    {
     //        _zoomLevel = value;
-
     //        switch (_zoomLevel)
     //        {
     //            case 0:
@@ -33,8 +32,25 @@ public class Sniper : Weapon
     //    }
     //}
 
-    public override void WaeponAction()
+    //public override void WaeponAction()
+    //{
+    //    // ¡‹ ¿Ãø¥¿ª∂ß «ÿ¡¶ «‘
+    //    if (_isZoom)
+    //    {
+    //        _isZoom = false;
+    //    }
+    //    // ¡‹ æ∆¥“∂ß ¡‹ Ω√≈¥
+    //    else
+    //    {
+    //        _isZoom = true;
+    //    }
+    //    Zoom(_isZoom);
+    //}
+
+    protected override void WaeponAction(bool isAction)
     {
+        if (!isAction) return;
+
         // ¡‹ ¿Ãø¥¿ª∂ß «ÿ¡¶ «‘
         if (_isZoom)
         {
@@ -46,7 +62,6 @@ public class Sniper : Weapon
             _isZoom = true;
         }
         Zoom(_isZoom);
-
     }
 
     public override void Reload()
