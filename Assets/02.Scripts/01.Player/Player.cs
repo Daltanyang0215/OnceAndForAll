@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -54,6 +55,7 @@ public class Player : MonoBehaviour
         Fire();
         Reload();
         Interaction();
+        TowerDestroy();
         WeaponChange();
         UIUpdata();
     }
@@ -78,7 +80,7 @@ public class Player : MonoBehaviour
         _rotateX = Input.GetAxis("Mouse Y");
 
         _isShowBuilder = Input.GetButton("BuildTower");
-        _isTowerDestroy = Input.GetKeyDown(KeyCode.F);
+        _isTowerDestroy = Input.GetKeyDown(KeyCode.X);
     }
 
     // 카메라 회전
@@ -134,6 +136,7 @@ public class Player : MonoBehaviour
         weapons[_currentWeaponsIndex].Reload();
     }
 
+    // 상호작용
     private void Interaction()
     {
         if (_isInteraction == false
@@ -149,6 +152,15 @@ public class Player : MonoBehaviour
             }
         }
 
+    }
+    // 타워 파괴
+    private void TowerDestroy()
+    {
+        if (_isTowerDestroy == false
+             || _isShowUI)
+            return;
+
+        MainUIManager.instance.ShowTowerBuilder(true, true);
     }
 
     // 무기 교체

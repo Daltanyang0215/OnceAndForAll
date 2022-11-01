@@ -69,18 +69,25 @@ public class MainUIManager : MonoBehaviour
         set
         {
             // 입력이 바뀔때 이미지 띄우기
-            if (_isShowBuilder != value)
+            if (_isShowBuilder == false && 
+                value)
             {
                 _isShowBuilder = value;
                     ShowTowerBuilder(_isShowBuilder);
+            }
+            else
+            {
+                _isShowBuilder = false;
+                ShowTowerBuilder(false);
             }
             CheckAllUIClose();
         }
     }
 
-    public void ShowTowerBuilder(bool show)
+    public void ShowTowerBuilder(bool show, bool destroy = false)
     {
         _towerBuilder.gameObject.SetActive(show);
+        _towerBuilder.isDestroy = destroy;
     }
 
     // 타워빌드에 타워 정보 전달 용
