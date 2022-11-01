@@ -12,9 +12,9 @@ public abstract class TowerBase : MonoBehaviour
 
     [Space]
     [Header("Attack")]
-    [SerializeField] protected float damage;
-    [SerializeField] protected float attackRange;
-    [SerializeField] protected float reloadTime;
+    protected float damage;
+    protected float attackRange;
+    protected float reloadTime;
     protected bool _isLoading;
 
     protected float timer;

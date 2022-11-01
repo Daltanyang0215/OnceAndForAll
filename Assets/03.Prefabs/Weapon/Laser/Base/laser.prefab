@@ -272,6 +272,9 @@ MonoBehaviour:
   _firePoint: {fileID: 512521465355173922}
   _bulletCountText: {fileID: 2167529194154134831}
   fireParticale: {fileID: 5282325925619871564}
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 1081920
   _chargeParticle: {fileID: 7514376098218481556}
   _beemLine: {fileID: 2996117287820090444}
 --- !u!1 &3037345604941959018

@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyID: 9999
   _enemyHealth: 10
-  _enemySpeed: 3
+  _enemySpeed: 5
   _money: 10

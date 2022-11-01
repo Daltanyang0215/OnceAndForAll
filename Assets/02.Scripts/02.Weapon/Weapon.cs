@@ -8,6 +8,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] private Transform _firePoint;
     [SerializeField] private TMP_Text _bulletCountText;
     [SerializeField] protected ParticleSystem fireParticale;
+    [SerializeField] protected LayerMask targetLayer;
     protected Animator animator;
 
     private int _currentBullet;
@@ -118,7 +119,7 @@ public class Weapon : MonoBehaviour
     // 실제 공격 로직. 상속으로 오버로드 할 수 있게 설계
     protected virtual void Shot()
     {
-        if (Physics.Raycast(maincamera.transform.position, maincamera.transform.forward, out _hit, 200f))
+        if (Physics.Raycast(maincamera.transform.position, maincamera.transform.forward, out _hit, 500f, targetLayer))
         {
             // 레이포인트에 이펙트 소환
             GameObject go = ObjectPool.Instance.Spawn("HitEffect", _hit.point);

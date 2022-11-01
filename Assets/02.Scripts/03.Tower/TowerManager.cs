@@ -14,7 +14,7 @@ public class TowerManager : MonoBehaviour
     {
         for (int i = 0; i < transform.childCount; i++)
         {
-            transform.GetChild(i).GetComponent<Tower>().Onapply();
+            transform.GetChild(i).GetComponent<TowerBase>().OnApply();
         }
     }
 }

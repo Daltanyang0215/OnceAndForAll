@@ -551,9 +551,8 @@ GameObject:
   - component: {fileID: 7605971520014454493}
   - component: {fileID: 5759587477683893143}
   - component: {fileID: 4846022608718024315}
-  - component: {fileID: -3618198316846904400}
   m_Layer: 15
-  m_Name: Ice
+  m_Name: IceOld
   m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -649,25 +648,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-3618198316846904400
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8944813942227999148}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e222374a533b45e4bab43eb0c61908ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  towerInfo: {fileID: 11400000, guid: fb18b20d9fea12c46970d84f878c0e5c, type: 2}
-  targetLayer:
-    serializedVersion: 2
-    m_Bits: 1048576
-  blockLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1001 &8118282721673396613
 PrefabInstance:
   m_ObjectHideFlags: 0

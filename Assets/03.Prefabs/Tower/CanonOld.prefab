@@ -422,10 +422,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8670666585412545069}
   - component: {fileID: 9079970530145063723}
+  - component: {fileID: 3349297244581185166}
   - component: {fileID: 7399484360852269030}
-  - component: {fileID: -4737781537659478890}
   m_Layer: 15
-  m_Name: Canon
+  m_Name: CanonOld
   m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -462,6 +462,34 @@ CapsuleCollider:
   m_Height: 8
   m_Direction: 1
   m_Center: {x: 0, y: 2.5, z: 0}
+--- !u!114 &3349297244581185166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8295549138614710423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cb491ff4f04e9b4c8822373d7b332c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _info: {fileID: 11400000, guid: 4063d07c2df8d454883a7b5c5eee9bb1, type: 2}
+  _rotateXPoint: {fileID: 8502837247387332629}
+  _rotateYPoint: {fileID: 1424459543527784998}
+  attackRange: 15
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 1048576
+  blockLayer:
+    serializedVersion: 2
+    m_Bits: 33280
+  _damage: 2
+  _firePoints:
+  - {fileID: 2742276549780314893}
+  _bulletName: CanonBoom
+  _projectileSpeed: 40
+  _reloadTime: 1
 --- !u!208 &7399484360852269030
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -478,28 +506,3 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 0
   m_Center: {x: 0, y: 2.5, z: 0}
   m_TimeToStationary: 0.1
---- !u!114 &-4737781537659478890
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8295549138614710423}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 867e786277224cd42957acbc79b74778, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  towerInfo: {fileID: 11400000, guid: 4063d07c2df8d454883a7b5c5eee9bb1, type: 2}
-  targetLayer:
-    serializedVersion: 2
-    m_Bits: 1048576
-  blockLayer:
-    serializedVersion: 2
-    m_Bits: 33280
-  _rotateX: {fileID: 8502837247387332629}
-  _rotateY: {fileID: 1424459543527784998}
-  firePoint: {fileID: 2742276549780314893}
-  _targetType: 0
-  _bulletName: CanonBoom
-  _projectileSpeed: 50

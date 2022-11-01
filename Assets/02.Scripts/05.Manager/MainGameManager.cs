@@ -77,7 +77,7 @@ public class MainGameManager : MonoBehaviour
                 {
                     MainUIManager.instance.OnPlayDataUIInit();
                     ObjectPool.Instance.InstantiateAllPoolElement();
-                        MainUIManager.instance.ShowTutorial(true);
+                    MainUIManager.instance.ShowTutorial(true);
 
                     state = GameFlowState.WAITING_START;
                 }
@@ -91,8 +91,6 @@ public class MainGameManager : MonoBehaviour
                         Cursor.visible = false;
                         Cursor.lockState = CursorLockMode.Locked;
                         Player.Instance.enabled = true;
-
-
 
                         state = GameFlowState.ROUND_START;
                     }

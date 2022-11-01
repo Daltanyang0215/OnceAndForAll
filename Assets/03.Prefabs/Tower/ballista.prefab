@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1220729412519334236}
   - component: {fileID: 1632003639172458586}
-  - component: {fileID: 5106971640185486847}
   - component: {fileID: 1014642993826847895}
+  - component: {fileID: -5917225357666860601}
   m_Layer: 15
   m_Name: ballista
   m_TagString: Tower
@@ -50,34 +50,6 @@ CapsuleCollider:
   m_Height: 8
   m_Direction: 1
   m_Center: {x: 0, y: 2.5, z: 0}
---- !u!114 &5106971640185486847
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1998250517882883046}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cb491ff4f04e9b4c8822373d7b332c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _info: {fileID: 11400000, guid: 04755e06f2ed4bc4d8f2414331ce9f55, type: 2}
-  _rotateXPoint: {fileID: 2208073138530437988}
-  _rotateYPoint: {fileID: 8890160465085774167}
-  attackRange: 15
-  targetLayer:
-    serializedVersion: 2
-    m_Bits: 1048576
-  blockLayer:
-    serializedVersion: 2
-    m_Bits: 33280
-  _damage: 2
-  _firePoints:
-  - {fileID: 5668349957455814780}
-  _bulletName: BalistaBult
-  _projectileSpeed: 70
-  _reloadTime: 1
 --- !u!208 &1014642993826847895
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -94,6 +66,34 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 0
   m_Center: {x: 0, y: 2.5, z: 0}
   m_TimeToStationary: 0.1
+--- !u!114 &-5917225357666860601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1998250517882883046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 867e786277224cd42957acbc79b74778, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerInfo: {fileID: 11400000, guid: 04755e06f2ed4bc4d8f2414331ce9f55, type: 2}
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 1048576
+  blockLayer:
+    serializedVersion: 2
+    m_Bits: 33280
+  damage: 0
+  attackRange: 15
+  reloadTime: 1
+  _rotateX: {fileID: 2208073138530437988}
+  _rotateY: {fileID: 8890160465085774167}
+  firePoint: {fileID: 5668349957455814780}
+  _targetType: 0
+  _bulletName: BalistaBult
+  _projectileSpeed: 100
 --- !u!1 &3628020751354030367
 GameObject:
   m_ObjectHideFlags: 0

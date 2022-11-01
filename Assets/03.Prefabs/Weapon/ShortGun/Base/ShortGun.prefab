@@ -306,6 +306,9 @@ MonoBehaviour:
   _firePoint: {fileID: 512521465355173922}
   _bulletCountText: {fileID: 2674654828028795358}
   fireParticale: {fileID: 774621838502558359}
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 1081920
 --- !u!95 &4361034037237608673
 Animator:
   serializedVersion: 4

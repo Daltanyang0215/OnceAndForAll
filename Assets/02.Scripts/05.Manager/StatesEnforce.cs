@@ -43,6 +43,7 @@ public class StatesEnforce
 
     // 타워 공격력 배율
     [SerializeField] private float _towerDamageGain = 1;
+
     public float TowerDamageGain
     {
         get

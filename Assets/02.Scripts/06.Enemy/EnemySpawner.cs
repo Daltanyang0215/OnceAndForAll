@@ -39,13 +39,13 @@ public class EnemySpawner : MonoBehaviour
     private int _poolIndex; // 풀 인덱스
     private int _spawnIndex; // 풀내에 스폰 인덱스
 
-    private Vector3 _ranPos = new Vector3(0, 0, 90);
+    private Vector3 _ranPos = new Vector3(0, 0, 205);
     // 소환포인트 프로퍼티
     private Vector3 RanPos
     {
         get
         {
-            _ranPos.x = Random.Range(-17.5f, 17.5f);
+            _ranPos.x = Random.Range(-62.5f, 62.5f);
             return _ranPos;
         }
     }

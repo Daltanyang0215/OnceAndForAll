@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     [Header("Weapon")]
     public Weapon[] weapons;
     private int _currentWeaponsIndex;
-    private bool _isFire, _isReload, _isAction; // 입력용
+    private bool _isFire, _isReload, _isAction, _isInteraction; // 입력용
 
     [Space]
     [Header("Move")]
@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
     private float _forwad, _right; // 입력용
     private Vector3 _moveVec;
     private Rigidbody _rb;
+    public bool isNotMoveable;
 
     [Space]
     [Header("Camera")]
@@ -52,6 +53,7 @@ public class Player : MonoBehaviour
         WeaponAction();
         Fire();
         Reload();
+        Interaction();
         WeaponChange();
         UIUpdata();
     }
@@ -70,6 +72,7 @@ public class Player : MonoBehaviour
         _isFire = Input.GetButton("Fire1");
         _isAction = Input.GetButton("Fire2");
         _isReload = Input.GetButtonDown("ReLoad");
+        _isInteraction = Input.GetButtonDown("Interaction");
 
         _rotateY = Input.GetAxis("Mouse X");
         _rotateX = Input.GetAxis("Mouse Y");
@@ -131,6 +134,23 @@ public class Player : MonoBehaviour
         weapons[_currentWeaponsIndex].Reload();
     }
 
+    private void Interaction()
+    {
+        if (_isInteraction == false
+             || _isShowUI)
+            return;
+
+        RaycastHit _hit;
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out _hit, 200f))
+        {   
+            if(_hit.collider.TryGetComponent(out IInteraction interaction))
+            {
+                interaction.Interaction();
+            }
+        }
+
+    }
+
     // 무기 교체
     private void WeaponChange()
     {
@@ -163,6 +183,8 @@ public class Player : MonoBehaviour
     // 방향키 이동
     private void Move()
     {
+        if(isNotMoveable) return;
+
         _moveVec = new Vector3(_right, 0, _forwad).normalized;
         //transform.Translate(_moveVec * moveSpeed * Time.fixedDeltaTime);
 
