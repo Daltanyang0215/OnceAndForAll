@@ -106,6 +106,8 @@ public class MainUIManager : MonoBehaviour
     [SerializeField] private TMP_Text _moneyText;
     [SerializeField] private GameObject _shotGunCircle;
     [SerializeField] private GameObject _sniperCircle;
+    [SerializeField] private TMP_Text _RoundText;
+    [SerializeField] private TMP_Text _MonsterCountText;
 
     public void SetHealthText(int health)
     {
@@ -114,6 +116,14 @@ public class MainUIManager : MonoBehaviour
     public void SetMoneyText(int money)
     {
         _moneyText.text = money.ToString();
+    }
+    public void SetRounText(int round)
+    {
+        _RoundText.text = round.ToString();
+    }
+    public void SetMonsterCountText(int count)
+    {
+        _MonsterCountText.text = count.ToString();
     }
 
     public void OnPlayDataUIInit()
@@ -129,7 +139,6 @@ public class MainUIManager : MonoBehaviour
             case WeaponType.Rifle:
                 break;
             case WeaponType.Shotgun:
-                Debug.Log("¼¦°Ç");
                 _shotGunCircle.SetActive(show);
                 break;
             case WeaponType.Sniper:

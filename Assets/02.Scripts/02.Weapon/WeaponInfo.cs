@@ -4,7 +4,8 @@ public enum WeaponType
 {
     Rifle,
     Shotgun,
-    Sniper
+    Sniper,
+    Laser
 }
 [CreateAssetMenu(fileName = "WeaponBase",menuName ="Weapon/WeaponBase")]
 public class WeaponInfo : ScriptableObject

@@ -36,6 +36,22 @@ public class MainGameManager : MonoBehaviour
     private GameFlowState state;
 
     [SerializeField] private int _currentRound;
+    public int currentRound
+    {
+        get { return _currentRound; }
+        set { _currentRound = value;
+            MainUIManager.instance.SetRounText(_currentRound);
+        }
+    }
+
+    [SerializeField] private int _currentEnemyCount;
+    public int currentEnemyCount
+    {
+        get { return _currentEnemyCount; }
+        set { _currentEnemyCount = value;
+            MainUIManager.instance.SetMonsterCountText(_currentEnemyCount);
+        }
+    }
 
     [SerializeField] private int _health;
     public int Health
@@ -103,7 +119,7 @@ public class MainGameManager : MonoBehaviour
                 break;
             case GameFlowState.ROUND_START:
                 {
-                    _currentRound++;
+                    currentRound++;
 
                     EnemySpawner.instance.SpawnPoolAdd("TestMonster", 2, 0.2f, 0.5f);
                     // 강화 적용

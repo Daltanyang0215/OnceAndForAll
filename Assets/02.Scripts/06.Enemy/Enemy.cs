@@ -62,6 +62,7 @@ public class Enemy : MonoBehaviour
     private void Die()
     {
         MainGameManager.Instance.Money += (int)(_enemyInfo.Money * StatesEnforce.Instance.enemyMoneyGain);
+        MainGameManager.Instance.currentEnemyCount--;
         _animator.SetTrigger("DoDie");
         GetComponent<SphereCollider>().enabled = false;
     }

@@ -74,7 +74,7 @@ public class EnemySpawner : MonoBehaviour
         {
             ObjectPool.Instance.Spawn(_spawners[_poolIndex].Name, RanPos,transform).GetComponent<Enemy>().target = _target;
             _spawnIndex++;
-
+            MainGameManager.Instance.currentEnemyCount++;
             // 스폰한 회수가 현재 풀요소의 소환 수보다 크거나 같은지
             if (_spawnIndex >= _spawners[_poolIndex].Num)
             {
