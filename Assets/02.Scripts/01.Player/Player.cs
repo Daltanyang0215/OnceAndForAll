@@ -16,7 +16,9 @@ public class Player : MonoBehaviour
     [Header("Weapon")]
     public Weapon[] weapons;
     private int _currentWeaponsIndex;
+    private int[] _hotkeys = new int[2]; // 장비 중인 무기 번호들 
     private bool _isFire, _isReload, _isAction, _isInteraction; // 입력용
+    public int _activeWeaponKey ; // 현재 활성화중인 무기 슬롯 번로
 
     [Space]
     [Header("Move")]
@@ -45,6 +47,10 @@ public class Player : MonoBehaviour
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
+
+        // 초기화. 나중에 게임 시작전 선택하게 수정예정
+        _hotkeys[0] = 0;
+        _hotkeys[1] = 1;
     }
 
     void Update()
@@ -56,7 +62,6 @@ public class Player : MonoBehaviour
         Reload();
         Interaction();
         TowerDestroy();
-        WeaponChange();
         UIUpdata();
     }
 
@@ -81,6 +86,17 @@ public class Player : MonoBehaviour
 
         _isShowBuilder = Input.GetButton("BuildTower");
         _isTowerDestroy = Input.GetKeyDown(KeyCode.X);
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            _activeWeaponKey = 0;
+            WeaponChange(_hotkeys[_activeWeaponKey]);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            _activeWeaponKey = 1;
+            WeaponChange(_hotkeys[_activeWeaponKey]);
+        }
     }
 
     // 카메라 회전
@@ -144,7 +160,7 @@ public class Player : MonoBehaviour
             return;
 
         RaycastHit _hit;
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out _hit, 200f))
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out _hit, 2f))
         {   
             if(_hit.collider.TryGetComponent(out IInteraction interaction))
             {
@@ -164,31 +180,15 @@ public class Player : MonoBehaviour
     }
 
     // 무기 교체
-    private void WeaponChange()
+    private void WeaponChange(int newWeaponIndex)
     {
         if (_isShowUI) return;
 
-        int weaponIndex = _currentWeaponsIndex;
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (newWeaponIndex != _currentWeaponsIndex)
         {
-            _currentWeaponsIndex = 0;
-            Debug.Log($"Changed weapons 1");
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            _currentWeaponsIndex = 1;
-            Debug.Log($"Changed weapons 2");
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            _currentWeaponsIndex = 2;
-            Debug.Log($"Changed weapons 3");
-        }
-
-        if (weaponIndex != _currentWeaponsIndex)
-        {
-            weapons[weaponIndex].gameObject.SetActive(false);
-            weapons[_currentWeaponsIndex].gameObject.SetActive(true);
+            weapons[_currentWeaponsIndex].gameObject.SetActive(false);
+            weapons[newWeaponIndex].gameObject.SetActive(true);
+            _currentWeaponsIndex = newWeaponIndex;
         }
     }
 
@@ -209,6 +209,14 @@ public class Player : MonoBehaviour
     private void UIUpdata()
     {
         MainUIManager.instance.isShowBuildCircle = _isShowBuilder;
+    }
+
+    public int ActiveWeaponChange(int newIndex)
+    {
+        int result = _hotkeys[_activeWeaponKey];
+        _hotkeys[_activeWeaponKey] = newIndex;
+        WeaponChange(_hotkeys[_activeWeaponKey]);
+        return result;
     }
 
     public void PlayerStop()

@@ -16,8 +16,8 @@ public class WeaponBoxManager : MonoBehaviour
         weaponBoxes.Add(box);
     }
 
-    public void BoxIntaraction()
+    public void BoxIntaraction(int index)
     {
-
+        weaponBoxes[Player.Instance.ActiveWeaponChange(index)].RendererReset();
     }
 }
