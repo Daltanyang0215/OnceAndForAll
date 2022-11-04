@@ -125,9 +125,9 @@ public class Weapon : MonoBehaviour
             GameObject go = ObjectPool.Instance.Spawn("HitEffect", _hit.point);
             ObjectPool.Instance.Return(go, 0.3f);
 
-            if (_hit.collider.TryGetComponent(out Enemy enemy))
+            if (_hit.collider.TryGetComponent(out IHitaction enemy))
             {
-                enemy.Hit(damage);
+                    enemy.OnHit(damage);
             }
         }
     }

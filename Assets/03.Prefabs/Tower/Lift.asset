@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 779b2d49608312646a416bb3b25a9489, type: 3}
-  m_Name: Test
+  m_Name: Lift
   m_EditorClassIdentifier: 
   _type: 0
-  _damage: 10
-  _AttackCool: 1
-  _AttackRange: 15
+  _damage: 100
+  _AttackCool: -1
+  _AttackRange: 0
   _BuyCost: 10
-  _SellCost: 80
-  _towerPrefab: {fileID: 1998250517882883046, guid: 56a7e5e4d97bc9447b205be8405fa9e7,
+  _SellCost: 0
+  _towerPrefab: {fileID: 1998250517882883046, guid: 3c0768dafab666f4d9478d0dfa0dfbcd,
     type: 3}

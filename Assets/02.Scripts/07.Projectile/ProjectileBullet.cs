@@ -13,10 +13,10 @@ public class ProjectileBullet : Projectile
     {
         if (1 << other.gameObject.layer == targetLayer)
         {
-            if (other.gameObject.TryGetComponent<Enemy>(out Enemy enemy)
+            if (other.gameObject.TryGetComponent(out IHitaction enemy)
                 && _attackCount > 0)
             {
-                enemy.Hit(damage);
+                enemy.OnHit(damage);
                 _attackCount--;
             }
             //GameObject effect = ObjectPool.Instance.Spawn("Effect", tr.position, Quaternion.LookRotation(tr.position - other.transform.position));

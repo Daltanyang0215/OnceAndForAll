@@ -8,8 +8,8 @@ public class TowerRange : Tower
     [SerializeField] private ParticleSystem _rangeEffect;
     [SerializeField] private SphereCollider _rangeCollider;
 
-    private List<Enemy> _targetList= new List<Enemy>();
-    
+    private List<Enemy> _targetList = new List<Enemy>();
+
     protected override void Update()
     {
         base.Update();
@@ -27,9 +27,9 @@ public class TowerRange : Tower
     {
         for (int i = 0; i < _targetList.Count; i++)
         {
-            if(_targetList[i].Hit(_damage * Time.deltaTime))
-                _targetList.RemoveAt(i);
-            
+            //if (_targetList[i].Hit(_damage * Time.deltaTime))
+            //    _targetList.RemoveAt(i);
+
         }
     }
 

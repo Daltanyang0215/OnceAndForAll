@@ -48,6 +48,8 @@ public abstract class TowerBase : MonoBehaviour
 
     private void Reload()
     {
+        if (reloadTime == -1) return;
+
         if (timer < 0)
         {
             _isLoading = false;

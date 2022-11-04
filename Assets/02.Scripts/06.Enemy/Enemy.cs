@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour , IHitaction
 {
     [SerializeField] private EnemyInfo _enemyInfo;
     private Animator _animator;
@@ -44,6 +44,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
+
     private void Awake()
     {
         _animator = GetComponent<Animator>();
@@ -82,14 +83,10 @@ public class Enemy : MonoBehaviour
     }
 
     // ÇÇ°Ý ¿ë
-    public bool Hit(float damage)
+    public void OnHit(float damage)
     {
-        if (damage < 0) return false;
         _animator.SetTrigger("DoHit");
         EnemyHealth -= damage;
-
-        if (EnemyHealth < 0) return true;
-        return false;
     }
 
     public void Slow(bool isslow)

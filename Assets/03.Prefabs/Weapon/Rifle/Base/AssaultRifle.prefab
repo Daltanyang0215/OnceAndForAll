@@ -226,7 +226,7 @@ MonoBehaviour:
   fireParticale: {fileID: 685015600259988836}
   targetLayer:
     serializedVersion: 2
-    m_Bits: 1081920
+    m_Bits: 1212992
 --- !u!95 &4361034037237608673
 Animator:
   serializedVersion: 4

@@ -24,9 +24,9 @@ public class ShotGun : Weapon
                 // 장애물 확인
                 if (Physics.Raycast(maincamera.transform.position, hit.transform.position - maincamera.transform.position, out _hit, 200f))
                 {
-                    if (_hit.collider.TryGetComponent(out Enemy enemy))
+                    if (_hit.collider.TryGetComponent(out IHitaction enemy))
                     {
-                        enemy.Hit(damage);
+                            enemy.OnHit(damage);
                     }
                 }
             }

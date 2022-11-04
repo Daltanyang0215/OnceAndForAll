@@ -262,7 +262,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2968836292018795062}
-  - component: {fileID: 6921076197084066566}
   m_Layer: 17
   m_Name: FirePoint
   m_TagString: Tower
@@ -286,19 +285,6 @@ Transform:
   m_Father: {fileID: 8604562834313331478}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &6921076197084066566
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6688880357649806426}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7109671037795257625
 GameObject:
   m_ObjectHideFlags: 0
@@ -632,7 +618,7 @@ MonoBehaviour:
   _damage: 0
   _firePoints: []
   _rangeEffect: {fileID: 4494055985954096337}
-  _rangeCollider: {fileID: 6921076197084066566}
+  _rangeCollider: {fileID: 0}
 --- !u!54 &4846022608718024315
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -675,10 +661,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2968836292018795062}
     m_Modifications:
+    - target: {fileID: 1353372585606988718, guid: 395cbb07c6fa3014191ea2990a14b4c9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3777393331527156023, guid: 395cbb07c6fa3014191ea2990a14b4c9,
         type: 3}
       propertyPath: m_Name
       value: IceField
+      objectReference: {fileID: 0}
+    - target: {fileID: 3777393331527156023, guid: 395cbb07c6fa3014191ea2990a14b4c9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206849245392219380, guid: 395cbb07c6fa3014191ea2990a14b4c9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7109660586660818794, guid: 395cbb07c6fa3014191ea2990a14b4c9,
         type: 3}

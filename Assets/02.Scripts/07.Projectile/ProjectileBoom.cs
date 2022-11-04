@@ -15,9 +15,9 @@ public class ProjectileBoom : ProjectileBullet
 
             foreach (var Hit in Hits)
             {
-                if (Hit.gameObject.TryGetComponent<Enemy>(out Enemy enemy))
+                if (Hit.gameObject.TryGetComponent(out IHitaction enemy))
                 {
-                    enemy.Hit(damage);
+                    enemy.OnHit(damage);
                 }
             }
             if (isShowEffect)

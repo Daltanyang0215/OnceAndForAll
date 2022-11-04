@@ -8,9 +8,9 @@ public class Ice : TowerRangeBase
     {
         foreach (var col in cols)
         {
-            if(col.TryGetComponent(out Enemy enemy))
+            if(col.TryGetComponent(out IHitaction enemy))
             {
-                enemy.Hit(damage);
+                enemy.OnHit(damage);
             }
         }
     }
