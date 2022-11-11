@@ -20,6 +20,7 @@ public class AddEffect : ScriptableObject
     [SerializeField] private AddEffectList _effect;
     [SerializeField] private float _gain;
     [SerializeField] private string _infomation;
+    [SerializeField] private string _enemyName;
 
     public string GetInfomation() => $"{_infomation} * {_gain}";
 
@@ -64,7 +65,7 @@ public class AddEffect : ScriptableObject
                 break;
             case AddEffectList.EnemyCount:
                 {
-                    EnemySpawner.instance.SpawnPoolAdd("TestMonster", (int)_gain, 0.1f, 1f);
+                    EnemySpawner.instance.SpawnPoolAdd(_enemyName, (int)_gain, 0.1f, 1f);
                 }
                 break;
             default:

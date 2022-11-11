@@ -739,6 +739,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7bb5f5df7ff60bd45ba93b9b61d4bb67, type: 2}
   - {fileID: 11400000, guid: 7df9e8e854cd6184a931d3d2b27ac801, type: 2}
   - {fileID: 11400000, guid: 0160ebe9f94a14c4a83b6b6eb98bd55a, type: 2}
+  - {fileID: 11400000, guid: fd87eb83394f7294b8c6ea60dc848b76, type: 2}
+  - {fileID: 11400000, guid: 33e1a7fe1f175b04d8eb1203121a1340, type: 2}
 --- !u!4 &179909837
 Transform:
   m_ObjectHideFlags: 0
@@ -781,6 +783,13 @@ MonoBehaviour:
   poolElements:
   - name: TestMonster
     prefab: {fileID: 946122636926815124, guid: e30e75873fb4a514686fe55eac603b7b, type: 3}
+    num: 50
+  - name: Golem
+    prefab: {fileID: 1067925524328404, guid: 6bbfea6690ef7724ba495c866081f855, type: 3}
+    num: 30
+  - name: Grunt
+    prefab: {fileID: 3155058319838657794, guid: 176299a76ecfc7544b22a66fae200ac7,
+      type: 3}
     num: 50
   - name: HitEffect
     prefab: {fileID: 7915719370959275029, guid: da7e86767137bc0448453bd4b283118d,
