@@ -156,6 +156,9 @@ public class MainUIManager : MonoBehaviour
     [Header("Reward")]
     [SerializeField] private Transform _reward;
     [SerializeField] private List<TMP_Text> _rewardText;
+    [SerializeField] private GameObject _rewardList;
+    [SerializeField] private TMP_Text _positiveText;
+    [SerializeField] private TMP_Text _negativeText;
     private bool _isShowReward;
     public bool IsShowReward
     {
@@ -187,6 +190,16 @@ public class MainUIManager : MonoBehaviour
     {
         IsShowReward = false;
         MainGameManager.Instance.RewardSelectAfter(index);
+    }
+
+    public void OnRewardList(bool show)
+    {
+        if (show)
+        {
+            _positiveText.text = StatesEnforce.Instance.GetPositiveList();
+            _negativeText.text = StatesEnforce.Instance.GetNegativeList();
+        }
+            _rewardList.SetActive(show);
     }
     #endregion
 

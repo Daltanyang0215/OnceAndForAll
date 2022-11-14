@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _effect: 7
   _gain: 2
-  _infomation: "\uACE8\uB818 \uCD94\uAC00"
-  _enemyName: Golem
+  _infomation: "\uACE8\uB818 \uCD94\uAC00 \uC18C\uD658"
+  _enemyName: "\uACE8\uB818"

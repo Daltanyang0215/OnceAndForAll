@@ -65,7 +65,8 @@ public class AddEffect : ScriptableObject
                 break;
             case AddEffectList.EnemyCount:
                 {
-                    EnemySpawner.instance.SpawnPoolAdd(_enemyName, (int)_gain, 0.1f, 1f);
+                    EnemySpawner.instance.SpawnPoolAdd(_enemyName, (int)_gain, 0.1f, 0.1f);
+                    StatesEnforce.Instance.addMonster(_enemyName, (int)_gain);
                 }
                 break;
             default:

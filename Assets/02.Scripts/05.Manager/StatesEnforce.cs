@@ -5,12 +5,27 @@ public class StatesEnforce
     private static StatesEnforce _instance;
     public static StatesEnforce Instance
     {
-        get { 
+        get
+        {
             if (_instance == null)
             {
                 _instance = MainGameManager.Instance.Enforce;
             }
-            return _instance; }
+            return _instance;
+        }
+    }
+    // 보상목록 출력용 리스트
+    private Dictionary<string, int> _addMonster = new Dictionary<string, int>();
+    public void addMonster(string addMonster,int count)
+    {
+        if (_addMonster.ContainsKey(addMonster))
+        {
+            _addMonster[addMonster] += count;
+        }
+        else
+        {
+            _addMonster.Add(addMonster, count);
+        }
     }
 
     // 무기 공격력 배율
@@ -92,5 +107,30 @@ public class StatesEnforce
     {
         get { return _enemyMoneyGain; }
         set { _enemyMoneyGain = value; }
+    }
+
+    // 보상 목록 출력 용
+    public string GetPositiveList()
+    {
+        string tmp = "";
+        if (_weaponDamageGain != 1) tmp += $"모든 무기 공격력 X {_weaponDamageGain:F3} \n";
+        if (_playerMoveSpeedGain != 1) tmp += $"플레이어 이동속도 X {_playerMoveSpeedGain:F3} \n";
+        if (_towerDamageGain != 1) tmp += $"모든 타워 공격력 X {_towerDamageGain:F3} \n";
+        if (_towerRangeGain != 1) tmp += $"모든 타워 사거리 X {_towerRangeGain:F3} \n";
+        if (_enemyMoneyGain != 1) tmp += $"몬스터 획득 골드 X {_enemyMoneyGain:F3} \n";
+
+        return tmp;
+    }
+    public string GetNegativeList()
+    {
+        string tmp = "";
+        foreach (var monster in _addMonster.Keys)
+        {
+            tmp += $"{monster} {_addMonster[monster]} 마리 추가 소환 \n";
+        }
+        if (_enemyHealthGain != 1) tmp += $"모든 몬스터 최대체력 X {_enemyHealthGain:F3} \n";
+        if (_enemySpeedGain != 1) tmp += $"몬든 몬스터 이동속도 X {_enemySpeedGain:F3} \n";
+
+        return tmp;
     }
 }

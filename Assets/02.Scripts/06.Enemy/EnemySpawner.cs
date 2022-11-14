@@ -58,6 +58,11 @@ public class EnemySpawner : MonoBehaviour
         _spawnIndex = 0;
         _timer = _spawners[0].SpawnDelay + _spawners[0].StartDelay;
         _isSpawning = true;
+        // 라운드 시작시 소환될 몬스터 수량 확인 용
+        foreach (var enemypool in _spawners)
+        {
+            MainGameManager.Instance.currentEnemyCount += enemypool.Num;
+        }
     }
 
     public void SpawnEnd()
@@ -72,9 +77,8 @@ public class EnemySpawner : MonoBehaviour
 
         if (_timer < 0)
         {
-            ObjectPool.Instance.Spawn(_spawners[_poolIndex].Name, RanPos,transform).GetComponent<Enemy>().target = _target;
+            ObjectPool.Instance.Spawn(_spawners[_poolIndex].Name, RanPos, transform).GetComponent<Enemy>().target = _target;
             _spawnIndex++;
-            MainGameManager.Instance.currentEnemyCount++;
             // 스폰한 회수가 현재 풀요소의 소환 수보다 크거나 같은지
             if (_spawnIndex >= _spawners[_poolIndex].Num)
             {
