@@ -28,6 +28,7 @@ public class MainGameManager : MonoBehaviour
         WAITING_ENDROUND,
         ROUND_END,
         ROUND_REWARD,
+        WAITING_NEXTROUND,
         LEVEL_SUCCESS,
         LEVEL_FAIL,
         WAITING_USER
@@ -39,7 +40,9 @@ public class MainGameManager : MonoBehaviour
     public int currentRound
     {
         get { return _currentRound; }
-        set { _currentRound = value;
+        set
+        {
+            _currentRound = value;
             MainUIManager.instance.SetRounText(_currentRound);
         }
     }
@@ -48,7 +51,9 @@ public class MainGameManager : MonoBehaviour
     public int currentEnemyCount
     {
         get { return _currentEnemyCount; }
-        set { _currentEnemyCount = value;
+        set
+        {
+            _currentEnemyCount = value;
             MainUIManager.instance.SetMonsterCountText(_currentEnemyCount);
         }
     }
@@ -100,7 +105,7 @@ public class MainGameManager : MonoBehaviour
                 break;
             case GameFlowState.WAITING_START:
                 {
-                    if (Input.GetKeyDown(KeyCode.Return))
+                    if (Input.GetKeyDown(KeyCode.Space))
                     {
                         MainUIManager.instance.ShowTutorial(false);
 
@@ -121,7 +126,7 @@ public class MainGameManager : MonoBehaviour
                 {
                     currentRound++;
 
-                    EnemySpawner.instance.SpawnPoolAdd("TestMonster", 2, 0.2f, 0.5f);
+                    EnemySpawner.instance.SpawnPoolAdd("기본몬스터", 5, 0.2f, 0.5f);
                     // 강화 적용
                     Player.Instance.EnforceApply();
                     TowerManager.instance.OnStatesEnforce();
@@ -151,15 +156,20 @@ public class MainGameManager : MonoBehaviour
 
                     Cursor.visible = true;
                     Cursor.lockState = CursorLockMode.None;
-
-                    if (_currentRound > 10)
-                        state = GameFlowState.LEVEL_SUCCESS;
-                    else
-                        state = GameFlowState.ROUND_REWARD;
+                    state = GameFlowState.ROUND_REWARD;
                 }
                 break;
             case GameFlowState.ROUND_REWARD:
                 {
+                }
+                break;
+            case GameFlowState.WAITING_NEXTROUND:
+                {
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        MainUIManager.instance.ShowNextRound(false);
+                        state = GameFlowState.ROUND_START;
+                    }
                 }
                 break;
             case GameFlowState.LEVEL_SUCCESS:
@@ -238,7 +248,8 @@ public class MainGameManager : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
-        state = GameFlowState.ROUND_START;
+        MainUIManager.instance.ShowNextRound(true);
+        state = GameFlowState.WAITING_NEXTROUND;
     }
 
     private void LevelFail()

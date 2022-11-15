@@ -159,6 +159,7 @@ public class MainUIManager : MonoBehaviour
     [SerializeField] private GameObject _rewardList;
     [SerializeField] private TMP_Text _positiveText;
     [SerializeField] private TMP_Text _negativeText;
+    [SerializeField] private GameObject _nextRound;
     private bool _isShowReward;
     public bool IsShowReward
     {
@@ -179,6 +180,10 @@ public class MainUIManager : MonoBehaviour
     public void ShowReward(bool show)
     {
         _reward.gameObject.SetActive(show);
+    }
+    public void ShowNextRound(bool show)
+    {
+        _nextRound.gameObject.SetActive(show);
     }
 
     public void SettingRewardText(int index , string infomation)
