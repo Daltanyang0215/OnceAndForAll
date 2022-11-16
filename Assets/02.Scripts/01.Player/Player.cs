@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     private int _currentWeaponsIndex;
     private int[] _hotkeys = new int[2]; // 장비 중인 무기 번호들 
     private bool _isFire, _isReload, _isAction, _isInteraction; // 입력용
-    public int _activeWeaponKey ; // 현재 활성화중인 무기 슬롯 번로
+    public int _activeWeaponKey; // 현재 활성화중인 무기 슬롯 번로
 
     [Space]
     [Header("Move")]
@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
     private bool _isTowerDestroy;
     private bool _isShowUI;
     public bool isShowUI { set { _isShowUI = value; } }
-
+    private RaycastHit _hit;
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
@@ -154,18 +154,25 @@ public class Player : MonoBehaviour
     // 상호작용
     private void Interaction()
     {
-        if (_isInteraction == false
-             || _isShowUI)
+        if (_isShowUI)
             return;
 
-        RaycastHit _hit;
+
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out _hit, 2f))
-        {   
-            if(_hit.collider.TryGetComponent(out IInteraction interaction))
+        {
+            if (_hit.collider.TryGetComponent(out IInteraction interaction))
             {
-                interaction.Interaction();
+                MainUIManager.instance.ShowInteractionPanel(true);
+                if (_isInteraction)
+                {
+                    interaction.Interaction();
+                }
             }
+            else
+                MainUIManager.instance.ShowInteractionPanel(false);
         }
+        else
+            MainUIManager.instance.ShowInteractionPanel(false);
 
     }
     // 타워 파괴
@@ -194,7 +201,7 @@ public class Player : MonoBehaviour
     // 방향키 이동
     private void Move()
     {
-        if(isNotMoveable) return;
+        if (isNotMoveable) return;
 
         _moveVec = new Vector3(_right, 0, _forwad).normalized;
         //transform.Translate(_moveVec * moveSpeed * Time.fixedDeltaTime);

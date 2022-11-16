@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,13 +21,14 @@ public class EnemySpawner : MonoBehaviour
         public int Num;
         public float SpawnDelay;
         public float StartDelay;
-
-        public SpawnElement(string name, int num, float spwanDelay, float startDelay)
+        public string Buff;
+        public SpawnElement(string name, int num, float spwanDelay, float startDelay, string buff)
         {
             Name = name;
             Num = num;
             SpawnDelay = spwanDelay;
             StartDelay = startDelay;
+            Buff = buff;
         }
     }
 
@@ -45,12 +47,12 @@ public class EnemySpawner : MonoBehaviour
     {
         get
         {
-            _ranPos.x = Random.Range(-62.5f, 62.5f);
+            _ranPos.x = UnityEngine.Random.Range(-62.5f, 62.5f);
             return _ranPos;
         }
     }
 
-    public void SpawnPoolAdd(string EnemyName, int SpawnCount, float spwanDelay, float startDelay) => _spawners.Add(new SpawnElement(EnemyName, SpawnCount, spwanDelay, startDelay));
+    public void SpawnPoolAdd(string EnemyName, int SpawnCount, float spwanDelay, float startDelay, string buff = null) => _spawners.Add(new SpawnElement(EnemyName, SpawnCount, spwanDelay, startDelay, buff));
 
     public void SpawnStart()
     {
@@ -77,7 +79,12 @@ public class EnemySpawner : MonoBehaviour
 
         if (_timer < 0)
         {
-            ObjectPool.Instance.Spawn(_spawners[_poolIndex].Name, RanPos, transform).GetComponent<Enemy>().target = _target;
+            Enemy spwanEnemy = ObjectPool.Instance.Spawn(_spawners[_poolIndex].Name, RanPos, transform).GetComponent<Enemy>();
+            spwanEnemy.target = _target;
+
+            if (_spawners[_poolIndex].Buff != null)
+                spwanEnemy.gameObject.AddComponent(Type.GetType(_spawners[_poolIndex].Buff));
+
             _spawnIndex++;
             // 스폰한 회수가 현재 풀요소의 소환 수보다 크거나 같은지
             if (_spawnIndex >= _spawners[_poolIndex].Num)

@@ -16,3 +16,4 @@ MonoBehaviour:
   _gain: 5
   _infomation: "\uAE30\uBCF8 \uBAAC\uC2A4\uD130 \uCD94\uAC00 \uC18C\uD658"
   _enemyName: "\uAE30\uBCF8\uBAAC\uC2A4\uD130"
+  _enemyBuff: EnemyBuffBase

@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _effect: 5
   _gain: 1.1
-  _infomation: "\uBAAC\uC2A4\uD130 \uC774\uB3D9\uC18D\uB3C4"
+  _infomation: "\uBAA8\uB4E0 \uBAAC\uC2A4\uD130 \uC774\uB3D9\uC18D\uB3C4"
+  _enemyName: 
+  _enemyBuff: 

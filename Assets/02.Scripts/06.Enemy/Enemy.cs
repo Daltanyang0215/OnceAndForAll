@@ -89,18 +89,6 @@ public class Enemy : MonoBehaviour , IHitaction
         EnemyHealth -= damage;
     }
 
-    public void Slow(bool isslow)
-    {
-        if (isslow)
-        {
-            MoveSpeed = _moveSpeed*0.5f;
-        }
-        else
-        {
-            MoveSpeed = _moveSpeed;
-        }
-    }
-
     // 애니메이션 종료 시 오브젝트 풀 리턴 용
     public void PoolReturn()
     {

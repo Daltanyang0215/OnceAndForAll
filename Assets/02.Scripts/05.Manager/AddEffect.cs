@@ -21,8 +21,10 @@ public class AddEffect : ScriptableObject
     [SerializeField] private float _gain;
     [SerializeField] private string _infomation;
     [SerializeField] private string _enemyName;
+    [SerializeField] private string _enemyBuffName;
+    [SerializeField] private string _enemyBuff;
 
-    public string GetInfomation() => $"{_infomation} * {_gain}";
+    public string GetInfomation() => (string.IsNullOrEmpty(_enemyBuffName) ? "": $"{_enemyBuffName}효과를 지닌 ") + $" {_infomation} X {_gain}";
 
     public void OnApply()
     {
@@ -65,7 +67,7 @@ public class AddEffect : ScriptableObject
                 break;
             case AddEffectList.EnemyCount:
                 {
-                    EnemySpawner.instance.SpawnPoolAdd(_enemyName, (int)_gain, 0.1f, 0.1f);
+                    EnemySpawner.instance.SpawnPoolAdd(_enemyName, (int)_gain, 0.1f, 0.1f,_enemyBuff);
                     StatesEnforce.Instance.addMonster(_enemyName, (int)_gain);
                 }
                 break;

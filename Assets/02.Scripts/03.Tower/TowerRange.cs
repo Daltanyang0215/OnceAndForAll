@@ -38,7 +38,7 @@ public class TowerRange : Tower
         if (other != null &&
             other.TryGetComponent(out Enemy enemy))
         {
-            enemy.Slow(true);
+            //enemy.Slow(true);
             _targetList.Add(enemy);
         }
 
@@ -48,7 +48,7 @@ public class TowerRange : Tower
         if (other != null &&
             other.TryGetComponent(out Enemy enemy))
         {
-            enemy.Slow(false);
+            //enemy.Slow(false);
             _targetList.Remove(enemy);
         }
     }
