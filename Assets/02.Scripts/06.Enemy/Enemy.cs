@@ -17,11 +17,14 @@ public class Enemy : MonoBehaviour, IHitaction
     private float _enemyMaxHealth;
     private int _enemyDamage = 1;
 
-    public List<EnemyBuffBase> actionBuffs= new List<EnemyBuffBase>();
+    public List<EnemyBuffBase> actionBuffs = new List<EnemyBuffBase>();
 
     public float EnemyHealth
     {
-        get { return _enemyHealth; }
+        get
+        {
+            return _enemyHealth;
+        }
         set
         {
             _enemyHealth = value;
@@ -40,13 +43,15 @@ public class Enemy : MonoBehaviour, IHitaction
     private float _moveSpeed;
     public float MoveSpeed
     {
-        get { return _moveSpeed; }
+        get
+        {
+            return _moveSpeed;
+        }
         set
         {
             _navi.speed = value;
         }
     }
-
 
     private void Awake()
     {
@@ -55,9 +60,10 @@ public class Enemy : MonoBehaviour, IHitaction
     }
 
     private void OnEnable()
-    {    
+    {
         // 몬스터 소환시 강화 적용
         GetComponent<SphereCollider>().enabled = true;
+        _navi.enabled = true;
         transform.localScale = Vector3.one;
         EnemyHealth = _enemyInfo.EnemyHealth * StatesEnforce.Instance.enemyHealthGain;
         _moveSpeed = _enemyInfo.EnemySpeed * StatesEnforce.Instance.enemySpeedGain;
@@ -73,7 +79,7 @@ public class Enemy : MonoBehaviour, IHitaction
     {
         MainGameManager.Instance.Money += (int)(_enemyInfo.Money * StatesEnforce.Instance.enemyMoneyGain);
         MainGameManager.Instance.currentEnemyCount--;
-        _moveSpeed = 0;
+        MoveSpeed = 0;
         actionBuffs.Clear();
         _animator.SetTrigger("DoDie");
         GetComponent<SphereCollider>().enabled = false;
@@ -96,7 +102,7 @@ public class Enemy : MonoBehaviour, IHitaction
     // 피격 용
     public void OnHit(float damage)
     {
-        _animator.SetTrigger("DoHit");
+        _animator.SetBool("DoHit",true);
         EnemyHealth -= damage;
     }
 
@@ -105,14 +111,5 @@ public class Enemy : MonoBehaviour, IHitaction
     {
         ObjectPool.Instance.Return(this.gameObject);
         MainGameManager.Instance.RoundEndCheck();
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other != null
-            && other.gameObject.layer == LayerMask.NameToLayer("Water"))
-        {
-            Debug.Log("hit");
-        }
     }
 }

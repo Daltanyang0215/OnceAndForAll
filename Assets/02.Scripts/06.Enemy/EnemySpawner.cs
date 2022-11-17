@@ -22,8 +22,8 @@ public class EnemySpawner : MonoBehaviour
         public int Num;
         public float SpawnDelay;
         public float StartDelay;
-        public string Buff;
-        public SpawnElement(string name, int num, float spwanDelay, float startDelay, string buff)
+        public EnemyBuffs Buff;
+        public SpawnElement(string name, int num, float spwanDelay, float startDelay, EnemyBuffs buff)
         {
             Name = name;
             Num = num;
@@ -53,7 +53,7 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    public void SpawnPoolAdd(string EnemyName, int SpawnCount, float spwanDelay, float startDelay, string buff = null) => _spawners.Add(new SpawnElement(EnemyName, SpawnCount, spwanDelay, startDelay, buff));
+    public void SpawnPoolAdd(string EnemyName, int SpawnCount, float spwanDelay, float startDelay, EnemyBuffs buff) => _spawners.Add(new SpawnElement(EnemyName, SpawnCount, spwanDelay, startDelay, buff));
 
     public void SpawnStart()
     {
@@ -83,17 +83,11 @@ public class EnemySpawner : MonoBehaviour
             Enemy spwanEnemy = ObjectPool.Instance.Spawn(_spawners[_poolIndex].Name, RanPos, transform).GetComponent<Enemy>();
             spwanEnemy.target = _target;
 
-            if (_spawners[_poolIndex].Buff != null)
+            if (_spawners[_poolIndex].Buff != EnemyBuffs.None)
             {
-                Type addbuff = Type.GetType(_spawners[_poolIndex].Buff);
-                if (addbuff != null)
-                {
-                    ConstructorInfo constructorInfo = addbuff.GetConstructor(new Type[] { typeof(Enemy) });
-                    EnemyBuffBase buff = constructorInfo.Invoke(new object[] { spwanEnemy }) as EnemyBuffBase;
-                    spwanEnemy.AddBuff(buff);
-                }
-                //spwanEnemy.gameObject.AddComponent(Type.GetType(_spawners[_poolIndex].Buff));
+                spwanEnemy.AddBuff(EnemyBuffManager.Instance.GetEnemyBuff(_spawners[_poolIndex].Buff, spwanEnemy));
             }
+
             _spawnIndex++;
             // 스폰한 회수가 현재 풀요소의 소환 수보다 크거나 같은지
             if (_spawnIndex >= _spawners[_poolIndex].Num)

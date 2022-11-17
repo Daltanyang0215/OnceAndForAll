@@ -21,10 +21,10 @@ public class AddEffect : ScriptableObject
     [SerializeField] private float _gain;
     [SerializeField] private string _infomation;
     [SerializeField] private string _enemyName;
-    [SerializeField] private string _enemyBuffName;
-    [SerializeField] private string _enemyBuff;
+    [SerializeField] private EnemyBuffs _enemyBuff;
+    [SerializeField] private string _enemyBuffInfomation;
 
-    public string GetInfomation() => (string.IsNullOrEmpty(_enemyBuffName) ? "": $"{_enemyBuffName}효과를 지닌 ") + $" {_infomation} X {_gain}";
+    public string GetInfomation() => (_enemyBuff == EnemyBuffs.None ? "": $"{_enemyBuffInfomation}효과를 지닌 ") + $" {_infomation} X {_gain}";
 
     public void OnApply()
     {

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: EnemyCount_Grunt
   m_EditorClassIdentifier: 
   _effect: 7
-  _gain: 3
+  _gain: 4
   _infomation: "\uC624\uD06C \uCD94\uAC00 \uC18C\uD658"
   _enemyName: "\uC624\uD06C"
-  _enemyBuffName: "\uBC8C\uD06C\uC5C5"
-  _enemyBuff: BulkUp
+  _enemyBuff: 0
+  _enemyBuffInfomation: 

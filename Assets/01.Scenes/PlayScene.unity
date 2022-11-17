@@ -1013,6 +1013,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0160ebe9f94a14c4a83b6b6eb98bd55a, type: 2}
   - {fileID: 11400000, guid: fd87eb83394f7294b8c6ea60dc848b76, type: 2}
   - {fileID: 11400000, guid: 33e1a7fe1f175b04d8eb1203121a1340, type: 2}
+  - {fileID: 11400000, guid: c5c1dd8ffc3e6a942bb3beddf7767605, type: 2}
   - {fileID: 11400000, guid: 35aab58df805626468ed9a07fe4e9189, type: 2}
 --- !u!4 &179909837
 Transform:
