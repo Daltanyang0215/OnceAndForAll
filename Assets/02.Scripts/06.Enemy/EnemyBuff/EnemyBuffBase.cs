@@ -1,19 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
-public class EnemyBuffBase : MonoBehaviour
+public class EnemyBuffBase
 {
-    private Enemy _owner;
-
-    private void OnEnable()
+    protected Enemy owner;
+    public EnemyBuffBase(Enemy owner)
     {
-        _owner = GetComponent<Enemy>();
+        this.owner = owner;
     }
-
-    private void OnDisable()
+    public virtual void Actionbuff()
     {
-        Destroy(this);   
-    }
 
+    }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -83,8 +84,16 @@ public class EnemySpawner : MonoBehaviour
             spwanEnemy.target = _target;
 
             if (_spawners[_poolIndex].Buff != null)
-                spwanEnemy.gameObject.AddComponent(Type.GetType(_spawners[_poolIndex].Buff));
-
+            {
+                Type addbuff = Type.GetType(_spawners[_poolIndex].Buff);
+                if (addbuff != null)
+                {
+                    ConstructorInfo constructorInfo = addbuff.GetConstructor(new Type[] { typeof(Enemy) });
+                    EnemyBuffBase buff = constructorInfo.Invoke(new object[] { spwanEnemy }) as EnemyBuffBase;
+                    spwanEnemy.AddBuff(buff);
+                }
+                //spwanEnemy.gameObject.AddComponent(Type.GetType(_spawners[_poolIndex].Buff));
+            }
             _spawnIndex++;
             // 스폰한 회수가 현재 풀요소의 소환 수보다 크거나 같은지
             if (_spawnIndex >= _spawners[_poolIndex].Num)

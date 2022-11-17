@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy : MonoBehaviour , IHitaction
+public class Enemy : MonoBehaviour, IHitaction
 {
     [SerializeField] private EnemyInfo _enemyInfo;
     private Animator _animator;
@@ -15,8 +15,11 @@ public class Enemy : MonoBehaviour , IHitaction
 
     private float _enemyHealth;
     private float _enemyMaxHealth;
+    private int _enemyDamage = 1;
 
-    private float EnemyHealth
+    public List<EnemyBuffBase> actionBuffs= new List<EnemyBuffBase>();
+
+    public float EnemyHealth
     {
         get { return _enemyHealth; }
         set
@@ -52,18 +55,26 @@ public class Enemy : MonoBehaviour , IHitaction
     }
 
     private void OnEnable()
-    {
+    {    
         // 몬스터 소환시 강화 적용
         GetComponent<SphereCollider>().enabled = true;
-        EnemyHealth =_enemyInfo.EnemyHealth * StatesEnforce.Instance.enemyHealthGain;
-        _moveSpeed = _enemyInfo.EnemySpeed*StatesEnforce.Instance.enemySpeedGain;
+        transform.localScale = Vector3.one;
+        EnemyHealth = _enemyInfo.EnemyHealth * StatesEnforce.Instance.enemyHealthGain;
+        _moveSpeed = _enemyInfo.EnemySpeed * StatesEnforce.Instance.enemySpeedGain;
         MoveSpeed = _moveSpeed;
+    }
+
+    public void AddBuff(EnemyBuffBase addbuff)
+    {
+        addbuff.Actionbuff();
     }
 
     private void Die()
     {
         MainGameManager.Instance.Money += (int)(_enemyInfo.Money * StatesEnforce.Instance.enemyMoneyGain);
         MainGameManager.Instance.currentEnemyCount--;
+        _moveSpeed = 0;
+        actionBuffs.Clear();
         _animator.SetTrigger("DoDie");
         GetComponent<SphereCollider>().enabled = false;
     }
@@ -77,7 +88,7 @@ public class Enemy : MonoBehaviour , IHitaction
         // 마지노선 도착
         if (transform.position.z < -3f)
         {
-            MainGameManager.Instance.Health--;
+            MainGameManager.Instance.Health -= _enemyDamage;
             PoolReturn();
         }
     }
