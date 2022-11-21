@@ -13,7 +13,6 @@ public enum AddEffectList
     EnemyMoney,
     EnemyCount
 }
-
 [CreateAssetMenu(fileName = "AddEffectBase", menuName = "AddEffect/EffectBase")]
 public class AddEffect : ScriptableObject
 {
@@ -67,7 +66,7 @@ public class AddEffect : ScriptableObject
                 break;
             case AddEffectList.EnemyCount:
                 {
-                    EnemySpawner.instance.SpawnPoolAdd(_enemyName, (int)_gain, 0.1f, 0.1f,_enemyBuff);
+                    EnemySpawner.instance.SpawnPoolAdd(_enemyName, (int)_gain, 0.1f, 0.1f,_enemyBuff.ToString());
                     StatesEnforce.Instance.addMonster(_enemyName, (int)_gain);
                 }
                 break;

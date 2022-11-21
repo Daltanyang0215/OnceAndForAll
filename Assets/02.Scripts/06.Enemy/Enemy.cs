@@ -10,14 +10,15 @@ public class Enemy : MonoBehaviour, IHitaction
     private Animator _animator;
 
     public Transform target;
-    private NavMeshAgent _navi;
+    public NavMeshAgent navi;
+    public Rigidbody rb;
     private Vector3 _targetpos;
 
     private float _enemyHealth;
     private float _enemyMaxHealth;
     private int _enemyDamage = 1;
 
-    public List<EnemyBuffBase> actionBuffs = new List<EnemyBuffBase>();
+    private List<EnemyBuffBase> _enemyBuffs = new List<EnemyBuffBase>();
 
     public float EnemyHealth
     {
@@ -49,30 +50,26 @@ public class Enemy : MonoBehaviour, IHitaction
         }
         set
         {
-            _navi.speed = value;
+            navi.speed = value;
         }
     }
 
     private void Awake()
     {
         _animator = GetComponent<Animator>();
-        _navi = GetComponent<NavMeshAgent>();
+        navi = GetComponent<NavMeshAgent>();
+        rb = GetComponent<Rigidbody>();
     }
 
     private void OnEnable()
     {
         // 몬스터 소환시 강화 적용
         GetComponent<SphereCollider>().enabled = true;
-        _navi.enabled = true;
+        navi.enabled = true;
         transform.localScale = Vector3.one;
         EnemyHealth = _enemyInfo.EnemyHealth * StatesEnforce.Instance.enemyHealthGain;
         _moveSpeed = _enemyInfo.EnemySpeed * StatesEnforce.Instance.enemySpeedGain;
         MoveSpeed = _moveSpeed;
-    }
-
-    public void AddBuff(EnemyBuffBase addbuff)
-    {
-        addbuff.Actionbuff();
     }
 
     private void Die()
@@ -80,16 +77,24 @@ public class Enemy : MonoBehaviour, IHitaction
         MainGameManager.Instance.Money += (int)(_enemyInfo.Money * StatesEnforce.Instance.enemyMoneyGain);
         MainGameManager.Instance.currentEnemyCount--;
         MoveSpeed = 0;
-        actionBuffs.Clear();
         _animator.SetTrigger("DoDie");
         GetComponent<SphereCollider>().enabled = false;
+        OnActiveBuff(BuffStatus.Disable);
     }
 
     private void FixedUpdate()
     {
-        _targetpos = target.position;
-        _targetpos.x = transform.position.x;
-        _navi.SetDestination(_targetpos);
+        if (navi.enabled)
+        {
+            _targetpos = target.position;
+            _targetpos.x = transform.position.x;
+            navi.SetDestination(_targetpos);
+        }
+        else
+        {
+            transform.Translate(Vector3.forward * MoveSpeed * 2 * Time.fixedDeltaTime);
+        }
+
 
         // 마지노선 도착
         if (transform.position.z < -3f)
@@ -99,10 +104,26 @@ public class Enemy : MonoBehaviour, IHitaction
         }
     }
 
+    private void OnActiveBuff(BuffStatus status)
+    {
+        foreach (EnemyBuffBase buff in _enemyBuffs)
+        {
+            buff.BuffActive(status);
+        }
+    }
+
+    public void AddBuff(EnemyBuffBase buff)
+    {
+        _enemyBuffs.Add(buff);
+        buff.BuffActive(BuffStatus.Enable);
+    }
+
     // 피격 용
     public void OnHit(float damage)
     {
-        _animator.SetBool("DoHit",true);
+        _animator.SetBool("DoHit", true);
+
+        OnActiveBuff(BuffStatus.Hit);
         EnemyHealth -= damage;
     }
 
@@ -111,5 +132,13 @@ public class Enemy : MonoBehaviour, IHitaction
     {
         ObjectPool.Instance.Return(this.gameObject);
         MainGameManager.Instance.RoundEndCheck();
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Tower"))
+        {
+            navi.enabled = true;
+            rb.isKinematic = true;
+        }
     }
 }

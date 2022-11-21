@@ -126,7 +126,7 @@ public class MainGameManager : MonoBehaviour
                 {
                     currentRound++;
 
-                    EnemySpawner.instance.SpawnPoolAdd("기본몬스터", 5, 0.2f, 0.5f,EnemyBuffs.None);
+                    EnemySpawner.instance.SpawnPoolAdd("기본몬스터", 5, 0.2f, 0.5f);
                     // 강화 적용
                     Player.Instance.EnforceApply();
                     TowerManager.instance.OnStatesEnforce();

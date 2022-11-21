@@ -22,8 +22,8 @@ public class EnemySpawner : MonoBehaviour
         public int Num;
         public float SpawnDelay;
         public float StartDelay;
-        public EnemyBuffs Buff;
-        public SpawnElement(string name, int num, float spwanDelay, float startDelay, EnemyBuffs buff)
+        public string Buff;
+        public SpawnElement(string name, int num, float spwanDelay, float startDelay, string buff)
         {
             Name = name;
             Num = num;
@@ -53,7 +53,7 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    public void SpawnPoolAdd(string EnemyName, int SpawnCount, float spwanDelay, float startDelay, EnemyBuffs buff) => _spawners.Add(new SpawnElement(EnemyName, SpawnCount, spwanDelay, startDelay, buff));
+    public void SpawnPoolAdd(string EnemyName, int SpawnCount, float spwanDelay, float startDelay, string buff = "") => _spawners.Add(new SpawnElement(EnemyName, SpawnCount, spwanDelay, startDelay, buff));
 
     public void SpawnStart()
     {
@@ -83,9 +83,20 @@ public class EnemySpawner : MonoBehaviour
             Enemy spwanEnemy = ObjectPool.Instance.Spawn(_spawners[_poolIndex].Name, RanPos, transform).GetComponent<Enemy>();
             spwanEnemy.target = _target;
 
-            if (_spawners[_poolIndex].Buff != EnemyBuffs.None)
+            if (string.IsNullOrEmpty(_spawners[_poolIndex].Buff) == false
+                && _spawners[_poolIndex].Buff != "None")
             {
-                spwanEnemy.AddBuff(EnemyBuffManager.Instance.GetEnemyBuff(_spawners[_poolIndex].Buff, spwanEnemy));
+                Type addbuff = Type.GetType(_spawners[_poolIndex].Buff);
+                if (addbuff != null)
+                {
+                    ConstructorInfo constructorInfo = addbuff.GetConstructor(new Type[] { typeof(Enemy) });
+                    EnemyBuffBase buff = constructorInfo.Invoke(new object[] { spwanEnemy }) as EnemyBuffBase;
+                    spwanEnemy.AddBuff(buff);
+                }
+                else
+                {
+                    Debug.LogWarning("잘못된 버프를 등록 시도 되었습니다");
+                }
             }
 
             _spawnIndex++;

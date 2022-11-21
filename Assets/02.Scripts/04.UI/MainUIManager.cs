@@ -164,6 +164,7 @@ public class MainUIManager : MonoBehaviour
     [SerializeField] private GameObject _rewardList;
     [SerializeField] private TMP_Text _positiveText;
     [SerializeField] private TMP_Text _negativeText;
+    [SerializeField] private GameObject _buffInfromtionList;
     [SerializeField] private GameObject _nextRound;
     private bool _isShowReward;
     public bool IsShowReward
@@ -210,6 +211,10 @@ public class MainUIManager : MonoBehaviour
             _negativeText.text = StatesEnforce.Instance.GetNegativeList();
         }
             _rewardList.SetActive(show);
+    }
+    public void OnBuffInformation(bool show)
+    {
+        _buffInfromtionList.SetActive(show);
     }
     #endregion
 
