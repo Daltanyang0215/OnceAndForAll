@@ -19,6 +19,8 @@ public class Enemy : MonoBehaviour, IHitaction
     private int _enemyDamage = 1;
 
     private List<EnemyBuffBase> _enemyBuffs = new List<EnemyBuffBase>();
+    public bool isImmortality;
+    public float decrease;
 
     public float EnemyHealth
     {
@@ -36,7 +38,14 @@ public class Enemy : MonoBehaviour, IHitaction
 
             if (_enemyHealth <= 0)
             {
-                Die();
+                if (isImmortality)
+                {
+                    _enemyHealth = 1;
+                }
+                else
+                {
+                    Die();
+                }
             }
         }
     }
@@ -70,6 +79,8 @@ public class Enemy : MonoBehaviour, IHitaction
         EnemyHealth = _enemyInfo.EnemyHealth * StatesEnforce.Instance.enemyHealthGain;
         _moveSpeed = _enemyInfo.EnemySpeed * StatesEnforce.Instance.enemySpeedGain;
         MoveSpeed = _moveSpeed;
+        isImmortality = false;
+        decrease = 0;
     }
 
     private void Die()
@@ -80,6 +91,11 @@ public class Enemy : MonoBehaviour, IHitaction
         _animator.SetTrigger("DoDie");
         GetComponent<SphereCollider>().enabled = false;
         OnActiveBuff(BuffStatus.Disable);
+    }
+    private void Update()
+    {
+        if(EnemyHealth >0)
+        OnActiveBuff(BuffStatus.Update);
     }
 
     private void FixedUpdate()
@@ -117,14 +133,22 @@ public class Enemy : MonoBehaviour, IHitaction
         _enemyBuffs.Add(buff);
         buff.BuffActive(BuffStatus.Enable);
     }
-
+    public bool CheckBuff(Type checkbuff)
+    {
+        foreach (EnemyBuffBase buff in _enemyBuffs)
+        {
+            if (buff.GetType() == checkbuff)
+                return true;
+        }
+        return false;
+    }
     // 피격 용
     public void OnHit(float damage)
     {
         _animator.SetBool("DoHit", true);
 
         OnActiveBuff(BuffStatus.Hit);
-        EnemyHealth -= damage;
+        EnemyHealth -= damage - (damage * 0.01f* decrease);
     }
 
     // 애니메이션 종료 시 오브젝트 풀 리턴 용

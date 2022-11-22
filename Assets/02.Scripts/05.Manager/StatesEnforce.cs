@@ -16,15 +16,21 @@ public class StatesEnforce
     }
     // 보상목록 출력용 리스트
     private Dictionary<string, int> _addMonster = new Dictionary<string, int>();
-    public void addMonster(string addMonster,int count)
+    public void addMonster(string addMonster,int count, string buff)
     {
-        if (_addMonster.ContainsKey(addMonster))
+        string tmpname="";
+        if (buff == "None")
+            tmpname = addMonster;
+        else
+            tmpname = buff + " 효과를 지닌 " + addMonster;
+
+        if (_addMonster.ContainsKey(tmpname))
         {
-            _addMonster[addMonster] += count;
+            _addMonster[tmpname] += count;
         }
         else
         {
-            _addMonster.Add(addMonster, count);
+            _addMonster.Add(tmpname, count);
         }
     }
 

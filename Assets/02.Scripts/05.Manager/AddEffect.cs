@@ -67,7 +67,7 @@ public class AddEffect : ScriptableObject
             case AddEffectList.EnemyCount:
                 {
                     EnemySpawner.instance.SpawnPoolAdd(_enemyName, (int)_gain, 0.1f, 0.1f,_enemyBuff.ToString());
-                    StatesEnforce.Instance.addMonster(_enemyName, (int)_gain);
+                    StatesEnforce.Instance.addMonster(_enemyName, (int)_gain, _enemyBuffInfomation.ToString());
                 }
                 break;
             default:
