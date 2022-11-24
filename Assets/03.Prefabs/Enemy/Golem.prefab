@@ -138,6 +138,8 @@ MonoBehaviour:
   target: {fileID: 0}
   navi: {fileID: 0}
   rb: {fileID: 0}
+  isImmortality: 0
+  decrease: 0
 --- !u!135 &-6503768904072678380
 SphereCollider:
   m_ObjectHideFlags: 0

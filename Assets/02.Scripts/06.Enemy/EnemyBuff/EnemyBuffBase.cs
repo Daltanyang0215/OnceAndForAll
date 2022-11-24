@@ -2,8 +2,8 @@ using UnityEngine;
 public enum EnemyBuffs
 {
     None,
-    Shild,
-    EnegyShild,
+    Shield,
+    Barrier,
     Rush,
     BulkUp,
     Smoke,

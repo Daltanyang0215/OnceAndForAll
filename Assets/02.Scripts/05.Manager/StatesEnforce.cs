@@ -19,7 +19,8 @@ public class StatesEnforce
     public void addMonster(string addMonster,int count, string buff)
     {
         string tmpname="";
-        if (buff == "None")
+        if (buff == "None"
+            || string.IsNullOrEmpty(buff))
             tmpname = addMonster;
         else
             tmpname = buff + " 효과를 지닌 " + addMonster;

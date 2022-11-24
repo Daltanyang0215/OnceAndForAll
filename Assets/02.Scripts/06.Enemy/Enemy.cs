@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour, IHitaction
     private List<EnemyBuffBase> _enemyBuffs = new List<EnemyBuffBase>();
     public bool isImmortality;
     public float decrease;
+    public bool ignoringHits;
 
     public float EnemyHealth
     {
@@ -145,10 +146,14 @@ public class Enemy : MonoBehaviour, IHitaction
     // 피격 용
     public void OnHit(float damage)
     {
-        _animator.SetBool("DoHit", true);
-
         OnActiveBuff(BuffStatus.Hit);
-        EnemyHealth -= damage - (damage * 0.01f* decrease);
+
+        if (!ignoringHits)
+        {
+            _animator.SetBool("DoHit", true);
+            EnemyHealth -= damage - (damage * 0.01f * decrease);
+        }
+        ignoringHits = false;
     }
 
     // 애니메이션 종료 시 오브젝트 풀 리턴 용

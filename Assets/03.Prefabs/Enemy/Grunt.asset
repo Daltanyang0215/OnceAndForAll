@@ -15,4 +15,4 @@ MonoBehaviour:
   _enemyID: 200
   _enemyHealth: 20
   _enemySpeed: 7
-  _money: 15
+  _money: 0
