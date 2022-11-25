@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 413a6e9c64111624296216ecb8fb9157, type: 3}
-  m_Name: EnemyCount_Grunt_BulkUp
+  m_Name: EnemyCount_Golem_Smoke
   m_EditorClassIdentifier: 
   _effect: 7
-  _gain: 2
-  _infomation: "\uC624\uD06C \uCD94\uAC00 \uC18C\uD658"
-  _enemyName: "\uC624\uD06C"
-  _enemyBuff: 4
-  _enemyBuffInfomation: "\uAC70\uB300\uD654"
+  _gain: 1
+  _infomation: "\uACE8\uB818 \uCD94\uAC00 \uC18C\uD658"
+  _enemyName: "\uACE8\uB818"
+  _enemyBuff: 5
+  _enemyBuffInfomation: "\uC5F0\uB9C9"

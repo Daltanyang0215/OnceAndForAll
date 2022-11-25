@@ -1014,9 +1014,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fd87eb83394f7294b8c6ea60dc848b76, type: 2}
   - {fileID: 11400000, guid: 73cd1d009367166499dcc9635b9076d2, type: 2}
   - {fileID: 11400000, guid: 01f1c2a231c69cc4cba7dfd4bb6e55bb, type: 2}
+  - {fileID: 11400000, guid: 5b1de3906080bc949839ff5b65242649, type: 2}
   - {fileID: 11400000, guid: 33e1a7fe1f175b04d8eb1203121a1340, type: 2}
   - {fileID: 11400000, guid: c5c1dd8ffc3e6a942bb3beddf7767605, type: 2}
   - {fileID: 11400000, guid: 5af957a60901eed40a028d0cae7663c1, type: 2}
+  - {fileID: 11400000, guid: 55d6276ad40e55e45845da0f3b0daf55, type: 2}
   - {fileID: 11400000, guid: 35aab58df805626468ed9a07fe4e9189, type: 2}
   - {fileID: 11400000, guid: fd8ae4ddb8146cf4289b31c527731c78, type: 2}
   - {fileID: 11400000, guid: 88db6d411b8045b499b0f0c2f5e0fc7c, type: 2}
@@ -1094,6 +1096,10 @@ MonoBehaviour:
     num: 20
   - name: Shield
     prefab: {fileID: 3498218146740629128, guid: 641d105b7c5087b40b3dc47c1b99ff53,
+      type: 3}
+    num: 20
+  - name: Smoke
+    prefab: {fileID: 2250122534679980736, guid: a14a6904461803743ad8b3b27b45efb1,
       type: 3}
     num: 20
   - name: Tent
