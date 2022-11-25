@@ -1100,6 +1100,14 @@ MonoBehaviour:
     prefab: {fileID: 3460676153703845879, guid: 39e4751ef85d15949ba6c9291ac88e88,
       type: 3}
     num: 20
+  - name: Bend
+    prefab: {fileID: 3361211297634721524, guid: ba4f4e7c58321704f89ffcb122df95ce,
+      type: 3}
+    num: 20
+  - name: Immortality
+    prefab: {fileID: 6790952046064258630, guid: bc967b22fdafc514d988099ab11d1944,
+      type: 3}
+    num: 20
 --- !u!1 &184039633
 GameObject:
   m_ObjectHideFlags: 0

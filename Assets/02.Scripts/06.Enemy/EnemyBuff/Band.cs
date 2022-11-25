@@ -6,6 +6,7 @@ public class Band : EnemyBuffBase
 {
     private List<Enemy> _activeList = new List<Enemy>();
     private Collider[] _tmpcols;
+    private GameObject _tmpPrefab;
     
     public Band(Enemy owner) : base(owner)
     {
@@ -17,6 +18,7 @@ public class Band : EnemyBuffBase
         {
             case BuffStatus.Enable:
                 owner.gameObject.transform.localScale = Vector3.one * 1.5f;
+                _tmpPrefab = ObjectPool.Instance.Spawn("Bend", owner.transform.position, Quaternion.identity, owner.transform);
                 break;
             case BuffStatus.Update:
                 foreach (Enemy enemy in _activeList)
@@ -42,6 +44,7 @@ public class Band : EnemyBuffBase
                 {
                     enemy.decrease = 0;
                 }
+                ObjectPool.Instance.Return(_tmpPrefab);
                 break;
             default:
                 break;

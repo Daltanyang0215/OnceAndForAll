@@ -6,6 +6,7 @@ public class Immortality : EnemyBuffBase
 {
     private List<Enemy> _activeList = new List<Enemy>();
     private Collider[] _tmpcols;
+    private GameObject tmpPrefab;
     public Immortality(Enemy owner) : base(owner)
     {
     }
@@ -16,6 +17,7 @@ public class Immortality : EnemyBuffBase
         {
             case BuffStatus.Enable:
                 owner.gameObject.transform.localScale = Vector3.one * 1.5f;
+                tmpPrefab= ObjectPool.Instance.Spawn("Immortality", owner.transform.position, Quaternion.identity, owner.transform);
                 break;
             case BuffStatus.Update:
                 foreach (Enemy enemy in _activeList)
@@ -41,6 +43,7 @@ public class Immortality : EnemyBuffBase
                 {
                     enemy.isImmortality = false;
                 }
+                ObjectPool.Instance.Return(tmpPrefab);
                 break;
             default:
                 break;
