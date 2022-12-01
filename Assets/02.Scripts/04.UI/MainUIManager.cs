@@ -218,6 +218,25 @@ public class MainUIManager : MonoBehaviour
     }
     #endregion
 
+    #region GameEnd
+    [SerializeField] private GameObject _gameEndPanel;
+    [SerializeField] private TMP_Text _endRound;
+    [SerializeField] private TMP_Text _endPos;
+    [SerializeField] private TMP_Text _endNega;
+
+    public void ShowGameEndPanel(int round, bool show = true)
+    {
+        _gameEndPanel.SetActive(show);
+        if (show)
+        {
+            _endRound.text = round.ToString();
+            _endPos.text = StatesEnforce.Instance.GetPositiveList();
+            _endNega.text = StatesEnforce.Instance.GetNegativeList();
+        }
+    }
+
+
+    #endregion
     // 플레이어가 ui 가 열려있는 상태인지 상태 확인용 함수
     // ui 가 추가 됨에 따라 길어질 예정. 혹은 더 좋은 구조가 떠오르면 수정 예정
     public void CheckAllUIClose()

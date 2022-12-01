@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainGameManager : MonoBehaviour
 {
@@ -180,6 +181,10 @@ public class MainGameManager : MonoBehaviour
             case GameFlowState.LEVEL_FAIL:
                 {
                     Debug.Log("게임 종료. 미션 실패");
+                    MainUIManager.instance.ShowGameEndPanel(currentRound);
+                    Cursor.visible = true;
+                    Cursor.lockState = CursorLockMode.None;
+                    state = GameFlowState.WAITING_USER;
                 }
                 break;
             case GameFlowState.WAITING_USER:
@@ -255,5 +260,14 @@ public class MainGameManager : MonoBehaviour
     private void LevelFail()
     {
         state = GameFlowState.LEVEL_FAIL;
+    }
+
+    public void GameReStart()
+    {
+        SceneManager.LoadScene(0);
+    }
+    public void GamEnd()
+    {
+        Application.Quit();
     }
 }

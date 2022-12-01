@@ -10,6 +10,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] protected ParticleSystem fireParticale;
     [SerializeField] protected LayerMask targetLayer;
     protected Animator animator;
+    protected AudioSource _fireSound;
 
     private int _currentBullet;
     protected int currentBullet
@@ -77,6 +78,7 @@ public class Weapon : MonoBehaviour
                 Shot();
                 animator.SetTrigger("Shot");
                 fireParticale.Play();
+                _fireSound.Play();
                 return weaponInfo.Rebound;
             }
             else
@@ -114,6 +116,7 @@ public class Weapon : MonoBehaviour
         _attackCoolTimer = weaponInfo.AttackCool;
         _reLoadTimer = weaponInfo.ReloadTime;
         animator = GetComponent<Animator>();
+        _fireSound = GetComponent<AudioSource>();
     }
 
     // 실제 공격 로직. 상속으로 오버로드 할 수 있게 설계
@@ -124,6 +127,7 @@ public class Weapon : MonoBehaviour
             // 레이포인트에 이펙트 소환
             GameObject go = ObjectPool.Instance.Spawn("HitEffect", _hit.point);
             ObjectPool.Instance.Return(go, 0.3f);
+            
 
             if (_hit.collider.TryGetComponent(out IHitaction enemy))
             {
