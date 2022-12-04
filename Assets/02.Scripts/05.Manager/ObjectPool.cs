@@ -103,8 +103,7 @@ public class ObjectPool : MonoBehaviour
         }
 
         GameObject go = spawnedQueuePaires[name].Dequeue();
-        go.transform.position = spawnPoint;
-        go.transform.rotation = rotation;
+        go.transform.SetPositionAndRotation(spawnPoint,rotation);
         go.SetActive(true);
         go.transform.SetParent(null);
         return go;

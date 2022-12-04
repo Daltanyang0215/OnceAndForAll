@@ -9,8 +9,8 @@ public class Weapon : MonoBehaviour
     [SerializeField] private TMP_Text _bulletCountText;
     [SerializeField] protected ParticleSystem fireParticale;
     [SerializeField] protected LayerMask targetLayer;
+    [SerializeField] protected AudioClip _fireSound;
     protected Animator animator;
-    protected AudioSource _fireSound;
 
     private int _currentBullet;
     protected int currentBullet
@@ -78,7 +78,10 @@ public class Weapon : MonoBehaviour
                 Shot();
                 animator.SetTrigger("Shot");
                 fireParticale.Play();
-                _fireSound.Play();
+                AudioSource sound = ObjectPool.Instance.Spawn("Sound", transform.position).GetComponent<AudioSource>();
+                sound.clip = _fireSound;
+                sound.Play();
+                ObjectPool.Instance.Return(sound.gameObject, _fireSound.length);
                 return weaponInfo.Rebound;
             }
             else
@@ -116,7 +119,6 @@ public class Weapon : MonoBehaviour
         _attackCoolTimer = weaponInfo.AttackCool;
         _reLoadTimer = weaponInfo.ReloadTime;
         animator = GetComponent<Animator>();
-        _fireSound = GetComponent<AudioSource>();
     }
 
     // 실제 공격 로직. 상속으로 오버로드 할 수 있게 설계

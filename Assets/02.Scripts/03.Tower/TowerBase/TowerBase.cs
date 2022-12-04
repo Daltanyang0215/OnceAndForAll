@@ -1,5 +1,11 @@
 using UnityEngine;
-
+public enum Element
+{
+    Normal,
+    Fire,
+    Ice,
+    Electricity
+}
 public abstract class TowerBase : MonoBehaviour
 {
     [Header("TowerInfo")]
@@ -12,6 +18,7 @@ public abstract class TowerBase : MonoBehaviour
 
     [Space]
     [Header("Attack")]
+    protected Element AttackType;
     protected float damage;
     protected float attackRange;
     protected float reloadTime;
