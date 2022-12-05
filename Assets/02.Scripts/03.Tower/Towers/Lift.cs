@@ -29,4 +29,28 @@ public class Lift : TowerBase , IInteraction
             _plate.transform.localPosition = Vector3.zero;
         }
     }
+
+    public override bool OnUpgrad(Element addElement)
+    {
+        if (upgradLevel >= 3) return false;
+        switch (upgradLevel)
+        {
+            case 0:
+                attackType = addElement;
+                upgradLevel++;
+                return true;
+            case 1:
+                //_bulletName = "ProjectileBullet_" + addElement.ToString();
+                upgradLevel++;
+
+                return true;
+            case 2:
+                upgradLevel++;
+                //_afterEffect = addElement.ToString();
+                return true;
+            default:
+                return false;
+
+        }
+    }
 }

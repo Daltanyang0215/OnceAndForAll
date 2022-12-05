@@ -23,6 +23,8 @@ public class Enemy : MonoBehaviour, IHitaction
     public float decrease;
     public bool ignoringHits;
 
+    private AudioSource _audio;
+
     public float EnemyHealth
     {
         get
@@ -69,6 +71,7 @@ public class Enemy : MonoBehaviour, IHitaction
         _animator = GetComponent<Animator>();
         navi = GetComponent<NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
+        _audio = GetComponent<AudioSource>();
     }
 
     private void OnEnable()
@@ -90,6 +93,7 @@ public class Enemy : MonoBehaviour, IHitaction
         MainGameManager.Instance.currentEnemyCount--;
         MoveSpeed = 0;
         _animator.SetTrigger("DoDie");
+        _audio.Play();
         GetComponent<SphereCollider>().enabled = false;
         OnActiveBuff(BuffStatus.Disable);
     }

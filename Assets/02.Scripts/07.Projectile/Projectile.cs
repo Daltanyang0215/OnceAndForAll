@@ -8,6 +8,7 @@ public class Projectile : MonoBehaviour
     protected bool _isHit;
     private float _speed;
     protected float damage;
+    protected Element attackElement;
     protected LayerMask touchLayer;
     protected LayerMask targetLayer;
     protected Transform target;
@@ -19,7 +20,8 @@ public class Projectile : MonoBehaviour
                       float damage,
                       bool isGuided,
                       LayerMask touchLayer,
-                      LayerMask targetLayer)
+                      LayerMask targetLayer,
+                      Element element = Element.Normal)
     {
         this.target = target;
         _speed = speed;
@@ -27,7 +29,9 @@ public class Projectile : MonoBehaviour
         _isGuided = isGuided;
         this.touchLayer = touchLayer;
         this.targetLayer = targetLayer;
+        attackElement = element;
 
+        tr.GetChild((int)element).gameObject.SetActive(true);
         tr.LookAt(this.target.position + Vector3.up*0.5f);
         _isHit = false;
     }

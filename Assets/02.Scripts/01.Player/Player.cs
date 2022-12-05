@@ -160,6 +160,14 @@ public class Player : MonoBehaviour
 
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out _hit, 2f))
         {
+            if(_hit.collider.TryGetComponent(out TowerBase tower))
+            {
+                if (_isInteraction)
+                {
+                    tower.OnUpgrad(Element.Fire);
+                }
+            }
+
             if (_hit.collider.TryGetComponent(out IInteraction interaction))
             {
                 MainUIManager.instance.ShowInteractionPanel(true);

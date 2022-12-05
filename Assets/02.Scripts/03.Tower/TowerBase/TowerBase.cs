@@ -18,13 +18,15 @@ public abstract class TowerBase : MonoBehaviour
 
     [Space]
     [Header("Attack")]
-    protected Element AttackType;
+    protected Element attackType;
     protected float damage;
     protected float attackRange;
     protected float reloadTime;
     protected bool _isLoading;
 
     protected float timer;
+
+    protected int upgradLevel=0;
 
     public virtual void OnApply()
     {
@@ -52,6 +54,8 @@ public abstract class TowerBase : MonoBehaviour
         if (_isLoading)
             Reload();
     }
+
+    public abstract bool OnUpgrad(Element addElement);
 
     private void Reload()
     {

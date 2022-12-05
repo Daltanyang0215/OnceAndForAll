@@ -8,6 +8,7 @@ public class TowerProjectileBase : TowerTargetingBase
     [Header("projectile")]
     [SerializeField] private string _bulletName;
     [SerializeField] private int _projectileSpeed;
+    [SerializeField] private string _afterEffect;
 
     public override void OnApply()
     {
@@ -21,6 +22,32 @@ public class TowerProjectileBase : TowerTargetingBase
                                                       damage,
                                                       false,
                                                       blockLayer,
-                                                      targetLayer);
+                                                      targetLayer,
+                                                      attackType);
+    }
+
+    public override bool OnUpgrad(Element addElement)
+    {
+        if (upgradLevel >= 3) return false;
+        switch (upgradLevel)
+        {
+            case 0:
+                attackType = addElement;
+                upgradLevel++;
+                firePoint.GetChild((int)addElement).gameObject.SetActive(true);
+                return true;
+            case 1:
+                _bulletName = "ProjectileBullet_" + addElement.ToString();
+                upgradLevel++;
+
+                return true;
+           case 2:
+                upgradLevel++;
+                _afterEffect = addElement.ToString();
+                return true;
+            default:
+                return false;
+
+        }
     }
 }
