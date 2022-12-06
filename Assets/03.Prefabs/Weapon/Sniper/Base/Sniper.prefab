@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2674654828461627204}
   - component: {fileID: 1766997344111047023}
   - component: {fileID: 4361034037237608673}
-  - component: {fileID: 4498259046204250682}
+  - component: {fileID: 8654377904092880954}
   m_Layer: 3
   m_Name: Sniper
   m_TagString: Untagged
@@ -55,6 +55,8 @@ MonoBehaviour:
   targetLayer:
     serializedVersion: 2
     m_Bits: 1212992
+  _fireSound: {fileID: 8300000, guid: 676b1d62f9316ed439534ca5732c23b8, type: 3}
+  _reloadSound: {fileID: 8300000, guid: 2356eb4e4adc7954e890aa67215215b9, type: 3}
 --- !u!95 &4361034037237608673
 Animator:
   serializedVersion: 4
@@ -75,7 +77,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!82 &4498259046204250682
+--- !u!82 &8654377904092880954
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -85,7 +87,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 676b1d62f9316ed439534ca5732c23b8, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 2356eb4e4adc7954e890aa67215215b9, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.2
   m_Pitch: 1

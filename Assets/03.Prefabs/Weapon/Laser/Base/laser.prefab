@@ -213,7 +213,7 @@ GameObject:
   - component: {fileID: 2674654828461627204}
   - component: {fileID: 4361034037237608673}
   - component: {fileID: -4721136747726768282}
-  - component: {fileID: 6220024319963503149}
+  - component: {fileID: 6131899113299082448}
   m_Layer: 3
   m_Name: laser
   m_TagString: Untagged
@@ -276,9 +276,11 @@ MonoBehaviour:
   targetLayer:
     serializedVersion: 2
     m_Bits: 1212992
+  _fireSound: {fileID: 8300000, guid: 7b2047f232d464042808018b97f9a70d, type: 3}
+  _reloadSound: {fileID: 0}
   _chargeParticle: {fileID: 7514376098218481556}
   _beemLine: {fileID: 2996117287820090444}
---- !u!82 &6220024319963503149
+--- !u!82 &6131899113299082448
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -288,7 +290,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 7b2047f232d464042808018b97f9a70d, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0.2
   m_Pitch: 1

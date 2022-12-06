@@ -10,8 +10,9 @@ public class Weapon : MonoBehaviour
     [SerializeField] protected ParticleSystem fireParticale;
     [SerializeField] protected LayerMask targetLayer;
     [SerializeField] protected AudioClip _fireSound;
+    [SerializeField] protected AudioClip _reloadSound;
     protected Animator animator;
-
+    protected AudioSource weaponaudio;
     private int _currentBullet;
     protected int currentBullet
     {
@@ -97,6 +98,8 @@ public class Weapon : MonoBehaviour
     {
         //if (_isAttackCool) return;
         _isReloading = true;
+        weaponaudio.clip = _reloadSound;
+        weaponaudio.Play();
         Debug.Log("재장전 중");
     }
 
@@ -119,6 +122,7 @@ public class Weapon : MonoBehaviour
         _attackCoolTimer = weaponInfo.AttackCool;
         _reLoadTimer = weaponInfo.ReloadTime;
         animator = GetComponent<Animator>();
+        weaponaudio = GetComponent<AudioSource>();
     }
 
     // 실제 공격 로직. 상속으로 오버로드 할 수 있게 설계
@@ -187,6 +191,7 @@ public class Weapon : MonoBehaviour
 
         _isReloading = false;
         _reLoadTimer = weaponInfo.ReloadTime;
+        weaponaudio.Stop();
     }
 
 }

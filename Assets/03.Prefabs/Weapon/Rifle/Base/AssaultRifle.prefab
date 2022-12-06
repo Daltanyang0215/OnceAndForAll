@@ -185,7 +185,7 @@ GameObject:
   - component: {fileID: 2674654828461627204}
   - component: {fileID: 2674654828461627201}
   - component: {fileID: 4361034037237608673}
-  - component: {fileID: 8505685878878511828}
+  - component: {fileID: 6857541806715608509}
   m_Layer: 3
   m_Name: AssaultRifle
   m_TagString: Untagged
@@ -228,6 +228,8 @@ MonoBehaviour:
   targetLayer:
     serializedVersion: 2
     m_Bits: 1212992
+  _fireSound: {fileID: 8300000, guid: 5ab9caa6a04b6994393bccb8bfaf9328, type: 3}
+  _reloadSound: {fileID: 8300000, guid: cddc1558299b4c543a375b585a304ecc, type: 3}
 --- !u!95 &4361034037237608673
 Animator:
   serializedVersion: 4
@@ -248,7 +250,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!82 &8505685878878511828
+--- !u!82 &6857541806715608509
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -258,7 +260,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 4344365df12e7954ab747688462066d5, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0.2
   m_Pitch: 1

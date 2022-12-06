@@ -41,12 +41,19 @@ public class Player : MonoBehaviour
     private bool _isShowBuilder;
     private bool _isTowerDestroy;
     private bool _isShowUI;
+
+    [Space]
+    [Header("Sound")]
+    [SerializeField] private AudioClip _footstepSound;
+    private AudioSource _playerAudio;
+
     public bool isShowUI { set { _isShowUI = value; } }
     private RaycastHit _hit;
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
-
+        _playerAudio = GetComponent<AudioSource>();
+        _playerAudio.clip = _footstepSound;
         // 초기화. 나중에 게임 시작전 선택하게 수정예정
         _hotkeys[0] = 0;
         _hotkeys[1] = 1;
@@ -62,6 +69,9 @@ public class Player : MonoBehaviour
         Interaction();
         TowerDestroy();
         UIUpdata();
+
+        // 이동이 없을때는 소리 안나게
+        _playerAudio.mute = _moveVec.magnitude == 0;
     }
 
 
@@ -214,6 +224,8 @@ public class Player : MonoBehaviour
         _moveVec = new Vector3(_right, 0, _forwad).normalized;
         //transform.Translate(_moveVec * moveSpeed * Time.fixedDeltaTime);
 
+       
+
         // 바라보는 방향으로 무브벡터 회전
         _moveVec = Quaternion.AngleAxis(transform.rotation.eulerAngles.y, Vector3.up) * _moveVec;
         _rb.velocity = _moveVec * moveSpeed * MoveSpeedGain;
@@ -236,6 +248,7 @@ public class Player : MonoBehaviour
     public void PlayerStop()
     {
         _rb.velocity = Vector3.zero;
+        _playerAudio.mute=true;
     }
 
     // 강화 데이터 적용

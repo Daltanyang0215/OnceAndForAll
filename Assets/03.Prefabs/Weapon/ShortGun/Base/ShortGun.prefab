@@ -266,7 +266,7 @@ GameObject:
   - component: {fileID: 2674654828461627204}
   - component: {fileID: 4784390744062366457}
   - component: {fileID: 4361034037237608673}
-  - component: {fileID: 875525088591865423}
+  - component: {fileID: 8256751671667507769}
   m_Layer: 3
   m_Name: ShortGun
   m_TagString: Untagged
@@ -310,6 +310,8 @@ MonoBehaviour:
   targetLayer:
     serializedVersion: 2
     m_Bits: 1212992
+  _fireSound: {fileID: 8300000, guid: e2c7ea9cea2d5944bbb857b49b4c8b36, type: 3}
+  _reloadSound: {fileID: 8300000, guid: 541106d0cb4703942b2e6cac2f6ffca5, type: 3}
 --- !u!95 &4361034037237608673
 Animator:
   serializedVersion: 4
@@ -330,7 +332,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!82 &875525088591865423
+--- !u!82 &8256751671667507769
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -340,7 +342,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: e2c7ea9cea2d5944bbb857b49b4c8b36, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 541106d0cb4703942b2e6cac2f6ffca5, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.2
   m_Pitch: 1
