@@ -18,5 +18,5 @@ MonoBehaviour:
   _AttackRange: 15
   _BuyCost: 100
   _SellCost: 80
-  _towerPrefab: {fileID: 1998250517882883046, guid: 489fb895af75d4f4c8dda2b66a978f9b,
+  _towerPrefab: {fileID: 1998250517882883046, guid: ced4a7b52ff87b747b3d412e93a92248,
     type: 3}

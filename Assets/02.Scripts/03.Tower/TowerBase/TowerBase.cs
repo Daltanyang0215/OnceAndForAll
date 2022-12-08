@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 public enum Element
 {
     Normal,
@@ -26,7 +27,9 @@ public abstract class TowerBase : MonoBehaviour
 
     protected float timer;
 
-    protected int upgradLevel=0;
+    protected int upgradLevel = 0;
+
+    private MeshRenderer[] _modelMesh;
 
     public virtual void OnApply()
     {
@@ -42,11 +45,14 @@ public abstract class TowerBase : MonoBehaviour
         reloadTime = towerInfo.AttackCool;
 
         timer = reloadTime;
+
+        _modelMesh = GetComponentsInChildren<MeshRenderer>();
     }
 
     protected virtual void Start()
     {
         OnApply();
+        StartCoroutine(E_showDissolve());
     }
 
     protected virtual void Update()
@@ -69,6 +75,22 @@ public abstract class TowerBase : MonoBehaviour
         else
         {
             timer -= Time.deltaTime;
+        }
+    }
+
+    private IEnumerator E_showDissolve()
+    {
+        float disslove = 1;
+
+        while (disslove > 0)
+        {
+            foreach (MeshRenderer mesh in _modelMesh)
+            {
+                mesh.material.SetFloat("_DissolveAmount", disslove);
+            }
+            disslove -= Time.deltaTime;
+
+            yield return null;
         }
     }
 }
