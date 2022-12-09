@@ -23,7 +23,7 @@ public class AddEffect : ScriptableObject
     [SerializeField] private EnemyBuffs _enemyBuff;
     [SerializeField] private string _enemyBuffInfomation;
 
-    public string GetInfomation() => (_enemyBuff == EnemyBuffs.None ? "": $"{_enemyBuffInfomation}효과를 지닌 ") + $" {_infomation} X {_gain}";
+    public string GetInfomation() => (_enemyBuff == EnemyBuffs.None ? "": $"'{_enemyBuffInfomation}'효과를 지닌 ") + $" {_infomation} X {_gain}";
 
     public void OnApply()
     {
