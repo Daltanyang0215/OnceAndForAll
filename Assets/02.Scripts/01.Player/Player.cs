@@ -168,7 +168,7 @@ public class Player : MonoBehaviour
             return;
 
 
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out _hit, 2f))
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out _hit, 30f))
         {
             if(_hit.collider.TryGetComponent(out TowerBase tower))
             {
@@ -178,7 +178,8 @@ public class Player : MonoBehaviour
                 }
             }
 
-            if (_hit.collider.TryGetComponent(out IInteraction interaction))
+            if (_hit.distance < 2 &&
+                _hit.collider.TryGetComponent(out IInteraction interaction))
             {
                 MainUIManager.instance.ShowInteractionPanel(true);
                 if (_isInteraction)

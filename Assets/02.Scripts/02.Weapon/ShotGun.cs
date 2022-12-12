@@ -31,6 +31,8 @@ public class ShotGun : Weapon
                 }
             }
         }
+
+
     }
 
     public override void OnApply()

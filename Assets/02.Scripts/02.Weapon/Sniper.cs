@@ -96,6 +96,7 @@ public class Sniper : Weapon
             animator.SetBool("Zoom", false);
             maincamera.fieldOfView = _originFOV;
             MainUIManager.instance.ShowWeaponCircle(weaponInfo.Type, false);
+            MainUIManager.instance.ShowSniperBulletCount(currentBullet);
             // ÀÚ½Ä0 -> ·»´õ·¯
             transform.GetChild(0).gameObject.SetActive(true);
         }
@@ -112,5 +113,11 @@ public class Sniper : Weapon
     {
         base.OnDisable();
         Zoom(false);
+    }
+
+    protected override void Shot()
+    {
+        base.Shot();
+        MainUIManager.instance.ShowSniperBulletCount(currentBullet);
     }
 }

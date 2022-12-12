@@ -106,6 +106,7 @@ public class MainUIManager : MonoBehaviour
     [SerializeField] private TMP_Text _moneyText;
     [SerializeField] private GameObject _shotGunCircle;
     [SerializeField] private GameObject _sniperCircle;
+    [SerializeField] private TMP_Text _sniperBulletCount;
     [SerializeField] private GameObject _interactionPanel;
     [SerializeField] private TMP_Text _RoundText;
     [SerializeField] private TMP_Text _MonsterCountText;
@@ -153,6 +154,11 @@ public class MainUIManager : MonoBehaviour
     {
         if(show != _interactionPanel.activeSelf)
             _interactionPanel.SetActive(show);
+    }
+
+    public void ShowSniperBulletCount(int count)
+    {
+        _sniperBulletCount.text = count.ToString();
     }
     #endregion
 
