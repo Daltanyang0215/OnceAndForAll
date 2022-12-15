@@ -181,6 +181,8 @@ public class MainGameManager : MonoBehaviour
             case GameFlowState.LEVEL_FAIL:
                 {
                     Debug.Log("게임 종료. 미션 실패");
+                    Player.Instance.PlayerStop();
+                    Player.Instance.enabled = false;
                     MainUIManager.instance.ShowGameEndPanel(currentRound);
                     Cursor.visible = true;
                     Cursor.lockState = CursorLockMode.None;

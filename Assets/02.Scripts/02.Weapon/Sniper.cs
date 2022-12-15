@@ -117,7 +117,18 @@ public class Sniper : Weapon
 
     protected override void Shot()
     {
-        base.Shot();
+        if (Physics.Raycast(maincamera.transform.position, maincamera.transform.forward, out _hit, 500f, targetLayer))
+        {
+            // 레이포인트에 이펙트 소환
+            GameObject go = ObjectPool.Instance.Spawn("HitEffect", _hit.point);
+            ObjectPool.Instance.Return(go, 0.3f);
+
+
+            if (_hit.collider.TryGetComponent(out IHitaction enemy))
+            {
+                enemy.OnHit(damage);
+            }
+        }
         MainUIManager.instance.ShowSniperBulletCount(currentBullet);
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WeaponBoxManager : MonoBehaviour
 {
-    [SerializeField] private List<WeaponBox> weaponBoxes = new List<WeaponBox>();
+    [SerializeField] private List<WeaponBox> weaponBoxs = new List<WeaponBox>();
 
     private void Start()
     {
@@ -13,11 +13,11 @@ public class WeaponBoxManager : MonoBehaviour
 
     public void ChildBoxAdd(WeaponBox box)
     {
-        weaponBoxes.Add(box);
+        weaponBoxs.Add(box);
     }
 
     public void BoxIntaraction(int index)
     {
-        weaponBoxes[Player.Instance.ActiveWeaponChange(index)].RendererReset();
+        weaponBoxs[Player.Instance.gameObject.GetComponent<WeaponManager>().ActiveWeaponChange(index)].RendererReset();
     }
 }

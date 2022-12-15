@@ -83,6 +83,7 @@ public class Weapon : MonoBehaviour
                 sound.clip = _fireSound;
                 sound.Play();
                 ObjectPool.Instance.Return(sound.gameObject, _fireSound.length);
+                Player.Instance._rebound = weaponInfo.Rebound;
                 return weaponInfo.Rebound;
             }
             else
@@ -131,14 +132,9 @@ public class Weapon : MonoBehaviour
         if (Physics.Raycast(maincamera.transform.position, maincamera.transform.forward, out _hit, 500f, targetLayer))
         {
             // 레이포인트에 이펙트 소환
-            GameObject go = ObjectPool.Instance.Spawn("HitEffect", _hit.point);
-            ObjectPool.Instance.Return(go, 0.3f);
-            
-
-            if (_hit.collider.TryGetComponent(out IHitaction enemy))
-            {
-                    enemy.OnHit(damage);
-            }
+            PlayerBullet bullet = ObjectPool.Instance.Spawn("PlayerBullet", _firePoint.position).GetComponent<PlayerBullet>();
+            bullet.transform.LookAt(_hit.point);
+            bullet.Setup(damage, 400f,targetLayer);
         }
     }
 
@@ -193,5 +189,4 @@ public class Weapon : MonoBehaviour
         _reLoadTimer = weaponInfo.ReloadTime;
         weaponaudio.Stop();
     }
-
 }

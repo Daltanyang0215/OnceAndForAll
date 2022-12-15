@@ -4,33 +4,31 @@ using UnityEngine;
 
 public class PlayerBullet : MonoBehaviour
 {
-    private Rigidbody _rb;
-
+    private RaycastHit _hit;
     private float _damage;
     private float _bulletSpeed;
+    private LayerMask _targetlayer;
 
-    public void Setup(float damage , float bulletSpeed)
+    public void Setup(float damage , float bulletSpeed,LayerMask targetlayer)
     {
         _damage= damage;
         _bulletSpeed= bulletSpeed;
+        _targetlayer= targetlayer;
     }
 
-    private void Awake()
+    private void Update()
     {
-        _rb = GetComponent<Rigidbody>();
-    }
-
-    private void FixedUpdate()
-    {
-        _rb.velocity = Vector3.forward * _bulletSpeed;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.TryGetComponent(out IHitaction hit))
+        transform.Translate(Vector3.forward * (_bulletSpeed * Time.deltaTime));
+        if(Physics.Raycast(transform.position, transform.forward, out _hit, _bulletSpeed * Time.deltaTime, _targetlayer))
         {
-            hit.OnHit(_damage);
+            GameObject go = ObjectPool.Instance.Spawn("HitEffect", _hit.point);
+            ObjectPool.Instance.Return(go, 0.3f);
+
+            if (_hit.collider.TryGetComponent(out IHitaction hitaction))
+            {
+                hitaction.OnHit(_damage);
+            }
+            ObjectPool.Instance.Return(gameObject);
         }
-        ObjectPool.Instance.Return(gameObject);
     }
 }

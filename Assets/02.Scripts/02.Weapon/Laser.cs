@@ -31,7 +31,7 @@ public class Laser : Weapon
     {
         currentBullet--;
         // 탄약이 없다면 레이저 종료
-        if(currentBullet <= 0)
+        if (currentBullet <= 0)
         {
             _beemLine.gameObject.SetActive(false);
             _chargeParticle.Stop();
@@ -40,7 +40,7 @@ public class Laser : Weapon
     // 애니메이션에서 call 할 함수
     public void ShotLaser()
     {
-        if(currentBullet <= 0) return;
+        if (currentBullet <= 0) return;
 
         if (Physics.Raycast(maincamera.transform.position, maincamera.transform.forward, out _hit, 200f))
         {
@@ -50,14 +50,24 @@ public class Laser : Weapon
 
             if (_hit.collider.TryGetComponent(out IHitaction enemy))
             {
-                    enemy.OnHit(damage);
+                enemy.OnHit(damage);
             }
         }
     }
 
     protected override void Shot()
     {
-        base.Shot();
+        if (Physics.Raycast(maincamera.transform.position, maincamera.transform.forward, out _hit, 500f, targetLayer))
+        {
+            // 레이포인트에 이펙트 소환
+            GameObject go = ObjectPool.Instance.Spawn("HitEffect", _hit.point);
+            ObjectPool.Instance.Return(go, 0.3f);
+
+            if (_hit.collider.TryGetComponent(out IHitaction enemy))
+            {
+                enemy.OnHit(damage);
+            }
+        }
         currentBullet -= 9;
     }
 
