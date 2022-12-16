@@ -107,6 +107,10 @@ public class MainUIManager : MonoBehaviour
     [SerializeField] private GameObject _shotGunCircle;
     [SerializeField] private GameObject _sniperCircle;
     [SerializeField] private TMP_Text _sniperBulletCount;
+    [SerializeField] private GameObject _addGunCircle;
+    [SerializeField] private TMP_Text _addGunBulletCount;
+    [SerializeField] private Image _addGunBulletImage;
+    [SerializeField] private TMP_Text _towerInteraction;
     [SerializeField] private GameObject _interactionPanel;
     [SerializeField] private TMP_Text _RoundText;
     [SerializeField] private TMP_Text _MonsterCountText;
@@ -146,6 +150,9 @@ public class MainUIManager : MonoBehaviour
             case WeaponType.Sniper:
                 _sniperCircle.SetActive(show);
                 break;
+            case WeaponType.Add:
+                _addGunCircle.SetActive(show);
+                break;
             default:
                 break;
         }
@@ -159,6 +166,46 @@ public class MainUIManager : MonoBehaviour
     public void ShowSniperBulletCount(int count)
     {
         _sniperBulletCount.text = count.ToString();
+    }
+
+    public void ShowAddBulletCount(Element element)
+    {
+        switch (element)
+        {
+            case Element.Normal:
+                _addGunBulletImage.color = new Color(0.5f,0.5f,0.5f,1f);
+                break;
+            case Element.Fire:
+                _addGunBulletImage.color = new Color(1f, 0.5f, 0.5f, 1f);
+                break;
+            case Element.Ice:
+                _addGunBulletImage.color = new Color(0.5f, 0.5f, 1f, 1f);
+                break;
+            case Element.Electricity:
+                _addGunBulletImage.color = new Color(0.9f, 0.9f, 0.5f, 1f);
+                break;
+            default:
+                break;
+        }
+        _addGunBulletCount.text = StatesEnforce.Instance.getElementCount(element).ToString();
+    }
+
+    public void ShowTowerInfoPanel(TowerBase tower =null)
+    {
+        if (tower == null)
+            _towerInteraction.gameObject.SetActive(false);
+        else
+        {
+            string upgrade = "";
+
+            for (int i = 0; i < tower.GetElementLeath(); i++)
+            {
+                upgrade += $"{tower.GetElement(i)} \t";
+            }
+
+            _towerInteraction.text = $"{tower.GetTowerInfo.name} \n"+upgrade;
+            _towerInteraction.gameObject.SetActive(true);
+        }
     }
     #endregion
 
@@ -225,6 +272,7 @@ public class MainUIManager : MonoBehaviour
     #endregion
 
     #region GameEnd
+    [Header("GameEnd")]
     [SerializeField] private GameObject _gameEndPanel;
     [SerializeField] private TMP_Text _endRound;
     [SerializeField] private TMP_Text _endPos;

@@ -11,7 +11,11 @@ public enum AddEffectList
     EnemyHealth,
     EnemyMoveSpeed,
     EnemyMoney,
-    EnemyCount
+    EnemyCount,
+    AddElementNormal,
+    AddElementFire,
+    AddElementIce,
+    AddElementEle
 }
 [CreateAssetMenu(fileName = "AddEffectBase", menuName = "AddEffect/EffectBase")]
 public class AddEffect : ScriptableObject
@@ -68,6 +72,26 @@ public class AddEffect : ScriptableObject
                 {
                     EnemySpawner.instance.SpawnPoolAdd(_enemyName, (int)_gain, 0.1f, 0.1f,_enemyBuff.ToString());
                     StatesEnforce.Instance.addMonster(_enemyName, (int)_gain, _enemyBuffInfomation.ToString());
+                }
+                break;
+            case AddEffectList.AddElementNormal:
+                {
+                    StatesEnforce.Instance.AddElement(Element.Normal, (int)_gain);
+                }
+                break;
+            case AddEffectList.AddElementFire:
+                {
+                    StatesEnforce.Instance.AddElement(Element.Fire, (int)_gain);
+                }
+                break;
+            case AddEffectList.AddElementIce:
+                {
+                    StatesEnforce.Instance.AddElement(Element.Ice, (int)_gain);
+                }
+                break;
+            case AddEffectList.AddElementEle:
+                {
+                    StatesEnforce.Instance.AddElement(Element.Electricity, (int)_gain);
                 }
                 break;
             default:

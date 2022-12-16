@@ -59,7 +59,7 @@ public class Weapon : MonoBehaviour
     }
 
     // 공격 (player script call 전용)
-    public float Attack()
+    public virtual float Attack()
     {
         if (!_isAttackCool)
         {

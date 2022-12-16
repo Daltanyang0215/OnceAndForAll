@@ -29,6 +29,7 @@ public class TowerProjectileBase : TowerTargetingBase
     public override bool OnUpgrad(Element addElement)
     {
         if (upgradLevel >= 3) return false;
+        _applyelements.Add(addElement);
         switch (upgradLevel)
         {
             case 0:
@@ -47,7 +48,6 @@ public class TowerProjectileBase : TowerTargetingBase
                 return true;
             default:
                 return false;
-
         }
     }
 }

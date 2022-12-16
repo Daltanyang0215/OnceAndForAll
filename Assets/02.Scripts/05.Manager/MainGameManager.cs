@@ -102,6 +102,11 @@ public class MainGameManager : MonoBehaviour
                     MainUIManager.instance.ShowTutorial(true);
 
                     state = GameFlowState.WAITING_START;
+
+                    StatesEnforce.Instance.AddElement(Element.Normal, 10);
+                    StatesEnforce.Instance.AddElement(Element.Fire, 10);
+                    StatesEnforce.Instance.AddElement(Element.Ice, 10);
+                    StatesEnforce.Instance.AddElement(Element.Electricity, 10);
                 }
                 break;
             case GameFlowState.WAITING_START:

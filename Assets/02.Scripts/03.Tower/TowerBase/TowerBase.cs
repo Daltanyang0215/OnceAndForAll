@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+
 public enum Element
 {
     Normal,
@@ -11,6 +13,7 @@ public abstract class TowerBase : MonoBehaviour
 {
     [Header("TowerInfo")]
     [SerializeField] protected TowerInfo towerInfo;
+    public TowerInfo GetTowerInfo => towerInfo;
 
     [Space]
     [Header("TargetLayer")]
@@ -30,6 +33,10 @@ public abstract class TowerBase : MonoBehaviour
     protected int upgradLevel = 0;
 
     private MeshRenderer[] _modelMesh;
+    protected List<Element> _applyelements = new List<Element>();
+    public Element GetElement(int level) => _applyelements[level];
+
+    public int GetElementLeath() => _applyelements.Count;
 
     public virtual void OnApply()
     {

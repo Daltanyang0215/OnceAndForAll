@@ -120,18 +120,16 @@ public class Player : MonoBehaviour
 
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out _hit, 30f))
         {
-            if (_hit.collider.TryGetComponent(out TowerBase tower))
+            if (_hit.collider.TryGetComponent(out TowerBase tower)
+                && _weaponManager.currentWeaponsIndex == 0)
             {
-                if (_isInteraction)
-                {
-                    tower.OnUpgrad(Element.Fire);
-                }
+
             }
 
             if (_hit.distance < 2 &&
                 _hit.collider.TryGetComponent(out IInteraction interaction))
             {
-                // 강화무기일때는 무기 박스에서 사옿작용 안되게
+                // 강화무기일때는 무기 박스에서 상호작용 안되게
                 if (interaction is WeaponBox && _weaponManager.currentWeaponsIndex == 0)
                 {
                     MainUIManager.instance.ShowInteractionPanel(false);

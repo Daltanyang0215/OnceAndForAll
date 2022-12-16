@@ -35,6 +35,10 @@ public class StatesEnforce
         }
     }
 
+    private int[] _elementCount = new int[4];
+    public int getElementCount(Element element) => _elementCount[(int)element];
+    public void AddElement(Element element, int count) => _elementCount[(int)element]+=count;
+
     // 무기 공격력 배율
     [SerializeField] private float _weaponDamageGain = 1;
     public float weaponDamageGain

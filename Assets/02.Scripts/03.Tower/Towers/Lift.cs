@@ -33,6 +33,7 @@ public class Lift : TowerBase , IInteraction
     public override bool OnUpgrad(Element addElement)
     {
         if (upgradLevel >= 3) return false;
+        _applyelements.Add(addElement);
         switch (upgradLevel)
         {
             case 0:
