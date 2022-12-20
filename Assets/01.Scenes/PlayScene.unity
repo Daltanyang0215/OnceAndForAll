@@ -1597,11 +1597,11 @@ MonoBehaviour:
     prefab: {fileID: 3155058319838657794, guid: 176299a76ecfc7544b22a66fae200ac7,
       type: 3}
     num: 50
-  - name: BalistaBult
-    prefab: {fileID: 272754515727314201, guid: 8b124dcd43a674c48b50223632abf797, type: 3}
+  - name: BaseBullet
+    prefab: {fileID: 272754515727314201, guid: 6e2361e736a0ee640877aaec47d28982, type: 3}
     num: 100
-  - name: CanonBoom
-    prefab: {fileID: 272754515727314201, guid: f9228d669d3ce70488901d1edb9e3600, type: 3}
+  - name: BoomBullet
+    prefab: {fileID: 272754515727314201, guid: e64289e9b0d52b14fa4fa8581e085449, type: 3}
     num: 100
   - name: BoomEffect
     prefab: {fileID: 5243384695144515588, guid: 1aed4930d00c0934c92769be715ac8b6,

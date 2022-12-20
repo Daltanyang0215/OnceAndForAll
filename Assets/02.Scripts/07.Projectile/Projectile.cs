@@ -14,6 +14,8 @@ public class Projectile : MonoBehaviour
     protected Transform target;
     protected Transform tr;
 
+    [SerializeField] private List<Material> _modelMaterials;
+    private MeshRenderer _mesh;
 
     public void SetUp(Transform target,
                       float speed,
@@ -32,6 +34,7 @@ public class Projectile : MonoBehaviour
         attackElement = element;
 
         tr.GetChild((int)element).gameObject.SetActive(true);
+        _mesh.material = _modelMaterials[(int)element];
         tr.LookAt(this.target.position + Vector3.up*0.5f);
         _isHit = false;
     }
@@ -39,6 +42,7 @@ public class Projectile : MonoBehaviour
     private void Awake()
     {
         tr = GetComponent<Transform>();
+        _mesh = transform.GetChild(4).GetComponent<MeshRenderer>();
     }
 
     private void FixedUpdate()

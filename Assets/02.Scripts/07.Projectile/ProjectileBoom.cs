@@ -22,7 +22,30 @@ public class ProjectileBoom : ProjectileBullet
             }
             if (isShowEffect)
             {
-                ObjectPool.Instance.Return(ObjectPool.Instance.Spawn(explosionEffect, tr.position), 0.5f);
+                GameObject effect = ObjectPool.Instance.Spawn(explosionEffect, tr.position);
+
+                Color boomcolor = new Color(1,1,1,1);
+                switch (attackElement)
+                {
+                    case Element.Normal:
+                        boomcolor = new Color(1, 0.275f, 0, 1);
+                        break;
+                    case Element.Fire:
+                        boomcolor = new Color(1, 0.275f, 0, 1);
+                        break;
+                    case Element.Ice:
+                        boomcolor = new Color(0, 0.76f, 1, 1);
+                        break;
+                    case Element.Electricity:
+                        boomcolor = new Color(1, 1f, 0.27f, 1);
+                        break;
+                    default:
+                        break;
+                }
+                ParticleSystem.MainModule main = effect.GetComponent<ParticleSystem>().main;
+                main.startColor = boomcolor;
+
+                ObjectPool.Instance.Return(effect, 0.5f);
             }
             ObjectPool.Instance.Return(gameObject);
         }

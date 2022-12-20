@@ -501,5 +501,6 @@ MonoBehaviour:
   _rotateY: {fileID: 1424459543527784998}
   firePoint: {fileID: 2742276549780314893}
   _targetType: 0
-  _bulletName: CanonBoom
+  _bulletName: BoomBullet
   _projectileSpeed: 50
+  _afterEffect: 

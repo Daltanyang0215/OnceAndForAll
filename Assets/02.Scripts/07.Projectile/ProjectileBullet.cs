@@ -9,6 +9,12 @@ public class ProjectileBullet : Projectile
 
     [SerializeField] private int _attackCount;
 
+    public void SetUp(Transform target, float speed, float damage, bool isGuided, LayerMask touchLayer, LayerMask targetLayer, Element element = Element.Normal, int attackCount = 1)
+    {
+        base.SetUp(target, speed, damage, isGuided, touchLayer, targetLayer, element);
+        _attackCount = attackCount;
+    }
+
     protected override void OnTriggerEnter(Collider other)
     {
         if (1 << other.gameObject.layer == targetLayer)
@@ -32,7 +38,7 @@ public class ProjectileBullet : Projectile
 
         if (isShowEffect)
         {
-            ObjectPool.Instance.Return(ObjectPool.Instance.Spawn(explosionEffect, tr.position), 0.5f);
+            ObjectPool.Instance.Return(ObjectPool.Instance.Spawn(explosionEffect, tr.position), 0.1f);
         }
     }
 }
