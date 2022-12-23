@@ -25,9 +25,11 @@ public class Barrier : EnemyBuffBase
                 if (_barrierCount > 0)
                 {
                     _barrierCount--;
-                    owner.ignoringHits = true;
-                    if(_barrierCount == 0)
-                    ObjectPool.Instance.Return(_prefab);
+                    if (_barrierCount == 0)
+                    {
+                        ObjectPool.Instance.Return(_prefab);
+                        owner.RemoveBuff(this);
+                    }
                 }
                 break;
             case BuffStatus.Disable:
@@ -35,5 +37,10 @@ public class Barrier : EnemyBuffBase
             default:
                 break;
         }
+    }
+
+    public override float HitActive(float damage)
+    {
+        return 0;
     }
 }

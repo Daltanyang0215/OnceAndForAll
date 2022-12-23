@@ -44,6 +44,7 @@ Material:
     - _CenterSize: 2.5
     - _Cull: 2
     - _DstBlend: 10
+    - _Float: 1
     - _GrideWidth: 0.3
     - _NoiseScale: 15
     - _QueueControl: 0
@@ -57,7 +58,7 @@ Material:
     - _GrideTiling: {r: 10, g: 10, b: 0, a: 0}
     - _LineColor: {r: 0, g: 0.9230965, b: 7.1540046, a: 1}
     - _LineEmission: {r: 0.393082, g: 0.9184617, b: 4.385969, a: 1}
-    - _NoiseSpeed: {r: -0.2, g: 1, b: 0, a: 0}
+    - _NoiseSpeed: {r: -0.1, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &3992438282876838377
 MonoBehaviour:

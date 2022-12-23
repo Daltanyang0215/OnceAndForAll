@@ -18,6 +18,12 @@ public class ProjectileBoom : ProjectileBullet
                 if (Hit.gameObject.TryGetComponent(out IHitaction enemy))
                 {
                     enemy.OnHit(damage);
+                    if (enemy is Enemy)
+                    {
+                        Enemy tmp = enemy as Enemy;
+                        giveDebuff.SetOwner(tmp);
+                        tmp.AddBuff(giveDebuff);
+                    }
                 }
             }
             if (isShowEffect)

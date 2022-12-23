@@ -1631,6 +1631,18 @@ MonoBehaviour:
     prefab: {fileID: 6790952046064258630, guid: bc967b22fdafc514d988099ab11d1944,
       type: 3}
     num: 20
+  - name: Chilling
+    prefab: {fileID: 7594694071563269316, guid: f97ed0a4ddbda07418f38c155a869c14,
+      type: 3}
+    num: 20
+  - name: Burning
+    prefab: {fileID: 5512755929151027495, guid: 239796379ec4a704289e7834ea5ac97c,
+      type: 3}
+    num: 20
+  - name: Sparking
+    prefab: {fileID: 5279133905256777933, guid: 9c8a0c6abe7617e4cbf66eb64f7ec14b,
+      type: 3}
+    num: 20
 --- !u!1 &184039633
 GameObject:
   m_ObjectHideFlags: 0

@@ -27,5 +27,9 @@ public abstract class EnemyBuffBase
         this.owner = owner;
     }
 
+    public void SetOwner(Enemy enemy) => owner = enemy;
+
     public abstract void BuffActive(BuffStatus status);
+
+    public virtual float HitActive(float damage) => damage;
 }

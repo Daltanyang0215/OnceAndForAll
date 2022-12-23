@@ -3,8 +3,7 @@ using UnityEngine;
 public abstract class TowerRangeBase : TowerBase
 {
     protected Collider[] cols;
-    protected string _afterEffect;
-
+    protected EnemyBuffBase giveDebuff = null;
     protected override void Update()
     {
         base.Update();
@@ -38,7 +37,22 @@ public abstract class TowerRangeBase : TowerBase
                 return true;
             case 2:
                 upgradLevel++;
-                _afterEffect = addElement.ToString();
+                switch (addElement)
+                {
+                    case Element.Normal:
+                        break;
+                    case Element.Fire:
+                        giveDebuff = new Burning(null, 3, 50);
+                        break;
+                    case Element.Ice:
+                        giveDebuff = new Chilling(null, 10, 50);
+                        break;
+                    case Element.Electricity:
+                        giveDebuff = new Sparking(null,10, 2f);
+                        break;
+                    default:
+                        break;
+                }
                 return true;
             default:
                 return false;

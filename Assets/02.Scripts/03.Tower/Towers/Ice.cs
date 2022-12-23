@@ -11,6 +11,12 @@ public class Ice : TowerRangeBase
             if(col.TryGetComponent(out IHitaction enemy))
             {
                 enemy.OnHit(damage);
+                if (enemy is Enemy)
+                {
+                    Enemy tmp = enemy as Enemy;
+                    giveDebuff.SetOwner(tmp);
+                    tmp.AddBuff(giveDebuff);
+                }
             }
         }
     }

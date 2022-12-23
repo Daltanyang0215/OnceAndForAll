@@ -9,10 +9,13 @@ public class ProjectileBullet : Projectile
 
     [SerializeField] private int _attackCount;
 
-    public void SetUp(Transform target, float speed, float damage, bool isGuided, LayerMask touchLayer, LayerMask targetLayer, Element element = Element.Normal, int attackCount = 1)
+    [SerializeField] protected EnemyBuffBase giveDebuff;
+
+    public void SetUp(Transform target, float speed, float damage, bool isGuided, LayerMask touchLayer, LayerMask targetLayer, Element element = Element.Normal, int attackCount = 1, EnemyBuffBase giveDebuff=null)
     {
         base.SetUp(target, speed, damage, isGuided, touchLayer, targetLayer, element);
         _attackCount = attackCount;
+        this.giveDebuff = giveDebuff;
     }
 
     protected override void OnTriggerEnter(Collider other)
@@ -23,6 +26,12 @@ public class ProjectileBullet : Projectile
                 && _attackCount > 0)
             {
                 enemy.OnHit(damage);
+                if(enemy is Enemy)
+                {
+                    Enemy tmp = enemy as Enemy;
+                    giveDebuff.SetOwner(tmp);
+                    tmp.AddBuff(giveDebuff);
+                }
                 _attackCount--;
             }
             //GameObject effect = ObjectPool.Instance.Spawn("Effect", tr.position, Quaternion.LookRotation(tr.position - other.transform.position));

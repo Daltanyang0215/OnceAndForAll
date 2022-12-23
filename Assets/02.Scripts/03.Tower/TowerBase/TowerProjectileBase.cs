@@ -8,9 +8,8 @@ public class TowerProjectileBase : TowerTargetingBase
     [Header("projectile")]
     [SerializeField] private string _bulletName;
     [SerializeField] private int _projectileSpeed;
-    [SerializeField] private string _afterEffect;
     private int _projectileAttackCount = 1;
-
+    private EnemyBuffBase giveDebuff = null;
     public override void OnApply()
     {
     }
@@ -25,7 +24,8 @@ public class TowerProjectileBase : TowerTargetingBase
                                                       blockLayer,
                                                       targetLayer,
                                                       attackType,
-                                                      _projectileAttackCount);
+                                                      _projectileAttackCount,
+                                                      giveDebuff);
     }
 
     public override bool OnUpgrad(Element addElement)
@@ -36,8 +36,8 @@ public class TowerProjectileBase : TowerTargetingBase
         {
             case 0:
                 attackType = addElement;
-                upgradLevel++;
                 firePoint.GetChild((int)addElement).gameObject.SetActive(true);
+                upgradLevel++;
                 return true;
             case 1:
                 switch (addElement)
@@ -60,8 +60,24 @@ public class TowerProjectileBase : TowerTargetingBase
 
                 return true;
             case 2:
+
+                switch (addElement)
+                {
+                    case Element.Normal:
+                        break;
+                    case Element.Fire:
+                        giveDebuff = new Burning(null, 3, 50);
+                        break;
+                    case Element.Ice:
+                        giveDebuff = new Chilling(null, 10, 50);
+                        break;
+                    case Element.Electricity:
+                        giveDebuff = new Sparking(null, 10f,2f);
+                        break;
+                    default:
+                        break;
+                }
                 upgradLevel++;
-                _afterEffect = addElement.ToString();
                 return true;
             default:
                 return false;

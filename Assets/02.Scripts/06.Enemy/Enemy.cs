@@ -21,7 +21,6 @@ public class Enemy : MonoBehaviour, IHitaction
     private List<EnemyBuffBase> _enemyBuffs = new List<EnemyBuffBase>();
     public bool isImmortality;
     public float decrease;
-    public bool ignoringHits;
 
     private AudioSource _audio;
 
@@ -43,7 +42,7 @@ public class Enemy : MonoBehaviour, IHitaction
             {
                 if (isImmortality)
                 {
-                    _enemyHealth = 1;
+                    _enemyHealth = .01f;
                 }
                 else
                 {
@@ -127,17 +126,34 @@ public class Enemy : MonoBehaviour, IHitaction
 
     private void OnActiveBuff(BuffStatus status)
     {
+        for (int i = _enemyBuffs.Count-1; i >= 0; i--)
+        {
+            _enemyBuffs[i].BuffActive(status); 
+        }
+    }
+    private float OnHitBuff(float damage)
+    {
         foreach (EnemyBuffBase buff in _enemyBuffs)
         {
-            buff.BuffActive(status);
+            damage = buff.HitActive(damage);
         }
+        return damage;
     }
 
     public void AddBuff(EnemyBuffBase buff)
     {
+        if (_enemyBuffs.Contains(buff)) return;
         _enemyBuffs.Add(buff);
         buff.BuffActive(BuffStatus.Enable);
     }
+    public void RemoveBuff(EnemyBuffBase buff)
+    {
+        if (_enemyBuffs.Contains(buff))
+        {
+            _enemyBuffs.Remove(buff);
+        }
+    }
+
     public bool CheckBuff(Type checkbuff)
     {
         foreach (EnemyBuffBase buff in _enemyBuffs)
@@ -152,12 +168,13 @@ public class Enemy : MonoBehaviour, IHitaction
     {
         OnActiveBuff(BuffStatus.Hit);
 
-        if (!ignoringHits)
+        damage = OnHitBuff(damage);
+
+        if (damage>0)
         {
             _animator.SetBool("DoHit", true);
             EnemyHealth -= damage - (damage * 0.01f * decrease);
         }
-        ignoringHits = false;
     }
 
     // 애니메이션 종료 시 오브젝트 풀 리턴 용
