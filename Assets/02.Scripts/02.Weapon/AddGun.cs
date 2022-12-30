@@ -21,7 +21,7 @@ public class AddGun : Weapon
         else
             _currentEle++;
 
-        MainUIManager.instance.ShowAddBulletCount(_currentEle);
+        MainUIManager.instance.SelectedOrb(_currentEle);
     }
 
     private void Update()
@@ -30,7 +30,7 @@ public class AddGun : Weapon
         {
             if (_rayhit.collider.TryGetComponent(out TowerBase tower))
             {
-                MainUIManager.instance.ShowTowerInfoPanel(tower);
+                MainUIManager.instance.SetTowerInfoPanel(tower);
                 if (Input.GetMouseButtonDown(0))
                 {
                     if (StatesEnforce.Instance.getElementCount(_currentEle) > 0)
@@ -38,7 +38,10 @@ public class AddGun : Weapon
                         if (tower.OnUpgrad(_currentEle))
                         {
                             StatesEnforce.Instance.AddElement(_currentEle, -1);
-                            MainUIManager.instance.ShowAddBulletCount(_currentEle);
+                            MainUIManager.instance.SelectedOrb(_currentEle);
+
+                            MainUIManager.instance.SetTowerInfoPanel();
+                            MainUIManager.instance.SetTowerInfoPanel(tower);
                         }
                     }
                 }
@@ -46,7 +49,7 @@ public class AddGun : Weapon
         }
         else
         {
-            MainUIManager.instance.ShowTowerInfoPanel();
+            MainUIManager.instance.SetTowerInfoPanel();
         }
     }
 
@@ -54,7 +57,6 @@ public class AddGun : Weapon
     {
         base.OnEnable();
         MainUIManager.instance.ShowWeaponCircle(WeaponType.Add, true);
-        MainUIManager.instance.ShowAddBulletCount(_currentEle);
     }
     protected override void OnDisable()
     {

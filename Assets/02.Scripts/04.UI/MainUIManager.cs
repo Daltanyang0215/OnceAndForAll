@@ -69,11 +69,11 @@ public class MainUIManager : MonoBehaviour
         set
         {
             // 입력이 바뀔때 이미지 띄우기
-            if (_isShowBuilder == false && 
+            if (_isShowBuilder == false &&
                 value)
             {
                 _isShowBuilder = value;
-                    ShowTowerBuilder(_isShowBuilder);
+                ShowTowerBuilder(_isShowBuilder);
             }
             else
             {
@@ -138,7 +138,7 @@ public class MainUIManager : MonoBehaviour
         _moneyText.text = MainGameManager.Instance.Money.ToString();
     }
 
-    public void ShowWeaponCircle(WeaponType type , bool show)
+    public void ShowWeaponCircle(WeaponType type, bool show)
     {
         switch (type)
         {
@@ -159,7 +159,7 @@ public class MainUIManager : MonoBehaviour
     }
     public void ShowInteractionPanel(bool show)
     {
-        if(show != _interactionPanel.activeSelf)
+        if (show != _interactionPanel.activeSelf)
             _interactionPanel.SetActive(show);
     }
 
@@ -173,7 +173,7 @@ public class MainUIManager : MonoBehaviour
         switch (element)
         {
             case Element.Normal:
-                _addGunBulletImage.color = new Color(0.5f,0.5f,0.5f,1f);
+                _addGunBulletImage.color = new Color(0.5f, 0.5f, 0.5f, 1f);
                 break;
             case Element.Fire:
                 _addGunBulletImage.color = new Color(1f, 0.5f, 0.5f, 1f);
@@ -190,7 +190,7 @@ public class MainUIManager : MonoBehaviour
         _addGunBulletCount.text = StatesEnforce.Instance.getElementCount(element).ToString();
     }
 
-    public void ShowTowerInfoPanel(TowerBase tower =null)
+    public void ShowTowerInfoPanel(TowerBase tower = null)
     {
         if (tower == null)
             _towerInteraction.gameObject.SetActive(false);
@@ -203,7 +203,7 @@ public class MainUIManager : MonoBehaviour
                 upgrade += $"{tower.GetElement(i)} \t";
             }
 
-            _towerInteraction.text = $"{tower.GetTowerInfo.name} \n"+upgrade;
+            _towerInteraction.text = $"{tower.GetTowerInfo.name} \n" + upgrade;
             _towerInteraction.gameObject.SetActive(true);
         }
     }
@@ -245,7 +245,7 @@ public class MainUIManager : MonoBehaviour
         _nextRound.gameObject.SetActive(show);
     }
 
-    public void SettingRewardText(int index , string infomation)
+    public void SettingRewardText(int index, string infomation)
     {
         _rewardText[index].text = infomation;
     }
@@ -263,13 +263,143 @@ public class MainUIManager : MonoBehaviour
             _positiveText.text = StatesEnforce.Instance.GetPositiveList();
             _negativeText.text = StatesEnforce.Instance.GetNegativeList();
         }
-            _rewardList.SetActive(show);
+        _rewardList.SetActive(show);
     }
     public void OnBuffInformation(bool show)
     {
         _buffInfromtionList.SetActive(show);
     }
     #endregion
+
+    #region BaseUI
+    [Header("BaseUI")]
+    [SerializeField] private TMP_Text _health;
+    [SerializeField] private TMP_Text _Round;
+    [SerializeField] private TMP_Text _enemyCount;
+    private int _maxEnemyCount;
+
+    public void ShowHealthText(int health) => _health.text = health.ToString();
+    public void ShowRoundText(int round) => _Round.text = round.ToString();
+    public void ShowEnemyCountText(int enemyCount)
+    {
+        if (enemyCount > _maxEnemyCount)
+            _maxEnemyCount = enemyCount;
+
+        _enemyCount.text = $"{enemyCount} / {_maxEnemyCount}";
+        _enemyCount.GetComponentInParent<Image>().fillAmount = (float)enemyCount / _maxEnemyCount;
+    }
+    #endregion
+
+    #region WeaponUI
+    [Header("WeaponUI")]
+    [SerializeField] private GameObject _weaponUI;
+    [SerializeField] private RectTransform _weapon1;
+    [SerializeField] private RectTransform _weapon2;
+    [SerializeField] private Image _bulletFill;
+    [SerializeField] private TMP_Text _bulletCount;
+
+
+    #endregion
+
+    #region UpgradeUI
+    [Header("UpgradeUI")]
+    [SerializeField] private GameObject _upgradeUI;
+    [SerializeField] private RectTransform _orbCircle;
+    [SerializeField] private TMP_Text _orbCount;
+    [Space]
+    [SerializeField] private GameObject _towerinfoPanel;
+    [SerializeField] private Image _towerImage;
+    [SerializeField] private Transform _currentOrb;
+    [SerializeField] private TMP_Text _towerName;
+    [SerializeField] private GameObject _towerDamageFill;
+    [SerializeField] private GameObject _towerRangeFill;
+    [SerializeField] private GameObject _towerSpeedFill;
+    [SerializeField] private TMP_Text _towerAddEffect;
+    private TowerBase _beforeData;
+    public void ShowUpgrade(bool show)
+    {
+        _upgradeUI.SetActive(show);
+    }
+    public void SelectedOrb(Element element)
+    {
+        _orbCircle.eulerAngles = Vector3.forward *( -90 * (int)element);
+        _addGunBulletCount.text = StatesEnforce.Instance.getElementCount(element).ToString();
+    }
+    public void SetTowerInfoPanel(TowerBase tower = null)
+    {
+        if (_beforeData == tower) return;
+
+        if (tower == null)
+            _towerinfoPanel.gameObject.SetActive(false);
+        else
+        {
+            _towerinfoPanel.gameObject.SetActive(true);
+            //_towerImage = tower.GetTowerInfo.ico
+            _towerName.text = tower.GetTowerInfo.name;
+
+            // 타워의 강화 설명
+            string upgrade = "";
+            for (int i = 0; i < tower.GetElementLeath(); i++)
+            {
+                upgrade += $"{tower.GetElement(i)} \t";
+            }
+            _towerAddEffect.text = upgrade;
+
+            // 오브의 이미지 출력
+            for (int i = 0; i < _currentOrb.childCount; i++)
+            {
+                if (i >= tower.GetElementLeath())
+                {
+                    _currentOrb.GetChild(i).GetChild(0).gameObject.SetActive(false);
+                }
+                else
+                {
+                    _currentOrb.GetChild(i).GetChild(0).gameObject.SetActive(true);
+                    switch (tower.GetElement(i))
+                    {
+                        case Element.Normal:
+                            _currentOrb.GetChild(i).GetChild(0).GetComponent<Image>().color = new Color(0.5f, 0.5f, 0.5f, 1f);
+                            break;
+                        case Element.Fire:
+                            _currentOrb.GetChild(i).GetChild(0).GetComponent<Image>().color = new Color(1f, 0.5f, 0.5f, 1f);
+                            break;
+                        case Element.Ice:
+                            _currentOrb.GetChild(i).GetChild(0).GetComponent<Image>().color = new Color(0.5f, 0.5f, 1f, 1f);
+                            break;
+                        case Element.Electricity:
+                            _currentOrb.GetChild(i).GetChild(0).GetComponent<Image>().color = new Color(0.9f, 0.9f, 0.5f, 1f);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+        }
+        _beforeData = tower;
+    }
+    #endregion
+
+    public void ShowUI(int inputKeyValue)
+    {
+        if (inputKeyValue == 0)
+        {
+            _weaponUI.SetActive(true);
+            ShowUpgrade(false);
+            _weapon1.localPosition = new Vector3(850, -200);
+            _weapon2.localPosition = new Vector3(950, -315);
+        }
+        else if (inputKeyValue == 1)
+        {
+            _weaponUI.SetActive(false);
+            _weapon1.localPosition = new Vector3(950, -200);
+            _weapon2.localPosition = new Vector3(850, -315);
+        }
+        else if (inputKeyValue == 2)
+        {
+            ShowUpgrade(true);
+            _weaponUI.SetActive(false);
+        }
+    }
 
     #region GameEnd
     [Header("GameEnd")]
