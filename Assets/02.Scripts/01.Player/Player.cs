@@ -42,6 +42,10 @@ public class Player : MonoBehaviour
 
     public bool isShowUI
     {
+        get
+        {
+            return _isShowUI;
+        }
         set
         {
             _isShowUI = value;
@@ -114,20 +118,13 @@ public class Player : MonoBehaviour
     // 상호작용
     private void Interaction()
     {
-        if (_isShowUI)
+        if (isShowUI)
             return;
 
 
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out _hit, 30f))
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out _hit, 2f))
         {
-            if (_hit.collider.TryGetComponent(out TowerBase tower)
-                && _weaponManager.currentWeaponsIndex == 0)
-            {
-
-            }
-
-            if (_hit.distance < 2 &&
-                _hit.collider.TryGetComponent(out IInteraction interaction))
+            if (_hit.collider.TryGetComponent(out IInteraction interaction))
             {
                 // 강화무기일때는 무기 박스에서 상호작용 안되게
                 if (interaction is WeaponBox && _weaponManager.currentWeaponsIndex == 0)
@@ -144,15 +141,12 @@ public class Player : MonoBehaviour
             else
                 MainUIManager.instance.ShowInteractionPanel(false);
         }
-        else
-            MainUIManager.instance.ShowInteractionPanel(false);
-
     }
     // 타워 파괴
     private void TowerDestroy()
     {
         if (_isTowerDestroy == false
-             || _isShowUI)
+             || isShowUI)
             return;
 
         MainUIManager.instance.ShowTowerBuilder(true, true);
@@ -165,8 +159,6 @@ public class Player : MonoBehaviour
 
         _moveVec = new Vector3(_right, 0, _forwad).normalized;
         //transform.Translate(_moveVec * moveSpeed * Time.fixedDeltaTime);
-
-
 
         // 바라보는 방향으로 무브벡터 회전
         _moveVec = Quaternion.AngleAxis(transform.rotation.eulerAngles.y, Vector3.up) * _moveVec;

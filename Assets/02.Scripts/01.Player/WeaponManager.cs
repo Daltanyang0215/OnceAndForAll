@@ -34,6 +34,7 @@ public class WeaponManager : MonoBehaviour
 
         currentWeaponsIndex = 1;
         _activeWeaponKey = 1;
+        MainUIManager.instance.ShowUI(activeWeaponKey);
     }
 
     private void Update()
@@ -60,14 +61,17 @@ public class WeaponManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             activeWeaponKey = 1;
+            MainUIManager.instance.ShowUI(activeWeaponKey);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             activeWeaponKey = 2;
+            MainUIManager.instance.ShowUI(activeWeaponKey);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             activeWeaponKey = 0;
+            MainUIManager.instance.ShowUI(activeWeaponKey);
         }
     }
 

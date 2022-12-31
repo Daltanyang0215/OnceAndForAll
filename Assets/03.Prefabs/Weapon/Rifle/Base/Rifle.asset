@@ -18,4 +18,4 @@ MonoBehaviour:
   _reloadTime: 1
   _hitCurcleError: 0
   _maxBullet: 60
-  _rebound: 0.3
+  _rebound: 0.06

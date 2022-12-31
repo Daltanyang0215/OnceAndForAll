@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour, IHitaction
     private float _enemyHealth;
     private float _enemyMaxHealth;
     private int _enemyDamage = 1;
+    private bool _enemyIsDead = false;
 
     private List<EnemyBuffBase> _enemyBuffs = new List<EnemyBuffBase>();
     public bool isImmortality;
@@ -80,6 +81,7 @@ public class Enemy : MonoBehaviour, IHitaction
         navi.enabled = true;
         transform.localScale = Vector3.one;
         EnemyHealth = _enemyInfo.EnemyHealth * StatesEnforce.Instance.enemyHealthGain;
+        _enemyIsDead = false;
         _moveSpeed = _enemyInfo.EnemySpeed * StatesEnforce.Instance.enemySpeedGain;
         MoveSpeed = _moveSpeed;
         isImmortality = false;
@@ -88,6 +90,8 @@ public class Enemy : MonoBehaviour, IHitaction
 
     private void Die()
     {
+        if (_enemyIsDead) return;
+        _enemyIsDead = true;
         MainGameManager.Instance.Money += (int)(_enemyInfo.Money * StatesEnforce.Instance.enemyMoneyGain);
         MainGameManager.Instance.currentEnemyCount--;
         MoveSpeed = 0;

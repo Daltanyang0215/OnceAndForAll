@@ -298,14 +298,24 @@ public class MainUIManager : MonoBehaviour
     [SerializeField] private Image _bulletFill;
     [SerializeField] private TMP_Text _bulletCount;
 
+    public void ShowBullet(int currentBullet, int maxBullet)
+    {
+        _bulletCount.text = $"{currentBullet} / {maxBullet}";
+        _bulletFill.fillAmount = (float)currentBullet / maxBullet;
+    }
 
     #endregion
 
     #region UpgradeUI
     [Header("UpgradeUI")]
     [SerializeField] private GameObject _upgradeUI;
+    [SerializeField] private GameObject _orbUI;
     [SerializeField] private RectTransform _orbCircle;
     [SerializeField] private TMP_Text _orbCount;
+    [Space]
+    [SerializeField] private GameObject _towerBuildUI;
+    [SerializeField] private RectTransform _towerCircle;
+    [SerializeField] private TMP_Text _towerCount;
     [Space]
     [SerializeField] private GameObject _towerinfoPanel;
     [SerializeField] private Image _towerImage;
@@ -315,15 +325,34 @@ public class MainUIManager : MonoBehaviour
     [SerializeField] private GameObject _towerRangeFill;
     [SerializeField] private GameObject _towerSpeedFill;
     [SerializeField] private TMP_Text _towerAddEffect;
+    private bool _isUpgrade;
     private TowerBase _beforeData;
-    public void ShowUpgrade(bool show)
+    public void ShowUpgrade(bool show, bool _isUpgrade)
     {
         _upgradeUI.SetActive(show);
+        if (show)
+        {
+            if (_isUpgrade)
+            {
+                _orbUI.SetActive(true);
+                _towerBuildUI.SetActive(false);
+            }
+            else
+            {
+                _orbUI.SetActive(false);
+                _towerBuildUI.SetActive(true);
+            }
+            this._isUpgrade = _isUpgrade;
+        }
     }
     public void SelectedOrb(Element element)
     {
-        _orbCircle.eulerAngles = Vector3.forward *( -90 * (int)element);
+        _orbCircle.eulerAngles = Vector3.forward * (-90 * (int)element);
         _addGunBulletCount.text = StatesEnforce.Instance.getElementCount(element).ToString();
+    }
+    public void SelectedTower(TowerType tower)
+    {
+        _towerCircle.eulerAngles = Vector3.forward * (-90 * (int)tower);
     }
     public void SetTowerInfoPanel(TowerBase tower = null)
     {
@@ -375,29 +404,34 @@ public class MainUIManager : MonoBehaviour
                 }
             }
         }
+
+        // 게이지 관련 작업 필요
+
         _beforeData = tower;
     }
     #endregion
+
 
     public void ShowUI(int inputKeyValue)
     {
         if (inputKeyValue == 0)
         {
-            _weaponUI.SetActive(true);
-            ShowUpgrade(false);
-            _weapon1.localPosition = new Vector3(850, -200);
-            _weapon2.localPosition = new Vector3(950, -315);
+            ShowUpgrade(true, _isUpgrade);
+            _weaponUI.SetActive(false);
         }
         else if (inputKeyValue == 1)
         {
-            _weaponUI.SetActive(false);
-            _weapon1.localPosition = new Vector3(950, -200);
-            _weapon2.localPosition = new Vector3(850, -315);
+            _weaponUI.SetActive(true);
+            ShowUpgrade(false, _isUpgrade);
+            _weapon1.localPosition = new Vector3(850, -200);
+            _weapon2.localPosition = new Vector3(950, -315);
         }
         else if (inputKeyValue == 2)
         {
-            ShowUpgrade(true);
-            _weaponUI.SetActive(false);
+            _weaponUI.SetActive(true);
+            ShowUpgrade(false, _isUpgrade);
+            _weapon1.localPosition = new Vector3(950, -200);
+            _weapon2.localPosition = new Vector3(850, -315);
         }
     }
 
@@ -426,7 +460,8 @@ public class MainUIManager : MonoBehaviour
     public void CheckAllUIClose()
     {
         if (_isShowBuilder
-            || _isShowBuildCircle)
+            || _isShowBuildCircle
+            || _isShowReward)
         {
             Player.Instance.isShowUI = true;
         }

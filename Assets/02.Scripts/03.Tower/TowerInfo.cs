@@ -1,17 +1,7 @@
 using UnityEngine;
-
-public enum TowerType
-{
-    Projectile,
-    Boom,
-    Range
-}
 [CreateAssetMenu(fileName = "TowerBase", menuName = "Tower/TowerBase")]
 public class TowerInfo : ScriptableObject
 {
-    [SerializeField] private TowerType _type;
-    public TowerType TowerType => _type;
-
     [SerializeField] private int _damage;
     public int Damage => _damage;
 

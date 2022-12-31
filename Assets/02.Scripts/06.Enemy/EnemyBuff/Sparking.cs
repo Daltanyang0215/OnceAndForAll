@@ -36,6 +36,7 @@ public class Sparking : EnemyBuffBase
             case BuffStatus.Hit:
                 break;
             case BuffStatus.Disable:
+                ObjectPool.Instance.Return(_prefab);
                 break;
             default:
                 break;

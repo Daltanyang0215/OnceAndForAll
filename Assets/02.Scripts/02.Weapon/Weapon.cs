@@ -179,6 +179,7 @@ public class Weapon : MonoBehaviour
             }
         }
 
+        MainUIManager.instance.ShowBullet(currentBullet, weaponInfo.MaxBullet);
     }
 
     // 재장전 실패
