@@ -2,20 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum TowerType
-{
-    Projectile,
-    Range,
-    Lift,
-    Destroy
-}
 
 public class AddGun : Weapon
 {
+    [SerializeField] private LayerMask _groundLayer;
+    [SerializeField] private LayerMask _blockLayer;
     private Element _currentEle;
-    private TowerType _seletTower;
+    private TowerType _selectTower;
     private RaycastHit _rayhit;
     private bool _isUpgrade;
+
+    private Vector3 tmpVec;
 
     public override float Attack()
     {
@@ -37,20 +34,20 @@ public class AddGun : Weapon
         }
         else // 타워 빌드 중일때는 타워를 전환
         {
-            if (_seletTower == TowerType.Destroy)
-                _seletTower = 0;
+            if (_selectTower == TowerType.Destroy)
+                _selectTower = 0;
             else
-                _seletTower++;
-            MainUIManager.instance.SelectedTower(_seletTower);
+                _selectTower++;
+            MainUIManager.instance.SelectedTower(_selectTower);
         }
 
     }
 
     private void Update()
     {
-        if (Physics.Raycast(maincamera.transform.position, maincamera.transform.forward, out _rayhit, 500f, targetLayer))
+        if (_isUpgrade)
         {
-            if (_isUpgrade)
+            if (Physics.Raycast(maincamera.transform.position, maincamera.transform.forward, out _rayhit, 500f, targetLayer))
             {
                 if (_rayhit.collider.TryGetComponent(out TowerBase tower))
                 {
@@ -73,13 +70,73 @@ public class AddGun : Weapon
             }
             else
             {
-                MainUIManager.instance.SelectedTower(_seletTower);
-                // 타워 건설 관련 기능 구현 필요
+                MainUIManager.instance.SetTowerInfoPanel();
             }
         }
         else
         {
-            MainUIManager.instance.SetTowerInfoPanel();
+            // 타워 건설 관련 기능 구현 필요
+            if (_selectTower == TowerType.Destroy)
+            {
+                if (Physics.Raycast(maincamera.transform.position, maincamera.transform.forward, out _rayhit, 500f, targetLayer))
+                {
+                    if (_rayhit.collider.TryGetComponent(out TowerBase tower))
+                    {
+                        MainUIManager.instance.SetTowerInfoPanel(tower);
+                        if (Input.GetMouseButtonDown(0))
+                        {
+                            Destroy(tower.gameObject);
+                            MainUIManager.instance.SetTowerInfoPanel();
+                        }
+                    }
+                }
+                else
+                {
+                    MainUIManager.instance.SetTowerInfoPanel();
+                }
+            }
+            else
+            {
+                MainUIManager.instance.SetTowerInfoPanel(TowerManager.instance.towerlist[(int)_selectTower].TowerPrefab.GetComponent<TowerBase>());
+                if (Physics.Raycast(maincamera.transform.position, maincamera.transform.forward, out _rayhit, 500f, _groundLayer))
+                {
+                    tmpVec = Vector3.zero;
+
+                    // 2.5f 단위로 그리드 동작
+                    tmpVec = _rayhit.point;
+                    tmpVec.x = Mathf.RoundToInt(tmpVec.x * 0.4f) * 2.5f;
+                    tmpVec.y = 0;
+                    tmpVec.z = Mathf.RoundToInt(tmpVec.z * 0.4f) * 2.5f;
+                    // 설치 위치에 표적 세울 예정
+                    if (Physics.Raycast(maincamera.transform.position, maincamera.transform.forward, 500f, _blockLayer))
+                    {
+                        // 이미 타워가 설키외어있으면 표적의 색상을 변경할 예정
+                    }
+                    else
+                    {
+                        // 타워가 설치가능한 위치를 벗어났는지 확인
+                        if (tmpVec.x > -60.1f && tmpVec.x < 60.1f &&
+                        tmpVec.z > -2.6f && tmpVec.z < 197.6f)
+                        {
+                            // 코스트 관련 기획이 결정되면 추가 예정
+                            //if (MainGameManager.Instance.Money >= _tower.BuyCost)
+                            {
+
+                                // 좌클릭시 타워 설치
+                                if (Input.GetMouseButtonUp(0))
+                                {
+                                    Instantiate(TowerManager.instance.towerlist[(int)_selectTower].TowerPrefab, tmpVec, Quaternion.identity, TowerManager.instance.gameObject.transform);
+                                    // 코스트 관련 기획이 결정되면 추가 예정
+                                    //MainGameManager.Instance.Money -= _tower.BuyCost;
+                                }
+                            }
+
+                        }
+                    }
+
+                    
+                }
+            }
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
@@ -87,16 +144,5 @@ public class AddGun : Weapon
             MainUIManager.instance.ShowUpgrade(true, _isUpgrade);
             MainUIManager.instance.SetTowerInfoPanel();
         }
-    }
-
-    protected override void OnEnable()
-    {
-        base.OnEnable();
-        MainUIManager.instance.ShowUpgrade(true,_isUpgrade);
-    }
-    protected override void OnDisable()
-    {
-        base.OnDisable();
-        MainUIManager.instance.ShowUpgrade(false, _isUpgrade);
     }
 }

@@ -88,7 +88,6 @@ public abstract class TowerBase : MonoBehaviour
     private IEnumerator E_showDissolve()
     {
         float disslove = 1;
-
         while (disslove > 0)
         {
             foreach (MeshRenderer mesh in _modelMesh)

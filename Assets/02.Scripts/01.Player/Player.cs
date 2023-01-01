@@ -138,9 +138,9 @@ public class Player : MonoBehaviour
                     interaction.Interaction();
                 }
             }
-            else
-                MainUIManager.instance.ShowInteractionPanel(false);
         }
+        else
+            MainUIManager.instance.ShowInteractionPanel(false);
     }
     // Å¸¿ö ÆÄ±«
     private void TowerDestroy()

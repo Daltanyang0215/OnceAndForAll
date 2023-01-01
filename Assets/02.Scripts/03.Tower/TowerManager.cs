@@ -2,6 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum TowerType
+{
+    Projectile,
+    Range,
+    Lift,
+    Destroy
+}
 public class TowerManager : MonoBehaviour
 {
     public static TowerManager instance;
@@ -9,6 +16,8 @@ public class TowerManager : MonoBehaviour
     {
         instance = this; 
     }
+
+    public List<TowerInfo> towerlist = new List<TowerInfo>();
 
     public void OnStatesEnforce()
     {

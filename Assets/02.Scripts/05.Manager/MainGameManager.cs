@@ -85,7 +85,6 @@ public class MainGameManager : MonoBehaviour
         }
     }
 
-
     [SerializeField] private List<AddEffect> _positiveEffectList = new List<AddEffect>();
     [SerializeField] private List<AddEffect> _negativeEffectList = new List<AddEffect>();
     private AddEffect[] _positiveEffect = new AddEffect[3];
