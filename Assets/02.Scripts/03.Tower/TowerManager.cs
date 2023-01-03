@@ -16,7 +16,7 @@ public class TowerManager : MonoBehaviour
     {
         instance = this; 
     }
-
+    public GameObject towerBuildPoint;
     public List<TowerInfo> towerlist = new List<TowerInfo>();
 
     public void OnStatesEnforce()

@@ -2,6 +2,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "TowerBase", menuName = "Tower/TowerBase")]
 public class TowerInfo : ScriptableObject
 {
+    [SerializeField] private string _towerName;
+    public string TowerName => _towerName;
+
     [SerializeField] private int _damage;
     public int Damage => _damage;
 

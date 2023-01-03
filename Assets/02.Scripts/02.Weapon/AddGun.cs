@@ -30,6 +30,7 @@ public class AddGun : Weapon
                 _currentEle = 0;
             else
                 _currentEle++;
+
             MainUIManager.instance.SelectedOrb(_currentEle);
         }
         else // 타워 빌드 중일때는 타워를 전환
@@ -38,6 +39,7 @@ public class AddGun : Weapon
                 _selectTower = 0;
             else
                 _selectTower++;
+
             MainUIManager.instance.SelectedTower(_selectTower);
         }
 
@@ -107,13 +109,16 @@ public class AddGun : Weapon
                     tmpVec.x = Mathf.RoundToInt(tmpVec.x * 0.4f) * 2.5f;
                     tmpVec.y = 0;
                     tmpVec.z = Mathf.RoundToInt(tmpVec.z * 0.4f) * 2.5f;
+
+                    TowerManager.instance.towerBuildPoint.transform.position = tmpVec;
                     // 설치 위치에 표적 세울 예정
                     if (Physics.Raycast(maincamera.transform.position, maincamera.transform.forward, 500f, _blockLayer))
                     {
-                        // 이미 타워가 설키외어있으면 표적의 색상을 변경할 예정
+                        TowerManager.instance.towerBuildPoint.GetComponent<MeshRenderer>().material.color = new Color(1f, 0.5f, 0.5f, 0.25f);
                     }
                     else
                     {
+                        TowerManager.instance.towerBuildPoint.GetComponent<MeshRenderer>().material.color = new Color(0.5f, 1f, 0.5f, 0.25f);
                         // 타워가 설치가능한 위치를 벗어났는지 확인
                         if (tmpVec.x > -60.1f && tmpVec.x < 60.1f &&
                         tmpVec.z > -2.6f && tmpVec.z < 197.6f)
@@ -134,15 +139,28 @@ public class AddGun : Weapon
                         }
                     }
 
-                    
+
                 }
             }
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
+            TowerManager.instance.towerBuildPoint.SetActive(_isUpgrade);
+
             _isUpgrade = !_isUpgrade;
             MainUIManager.instance.ShowUpgrade(true, _isUpgrade);
             MainUIManager.instance.SetTowerInfoPanel();
         }
+    }
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        TowerManager.instance.towerBuildPoint.SetActive(!_isUpgrade);
+    }
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+        TowerManager.instance.towerBuildPoint.SetActive(false);
     }
 }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 779b2d49608312646a416bb3b25a9489, type: 3}
   m_Name: Ballista
   m_EditorClassIdentifier: 
-  _type: 0
+  _towerName: "\uCD08\uAE30\uD615 \uB9C8\uC11D \uD3EC\uD0D1"
   _damage: 2
   _AttackCool: 1
   _AttackRange: 45

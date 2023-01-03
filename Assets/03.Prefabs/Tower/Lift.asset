@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 779b2d49608312646a416bb3b25a9489, type: 3}
   m_Name: Lift
   m_EditorClassIdentifier: 
-  _type: 0
+  _towerName: "\uB9DD\uB8E8"
   _damage: 100
   _AttackCool: -1
   _AttackRange: 0

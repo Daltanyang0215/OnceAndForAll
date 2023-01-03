@@ -203,7 +203,7 @@ public class MainUIManager : MonoBehaviour
                 upgrade += $"{tower.GetElement(i)} \t";
             }
 
-            _towerInteraction.text = $"{tower.GetTowerInfo.name} \n" + upgrade;
+            _towerInteraction.text = $"{tower.GetTowerInfo.TowerName} \n" + upgrade;
             _towerInteraction.gameObject.SetActive(true);
         }
     }
@@ -312,11 +312,11 @@ public class MainUIManager : MonoBehaviour
     [SerializeField] private GameObject _orbUI;
     [SerializeField] private RectTransform _orbCircle;
     [SerializeField] private TMP_Text _orbCount;
-    [Space]
+    [Header("-TowerBuildUI")]
     [SerializeField] private GameObject _towerBuildUI;
     [SerializeField] private RectTransform _towerCircle;
     [SerializeField] private TMP_Text _towerCount;
-    [Space]
+    [Header("-OrbUI")]
     [SerializeField] private GameObject _towerinfoPanel;
     [SerializeField] private Image _towerImage;
     [SerializeField] private Transform _currentOrb;
@@ -364,7 +364,7 @@ public class MainUIManager : MonoBehaviour
         {
             _towerinfoPanel.gameObject.SetActive(true);
             //_towerImage = tower.GetTowerInfo.ico
-            _towerName.text = tower.GetTowerInfo.name;
+            _towerName.text = tower.GetTowerInfo.TowerName;
 
             // 타워의 강화 설명
             string upgrade = "";

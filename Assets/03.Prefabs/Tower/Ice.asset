@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 779b2d49608312646a416bb3b25a9489, type: 3}
   m_Name: Ice
   m_EditorClassIdentifier: 
-  _type: 2
+  _towerName: "\uCD08\uAE30\uD615 \uB9C8\uC11D \uACF5\uBA85\uAE30"
   _damage: 1
   _AttackCool: 1
   _AttackRange: 30
