@@ -57,6 +57,7 @@ public class Laser : Weapon
 
     protected override void Shot()
     {
+        fireParticale.Play();
         if (Physics.Raycast(maincamera.transform.position, maincamera.transform.forward, out _hit, 500f, targetLayer))
         {
             // 레이포인트에 이펙트 소환

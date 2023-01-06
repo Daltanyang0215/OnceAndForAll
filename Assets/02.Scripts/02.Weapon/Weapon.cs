@@ -1,12 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 public class Weapon : MonoBehaviour
 {
     [SerializeField] protected WeaponInfo weaponInfo;
     [SerializeField] private Transform _firePoint;
-    [SerializeField] private TMP_Text _bulletCountText;
     [SerializeField] protected ParticleSystem fireParticale;
     [SerializeField] protected LayerMask targetLayer;
     [SerializeField] protected AudioClip _fireSound;
@@ -23,7 +21,7 @@ public class Weapon : MonoBehaviour
         set
         {
             _currentBullet = value < 0 ? 0 : value;
-            _bulletCountText.text = _currentBullet.ToString();
+            MainUIManager.instance.ShowBullet(currentBullet, weaponInfo.MaxBullet);
         }
     }
 
@@ -78,11 +76,12 @@ public class Weapon : MonoBehaviour
                 _attackCoolTimer = weaponInfo.AttackCool;
                 Shot();
                 animator.SetTrigger("Shot");
-                fireParticale.Play();
+                // sound
                 AudioSource sound = ObjectPool.Instance.Spawn("Sound", transform.position).GetComponent<AudioSource>();
                 sound.clip = _fireSound;
                 sound.Play();
                 ObjectPool.Instance.Return(sound.gameObject, _fireSound.length);
+
                 Player.Instance._rebound = weaponInfo.Rebound;
                 return weaponInfo.Rebound;
             }
@@ -129,13 +128,22 @@ public class Weapon : MonoBehaviour
     // 실제 공격 로직. 상속으로 오버로드 할 수 있게 설계
     protected virtual void Shot()
     {
-        if (Physics.Raycast(maincamera.transform.position, maincamera.transform.forward, out _hit, 500f, targetLayer))
+        fireParticale.Play();
+        Vector3 point = Vector3.zero;
+        if (Physics.Raycast(maincamera.transform.position, maincamera.transform.forward, out _hit, 500f, targetLayer)
+            && _hit.distance < 0.5f)
         {
-            // 레이포인트에 이펙트 소환
-            PlayerBullet bullet = ObjectPool.Instance.Spawn("PlayerBullet", _firePoint.position).GetComponent<PlayerBullet>();
-            bullet.transform.LookAt(_hit.point);
-            bullet.Setup(damage, 400f,targetLayer);
+            point = _hit.point;
         }
+        else
+        {
+            point = maincamera.transform.position + maincamera.transform.forward.normalized * 500f;
+        }
+
+        // 레이포인트에 이펙트 소환
+        PlayerBullet bullet = ObjectPool.Instance.Spawn("PlayerBullet", _firePoint.position).GetComponent<PlayerBullet>();
+        bullet.transform.LookAt(point);
+        bullet.Setup(damage, 400f, targetLayer);
     }
 
     protected virtual void OnEnable()
@@ -178,8 +186,6 @@ public class Weapon : MonoBehaviour
                 _reLoadTimer -= Time.deltaTime;
             }
         }
-
-        MainUIManager.instance.ShowBullet(currentBullet, weaponInfo.MaxBullet);
     }
 
     // 재장전 실패
@@ -190,4 +196,6 @@ public class Weapon : MonoBehaviour
         _reLoadTimer = weaponInfo.ReloadTime;
         weaponaudio.Stop();
     }
+
+    public Sprite GetWeaponIcon => weaponInfo.Icon;
 }

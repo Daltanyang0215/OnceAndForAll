@@ -980,7 +980,6 @@ GameObject:
   - component: {fileID: 4043170440712838992}
   - component: {fileID: 3476460146467589995}
   - component: {fileID: 5986947230393486116}
-  - component: {fileID: 7643865124333393770}
   m_Layer: 28
   m_Name: Marker
   m_TagString: Untagged
@@ -1053,17 +1052,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7643865124333393770
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3112222611235394426}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}

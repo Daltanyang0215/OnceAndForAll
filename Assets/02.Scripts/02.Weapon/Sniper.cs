@@ -96,7 +96,6 @@ public class Sniper : Weapon
             animator.SetBool("Zoom", false);
             maincamera.fieldOfView = _originFOV;
             MainUIManager.instance.ShowWeaponCircle(weaponInfo.Type, false);
-            MainUIManager.instance.ShowSniperBulletCount(currentBullet);
             // 자식0 -> 렌더러
             transform.GetChild(0).gameObject.SetActive(true);
         }
@@ -117,18 +116,27 @@ public class Sniper : Weapon
 
     protected override void Shot()
     {
+        if (_isZoom)
+        {
+            GameObject line = ObjectPool.Instance.Spawn("SniperLine", maincamera.transform.position-Vector3.up*0.1f,maincamera.transform.rotation);
+            //line.transform.forward = maincamera.transform.forward;
+            ObjectPool.Instance.Return(line, 1);
+        }
+        else
+        {
+            fireParticale.Play();
+        }
+
         if (Physics.Raycast(maincamera.transform.position, maincamera.transform.forward, out _hit, 500f, targetLayer))
         {
             // 레이포인트에 이펙트 소환
             GameObject go = ObjectPool.Instance.Spawn("HitEffect", _hit.point);
             ObjectPool.Instance.Return(go, 0.3f);
 
-
             if (_hit.collider.TryGetComponent(out IHitaction enemy))
             {
                 enemy.OnHit(damage);
             }
         }
-        MainUIManager.instance.ShowSniperBulletCount(currentBullet);
     }
 }

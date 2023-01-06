@@ -20,6 +20,7 @@ public class Chilling : EnemyBuffBase
         switch (status)
         {
             case BuffStatus.Enable:
+                if (owner.IsDead) return;
                 _prefab = ObjectPool.Instance.Spawn("Chilling", owner.transform.position, owner.transform);
 
                 ParticleSystem[] tmp = _prefab.GetComponentsInChildren<ParticleSystem>();
@@ -38,7 +39,7 @@ public class Chilling : EnemyBuffBase
                 break;
             case BuffStatus.Update:
                 timer -= Time.deltaTime;
-                if (timer <= 0)
+                if (timer <= 0 || owner.IsDead)
                 {
                     owner.MoveSpeed = originSpeed;
                     owner.RemoveBuff(this);
@@ -48,7 +49,6 @@ public class Chilling : EnemyBuffBase
             case BuffStatus.Hit:
                 break;
             case BuffStatus.Disable:
-                ObjectPool.Instance.Return(_prefab);
                 break;
             default:
                 break;

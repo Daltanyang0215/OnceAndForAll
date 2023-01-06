@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour, IHitaction
     private float _enemyMaxHealth;
     private int _enemyDamage = 1;
     private bool _enemyIsDead = false;
+    public bool IsDead => _enemyIsDead;
 
     private List<EnemyBuffBase> _enemyBuffs = new List<EnemyBuffBase>();
     public bool isImmortality;
@@ -102,7 +103,6 @@ public class Enemy : MonoBehaviour, IHitaction
     }
     private void Update()
     {
-        if(EnemyHealth >0)
         OnActiveBuff(BuffStatus.Update);
     }
 
@@ -124,6 +124,7 @@ public class Enemy : MonoBehaviour, IHitaction
         if (transform.position.z < -3f)
         {
             MainGameManager.Instance.Health -= _enemyDamage;
+            MainGameManager.Instance.currentEnemyCount--;
             PoolReturn();
         }
     }

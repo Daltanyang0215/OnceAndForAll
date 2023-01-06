@@ -85,11 +85,15 @@ public class WeaponManager : MonoBehaviour
         }
     }
 
+
     public int ActiveWeaponChange(int newIndex)
     {
-        int result = _hotkeys[_activeWeaponKey];
-        _hotkeys[_activeWeaponKey] = newIndex;
-        WeaponChange(_hotkeys[_activeWeaponKey]);
+        int result = _hotkeys[activeWeaponKey];
+        _hotkeys[activeWeaponKey] = newIndex;
+
+        MainUIManager.instance.ShowWeaponIcon(activeWeaponKey-1, weapons[newIndex].GetWeaponIcon);
+
+        WeaponChange(_hotkeys[activeWeaponKey]);
         return result;
     }
 

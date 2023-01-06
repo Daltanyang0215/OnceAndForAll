@@ -26,7 +26,7 @@ public class ProjectileBullet : Projectile
                 && _attackCount > 0)
             {
                 enemy.OnHit(damage);
-                if(enemy is Enemy)
+                if( giveDebuff !=null && enemy is Enemy)
                 {
                     Enemy tmp = enemy as Enemy;
                     giveDebuff.SetOwner(tmp);

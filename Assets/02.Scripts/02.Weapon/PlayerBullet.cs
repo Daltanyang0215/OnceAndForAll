@@ -8,17 +8,20 @@ public class PlayerBullet : MonoBehaviour
     private float _damage;
     private float _bulletSpeed;
     private LayerMask _targetlayer;
+    private float timer = 5;
 
     public void Setup(float damage , float bulletSpeed,LayerMask targetlayer)
     {
         _damage= damage;
         _bulletSpeed= bulletSpeed;
         _targetlayer= targetlayer;
+        timer = 5;
     }
 
     private void Update()
     {
         transform.Translate(Vector3.forward * (_bulletSpeed * Time.deltaTime));
+
         if(Physics.Raycast(transform.position, transform.forward, out _hit, _bulletSpeed * Time.deltaTime, _targetlayer))
         {
             GameObject go = ObjectPool.Instance.Spawn("HitEffect", _hit.point);
@@ -30,5 +33,9 @@ public class PlayerBullet : MonoBehaviour
             }
             ObjectPool.Instance.Return(gameObject);
         }
+
+        timer -= Time.deltaTime;
+        if(timer<0)
+            ObjectPool.Instance.Return(gameObject);
     }
 }

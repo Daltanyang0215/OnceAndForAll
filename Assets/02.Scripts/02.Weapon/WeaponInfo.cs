@@ -14,6 +14,9 @@ public class WeaponInfo : ScriptableObject
     [SerializeField] private WeaponType _type;
     public WeaponType Type => _type;
 
+    [SerializeField] private Sprite _icon;
+    public Sprite Icon => _icon;
+
     [SerializeField] private int _damage;
     public int Damage => _damage;
 

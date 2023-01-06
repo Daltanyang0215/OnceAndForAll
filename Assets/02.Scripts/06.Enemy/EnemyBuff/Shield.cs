@@ -25,7 +25,7 @@ public class Shield : EnemyBuffBase
                 
                 break;
             case BuffStatus.Disable:
-
+                ObjectPool.Instance.Return(_prefab);
                 break;
             default:
                 break;

@@ -106,7 +106,6 @@ public class MainUIManager : MonoBehaviour
     [SerializeField] private TMP_Text _moneyText;
     [SerializeField] private GameObject _shotGunCircle;
     [SerializeField] private GameObject _sniperCircle;
-    [SerializeField] private TMP_Text _sniperBulletCount;
     [SerializeField] private GameObject _addGunCircle;
     [SerializeField] private TMP_Text _addGunBulletCount;
     [SerializeField] private Image _addGunBulletImage;
@@ -130,6 +129,7 @@ public class MainUIManager : MonoBehaviour
     public void SetMonsterCountText(int count)
     {
         _MonsterCountText.text = count.ToString();
+
     }
 
     public void OnPlayDataUIInit()
@@ -163,10 +163,6 @@ public class MainUIManager : MonoBehaviour
             _interactionPanel.SetActive(show);
     }
 
-    public void ShowSniperBulletCount(int count)
-    {
-        _sniperBulletCount.text = count.ToString();
-    }
 
     public void ShowAddBulletCount(Element element)
     {
@@ -293,8 +289,7 @@ public class MainUIManager : MonoBehaviour
     #region WeaponUI
     [Header("WeaponUI")]
     [SerializeField] private GameObject _weaponUI;
-    [SerializeField] private RectTransform _weapon1;
-    [SerializeField] private RectTransform _weapon2;
+    [SerializeField] private RectTransform[] _weapons;
     [SerializeField] private Image _bulletFill;
     [SerializeField] private TMP_Text _bulletCount;
 
@@ -302,6 +297,11 @@ public class MainUIManager : MonoBehaviour
     {
         _bulletCount.text = $"{currentBullet} / {maxBullet}";
         _bulletFill.fillAmount = (float)currentBullet / maxBullet;
+    }
+
+    public void ShowWeaponIcon(int index , Sprite icon)
+    {
+        _weapons[index].GetChild(0).GetComponent<Image>().sprite = icon;
     }
 
     #endregion
@@ -423,15 +423,15 @@ public class MainUIManager : MonoBehaviour
         {
             _weaponUI.SetActive(true);
             ShowUpgrade(false, _isUpgrade);
-            _weapon1.localPosition = new Vector3(850, -200);
-            _weapon2.localPosition = new Vector3(950, -315);
+            _weapons[0].localPosition = new Vector3(850, -200);
+            _weapons[1].localPosition = new Vector3(950, -315);
         }
         else if (inputKeyValue == 2)
         {
             _weaponUI.SetActive(true);
             ShowUpgrade(false, _isUpgrade);
-            _weapon1.localPosition = new Vector3(950, -200);
-            _weapon2.localPosition = new Vector3(850, -315);
+            _weapons[0].localPosition = new Vector3(950, -200);
+            _weapons[1].localPosition = new Vector3(850, -315);
         }
     }
 
@@ -455,19 +455,36 @@ public class MainUIManager : MonoBehaviour
 
 
     #endregion
+
+    #region Setting
+    [Header("SettingUI")]
+    [SerializeField] private GameObject _settingPanel;
+
+    public void ShowSettingUI()
+    {
+        _settingPanel.SetActive(!_settingPanel.activeSelf);
+        CheckAllUIClose();
+    }
+
+    #endregion
     // 플레이어가 ui 가 열려있는 상태인지 상태 확인용 함수
     // ui 가 추가 됨에 따라 길어질 예정. 혹은 더 좋은 구조가 떠오르면 수정 예정
     public void CheckAllUIClose()
     {
         if (_isShowBuilder
             || _isShowBuildCircle
-            || _isShowReward)
+            || _isShowReward
+            || _settingPanel.activeSelf)
         {
             Player.Instance.isShowUI = true;
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
         else
         {
             Player.Instance.isShowUI = false;
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
         }
     }
 }

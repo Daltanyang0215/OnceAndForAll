@@ -30,8 +30,6 @@ public class Player : MonoBehaviour
 
     [Space]
     [Header("UI")]
-    private bool _isShowBuilder;
-    private bool _isTowerDestroy;
     private bool _isShowUI;
     private bool _isInteraction;
 
@@ -68,9 +66,7 @@ public class Player : MonoBehaviour
         GetInput();
         CameraRotate();
         Interaction();
-        TowerDestroy();
-        UIUpdata();
-
+        
         // 이동이 없을때는 소리 안나게
         _playerAudio.mute = _moveVec.magnitude == 0;
     }
@@ -90,15 +86,12 @@ public class Player : MonoBehaviour
 
         _rotateY = Input.GetAxis("Mouse X");
         _rotateX = Input.GetAxis("Mouse Y");
-
-        _isShowBuilder = Input.GetButton("BuildTower");
-        _isTowerDestroy = Input.GetKeyDown(KeyCode.X);
     }
 
     // 카메라 회전
     private void CameraRotate()
     {
-        if (_isShowBuilder) return;
+        if (isShowUI) return;
 
         float tmp_x = _cameraAnchor.eulerAngles.x - _rotateX * _rotateXSpeed - _rebound;
         float tmp_y = transform.eulerAngles.y + _rotateY * _rotateYSpeed;
@@ -142,15 +135,7 @@ public class Player : MonoBehaviour
         else
             MainUIManager.instance.ShowInteractionPanel(false);
     }
-    // 타워 파괴
-    private void TowerDestroy()
-    {
-        if (_isTowerDestroy == false
-             || isShowUI)
-            return;
 
-        MainUIManager.instance.ShowTowerBuilder(true, true);
-    }
 
     // 방향키 이동
     private void Move()
@@ -165,11 +150,6 @@ public class Player : MonoBehaviour
         _rb.velocity = _moveVec * moveSpeed * MoveSpeedGain;
     }
 
-    // UI 관련 함수 모음
-    private void UIUpdata()
-    {
-        MainUIManager.instance.isShowBuildCircle = _isShowBuilder;
-    }
 
     public void PlayerStop()
     {

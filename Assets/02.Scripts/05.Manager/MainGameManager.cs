@@ -55,7 +55,7 @@ public class MainGameManager : MonoBehaviour
         set
         {
             _currentEnemyCount = value;
-            MainUIManager.instance.SetMonsterCountText(_currentEnemyCount);
+            MainUIManager.instance.ShowEnemyCountText(_currentEnemyCount);
         }
     }
 
@@ -201,6 +201,11 @@ public class MainGameManager : MonoBehaviour
             default:
                 break;
         }
+
+
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+            MainUIManager.instance.ShowSettingUI();
     }
 
     // 라운드가 종료되었는지 확인

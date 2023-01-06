@@ -14,6 +14,7 @@ public class ShotGun : Weapon
 
     protected override void Shot()
     {
+        fireParticale.Play();
         Collider[] hits = Physics.OverlapSphere(Player.Instance.transform.position, _shotGunInfo.ShotRange);
         foreach (var hit in hits)
         {

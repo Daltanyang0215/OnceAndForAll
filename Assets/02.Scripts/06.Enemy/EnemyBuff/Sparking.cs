@@ -27,7 +27,7 @@ public class Sparking : EnemyBuffBase
                 break;
             case BuffStatus.Update:
                 timer -= Time.deltaTime;
-                if (timer <= 0)
+                if (timer <= 0 || owner.IsDead)
                 {
                     owner.RemoveBuff(this);
                     ObjectPool.Instance.Return(_prefab);
