@@ -37,6 +37,7 @@ public class MainGameManager : MonoBehaviour
 
     private GameFlowState state;
 
+    [SerializeField] private int _endRound;
     [SerializeField] private int _currentRound;
     public int currentRound
     {
@@ -102,6 +103,7 @@ public class MainGameManager : MonoBehaviour
 
                     state = GameFlowState.WAITING_START;
 
+                    // 테스트
                     StatesEnforce.Instance.AddElement(Element.Normal, 10);
                     StatesEnforce.Instance.AddElement(Element.Fire, 10);
                     StatesEnforce.Instance.AddElement(Element.Ice, 10);
@@ -131,7 +133,7 @@ public class MainGameManager : MonoBehaviour
                 {
                     currentRound++;
 
-                    EnemySpawner.instance.SpawnPoolAdd("기본몬스터", 5, 0.2f, 0.5f);
+                    EnemySpawner.instance.SpawnPoolAdd("기본몬스터", 5, 0.1f, 0.1f);
                     // 강화 적용
                     Player.Instance.EnforceApply();
                     TowerManager.instance.OnStatesEnforce();
@@ -140,7 +142,14 @@ public class MainGameManager : MonoBehaviour
                 break;
             case GameFlowState.ENEMYSPAWN:
                 {
+                    if(currentRound >= _endRound) // 보스 전
+                    {
+                        EnemySpawner.instance.SpawnBoss();
+                    }
+                    else // 그외
+                    {
                     EnemySpawner.instance.SpawnStart();
+                    }
                     state = GameFlowState.WAITING_ENDROUND;
                 }
                 break;
@@ -180,6 +189,12 @@ public class MainGameManager : MonoBehaviour
             case GameFlowState.LEVEL_SUCCESS:
                 {
                     Debug.Log("게임 종료. 미션 성공");
+                    Player.Instance.PlayerStop();
+                    Player.Instance.enabled = false;
+                    MainUIManager.instance.ShowGameEndPanel(currentRound);
+                    Cursor.visible = true;
+                    Cursor.lockState = CursorLockMode.None;
+                    state = GameFlowState.WAITING_USER;
                 }
                 break;
             case GameFlowState.LEVEL_FAIL:
@@ -271,6 +286,11 @@ public class MainGameManager : MonoBehaviour
     private void LevelFail()
     {
         state = GameFlowState.LEVEL_FAIL;
+    }
+
+    public void LevelSuccess()
+    {
+        state = GameFlowState.LEVEL_SUCCESS;
     }
 
     public void GameReStart()

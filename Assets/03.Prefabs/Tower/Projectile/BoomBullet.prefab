@@ -58,7 +58,7 @@ MonoBehaviour:
   explosionEffect: BoomEffect
   isShowEffect: 1
   _attackCount: 1
-  _BoomRange: 5
+  _BoomRange: 15
 --- !u!135 &8892644186095498057
 SphereCollider:
   m_ObjectHideFlags: 0

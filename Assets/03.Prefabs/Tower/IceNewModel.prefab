@@ -900,7 +900,7 @@ MonoBehaviour:
   towerInfo: {fileID: 11400000, guid: fb18b20d9fea12c46970d84f878c0e5c, type: 2}
   targetLayer:
     serializedVersion: 2
-    m_Bits: 1048576
+    m_Bits: 3145728
   blockLayer:
     serializedVersion: 2
     m_Bits: 0

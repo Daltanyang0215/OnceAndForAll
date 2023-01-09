@@ -2373,6 +2373,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 834495b6557df884f909ed1f4c811933, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _endRound: 0
   _currentRound: 0
   _currentEnemyCount: 0
   _health: 10
@@ -2446,11 +2447,11 @@ MonoBehaviour:
   - name: HitEffect
     prefab: {fileID: 7915719370959275029, guid: da7e86767137bc0448453bd4b283118d,
       type: 3}
-    num: 200
+    num: 100
   - name: PlayerBullet
     prefab: {fileID: 8509475067699384722, guid: cc2aa40d7c1ad76458b96c23c1e72fe0,
       type: 3}
-    num: 200
+    num: 100
   - name: SniperLine
     prefab: {fileID: 7297206537140644763, guid: ceb5f2badc6104c4890fafefdb3c18cc,
       type: 3}
@@ -2518,6 +2519,10 @@ MonoBehaviour:
     prefab: {fileID: 2677035564008548614, guid: a38bd369bc74cb843be8a2ddbf83c2ad,
       type: 3}
     num: 5
+  - name: Boss
+    prefab: {fileID: 5041814042827739257, guid: f360c17101257af49b2a60611330ed4f,
+      type: 3}
+    num: 1
 --- !u!1 &184039633
 GameObject:
   m_ObjectHideFlags: 0
@@ -19652,7 +19657,7 @@ Camera:
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 39307263
+    m_Bits: 41404415
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -26448,6 +26453,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8890055167966401804, guid: 7223f10592c200a469e66584fb2cf25b,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8890055167966401804, guid: 7223f10592c200a469e66584fb2cf25b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: b433708adda13f94da56745318ebcf97, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7223f10592c200a469e66584fb2cf25b, type: 3}
 --- !u!1 &2694266053503944196

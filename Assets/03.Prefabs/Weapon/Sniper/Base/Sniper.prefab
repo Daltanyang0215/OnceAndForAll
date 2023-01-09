@@ -53,7 +53,7 @@ MonoBehaviour:
   fireParticale: {fileID: 3906526617932243397}
   targetLayer:
     serializedVersion: 2
-    m_Bits: 1212992
+    m_Bits: 3310144
   _fireSound: {fileID: 8300000, guid: 676b1d62f9316ed439534ca5732c23b8, type: 3}
   _reloadSound: {fileID: 8300000, guid: 2356eb4e4adc7954e890aa67215215b9, type: 3}
 --- !u!95 &4361034037237608673

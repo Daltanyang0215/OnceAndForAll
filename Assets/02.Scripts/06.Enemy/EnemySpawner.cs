@@ -55,6 +55,11 @@ public class EnemySpawner : MonoBehaviour
 
     public void SpawnPoolAdd(string EnemyName, int SpawnCount, float spwanDelay, float startDelay, string buff = "") => _spawners.Add(new SpawnElement(EnemyName, SpawnCount, spwanDelay, startDelay, buff));
 
+    public void SpawnBoss()
+    {
+        ObjectPool.Instance.Spawn("Boss", new Vector3(0, 0, 285), transform);
+    }
+    
     public void SpawnStart()
     {
         _poolIndex = 0;

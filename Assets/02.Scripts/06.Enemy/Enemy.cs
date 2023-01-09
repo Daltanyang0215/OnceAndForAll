@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour, IHitaction
 {
-    [SerializeField] private EnemyInfo _enemyInfo;
+    [SerializeField] protected EnemyInfo _enemyInfo;
     private Animator _animator;
 
     public Transform target;
@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour, IHitaction
     public Rigidbody rb;
     private Vector3 _targetpos;
 
-    private float _enemyHealth;
+    protected float _enemyHealth;
     private float _enemyMaxHealth;
     private int _enemyDamage = 1;
     private bool _enemyIsDead = false;
@@ -26,7 +26,7 @@ public class Enemy : MonoBehaviour, IHitaction
 
     private AudioSource _audio;
 
-    public float EnemyHealth
+    public virtual float EnemyHealth
     {
         get
         {
@@ -54,7 +54,7 @@ public class Enemy : MonoBehaviour, IHitaction
         }
     }
 
-    private float _moveSpeed;
+    protected float _moveSpeed;
     public float MoveSpeed
     {
         get
@@ -75,7 +75,7 @@ public class Enemy : MonoBehaviour, IHitaction
         _audio = GetComponent<AudioSource>();
     }
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         // 몬스터 소환시 강화 적용
         GetComponent<SphereCollider>().enabled = true;
@@ -89,7 +89,7 @@ public class Enemy : MonoBehaviour, IHitaction
         decrease = 0;
     }
 
-    private void Die()
+    protected virtual void Die()
     {
         if (_enemyIsDead) return;
         _enemyIsDead = true;
@@ -106,7 +106,7 @@ public class Enemy : MonoBehaviour, IHitaction
         OnActiveBuff(BuffStatus.Update);
     }
 
-    private void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         if (navi.enabled)
         {
@@ -187,13 +187,5 @@ public class Enemy : MonoBehaviour, IHitaction
     {
         ObjectPool.Instance.Return(this.gameObject);
         MainGameManager.Instance.RoundEndCheck();
-    }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Tower"))
-        {
-            navi.enabled = true;
-            rb.isKinematic = true;
-        }
     }
 }

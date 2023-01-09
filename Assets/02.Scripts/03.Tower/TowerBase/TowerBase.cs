@@ -99,4 +99,12 @@ public abstract class TowerBase : MonoBehaviour
             yield return null;
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.layer == LayerMask.NameToLayer("Boss"))
+        {
+            Destroy(gameObject);
+        }
+    }
 }
