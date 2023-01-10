@@ -68,14 +68,19 @@ public abstract class TowerTargetingBase : TowerBase
                     default:
                         break;
                 }
+                if(target.gameObject.layer == LayerMask.NameToLayer("Boss"))
+                {
+                    target = target.gameObject.GetComponentInParent<Boss>().transform.GetChild(1);
+                }
             }
         }
         // 타겟이 있다면 공격 관련 동작
         else
         {
-            // 타겟이 비활성화 상태이나, 공격거리를 벗어나면 타겟에서 해제
-            if (target.gameObject.GetComponentInParent<Enemy>().IsDead||
-                Vector3.Distance(target.position, transform.position) > attackRange)
+            // 타겟이 보스가 아닐때 비활성화 상태이나, 공격거리를 벗어나면 타겟에서 해제
+            if (target.gameObject.layer != LayerMask.NameToLayer("Boss") &&
+                (target.gameObject.GetComponentInParent<Enemy>().IsDead||
+                Vector3.Distance(target.position, transform.position) > attackRange))
             {
                 target = null;
             }

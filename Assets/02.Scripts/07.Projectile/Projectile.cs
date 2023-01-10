@@ -13,6 +13,7 @@ public class Projectile : MonoBehaviour
     protected LayerMask targetLayer;
     protected Transform target;
     protected Transform tr;
+    protected float timer = 5;
 
     [SerializeField] private List<Material> _modelMaterials;
     private MeshRenderer _mesh;
@@ -37,6 +38,7 @@ public class Projectile : MonoBehaviour
         _mesh.material = _modelMaterials[(int)element];
         tr.LookAt(this.target.position + Vector3.up*0.5f);
         _isHit = false;
+        timer = 5;
     }
 
     private void Awake()
@@ -53,6 +55,16 @@ public class Projectile : MonoBehaviour
             tr.LookAt(target);
         }
             tr.Translate(Time.fixedDeltaTime * _speed * Vector3.forward,Space.Self);
+    }
+
+    private void Update()
+    {
+        if(timer < 0)
+        {
+            ObjectPool.Instance.Return(gameObject);
+        }
+
+        timer -= Time.deltaTime;
     }
 
     protected virtual void OnTriggerEnter(Collider other)

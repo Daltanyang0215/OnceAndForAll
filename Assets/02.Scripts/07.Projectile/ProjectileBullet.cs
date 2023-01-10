@@ -20,7 +20,8 @@ public class ProjectileBullet : Projectile
 
     protected override void OnTriggerEnter(Collider other)
     {
-        if (1 << other.gameObject.layer == targetLayer)
+        if (((1 << other.gameObject.layer) & targetLayer) != 0 ||
+        ((1 << other.gameObject.layer) & touchLayer) != 0)
         {
             if (other.gameObject.TryGetComponent(out IHitaction enemy)
                 && _attackCount > 0)
@@ -39,10 +40,11 @@ public class ProjectileBullet : Projectile
         }
         // 대상 레이어의 int 화 및 & 연산자를 이용한 포함여부 확인.
         // 0인지 확인하여 0이면 겹치는 레이어 아님. 0이 아니면 겹치는 레이어임
-        if(((1 << other.gameObject.layer)& touchLayer)!=0)
+        if(((1 << other.gameObject.layer)& touchLayer)!=0
+            || _attackCount <= 0)
         {
             _isHit = true;
-                ObjectPool.Instance.Return(gameObject, 1f);
+            timer = 1;
         }
 
         if (isShowEffect)

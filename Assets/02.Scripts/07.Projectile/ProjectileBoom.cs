@@ -8,7 +8,7 @@ public class ProjectileBoom : ProjectileBullet
 
     protected override void OnTriggerEnter(Collider other)
     {
-        if (1 << other.gameObject.layer == targetLayer ||
+        if (((1 << other.gameObject.layer) & targetLayer) != 0 ||
         ((1 << other.gameObject.layer) & touchLayer) != 0)
         {
             Collider[] Hits = Physics.OverlapSphere(tr.position, _BoomRange, targetLayer);
