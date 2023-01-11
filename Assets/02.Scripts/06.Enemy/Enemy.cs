@@ -7,7 +7,7 @@ using UnityEngine.AI;
 public class Enemy : MonoBehaviour, IHitaction
 {
     [SerializeField] protected EnemyInfo _enemyInfo;
-    private Animator _animator;
+    protected Animator _animator;
 
     public Transform target;
     public NavMeshAgent navi;
@@ -17,7 +17,7 @@ public class Enemy : MonoBehaviour, IHitaction
     protected float _enemyHealth;
     private float _enemyMaxHealth;
     private int _enemyDamage = 1;
-    private bool _enemyIsDead = false;
+    protected bool _enemyIsDead = false;
     public bool IsDead => _enemyIsDead;
 
     private List<EnemyBuffBase> _enemyBuffs = new List<EnemyBuffBase>();
@@ -101,7 +101,7 @@ public class Enemy : MonoBehaviour, IHitaction
         GetComponent<SphereCollider>().enabled = false;
         OnActiveBuff(BuffStatus.Disable);
     }
-    private void Update()
+    protected virtual void Update()
     {
         OnActiveBuff(BuffStatus.Update);
     }

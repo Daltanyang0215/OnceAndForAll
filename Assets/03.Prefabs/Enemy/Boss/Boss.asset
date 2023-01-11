@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Boss
   m_EditorClassIdentifier: 
   _enemyID: 500
-  _enemyHealth: 500
-  _enemySpeed: 3
+  _enemyHealth: 5000
+  _enemySpeed: 1.5
   _money: 0
