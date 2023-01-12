@@ -18,7 +18,8 @@ public class ProjectileBoom : ProjectileBullet
                 if (Hit.gameObject.TryGetComponent(out IHitaction enemy))
                 {
                     enemy.OnHit(damage);
-                    if (enemy is Enemy)
+                    if (enemy is Enemy
+                        && giveDebuff != null)
                     {
                         Enemy tmp = enemy as Enemy;
                         giveDebuff.SetOwner(tmp);
@@ -50,9 +51,8 @@ public class ProjectileBoom : ProjectileBullet
                 }
                 ParticleSystem.MainModule main = effect.GetComponent<ParticleSystem>().main;
                 main.startColor = boomcolor;
-
-                ObjectPool.Instance.Return(effect, 0.5f);
             }
+            tr.GetChild((int)attackElement).gameObject.SetActive(false);
             ObjectPool.Instance.Return(gameObject);
         }
         // 대상 레이어의 int 화 및 & 연산자를 이용한 포함여부 확인.

@@ -10,11 +10,11 @@ public class PlayerBullet : MonoBehaviour
     private LayerMask _targetlayer;
     private float timer = 5;
 
-    public void Setup(float damage , float bulletSpeed,LayerMask targetlayer)
+    public void Setup(float damage, float bulletSpeed, LayerMask targetlayer)
     {
-        _damage= damage;
-        _bulletSpeed= bulletSpeed;
-        _targetlayer= targetlayer;
+        _damage = damage;
+        _bulletSpeed = bulletSpeed;
+        _targetlayer = targetlayer;
         timer = 5;
     }
 
@@ -22,10 +22,9 @@ public class PlayerBullet : MonoBehaviour
     {
         transform.Translate(Vector3.forward * (_bulletSpeed * Time.deltaTime));
 
-        if(Physics.Raycast(transform.position, transform.forward, out _hit, _bulletSpeed * Time.deltaTime, _targetlayer))
+        if (Physics.Raycast(transform.position, transform.forward, out _hit, _bulletSpeed * Time.deltaTime, _targetlayer))
         {
-            GameObject go = ObjectPool.Instance.Spawn("HitEffect", _hit.point);
-            ObjectPool.Instance.Return(go, 0.3f);
+            ObjectPool.Instance.Spawn("HitEffect", _hit.point);
 
             if (_hit.collider.TryGetComponent(out IHitaction hitaction))
             {
@@ -35,7 +34,7 @@ public class PlayerBullet : MonoBehaviour
         }
 
         timer -= Time.deltaTime;
-        if(timer<0)
+        if (timer < 0)
             ObjectPool.Instance.Return(gameObject);
     }
 }

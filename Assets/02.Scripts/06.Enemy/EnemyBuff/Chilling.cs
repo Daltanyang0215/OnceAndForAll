@@ -21,7 +21,7 @@ public class Chilling : EnemyBuffBase
         {
             case BuffStatus.Enable:
                 if (owner.IsDead) return;
-                _prefab = ObjectPool.Instance.Spawn("Chilling", owner.transform.position, owner.transform);
+                _prefab = ObjectPool.Instance.Spawn("Chilling", owner.transform.position);
 
                 ParticleSystem[] tmp = _prefab.GetComponentsInChildren<ParticleSystem>();
                 ParticleSystem.ShapeModule shape;
@@ -49,6 +49,7 @@ public class Chilling : EnemyBuffBase
             case BuffStatus.Hit:
                 break;
             case BuffStatus.Disable:
+                ObjectPool.Instance.Return(_prefab);
                 break;
             default:
                 break;

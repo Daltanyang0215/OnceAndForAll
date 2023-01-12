@@ -78,7 +78,7 @@ public abstract class TowerTargetingBase : TowerBase
         else
         {
             // 타겟이 보스가 아닐때 비활성화 상태이나, 공격거리를 벗어나면 타겟에서 해제
-            if (target.gameObject.layer != LayerMask.NameToLayer("Boss") &&
+            if (target.gameObject.layer != LayerMask.GetMask("Boss") &&
                 (target.gameObject.GetComponentInParent<Enemy>().IsDead||
                 Vector3.Distance(target.position, transform.position) > attackRange))
             {

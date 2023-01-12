@@ -16,7 +16,7 @@ public class ObjectPool : MonoBehaviour
         }
     }
 
-     private List<PoolElement> _poolElements = new List<PoolElement>();
+    private List<PoolElement> _poolElements = new List<PoolElement>();
     private Dictionary<string, Queue<GameObject>> spawnedQueuePaires = new Dictionary<string, Queue<GameObject>>();
 
     public void AddPoolElement(PoolElement poolElement) => _poolElements.Add(poolElement);
@@ -60,7 +60,7 @@ public class ObjectPool : MonoBehaviour
         go.transform.SetParent(null);
         return go;
     }
-    public GameObject Spawn(string name, Vector3 spawnPoint,Transform parent)
+    public GameObject Spawn(string name, Vector3 spawnPoint, Transform parent)
     {
         if (spawnedQueuePaires.ContainsKey(name) == false)
             return null;
@@ -103,7 +103,7 @@ public class ObjectPool : MonoBehaviour
         }
 
         GameObject go = spawnedQueuePaires[name].Dequeue();
-        go.transform.SetPositionAndRotation(spawnPoint,rotation);
+        go.transform.SetPositionAndRotation(spawnPoint, rotation);
         go.SetActive(true);
         go.transform.SetParent(null);
         return go;
@@ -139,8 +139,7 @@ public class ObjectPool : MonoBehaviour
         {
             return;
         }
-
-        obj.transform.SetParent(transform);
+        obj.transform.parent = transform;
         obj.transform.localPosition = Vector3.zero;
         spawnedQueuePaires[obj.name].Enqueue(obj);
         RearrangeSiblings(obj);

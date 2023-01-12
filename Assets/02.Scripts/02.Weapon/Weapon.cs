@@ -80,7 +80,6 @@ public class Weapon : MonoBehaviour
                 AudioSource sound = ObjectPool.Instance.Spawn("Sound", transform.position).GetComponent<AudioSource>();
                 sound.clip = _fireSound;
                 sound.Play();
-                ObjectPool.Instance.Return(sound.gameObject, _fireSound.length);
 
                 Player.Instance._rebound = weaponInfo.Rebound;
                 return weaponInfo.Rebound;

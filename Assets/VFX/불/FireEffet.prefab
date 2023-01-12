@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5980047309896071580}
   - component: {fileID: 8922909978191439237}
   - component: {fileID: 5011900438090889104}
+  - component: {fileID: 3618045917525379855}
   m_Layer: 18
   m_Name: FireEffet
   m_TagString: Untagged
@@ -43,7 +44,7 @@ ParticleSystem:
   serializedVersion: 8
   lengthInSec: 5
   simulationSpeed: 1
-  stopAction: 0
+  stopAction: 1
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
@@ -4812,3 +4813,16 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &3618045917525379855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5512755929151027495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eac08cfded542074f976567e91e647f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _returnTime: 9999

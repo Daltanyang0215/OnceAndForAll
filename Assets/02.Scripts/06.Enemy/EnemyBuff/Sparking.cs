@@ -20,7 +20,7 @@ public class Sparking : EnemyBuffBase
         switch (status)
         {
             case BuffStatus.Enable:
-                _prefab = ObjectPool.Instance.Spawn("Sparking", owner.transform.position,owner.transform);
+                _prefab = ObjectPool.Instance.Spawn("Sparking", owner.transform.position);
                 ParticleSystem.ShapeModule shape = _prefab.GetComponent<ParticleSystem>().shape;
                 shape.skinnedMeshRenderer = owner.GetComponentInChildren<SkinnedMeshRenderer>();
                 timer = sparkingTime;

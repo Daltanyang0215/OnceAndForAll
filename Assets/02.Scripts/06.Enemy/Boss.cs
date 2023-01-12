@@ -44,18 +44,26 @@ public class Boss : Enemy
             _cols = Physics.OverlapSphere(transform.position, targetRange, 1<<LayerMask.NameToLayer("Tower"));
             if (_cols.Length > 3)
             {
-                _isMove = false;
-                if (Random.Range(0, 1f) > 0.5f)
+                if (Random.Range(0, 1f) > 0.9f)
                 {
-                    _animator.SetTrigger("JumpAttack");
-                    _timer = 2f;
-                    Invoke("TowerAttack", _timer*0.75f);
+                    _isMove = false;
+                    if (Random.Range(0, 1f) > 0.6f)
+                    {
+                        _animator.SetTrigger("JumpAttack");
+                        _timer = 2f;
+                        Invoke("TowerAttack", _timer * 0.75f);
+                    }
+                    else
+                    {
+                        _animator.SetTrigger("TowerAttack");
+                        _timer = 3.3f;
+                        Invoke("TowerAttack", _timer * 0.65f);
+                    }
                 }
                 else
                 {
-                    _animator.SetTrigger("TowerAttack");
-                    _timer = 3.3f;
-                    Invoke("TowerAttack", _timer*0.75f);
+                    _isMove = true;
+                    _timer = 0.5f;
                 }
             }
             else
@@ -64,7 +72,8 @@ public class Boss : Enemy
                 {
                     _isMove = false;
                     _animator.SetTrigger("Attack");
-                    _timer = 2.1f;
+                    _timer = 2.1f*4f;
+                    Invoke("GoalAttack", _timer*0.55f);
                 }
                 else
                 {

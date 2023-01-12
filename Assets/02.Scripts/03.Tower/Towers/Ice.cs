@@ -8,10 +8,10 @@ public class Ice : TowerRangeBase
     {
         foreach (var col in cols)
         {
-            if(col.TryGetComponent(out IHitaction enemy))
+            if (col.TryGetComponent(out IHitaction enemy))
             {
                 enemy.OnHit(damage);
-                if (enemy is Enemy)
+                if (giveDebuff != null && enemy is Enemy)
                 {
                     Enemy tmp = enemy as Enemy;
                     giveDebuff.SetOwner(tmp);

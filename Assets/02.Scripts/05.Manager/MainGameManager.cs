@@ -115,12 +115,14 @@ public class MainGameManager : MonoBehaviour
                     if (Input.GetKeyDown(KeyCode.Space))
                     {
                         MainUIManager.instance.ShowTutorial(false);
+                        MainUIManager.instance.ResetEnemyCountText();
 
                         Cursor.visible = false;
                         Cursor.lockState = CursorLockMode.Locked;
                         Player.Instance.enabled = true;
 
                         state = GameFlowState.ROUND_START;
+                        
                     }
                 }
                 break;
@@ -131,7 +133,7 @@ public class MainGameManager : MonoBehaviour
                 break;
             case GameFlowState.ROUND_START:
                 {
-                    currentRound++;
+                    currentRound--;
 
                     EnemySpawner.instance.SpawnPoolAdd("기본몬스터", 5, 0.1f, 0.1f);
                     // 강화 적용
@@ -142,7 +144,7 @@ public class MainGameManager : MonoBehaviour
                 break;
             case GameFlowState.ENEMYSPAWN:
                 {
-                    if(currentRound >= _endRound) // 보스 전
+                    if(currentRound <= 0) // 보스 전
                     {
                         EnemySpawner.instance.SpawnBoss();
                     }

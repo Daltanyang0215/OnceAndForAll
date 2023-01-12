@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8026572149148549026}
   - component: {fileID: 1160001118565791412}
   - component: {fileID: 779013001519557843}
+  - component: {fileID: -6934849922509227079}
   m_Layer: 0
   m_Name: SniperLine
   m_TagString: Untagged
@@ -144,3 +145,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab619beb7e0dd8a458d5a0678bb9a312, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-6934849922509227079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7297206537140644763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eac08cfded542074f976567e91e647f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _returnTime: 1

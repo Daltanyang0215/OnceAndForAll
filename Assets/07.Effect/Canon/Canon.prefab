@@ -4881,6 +4881,7 @@ GameObject:
   - component: {fileID: 5243384695144515585}
   - component: {fileID: 5243384695144515590}
   - component: {fileID: 5243384695144515591}
+  - component: {fileID: -6209358614362158182}
   m_Layer: 0
   m_Name: Canon
   m_TagString: Untagged
@@ -4915,7 +4916,7 @@ ParticleSystem:
   serializedVersion: 8
   lengthInSec: 1
   simulationSpeed: 1
-  stopAction: 0
+  stopAction: 3
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
@@ -9742,6 +9743,19 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &-6209358614362158182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5243384695144515588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eac08cfded542074f976567e91e647f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _returnTime: 9999
 --- !u!1 &8135496964108978592
 GameObject:
   m_ObjectHideFlags: 0

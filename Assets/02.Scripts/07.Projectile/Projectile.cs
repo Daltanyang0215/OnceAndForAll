@@ -61,6 +61,7 @@ public class Projectile : MonoBehaviour
     {
         if(timer < 0)
         {
+            tr.GetChild((int)attackElement).gameObject.SetActive(false);
             ObjectPool.Instance.Return(gameObject);
         }
 

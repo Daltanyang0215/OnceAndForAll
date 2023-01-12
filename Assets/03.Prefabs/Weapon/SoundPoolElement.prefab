@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2688872855312986834}
   - component: {fileID: 2688872855312986837}
+  - component: {fileID: -7882036663003008600}
   m_Layer: 0
   m_Name: SoundPoolElement
   m_TagString: Untagged
@@ -128,3 +129,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-7882036663003008600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2688872855312986836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eac08cfded542074f976567e91e647f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _returnTime: 20

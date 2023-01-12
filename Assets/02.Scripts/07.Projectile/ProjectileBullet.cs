@@ -49,7 +49,7 @@ public class ProjectileBullet : Projectile
 
         if (isShowEffect)
         {
-            ObjectPool.Instance.Return(ObjectPool.Instance.Spawn(explosionEffect, tr.position), 0.1f);
+            ObjectPool.Instance.Spawn(explosionEffect, tr.position);
         }
     }
 }

@@ -284,6 +284,10 @@ public class MainUIManager : MonoBehaviour
         _enemyCount.text = $"{enemyCount} / {_maxEnemyCount}";
         _enemyCount.GetComponentInParent<Image>().fillAmount = (float)enemyCount / _maxEnemyCount;
     }
+    public void ResetEnemyCountText()
+    {
+        _maxEnemyCount = 0;
+    }
     #endregion
 
     #region WeaponUI

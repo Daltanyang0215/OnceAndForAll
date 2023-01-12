@@ -19,7 +19,7 @@ public class Smoke : EnemyBuffBase
             case BuffStatus.Hit:
                 break;
             case BuffStatus.Disable:
-                ObjectPool.Instance.Return(ObjectPool.Instance.Spawn("Smoke", owner.transform.position), 30f);
+                ObjectPool.Instance.Spawn("Smoke", owner.transform.position);
                 break;
             default:
                 break;
