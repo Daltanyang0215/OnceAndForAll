@@ -259,7 +259,7 @@ Animator:
   m_GameObject: {fileID: 2674654828461627205}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 257d69310f863894098f68fd42c631e7, type: 2}
+  m_Controller: {fileID: 9100000, guid: 3d0d6141c9320074493837968bf1ebb7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -490,7 +490,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4107087913607445003}
   m_Layer: 0
-  m_Name: Gun
+  m_Name: Renderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

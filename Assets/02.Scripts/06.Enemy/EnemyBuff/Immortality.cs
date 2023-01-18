@@ -25,6 +25,8 @@ public class Immortality : EnemyBuffBase
                     enemy.isImmortality = false;
                 }
                 _activeList.Clear();
+                if (owner.IsDead) return;
+
                 _tmpcols = Physics.OverlapSphere(owner.transform.position, 15f,1<<20);
                 foreach (Collider col in _tmpcols)
                 {
@@ -39,10 +41,6 @@ public class Immortality : EnemyBuffBase
             case BuffStatus.Hit:
                 break;
             case BuffStatus.Disable:
-                foreach (Enemy enemy in _activeList)
-                {
-                    enemy.isImmortality = false;
-                }
                 ObjectPool.Instance.Return(tmpPrefab);
                 break;
             default:

@@ -65,6 +65,8 @@ public class AddGun : Weapon
 
                                 MainUIManager.instance.SetTowerInfoPanel();
                                 MainUIManager.instance.SetTowerInfoPanel(tower);
+
+                                animator.SetTrigger("Shot");
                             }
                         }
                     }
@@ -84,13 +86,14 @@ public class AddGun : Weapon
                 {
                     if (_rayhit.collider.TryGetComponent(out TowerBase tower))
                     {
-                        TowerManager.instance.towerBuildPoint.transform.position = _rayhit.collider.transform.position+Vector3.up*0.01f;
+                        TowerManager.instance.towerBuildPoint.transform.position = _rayhit.collider.transform.position + Vector3.up * 0.01f;
                         TowerManager.instance.towerBuildPoint.GetComponent<MeshRenderer>().material.color = new Color(1f, 0.25f, 0.25f);
                         MainUIManager.instance.SetTowerInfoPanel(tower);
                         if (Input.GetMouseButtonDown(0))
                         {
                             Destroy(tower.gameObject);
                             MainUIManager.instance.SetTowerInfoPanel();
+                            animator.SetTrigger("Shot");
                         }
                     }
                 }
@@ -126,19 +129,17 @@ public class AddGun : Weapon
                         if (tmpVec.x > -60.1f && tmpVec.x < 60.1f &&
                         tmpVec.z > -2.6f && tmpVec.z < 197.6f)
                         {
-                            // 코스트 관련 기획이 결정되면 추가 예정
-                            //if (MainGameManager.Instance.Money >= _tower.BuyCost)
+                            // 노말 오브가 남아있으며, 좌클릭시 타워 설치
+                            if (Input.GetMouseButtonUp(0)
+                            && StatesEnforce.Instance.getElementCount(Element.Normal) > 0)
                             {
+                                Instantiate(TowerManager.instance.towerlist[(int)_selectTower].TowerPrefab, tmpVec, Quaternion.identity, TowerManager.instance.gameObject.transform);
 
-                                // 좌클릭시 타워 설치
-                                if (Input.GetMouseButtonUp(0))
-                                {
-                                    Instantiate(TowerManager.instance.towerlist[(int)_selectTower].TowerPrefab, tmpVec, Quaternion.identity, TowerManager.instance.gameObject.transform);
-                                    // 코스트 관련 기획이 결정되면 추가 예정
-                                    //MainGameManager.Instance.Money -= _tower.BuyCost;
-                                }
+                                // 코스트 관련 기획이 결정되면 추가 예정
+                                StatesEnforce.Instance.AddElement(Element.Normal, -1); // 코스트 지불
+                                MainUIManager.instance.SelectedTower(_selectTower); // ui업데이트
+                                animator.SetTrigger("Shot");
                             }
-
                         }
                         else
                         {
@@ -156,6 +157,10 @@ public class AddGun : Weapon
 
             _isUpgrade = !_isUpgrade;
             MainUIManager.instance.ShowUpgrade(true, _isUpgrade);
+            
+            MainUIManager.instance.SelectedTower(_selectTower); // ui업데이트
+            MainUIManager.instance.SelectedOrb(_currentEle);
+
             MainUIManager.instance.SetTowerInfoPanel();
         }
     }

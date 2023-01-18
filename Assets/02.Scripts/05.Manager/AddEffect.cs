@@ -15,7 +15,8 @@ public enum AddEffectList
     AddElementNormal,
     AddElementFire,
     AddElementIce,
-    AddElementEle
+    AddElementEle,
+    RepairWall
 }
 [CreateAssetMenu(fileName = "AddEffectBase", menuName = "AddEffect/EffectBase")]
 public class AddEffect : ScriptableObject
@@ -70,7 +71,7 @@ public class AddEffect : ScriptableObject
                 break;
             case AddEffectList.EnemyCount:
                 {
-                    EnemySpawner.instance.SpawnPoolAdd(_enemyName, (int)_gain, 0.1f, 0.1f,_enemyBuff.ToString());
+                    EnemySpawner.instance.SpawnPoolAdd(_enemyName, (int)_gain, 0.05f, 0.05f,_enemyBuff.ToString());
                     StatesEnforce.Instance.addMonster(_enemyName, (int)_gain, _enemyBuffInfomation.ToString());
                 }
                 break;
@@ -92,6 +93,11 @@ public class AddEffect : ScriptableObject
             case AddEffectList.AddElementEle:
                 {
                     StatesEnforce.Instance.AddElement(Element.Electricity, (int)_gain);
+                }
+                break;
+            case AddEffectList.RepairWall:
+                {
+                    MainGameManager.Instance.Health += (int)_gain;
                 }
                 break;
             default:

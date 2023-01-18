@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: Ice
   m_EditorClassIdentifier: 
   _towerName: "\uCD08\uAE30\uD615 \uB9C8\uC11D \uACF5\uBA85\uAE30"
+  _towerPrefab: {fileID: 8944813942227999148, guid: 90530abd5666f734a8b57c7cd0e1035d,
+    type: 3}
   _damage: 1
   _AttackCool: 1
   _AttackRange: 30
   _BuyCost: 120
   _SellCost: 80
-  _towerPrefab: {fileID: 8944813942227999148, guid: 90530abd5666f734a8b57c7cd0e1035d,
-    type: 3}
+  _TowerInfomation: "\uC77C\uC815 \uC8FC\uAE30\uB85C \uD0C0\uC6CC \uC8FC\uC704\uC5D0
+    \uD53C\uD574\uB97C \uC8FC\uB294 \uD0C0\uC6CC\uC785\uB2C8\uB2E4"

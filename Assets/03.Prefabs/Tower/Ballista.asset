@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: Ballista
   m_EditorClassIdentifier: 
   _towerName: "\uCD08\uAE30\uD615 \uB9C8\uC11D \uD3EC\uD0D1"
-  _damage: 2
+  _towerPrefab: {fileID: 1998250517882883046, guid: ced4a7b52ff87b747b3d412e93a92248,
+    type: 3}
+  _damage: 1
   _AttackCool: 1
   _AttackRange: 45
   _BuyCost: 100
   _SellCost: 80
-  _towerPrefab: {fileID: 1998250517882883046, guid: ced4a7b52ff87b747b3d412e93a92248,
-    type: 3}
+  _TowerInfomation: "\uD22C\uC0AC\uCCB4\uB97C \uBC1C\uC0AC\uD574 \uD53C\uD574\uB97C
+    \uC8FC\uB294 \uD0C0\uC6CC\uC785\uB2C8\uB2E4"

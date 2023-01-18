@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 413a6e9c64111624296216ecb8fb9157, type: 3}
+  m_Name: AddElement_Nomral
+  m_EditorClassIdentifier: 
+  _effect: 8
+  _gain: 5
+  _infomation: "\uBB34\uC18D\uC131\uC758 \uC624\uBE0C\uB97C \uBC1B\uC2B5\uB2C8\uB2E4"
+  _enemyName: 
+  _enemyBuff: 0
+  _enemyBuffInfomation: 

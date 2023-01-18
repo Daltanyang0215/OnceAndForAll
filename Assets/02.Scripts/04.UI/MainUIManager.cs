@@ -303,7 +303,7 @@ public class MainUIManager : MonoBehaviour
         _bulletFill.fillAmount = (float)currentBullet / maxBullet;
     }
 
-    public void ShowWeaponIcon(int index , Sprite icon)
+    public void ShowWeaponIcon(int index, Sprite icon)
     {
         _weapons[index].GetChild(0).GetComponent<Image>().sprite = icon;
     }
@@ -357,6 +357,7 @@ public class MainUIManager : MonoBehaviour
     public void SelectedTower(TowerType tower)
     {
         _towerCircle.eulerAngles = Vector3.forward * (-90 * (int)tower);
+        _towerCount.text = StatesEnforce.Instance.getElementCount(Element.Normal).ToString();
     }
     public void SetTowerInfoPanel(TowerBase tower = null)
     {
@@ -372,9 +373,92 @@ public class MainUIManager : MonoBehaviour
 
             // 타워의 강화 설명
             string upgrade = "";
-            for (int i = 0; i < tower.GetElementLeath(); i++)
+            if (tower.GetElementLeath() == 0)
             {
-                upgrade += $"{tower.GetElement(i)} \t";
+                upgrade = tower.GetTowerInfo.TowerInfomation;
+            }
+            else
+            {
+                for (int i = 0; i < tower.GetElementLeath(); i++)
+                {
+                    switch (i)
+                    {
+                        case 0:
+                            {
+                                switch (tower.GetElement(i))
+                                {
+                                    case Element.Normal:
+                                        upgrade += $"타워의 기본 공격력이 {StatesEnforce.Instance.elementNomralDamageGain}배 증가 합니다 \n";
+                                        break;
+                                    case Element.Fire:
+                                        upgrade += $"타워의 기본 공격속성이 화속성으로 변경됩니다 \n";
+                                        break;
+                                    case Element.Ice:
+                                        upgrade += $"타워의 기본 공격속성이 얼음속성으로 변경됩니다 \n";
+                                        break;
+                                    case Element.Electricity:
+                                        upgrade += $"타워의 기본 공격속성이 번개속성으로 변경됩니다 \n";
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }
+                            break;
+                        case 1:
+                            {
+                                switch (tower.GetElement(i))
+                                {
+                                    case Element.Normal:
+                                        upgrade += $"타워의 기본 공격력이 {StatesEnforce.Instance.elementNomralDamageGain}배 증가 합니다 \n";
+                                        break;
+                                    case Element.Fire:
+                                        if (tower is TowerTargetingBase)
+                                            upgrade += $"투사체가 폭발을 이르킵니다 \n";
+                                        else
+                                            upgrade += $"공격범위가 2배로 증가합니다 \n";
+                                        break;
+                                    case Element.Ice:
+                                        if (tower is TowerTargetingBase)
+                                            upgrade += $"공격속도가 2배 증가합니다 \n";
+                                        else
+                                            upgrade += $"공격주기가 1.5배 증가합니다 \n";
+                                        break;
+                                    case Element.Electricity:
+                                        if (tower is TowerTargetingBase)
+                                            upgrade += $"투사체가 몬스터를 1회 관통합니다 \n";
+                                        else
+                                            upgrade += $"타워의 기본 공격력이 {StatesEnforce.Instance.elementNomralDamageGain}배 증가 합니다 \n";
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }
+                            break;
+                        case 2:
+                            {
+                                switch (tower.GetElement(i))
+                                {
+                                    case Element.Normal:
+                                        upgrade += $"타워의 기본 공격력이 {StatesEnforce.Instance.elementNomralDamageGain}배 증가 합니다 \n";
+                                        break;
+                                    case Element.Fire:
+                                        upgrade += $"지속적인 피해를 주는 '점화' 효과를 부여합니다 \n";
+                                        break;
+                                    case Element.Ice:
+                                        upgrade += $"일정 시간 동안 이동속도를 감소 시키는 '둔화' 효과를 부여합니다 \n";
+                                        break;
+                                    case Element.Electricity:
+                                        upgrade += $"일정 시간 동안 받는피해를 증가 시키는 '감전' 효과를 부여합니다 \n";
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+                }
             }
             _towerAddEffect.text = upgrade;
 

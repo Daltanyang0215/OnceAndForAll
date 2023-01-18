@@ -35,6 +35,8 @@ public class TowerProjectileBase : TowerTargetingBase
         switch (upgradLevel)
         {
             case 0:
+                if (addElement == Element.Normal) damage *= StatesEnforce.Instance.elementNomralDamageGain;
+
                 attackType = addElement;
                 firePoint.GetChild((int)addElement).gameObject.SetActive(true);
                 upgradLevel++;
@@ -43,6 +45,7 @@ public class TowerProjectileBase : TowerTargetingBase
                 switch (addElement)
                 {
                     case Element.Normal:
+                        damage *= StatesEnforce.Instance.elementNomralDamageGain;
                         break;
                     case Element.Fire:
                         _bulletName = "BoomBullet";
@@ -72,7 +75,7 @@ public class TowerProjectileBase : TowerTargetingBase
                         giveDebuff = new Chilling(null, 10, 50);
                         break;
                     case Element.Electricity:
-                        giveDebuff = new Sparking(null, 10f,2f);
+                        giveDebuff = new Sparking(null, 10f, 2f);
                         break;
                     default:
                         break;

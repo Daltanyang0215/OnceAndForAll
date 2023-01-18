@@ -8,6 +8,7 @@ public class EnemySpawner : MonoBehaviour
 {
 
     [SerializeField] private Transform _target;
+    [SerializeField] private GameObject _boss;
 
     public static EnemySpawner instance;
 
@@ -57,7 +58,7 @@ public class EnemySpawner : MonoBehaviour
 
     public void SpawnBoss()
     {
-        ObjectPool.Instance.Spawn("Boss", new Vector3(0, 0, 285), transform);
+        Instantiate(_boss, new Vector3(0, 0, 285), _boss.transform.rotation, transform);
     }
     
     public void SpawnStart()

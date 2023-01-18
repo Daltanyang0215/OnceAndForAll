@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _type: 0
   _icon: {fileID: 21300046, guid: 6674e8c43c63e4f4184cbd009379498d, type: 3}
-  _damage: 1
+  _damage: 2
   _attackCool: 0.05
   _reloadTime: 1
   _hitCurcleError: 0

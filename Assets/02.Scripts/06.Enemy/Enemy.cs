@@ -42,11 +42,7 @@ public class Enemy : MonoBehaviour, IHitaction
 
             if (_enemyHealth <= 0)
             {
-                if (isImmortality)
-                {
-                    _enemyHealth = .01f;
-                }
-                else
+                if (!isImmortality)
                 {
                     Die();
                 }
@@ -125,6 +121,9 @@ public class Enemy : MonoBehaviour, IHitaction
         {
             MainGameManager.Instance.Health -= _enemyDamage;
             MainGameManager.Instance.currentEnemyCount--;
+
+            ObjectPool.Instance.Spawn("BoomEffect", transform.position);
+            
             PoolReturn();
         }
     }

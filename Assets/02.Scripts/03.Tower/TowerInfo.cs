@@ -5,6 +5,9 @@ public class TowerInfo : ScriptableObject
     [SerializeField] private string _towerName;
     public string TowerName => _towerName;
 
+    [SerializeField] private GameObject _towerPrefab;
+    public GameObject TowerPrefab => _towerPrefab;
+
     [SerializeField] private int _damage;
     public int Damage => _damage;
 
@@ -20,6 +23,6 @@ public class TowerInfo : ScriptableObject
     [SerializeField] private int _SellCost;
     public int SellCost => _SellCost;
 
-    [SerializeField] private GameObject _towerPrefab;
-    public GameObject TowerPrefab => _towerPrefab;
+    [SerializeField] private string _TowerInfomation;
+    public string TowerInfomation => _TowerInfomation;
 }

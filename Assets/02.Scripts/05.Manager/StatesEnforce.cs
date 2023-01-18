@@ -120,6 +120,13 @@ public class StatesEnforce
         set { _enemyMoneyGain = value; }
     }
 
+    [SerializeField] private float _elementNomralDamageGain = 1.5f;
+    public float elementNomralDamageGain
+    {
+        get { return _elementNomralDamageGain; }
+        set { _elementNomralDamageGain = value; }
+    }
+
     // 보상 목록 출력 용
     public string GetPositiveList()
     {

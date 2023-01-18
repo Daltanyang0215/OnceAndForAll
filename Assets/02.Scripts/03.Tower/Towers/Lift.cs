@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Lift : TowerBase , IInteraction
 {
-    [SerializeField] private GameObject _plate; 
+    [SerializeField] private GameObject _plate;
+    [SerializeField] private GameObject _head;
     [SerializeField] private float _height;
     [SerializeField] private CapsuleCollider _activeCollider;
 
@@ -32,6 +33,7 @@ public class Lift : TowerBase , IInteraction
             Player.Instance.gameObject.transform.position = transform.position + Vector3.up * _height;
             _plate.transform.position += Vector3.up * (_height);
 
+            _head.SetActive(true);
             _lense.SetActive(true);
         }
         else
@@ -42,6 +44,7 @@ public class Lift : TowerBase , IInteraction
             Player.Instance.gameObject.transform.position = transform.position;
             _plate.transform.localPosition = Vector3.zero;
 
+            _head.SetActive(false);
             _lense.SetActive(false);
             _lense.transform.eulerAngles = Vector3.right * 90f;
         }

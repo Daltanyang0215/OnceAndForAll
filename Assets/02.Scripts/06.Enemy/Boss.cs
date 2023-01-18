@@ -17,7 +17,7 @@ public class Boss : Enemy
         {
             _enemyHealth = value;
             MainGameManager.Instance.currentEnemyCount = (int)_enemyHealth;
-            if (_enemyHealth <= 0 && IsDead==false)
+            if (_enemyHealth <= 1 && IsDead==false)
             {
                 Die();
             }
@@ -27,10 +27,10 @@ public class Boss : Enemy
 
     protected override void OnEnable()
     {
-        EnemyHealth = _enemyInfo.EnemyHealth;
-        MainGameManager.Instance.currentEnemyCount = (int)_enemyHealth;
+        EnemyHealth = _enemyInfo.EnemyHealth * StatesEnforce.Instance.enemyHealthGain;
+        _moveSpeed = _enemyInfo.EnemySpeed * StatesEnforce.Instance.enemySpeedGain;
 
-        _moveSpeed = _enemyInfo.EnemySpeed;
+        MainGameManager.Instance.currentEnemyCount = (int)_enemyHealth;
         _isMove = true;
     }
 
