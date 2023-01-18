@@ -1,0 +1,8 @@
+﻿{
+	"Env": "live",
+	"AppKey": "db384af65b3d97e10086dd956f9edd64993e636c22d1e986468136db17deede1",
+	"AppSecret": "24c13a9195d4d956dbf7a1f4f11ce0ec7a9dc046c3f2e44a9b60e8f7367bbee652942b93aa0d05239c198cd3411ae147",
+	"GameId": "FULL_BURST_IND",
+	"LogLevel": 4,
+	"LogPath": ""
+}

@@ -18,6 +18,7 @@ public class MainGameManager : MonoBehaviour
     }
 
     public StatesEnforce Enforce = new StatesEnforce();
+    private StovePCSDKManager sdk;
 
     private enum GameFlowState
     {
@@ -108,6 +109,9 @@ public class MainGameManager : MonoBehaviour
                     StatesEnforce.Instance.AddElement(Element.Fire, 10);
                     StatesEnforce.Instance.AddElement(Element.Ice, 10);
                     StatesEnforce.Instance.AddElement(Element.Electricity, 10);
+
+                    sdk = GetComponent<StovePCSDKManager>();
+                    sdk.ButtonLoadConfig_Click();
                 }
                 break;
             case GameFlowState.WAITING_START:
@@ -302,6 +306,7 @@ public class MainGameManager : MonoBehaviour
     }
     public void GamEnd()
     {
+        sdk.ButtonUninitialize_Click();
         Application.Quit();
     }
 }
