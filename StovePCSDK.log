@@ -320,3 +320,452 @@
 2023-01-18 17:00:41.210 DEBUG [8244]     -StoveLog rest: response is 200
 2023-01-18 17:00:41.210 DEBUG [8244]      -  Send remote log success.
 2023-01-18 17:00:45.046 ERROR [13112]     StovePC_UnInit: sdk not initialize
+2023-01-19 14:39:54.485 INFO  [17756] file Appender.(level: DEBUG)
+2023-01-19 14:39:54.497 INFO  [17756] Log file path: D:\GitHub\OnceAndForAll\StovePCSDK.log
+2023-01-19 14:39:54.497 INFO  [17756] ---------------------------------------------
+2023-01-19 14:39:54.497 INFO  [17756] StovePCSDK(ver:2.5.0)
+2023-01-19 14:39:54.497 INFO  [17756] ---------------------------------------------
+2023-01-19 14:39:54.503 DEBUG [17756]     osPlatform : 64bit
+2023-01-19 14:39:54.503 DEBUG [17756]     osVersion : Windows 10(10.0), 10.0.19044, 64bit
+2023-01-19 14:39:54.503 DEBUG [17756] commandline : C:\Program Files\Unity\Hub\Editor\2021.3.8f1\Editor\Unity.exe
+2023-01-19 14:39:54.503 DEBUG [17756] commandline : -projectpath
+2023-01-19 14:39:54.503 DEBUG [17756] commandline : D:\GitHub\OnceAndForAll
+2023-01-19 14:39:54.504 DEBUG [17756] commandline : -useHub
+2023-01-19 14:39:54.504 DEBUG [17756] commandline : -hubIPC
+2023-01-19 14:39:54.504 DEBUG [17756] commandline : -cloudEnvironment
+2023-01-19 14:39:54.504 DEBUG [17756] commandline : production
+2023-01-19 14:39:54.504 DEBUG [17756] commandline : -licensingIpc
+2023-01-19 14:39:54.504 DEBUG [17756] commandline : LicenseClient-Daltanyang
+2023-01-19 14:39:54.504 DEBUG [17756] commandline : -hubSessionId
+2023-01-19 14:39:54.504 DEBUG [17756] commandline : e2cb0810-97a8-11ed-8f42-f1578afcc02f
+2023-01-19 14:39:54.504 DEBUG [17756] commandline : -accessToken
+2023-01-19 14:39:54.504 DEBUG [17756] commandline : RI8kvJMuA2DHu0JCzdioiDqMFguFXthNmUm74bhcnJA00df
+2023-01-19 14:39:54.511 DEBUG [17756]     init tasks
+2023-01-19 14:39:54.512 DEBUG [17756]     transactionId : f0d729ec-a611-4ea3-9869-29faca6a386f
+2023-01-19 14:39:54.512 DEBUG [17756]     HKEY_CURRENT_USER : FFFFFFFF80000001
+2023-01-19 14:39:54.512 DEBUG [17756]     subkey : SOFTWARE\SGUP
+2023-01-19 14:39:54.512 DEBUG [17756]     RegOpenKeyEx : 0
+2023-01-19 14:39:54.512 DEBUG [17756]     RegQueryValueEx : 0, size : 82
+2023-01-19 14:39:54.512 DEBUG [17756]     RegQueryValueEx : 0
+2023-01-19 14:39:54.512 DEBUG [17756]     callerDetail : 4d3d3f49a7146a414d4db79e41b231fc2a6a4bd6
+2023-01-19 14:39:54.584 INFO  [17756] protocol data from ipc
+2023-01-19 14:39:54.584 ERROR [17756]     Init sgup task error
+2023-01-19 14:39:54.584 ERROR [17756]     STOVE_PC_CORE_NOT_INITIALIZE
+2023-01-19 14:40:46.578 ERROR [17756]     StovePC_UnInit: sdk not initialize
+2023-01-19 14:45:16.698 INFO  [17756] file Appender.(level: DEBUG)
+2023-01-19 14:45:16.698 INFO  [17756] Log file path: D:\GitHub\OnceAndForAll\StovePCSDK.log
+2023-01-19 14:45:16.698 INFO  [17756] ---------------------------------------------
+2023-01-19 14:45:16.698 INFO  [17756] StovePCSDK(ver:2.5.0)
+2023-01-19 14:45:16.698 INFO  [17756] ---------------------------------------------
+2023-01-19 14:45:16.698 DEBUG [17756]     osPlatform : 64bit
+2023-01-19 14:45:16.698 DEBUG [17756]     osVersion : Windows 10(10.0), 10.0.19044, 64bit
+2023-01-19 14:45:16.698 DEBUG [17756] commandline : C:\Program Files\Unity\Hub\Editor\2021.3.8f1\Editor\Unity.exe
+2023-01-19 14:45:16.698 DEBUG [17756] commandline : -projectpath
+2023-01-19 14:45:16.698 DEBUG [17756] commandline : D:\GitHub\OnceAndForAll
+2023-01-19 14:45:16.698 DEBUG [17756] commandline : -useHub
+2023-01-19 14:45:16.698 DEBUG [17756] commandline : -hubIPC
+2023-01-19 14:45:16.698 DEBUG [17756] commandline : -cloudEnvironment
+2023-01-19 14:45:16.698 DEBUG [17756] commandline : production
+2023-01-19 14:45:16.698 DEBUG [17756] commandline : -licensingIpc
+2023-01-19 14:45:16.698 DEBUG [17756] commandline : LicenseClient-Daltanyang
+2023-01-19 14:45:16.698 DEBUG [17756] commandline : -hubSessionId
+2023-01-19 14:45:16.698 DEBUG [17756] commandline : e2cb0810-97a8-11ed-8f42-f1578afcc02f
+2023-01-19 14:45:16.698 DEBUG [17756] commandline : -accessToken
+2023-01-19 14:45:16.698 DEBUG [17756] commandline : RI8kvJMuA2DHu0JCzdioiDqMFguFXthNmUm74bhcnJA00df
+2023-01-19 14:45:16.698 DEBUG [17756]     init tasks
+2023-01-19 14:45:16.698 DEBUG [17756]     transactionId : 2d08ccf1-c77d-42db-8972-21e4f10c2e72
+2023-01-19 14:45:16.698 DEBUG [17756]     HKEY_CURRENT_USER : FFFFFFFF80000001
+2023-01-19 14:45:16.698 DEBUG [17756]     subkey : SOFTWARE\SGUP
+2023-01-19 14:45:16.698 DEBUG [17756]     RegOpenKeyEx : 0
+2023-01-19 14:45:16.698 DEBUG [17756]     RegQueryValueEx : 0, size : 82
+2023-01-19 14:45:16.698 DEBUG [17756]     RegQueryValueEx : 0
+2023-01-19 14:45:16.698 DEBUG [17756]     callerDetail : 4d3d3f49a7146a414d4db79e41b231fc2a6a4bd6
+2023-01-19 14:45:16.699 INFO  [17756] protocol data from ipc
+2023-01-19 14:45:16.699 ERROR [17756]     Init sgup task error
+2023-01-19 14:45:16.699 ERROR [17756]     STOVE_PC_CORE_NOT_INITIALIZE
+2023-01-19 14:46:02.166 ERROR [17756]     StovePC_UnInit: sdk not initialize
+2023-01-19 14:48:42.428 INFO  [17756] file Appender.(level: DEBUG)
+2023-01-19 14:48:42.428 INFO  [17756] Log file path: D:\GitHub\OnceAndForAll\StovePCSDK.log
+2023-01-19 14:48:42.428 INFO  [17756] ---------------------------------------------
+2023-01-19 14:48:42.428 INFO  [17756] StovePCSDK(ver:2.5.0)
+2023-01-19 14:48:42.428 INFO  [17756] ---------------------------------------------
+2023-01-19 14:48:42.428 DEBUG [17756]     osPlatform : 64bit
+2023-01-19 14:48:42.428 DEBUG [17756]     osVersion : Windows 10(10.0), 10.0.19044, 64bit
+2023-01-19 14:48:42.428 DEBUG [17756] commandline : C:\Program Files\Unity\Hub\Editor\2021.3.8f1\Editor\Unity.exe
+2023-01-19 14:48:42.428 DEBUG [17756] commandline : -projectpath
+2023-01-19 14:48:42.428 DEBUG [17756] commandline : D:\GitHub\OnceAndForAll
+2023-01-19 14:48:42.428 DEBUG [17756] commandline : -useHub
+2023-01-19 14:48:42.428 DEBUG [17756] commandline : -hubIPC
+2023-01-19 14:48:42.428 DEBUG [17756] commandline : -cloudEnvironment
+2023-01-19 14:48:42.428 DEBUG [17756] commandline : production
+2023-01-19 14:48:42.428 DEBUG [17756] commandline : -licensingIpc
+2023-01-19 14:48:42.428 DEBUG [17756] commandline : LicenseClient-Daltanyang
+2023-01-19 14:48:42.428 DEBUG [17756] commandline : -hubSessionId
+2023-01-19 14:48:42.428 DEBUG [17756] commandline : e2cb0810-97a8-11ed-8f42-f1578afcc02f
+2023-01-19 14:48:42.428 DEBUG [17756] commandline : -accessToken
+2023-01-19 14:48:42.428 DEBUG [17756] commandline : RI8kvJMuA2DHu0JCzdioiDqMFguFXthNmUm74bhcnJA00df
+2023-01-19 14:48:42.428 DEBUG [17756]     init tasks
+2023-01-19 14:48:42.428 DEBUG [17756]     transactionId : 7282f5c4-02af-44bc-baff-5ef9c5bfa463
+2023-01-19 14:48:42.428 DEBUG [17756]     HKEY_CURRENT_USER : FFFFFFFF80000001
+2023-01-19 14:48:42.428 DEBUG [17756]     subkey : SOFTWARE\SGUP
+2023-01-19 14:48:42.428 DEBUG [17756]     RegOpenKeyEx : 0
+2023-01-19 14:48:42.428 DEBUG [17756]     RegQueryValueEx : 0, size : 82
+2023-01-19 14:48:42.428 DEBUG [17756]     RegQueryValueEx : 0
+2023-01-19 14:48:42.428 DEBUG [17756]     callerDetail : 4d3d3f49a7146a414d4db79e41b231fc2a6a4bd6
+2023-01-19 14:48:42.428 INFO  [17756] protocol data from ipc
+2023-01-19 14:48:42.428 ERROR [17756]     Init sgup task error
+2023-01-19 14:48:42.428 ERROR [17756]     STOVE_PC_CORE_NOT_INITIALIZE
+2023-01-19 14:48:47.032 ERROR [17756]     StovePC_UnInit: sdk not initialize
+2023-01-19 14:49:03.791 INFO  [17756] file Appender.(level: DEBUG)
+2023-01-19 14:49:03.791 INFO  [17756] Log file path: D:\GitHub\OnceAndForAll\StovePCSDK.log
+2023-01-19 14:49:03.791 INFO  [17756] ---------------------------------------------
+2023-01-19 14:49:03.791 INFO  [17756] StovePCSDK(ver:2.5.0)
+2023-01-19 14:49:03.791 INFO  [17756] ---------------------------------------------
+2023-01-19 14:49:03.791 DEBUG [17756]     osPlatform : 64bit
+2023-01-19 14:49:03.791 DEBUG [17756]     osVersion : Windows 10(10.0), 10.0.19044, 64bit
+2023-01-19 14:49:03.791 DEBUG [17756] commandline : C:\Program Files\Unity\Hub\Editor\2021.3.8f1\Editor\Unity.exe
+2023-01-19 14:49:03.791 DEBUG [17756] commandline : -projectpath
+2023-01-19 14:49:03.791 DEBUG [17756] commandline : D:\GitHub\OnceAndForAll
+2023-01-19 14:49:03.791 DEBUG [17756] commandline : -useHub
+2023-01-19 14:49:03.791 DEBUG [17756] commandline : -hubIPC
+2023-01-19 14:49:03.791 DEBUG [17756] commandline : -cloudEnvironment
+2023-01-19 14:49:03.791 DEBUG [17756] commandline : production
+2023-01-19 14:49:03.791 DEBUG [17756] commandline : -licensingIpc
+2023-01-19 14:49:03.791 DEBUG [17756] commandline : LicenseClient-Daltanyang
+2023-01-19 14:49:03.791 DEBUG [17756] commandline : -hubSessionId
+2023-01-19 14:49:03.791 DEBUG [17756] commandline : e2cb0810-97a8-11ed-8f42-f1578afcc02f
+2023-01-19 14:49:03.791 DEBUG [17756] commandline : -accessToken
+2023-01-19 14:49:03.791 DEBUG [17756] commandline : RI8kvJMuA2DHu0JCzdioiDqMFguFXthNmUm74bhcnJA00df
+2023-01-19 14:49:03.791 DEBUG [17756]     init tasks
+2023-01-19 14:49:03.791 DEBUG [17756]     transactionId : 46efeb78-a745-43e5-8fc8-5da2fbf654f9
+2023-01-19 14:49:03.791 DEBUG [17756]     HKEY_CURRENT_USER : FFFFFFFF80000001
+2023-01-19 14:49:03.791 DEBUG [17756]     subkey : SOFTWARE\SGUP
+2023-01-19 14:49:03.791 DEBUG [17756]     RegOpenKeyEx : 0
+2023-01-19 14:49:03.791 DEBUG [17756]     RegQueryValueEx : 0, size : 82
+2023-01-19 14:49:03.791 DEBUG [17756]     RegQueryValueEx : 0
+2023-01-19 14:49:03.791 DEBUG [17756]     callerDetail : 4d3d3f49a7146a414d4db79e41b231fc2a6a4bd6
+2023-01-19 14:49:03.791 INFO  [17756] protocol data from ipc
+2023-01-19 14:49:03.792 ERROR [17756]     Init sgup task error
+2023-01-19 14:49:03.792 ERROR [17756]     STOVE_PC_CORE_NOT_INITIALIZE
+2023-01-19 14:49:24.479 ERROR [17756]     StovePC_UnInit: sdk not initialize
+2023-01-19 14:51:58.642 INFO  [17756] file Appender.(level: DEBUG)
+2023-01-19 14:51:58.642 INFO  [17756] Log file path: D:\GitHub\OnceAndForAll\StovePCSDK.log
+2023-01-19 14:51:58.642 INFO  [17756] ---------------------------------------------
+2023-01-19 14:51:58.642 INFO  [17756] StovePCSDK(ver:2.5.0)
+2023-01-19 14:51:58.642 INFO  [17756] ---------------------------------------------
+2023-01-19 14:51:58.642 DEBUG [17756]     osPlatform : 64bit
+2023-01-19 14:51:58.642 DEBUG [17756]     osVersion : Windows 10(10.0), 10.0.19044, 64bit
+2023-01-19 14:51:58.642 DEBUG [17756] commandline : C:\Program Files\Unity\Hub\Editor\2021.3.8f1\Editor\Unity.exe
+2023-01-19 14:51:58.642 DEBUG [17756] commandline : -projectpath
+2023-01-19 14:51:58.642 DEBUG [17756] commandline : D:\GitHub\OnceAndForAll
+2023-01-19 14:51:58.642 DEBUG [17756] commandline : -useHub
+2023-01-19 14:51:58.642 DEBUG [17756] commandline : -hubIPC
+2023-01-19 14:51:58.642 DEBUG [17756] commandline : -cloudEnvironment
+2023-01-19 14:51:58.642 DEBUG [17756] commandline : production
+2023-01-19 14:51:58.642 DEBUG [17756] commandline : -licensingIpc
+2023-01-19 14:51:58.642 DEBUG [17756] commandline : LicenseClient-Daltanyang
+2023-01-19 14:51:58.642 DEBUG [17756] commandline : -hubSessionId
+2023-01-19 14:51:58.642 DEBUG [17756] commandline : e2cb0810-97a8-11ed-8f42-f1578afcc02f
+2023-01-19 14:51:58.642 DEBUG [17756] commandline : -accessToken
+2023-01-19 14:51:58.642 DEBUG [17756] commandline : RI8kvJMuA2DHu0JCzdioiDqMFguFXthNmUm74bhcnJA00df
+2023-01-19 14:51:58.642 DEBUG [17756]     init tasks
+2023-01-19 14:51:58.642 DEBUG [17756]     transactionId : 195fd331-b2f7-420f-a27d-286e90c79b4f
+2023-01-19 14:51:58.642 DEBUG [17756]     HKEY_CURRENT_USER : FFFFFFFF80000001
+2023-01-19 14:51:58.642 DEBUG [17756]     subkey : SOFTWARE\SGUP
+2023-01-19 14:51:58.642 DEBUG [17756]     RegOpenKeyEx : 0
+2023-01-19 14:51:58.642 DEBUG [17756]     RegQueryValueEx : 0, size : 82
+2023-01-19 14:51:58.642 DEBUG [17756]     RegQueryValueEx : 0
+2023-01-19 14:51:58.642 DEBUG [17756]     callerDetail : 4d3d3f49a7146a414d4db79e41b231fc2a6a4bd6
+2023-01-19 14:51:58.642 INFO  [17756] protocol data from ipc
+2023-01-19 14:51:58.642 ERROR [17756]     Init sgup task error
+2023-01-19 14:51:58.642 ERROR [17756]     STOVE_PC_CORE_NOT_INITIALIZE
+2023-01-19 14:53:49.696 ERROR [17756]     StovePC_UnInit: sdk not initialize
+2023-01-19 14:56:07.164 INFO  [17756] file Appender.(level: DEBUG)
+2023-01-19 14:56:07.164 INFO  [17756] Log file path: D:\GitHub\OnceAndForAll\StovePCSDK.log
+2023-01-19 14:56:07.164 INFO  [17756] ---------------------------------------------
+2023-01-19 14:56:07.164 INFO  [17756] StovePCSDK(ver:2.5.0)
+2023-01-19 14:56:07.164 INFO  [17756] ---------------------------------------------
+2023-01-19 14:56:07.164 DEBUG [17756]     osPlatform : 64bit
+2023-01-19 14:56:07.164 DEBUG [17756]     osVersion : Windows 10(10.0), 10.0.19044, 64bit
+2023-01-19 14:56:07.164 DEBUG [17756] commandline : C:\Program Files\Unity\Hub\Editor\2021.3.8f1\Editor\Unity.exe
+2023-01-19 14:56:07.164 DEBUG [17756] commandline : -projectpath
+2023-01-19 14:56:07.164 DEBUG [17756] commandline : D:\GitHub\OnceAndForAll
+2023-01-19 14:56:07.164 DEBUG [17756] commandline : -useHub
+2023-01-19 14:56:07.164 DEBUG [17756] commandline : -hubIPC
+2023-01-19 14:56:07.164 DEBUG [17756] commandline : -cloudEnvironment
+2023-01-19 14:56:07.164 DEBUG [17756] commandline : production
+2023-01-19 14:56:07.164 DEBUG [17756] commandline : -licensingIpc
+2023-01-19 14:56:07.164 DEBUG [17756] commandline : LicenseClient-Daltanyang
+2023-01-19 14:56:07.164 DEBUG [17756] commandline : -hubSessionId
+2023-01-19 14:56:07.164 DEBUG [17756] commandline : e2cb0810-97a8-11ed-8f42-f1578afcc02f
+2023-01-19 14:56:07.164 DEBUG [17756] commandline : -accessToken
+2023-01-19 14:56:07.164 DEBUG [17756] commandline : RI8kvJMuA2DHu0JCzdioiDqMFguFXthNmUm74bhcnJA00df
+2023-01-19 14:56:07.164 DEBUG [17756]     init tasks
+2023-01-19 14:56:07.164 DEBUG [17756]     transactionId : ad892779-fae6-4d54-8a86-20c42e3db979
+2023-01-19 14:56:07.165 DEBUG [17756]     HKEY_CURRENT_USER : FFFFFFFF80000001
+2023-01-19 14:56:07.165 DEBUG [17756]     subkey : SOFTWARE\SGUP
+2023-01-19 14:56:07.165 DEBUG [17756]     RegOpenKeyEx : 0
+2023-01-19 14:56:07.165 DEBUG [17756]     RegQueryValueEx : 0, size : 82
+2023-01-19 14:56:07.165 DEBUG [17756]     RegQueryValueEx : 0
+2023-01-19 14:56:07.165 DEBUG [17756]     callerDetail : 4d3d3f49a7146a414d4db79e41b231fc2a6a4bd6
+2023-01-19 14:56:07.165 INFO  [17756] protocol data from ipc
+2023-01-19 14:56:07.165 ERROR [17756]     Init sgup task error
+2023-01-19 14:56:07.165 ERROR [17756]     STOVE_PC_CORE_NOT_INITIALIZE
+2023-01-19 14:56:10.235 ERROR [17756]     StovePC_UnInit: sdk not initialize
+2023-01-19 14:56:58.218 INFO  [17756] file Appender.(level: DEBUG)
+2023-01-19 14:56:58.218 INFO  [17756] Log file path: D:\GitHub\OnceAndForAll\StovePCSDK.log
+2023-01-19 14:56:58.218 INFO  [17756] ---------------------------------------------
+2023-01-19 14:56:58.218 INFO  [17756] StovePCSDK(ver:2.5.0)
+2023-01-19 14:56:58.218 INFO  [17756] ---------------------------------------------
+2023-01-19 14:56:58.218 DEBUG [17756]     osPlatform : 64bit
+2023-01-19 14:56:58.218 DEBUG [17756]     osVersion : Windows 10(10.0), 10.0.19044, 64bit
+2023-01-19 14:56:58.218 DEBUG [17756] commandline : C:\Program Files\Unity\Hub\Editor\2021.3.8f1\Editor\Unity.exe
+2023-01-19 14:56:58.218 DEBUG [17756] commandline : -projectpath
+2023-01-19 14:56:58.218 DEBUG [17756] commandline : D:\GitHub\OnceAndForAll
+2023-01-19 14:56:58.218 DEBUG [17756] commandline : -useHub
+2023-01-19 14:56:58.218 DEBUG [17756] commandline : -hubIPC
+2023-01-19 14:56:58.218 DEBUG [17756] commandline : -cloudEnvironment
+2023-01-19 14:56:58.218 DEBUG [17756] commandline : production
+2023-01-19 14:56:58.218 DEBUG [17756] commandline : -licensingIpc
+2023-01-19 14:56:58.218 DEBUG [17756] commandline : LicenseClient-Daltanyang
+2023-01-19 14:56:58.218 DEBUG [17756] commandline : -hubSessionId
+2023-01-19 14:56:58.218 DEBUG [17756] commandline : e2cb0810-97a8-11ed-8f42-f1578afcc02f
+2023-01-19 14:56:58.218 DEBUG [17756] commandline : -accessToken
+2023-01-19 14:56:58.218 DEBUG [17756] commandline : RI8kvJMuA2DHu0JCzdioiDqMFguFXthNmUm74bhcnJA00df
+2023-01-19 14:56:58.218 DEBUG [17756]     init tasks
+2023-01-19 14:56:58.218 DEBUG [17756]     transactionId : 673a340b-1cd3-450c-92d3-a0f6cb76c018
+2023-01-19 14:56:58.218 DEBUG [17756]     HKEY_CURRENT_USER : FFFFFFFF80000001
+2023-01-19 14:56:58.218 DEBUG [17756]     subkey : SOFTWARE\SGUP
+2023-01-19 14:56:58.218 DEBUG [17756]     RegOpenKeyEx : 0
+2023-01-19 14:56:58.218 DEBUG [17756]     RegQueryValueEx : 0, size : 82
+2023-01-19 14:56:58.218 DEBUG [17756]     RegQueryValueEx : 0
+2023-01-19 14:56:58.218 DEBUG [17756]     callerDetail : 4d3d3f49a7146a414d4db79e41b231fc2a6a4bd6
+2023-01-19 14:56:58.218 INFO  [17756] protocol data from ipc
+2023-01-19 14:56:58.218 ERROR [17756]     Init sgup task error
+2023-01-19 14:56:58.218 ERROR [17756]     STOVE_PC_CORE_NOT_INITIALIZE
+2023-01-19 14:57:01.670 ERROR [17756]     StovePC_UnInit: sdk not initialize
+2023-01-19 14:57:04.412 ERROR [17756]     StovePC_UnInit: sdk not initialize
+2023-01-19 14:57:13.679 INFO  [17756] file Appender.(level: DEBUG)
+2023-01-19 14:57:13.679 INFO  [17756] Log file path: D:\GitHub\OnceAndForAll\StovePCSDK.log
+2023-01-19 14:57:13.679 INFO  [17756] ---------------------------------------------
+2023-01-19 14:57:13.679 INFO  [17756] StovePCSDK(ver:2.5.0)
+2023-01-19 14:57:13.679 INFO  [17756] ---------------------------------------------
+2023-01-19 14:57:13.679 DEBUG [17756]     osPlatform : 64bit
+2023-01-19 14:57:13.679 DEBUG [17756]     osVersion : Windows 10(10.0), 10.0.19044, 64bit
+2023-01-19 14:57:13.679 DEBUG [17756] commandline : C:\Program Files\Unity\Hub\Editor\2021.3.8f1\Editor\Unity.exe
+2023-01-19 14:57:13.679 DEBUG [17756] commandline : -projectpath
+2023-01-19 14:57:13.679 DEBUG [17756] commandline : D:\GitHub\OnceAndForAll
+2023-01-19 14:57:13.679 DEBUG [17756] commandline : -useHub
+2023-01-19 14:57:13.679 DEBUG [17756] commandline : -hubIPC
+2023-01-19 14:57:13.679 DEBUG [17756] commandline : -cloudEnvironment
+2023-01-19 14:57:13.679 DEBUG [17756] commandline : production
+2023-01-19 14:57:13.679 DEBUG [17756] commandline : -licensingIpc
+2023-01-19 14:57:13.679 DEBUG [17756] commandline : LicenseClient-Daltanyang
+2023-01-19 14:57:13.679 DEBUG [17756] commandline : -hubSessionId
+2023-01-19 14:57:13.679 DEBUG [17756] commandline : e2cb0810-97a8-11ed-8f42-f1578afcc02f
+2023-01-19 14:57:13.679 DEBUG [17756] commandline : -accessToken
+2023-01-19 14:57:13.679 DEBUG [17756] commandline : RI8kvJMuA2DHu0JCzdioiDqMFguFXthNmUm74bhcnJA00df
+2023-01-19 14:57:13.679 DEBUG [17756]     init tasks
+2023-01-19 14:57:13.679 DEBUG [17756]     transactionId : 0f4d5910-3cc2-49fc-b593-863e9e8abcf6
+2023-01-19 14:57:13.679 DEBUG [17756]     HKEY_CURRENT_USER : FFFFFFFF80000001
+2023-01-19 14:57:13.679 DEBUG [17756]     subkey : SOFTWARE\SGUP
+2023-01-19 14:57:13.679 DEBUG [17756]     RegOpenKeyEx : 0
+2023-01-19 14:57:13.679 DEBUG [17756]     RegQueryValueEx : 0, size : 82
+2023-01-19 14:57:13.679 DEBUG [17756]     RegQueryValueEx : 0
+2023-01-19 14:57:13.679 DEBUG [17756]     callerDetail : 4d3d3f49a7146a414d4db79e41b231fc2a6a4bd6
+2023-01-19 14:57:13.679 INFO  [17756] protocol data from ipc
+2023-01-19 14:57:13.679 ERROR [17756]     Init sgup task error
+2023-01-19 14:57:13.679 ERROR [17756]     STOVE_PC_CORE_NOT_INITIALIZE
+2023-01-19 14:57:26.902 ERROR [17756]     StovePC_UnInit: sdk not initialize
+2023-01-19 14:57:35.046 INFO  [17756] file Appender.(level: DEBUG)
+2023-01-19 14:57:35.046 INFO  [17756] Log file path: D:\GitHub\OnceAndForAll\StovePCSDK.log
+2023-01-19 14:57:35.046 INFO  [17756] ---------------------------------------------
+2023-01-19 14:57:35.046 INFO  [17756] StovePCSDK(ver:2.5.0)
+2023-01-19 14:57:35.046 INFO  [17756] ---------------------------------------------
+2023-01-19 14:57:35.046 DEBUG [17756]     osPlatform : 64bit
+2023-01-19 14:57:35.046 DEBUG [17756]     osVersion : Windows 10(10.0), 10.0.19044, 64bit
+2023-01-19 14:57:35.046 DEBUG [17756] commandline : C:\Program Files\Unity\Hub\Editor\2021.3.8f1\Editor\Unity.exe
+2023-01-19 14:57:35.046 DEBUG [17756] commandline : -projectpath
+2023-01-19 14:57:35.046 DEBUG [17756] commandline : D:\GitHub\OnceAndForAll
+2023-01-19 14:57:35.046 DEBUG [17756] commandline : -useHub
+2023-01-19 14:57:35.046 DEBUG [17756] commandline : -hubIPC
+2023-01-19 14:57:35.046 DEBUG [17756] commandline : -cloudEnvironment
+2023-01-19 14:57:35.046 DEBUG [17756] commandline : production
+2023-01-19 14:57:35.046 DEBUG [17756] commandline : -licensingIpc
+2023-01-19 14:57:35.046 DEBUG [17756] commandline : LicenseClient-Daltanyang
+2023-01-19 14:57:35.046 DEBUG [17756] commandline : -hubSessionId
+2023-01-19 14:57:35.046 DEBUG [17756] commandline : e2cb0810-97a8-11ed-8f42-f1578afcc02f
+2023-01-19 14:57:35.046 DEBUG [17756] commandline : -accessToken
+2023-01-19 14:57:35.046 DEBUG [17756] commandline : RI8kvJMuA2DHu0JCzdioiDqMFguFXthNmUm74bhcnJA00df
+2023-01-19 14:57:35.046 DEBUG [17756]     init tasks
+2023-01-19 14:57:35.046 DEBUG [17756]     transactionId : a59501f0-1661-45f1-b32e-5067da58649a
+2023-01-19 14:57:35.046 DEBUG [17756]     HKEY_CURRENT_USER : FFFFFFFF80000001
+2023-01-19 14:57:35.046 DEBUG [17756]     subkey : SOFTWARE\SGUP
+2023-01-19 14:57:35.046 DEBUG [17756]     RegOpenKeyEx : 0
+2023-01-19 14:57:35.046 DEBUG [17756]     RegQueryValueEx : 0, size : 82
+2023-01-19 14:57:35.046 DEBUG [17756]     RegQueryValueEx : 0
+2023-01-19 14:57:35.046 DEBUG [17756]     callerDetail : 4d3d3f49a7146a414d4db79e41b231fc2a6a4bd6
+2023-01-19 14:57:35.046 INFO  [17756] protocol data from ipc
+2023-01-19 14:57:35.046 ERROR [17756]     Init sgup task error
+2023-01-19 14:57:35.046 ERROR [17756]     STOVE_PC_CORE_NOT_INITIALIZE
+2023-01-19 14:57:45.316 ERROR [17756]     StovePC_UnInit: sdk not initialize
+2023-01-19 14:57:54.511 INFO  [17756] file Appender.(level: DEBUG)
+2023-01-19 14:57:54.511 INFO  [17756] Log file path: D:\GitHub\OnceAndForAll\StovePCSDK.log
+2023-01-19 14:57:54.511 INFO  [17756] ---------------------------------------------
+2023-01-19 14:57:54.511 INFO  [17756] StovePCSDK(ver:2.5.0)
+2023-01-19 14:57:54.511 INFO  [17756] ---------------------------------------------
+2023-01-19 14:57:54.511 DEBUG [17756]     osPlatform : 64bit
+2023-01-19 14:57:54.511 DEBUG [17756]     osVersion : Windows 10(10.0), 10.0.19044, 64bit
+2023-01-19 14:57:54.511 DEBUG [17756] commandline : C:\Program Files\Unity\Hub\Editor\2021.3.8f1\Editor\Unity.exe
+2023-01-19 14:57:54.511 DEBUG [17756] commandline : -projectpath
+2023-01-19 14:57:54.511 DEBUG [17756] commandline : D:\GitHub\OnceAndForAll
+2023-01-19 14:57:54.511 DEBUG [17756] commandline : -useHub
+2023-01-19 14:57:54.511 DEBUG [17756] commandline : -hubIPC
+2023-01-19 14:57:54.511 DEBUG [17756] commandline : -cloudEnvironment
+2023-01-19 14:57:54.511 DEBUG [17756] commandline : production
+2023-01-19 14:57:54.511 DEBUG [17756] commandline : -licensingIpc
+2023-01-19 14:57:54.511 DEBUG [17756] commandline : LicenseClient-Daltanyang
+2023-01-19 14:57:54.511 DEBUG [17756] commandline : -hubSessionId
+2023-01-19 14:57:54.511 DEBUG [17756] commandline : e2cb0810-97a8-11ed-8f42-f1578afcc02f
+2023-01-19 14:57:54.511 DEBUG [17756] commandline : -accessToken
+2023-01-19 14:57:54.511 DEBUG [17756] commandline : RI8kvJMuA2DHu0JCzdioiDqMFguFXthNmUm74bhcnJA00df
+2023-01-19 14:57:54.511 DEBUG [17756]     init tasks
+2023-01-19 14:57:54.511 DEBUG [17756]     transactionId : 7bbd13f5-216f-4b0c-81c6-2673dbe8ee4f
+2023-01-19 14:57:54.511 DEBUG [17756]     HKEY_CURRENT_USER : FFFFFFFF80000001
+2023-01-19 14:57:54.511 DEBUG [17756]     subkey : SOFTWARE\SGUP
+2023-01-19 14:57:54.511 DEBUG [17756]     RegOpenKeyEx : 0
+2023-01-19 14:57:54.511 DEBUG [17756]     RegQueryValueEx : 0, size : 82
+2023-01-19 14:57:54.511 DEBUG [17756]     RegQueryValueEx : 0
+2023-01-19 14:57:54.511 DEBUG [17756]     callerDetail : 4d3d3f49a7146a414d4db79e41b231fc2a6a4bd6
+2023-01-19 14:57:54.512 INFO  [17756] protocol data from ipc
+2023-01-19 14:57:54.512 ERROR [17756]     Init sgup task error
+2023-01-19 14:57:54.512 ERROR [17756]     STOVE_PC_CORE_NOT_INITIALIZE
+2023-01-19 14:58:12.067 ERROR [17756]     StovePC_UnInit: sdk not initialize
+2023-01-19 14:58:26.864 INFO  [17756] file Appender.(level: DEBUG)
+2023-01-19 14:58:26.864 INFO  [17756] Log file path: D:\GitHub\OnceAndForAll\StovePCSDK.log
+2023-01-19 14:58:26.864 INFO  [17756] ---------------------------------------------
+2023-01-19 14:58:26.864 INFO  [17756] StovePCSDK(ver:2.5.0)
+2023-01-19 14:58:26.864 INFO  [17756] ---------------------------------------------
+2023-01-19 14:58:26.864 DEBUG [17756]     osPlatform : 64bit
+2023-01-19 14:58:26.864 DEBUG [17756]     osVersion : Windows 10(10.0), 10.0.19044, 64bit
+2023-01-19 14:58:26.864 DEBUG [17756] commandline : C:\Program Files\Unity\Hub\Editor\2021.3.8f1\Editor\Unity.exe
+2023-01-19 14:58:26.864 DEBUG [17756] commandline : -projectpath
+2023-01-19 14:58:26.864 DEBUG [17756] commandline : D:\GitHub\OnceAndForAll
+2023-01-19 14:58:26.864 DEBUG [17756] commandline : -useHub
+2023-01-19 14:58:26.864 DEBUG [17756] commandline : -hubIPC
+2023-01-19 14:58:26.864 DEBUG [17756] commandline : -cloudEnvironment
+2023-01-19 14:58:26.864 DEBUG [17756] commandline : production
+2023-01-19 14:58:26.864 DEBUG [17756] commandline : -licensingIpc
+2023-01-19 14:58:26.864 DEBUG [17756] commandline : LicenseClient-Daltanyang
+2023-01-19 14:58:26.864 DEBUG [17756] commandline : -hubSessionId
+2023-01-19 14:58:26.864 DEBUG [17756] commandline : e2cb0810-97a8-11ed-8f42-f1578afcc02f
+2023-01-19 14:58:26.864 DEBUG [17756] commandline : -accessToken
+2023-01-19 14:58:26.864 DEBUG [17756] commandline : RI8kvJMuA2DHu0JCzdioiDqMFguFXthNmUm74bhcnJA00df
+2023-01-19 14:58:26.864 DEBUG [17756]     init tasks
+2023-01-19 14:58:26.864 DEBUG [17756]     transactionId : 3816e9c9-44e8-49b2-9b6b-afbe0aec4d89
+2023-01-19 14:58:26.864 DEBUG [17756]     HKEY_CURRENT_USER : FFFFFFFF80000001
+2023-01-19 14:58:26.864 DEBUG [17756]     subkey : SOFTWARE\SGUP
+2023-01-19 14:58:26.864 DEBUG [17756]     RegOpenKeyEx : 0
+2023-01-19 14:58:26.864 DEBUG [17756]     RegQueryValueEx : 0, size : 82
+2023-01-19 14:58:26.864 DEBUG [17756]     RegQueryValueEx : 0
+2023-01-19 14:58:26.864 DEBUG [17756]     callerDetail : 4d3d3f49a7146a414d4db79e41b231fc2a6a4bd6
+2023-01-19 14:58:26.864 INFO  [17756] protocol data from ipc
+2023-01-19 14:58:26.864 ERROR [17756]     Init sgup task error
+2023-01-19 14:58:26.864 ERROR [17756]     STOVE_PC_CORE_NOT_INITIALIZE
+2023-01-19 14:58:31.927 ERROR [17756]     StovePC_UnInit: sdk not initialize
+2023-01-19 14:58:37.352 INFO  [17756] file Appender.(level: DEBUG)
+2023-01-19 14:58:37.352 INFO  [17756] Log file path: D:\GitHub\OnceAndForAll\StovePCSDK.log
+2023-01-19 14:58:37.352 INFO  [17756] ---------------------------------------------
+2023-01-19 14:58:37.352 INFO  [17756] StovePCSDK(ver:2.5.0)
+2023-01-19 14:58:37.352 INFO  [17756] ---------------------------------------------
+2023-01-19 14:58:37.352 DEBUG [17756]     osPlatform : 64bit
+2023-01-19 14:58:37.352 DEBUG [17756]     osVersion : Windows 10(10.0), 10.0.19044, 64bit
+2023-01-19 14:58:37.353 DEBUG [17756] commandline : C:\Program Files\Unity\Hub\Editor\2021.3.8f1\Editor\Unity.exe
+2023-01-19 14:58:37.353 DEBUG [17756] commandline : -projectpath
+2023-01-19 14:58:37.353 DEBUG [17756] commandline : D:\GitHub\OnceAndForAll
+2023-01-19 14:58:37.353 DEBUG [17756] commandline : -useHub
+2023-01-19 14:58:37.353 DEBUG [17756] commandline : -hubIPC
+2023-01-19 14:58:37.353 DEBUG [17756] commandline : -cloudEnvironment
+2023-01-19 14:58:37.353 DEBUG [17756] commandline : production
+2023-01-19 14:58:37.353 DEBUG [17756] commandline : -licensingIpc
+2023-01-19 14:58:37.353 DEBUG [17756] commandline : LicenseClient-Daltanyang
+2023-01-19 14:58:37.353 DEBUG [17756] commandline : -hubSessionId
+2023-01-19 14:58:37.353 DEBUG [17756] commandline : e2cb0810-97a8-11ed-8f42-f1578afcc02f
+2023-01-19 14:58:37.353 DEBUG [17756] commandline : -accessToken
+2023-01-19 14:58:37.353 DEBUG [17756] commandline : RI8kvJMuA2DHu0JCzdioiDqMFguFXthNmUm74bhcnJA00df
+2023-01-19 14:58:37.353 DEBUG [17756]     init tasks
+2023-01-19 14:58:37.353 DEBUG [17756]     transactionId : f4866593-72f5-4db7-8fcd-0d4e4fb678bd
+2023-01-19 14:58:37.353 DEBUG [17756]     HKEY_CURRENT_USER : FFFFFFFF80000001
+2023-01-19 14:58:37.353 DEBUG [17756]     subkey : SOFTWARE\SGUP
+2023-01-19 14:58:37.353 DEBUG [17756]     RegOpenKeyEx : 0
+2023-01-19 14:58:37.353 DEBUG [17756]     RegQueryValueEx : 0, size : 82
+2023-01-19 14:58:37.353 DEBUG [17756]     RegQueryValueEx : 0
+2023-01-19 14:58:37.353 DEBUG [17756]     callerDetail : 4d3d3f49a7146a414d4db79e41b231fc2a6a4bd6
+2023-01-19 14:58:37.353 INFO  [17756] protocol data from ipc
+2023-01-19 14:58:37.353 ERROR [17756]     Init sgup task error
+2023-01-19 14:58:37.353 ERROR [17756]     STOVE_PC_CORE_NOT_INITIALIZE
+2023-01-19 15:02:24.388 INFO  [17756] file Appender.(level: DEBUG)
+2023-01-19 15:02:24.388 INFO  [17756] Log file path: D:\GitHub\OnceAndForAll\StovePCSDK.log
+2023-01-19 15:02:24.388 INFO  [17756] ---------------------------------------------
+2023-01-19 15:02:24.388 INFO  [17756] StovePCSDK(ver:2.5.0)
+2023-01-19 15:02:24.388 INFO  [17756] ---------------------------------------------
+2023-01-19 15:02:24.388 DEBUG [17756]     osPlatform : 64bit
+2023-01-19 15:02:24.388 DEBUG [17756]     osVersion : Windows 10(10.0), 10.0.19044, 64bit
+2023-01-19 15:02:24.388 DEBUG [17756] commandline : C:\Program Files\Unity\Hub\Editor\2021.3.8f1\Editor\Unity.exe
+2023-01-19 15:02:24.388 DEBUG [17756] commandline : -projectpath
+2023-01-19 15:02:24.388 DEBUG [17756] commandline : D:\GitHub\OnceAndForAll
+2023-01-19 15:02:24.388 DEBUG [17756] commandline : -useHub
+2023-01-19 15:02:24.388 DEBUG [17756] commandline : -hubIPC
+2023-01-19 15:02:24.388 DEBUG [17756] commandline : -cloudEnvironment
+2023-01-19 15:02:24.388 DEBUG [17756] commandline : production
+2023-01-19 15:02:24.388 DEBUG [17756] commandline : -licensingIpc
+2023-01-19 15:02:24.388 DEBUG [17756] commandline : LicenseClient-Daltanyang
+2023-01-19 15:02:24.388 DEBUG [17756] commandline : -hubSessionId
+2023-01-19 15:02:24.388 DEBUG [17756] commandline : e2cb0810-97a8-11ed-8f42-f1578afcc02f
+2023-01-19 15:02:24.388 DEBUG [17756] commandline : -accessToken
+2023-01-19 15:02:24.388 DEBUG [17756] commandline : RI8kvJMuA2DHu0JCzdioiDqMFguFXthNmUm74bhcnJA00df
+2023-01-19 15:02:24.388 DEBUG [17756]     init tasks
+2023-01-19 15:02:24.388 DEBUG [17756]     transactionId : f4b37be8-cf1e-4a4c-9943-77887aa446fc
+2023-01-19 15:02:24.388 DEBUG [17756]     HKEY_CURRENT_USER : FFFFFFFF80000001
+2023-01-19 15:02:24.388 DEBUG [17756]     subkey : SOFTWARE\SGUP
+2023-01-19 15:02:24.388 DEBUG [17756]     RegOpenKeyEx : 0
+2023-01-19 15:02:24.388 DEBUG [17756]     RegQueryValueEx : 0, size : 82
+2023-01-19 15:02:24.388 DEBUG [17756]     RegQueryValueEx : 0
+2023-01-19 15:02:24.388 DEBUG [17756]     callerDetail : 4d3d3f49a7146a414d4db79e41b231fc2a6a4bd6
+2023-01-19 15:02:24.388 INFO  [17756] protocol data from ipc
+2023-01-19 15:02:24.388 ERROR [17756]     Init sgup task error
+2023-01-19 15:02:24.388 ERROR [17756]     STOVE_PC_CORE_NOT_INITIALIZE
+2023-01-19 15:02:55.031 ERROR [17756]     StovePC_UnInit: sdk not initialize
+2023-01-19 15:02:55.143 ERROR [17756]     StovePC_UnInit: sdk not initialize
+2023-01-19 15:36:59.474 INFO  [17756] file Appender.(level: DEBUG)
+2023-01-19 15:36:59.474 INFO  [17756] Log file path: D:\GitHub\OnceAndForAll\StovePCSDK.log
+2023-01-19 15:36:59.474 INFO  [17756] ---------------------------------------------
+2023-01-19 15:36:59.474 INFO  [17756] StovePCSDK(ver:2.5.0)
+2023-01-19 15:36:59.474 INFO  [17756] ---------------------------------------------
+2023-01-19 15:36:59.520 DEBUG [17756]     osPlatform : 64bit
+2023-01-19 15:36:59.520 DEBUG [17756]     osVersion : Windows 10(10.0), 10.0.19044, 64bit
+2023-01-19 15:36:59.520 DEBUG [17756] commandline : C:\Program Files\Unity\Hub\Editor\2021.3.8f1\Editor\Unity.exe
+2023-01-19 15:36:59.520 DEBUG [17756] commandline : -projectpath
+2023-01-19 15:36:59.520 DEBUG [17756] commandline : D:\GitHub\OnceAndForAll
+2023-01-19 15:36:59.520 DEBUG [17756] commandline : -useHub
+2023-01-19 15:36:59.520 DEBUG [17756] commandline : -hubIPC
+2023-01-19 15:36:59.520 DEBUG [17756] commandline : -cloudEnvironment
+2023-01-19 15:36:59.520 DEBUG [17756] commandline : production
+2023-01-19 15:36:59.520 DEBUG [17756] commandline : -licensingIpc
+2023-01-19 15:36:59.520 DEBUG [17756] commandline : LicenseClient-Daltanyang
+2023-01-19 15:36:59.520 DEBUG [17756] commandline : -hubSessionId
+2023-01-19 15:36:59.520 DEBUG [17756] commandline : e2cb0810-97a8-11ed-8f42-f1578afcc02f
+2023-01-19 15:36:59.520 DEBUG [17756] commandline : -accessToken
+2023-01-19 15:36:59.520 DEBUG [17756] commandline : RI8kvJMuA2DHu0JCzdioiDqMFguFXthNmUm74bhcnJA00df
+2023-01-19 15:36:59.520 DEBUG [17756]     init tasks
+2023-01-19 15:36:59.520 DEBUG [17756]     transactionId : 1e7d29e6-250e-4baa-aa7e-5639fa686d10
+2023-01-19 15:36:59.520 DEBUG [17756]     HKEY_CURRENT_USER : FFFFFFFF80000001
+2023-01-19 15:36:59.520 DEBUG [17756]     subkey : SOFTWARE\SGUP
+2023-01-19 15:36:59.521 DEBUG [17756]     RegOpenKeyEx : 0
+2023-01-19 15:36:59.521 DEBUG [17756]     RegQueryValueEx : 0, size : 82
+2023-01-19 15:36:59.521 DEBUG [17756]     RegQueryValueEx : 0
+2023-01-19 15:36:59.521 DEBUG [17756]     callerDetail : 4d3d3f49a7146a414d4db79e41b231fc2a6a4bd6
+2023-01-19 15:36:59.525 INFO  [17756] protocol data from ipc
+2023-01-19 15:36:59.528 ERROR [17756]     Init sgup task error
+2023-01-19 15:36:59.528 ERROR [17756]     STOVE_PC_CORE_NOT_INITIALIZE
+2023-01-19 15:54:18.372 ERROR [17756]     StovePC_UnInit: sdk not initialize

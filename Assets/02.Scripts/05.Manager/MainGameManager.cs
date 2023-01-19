@@ -92,8 +92,22 @@ public class MainGameManager : MonoBehaviour
     private AddEffect[] _positiveEffect = new AddEffect[3];
     private AddEffect[] _negativeEffect = new AddEffect[3];
 
+    public bool isloabby=true;
+
+    private void Awake()
+    {
+        sdk = GetComponent<StovePCSDKManager>();
+        sdk.ButtonLoadConfig_Click();
+        DontDestroyOnLoad(this);
+    }
+    private void Start()
+    {
+        ObjectPool.Instance.InstantiateAllPoolElement();
+    }
+
     private void Update()
     {
+        if (isloabby) return;
         switch (state)
         {
             case GameFlowState.IDLE:
@@ -110,8 +124,7 @@ public class MainGameManager : MonoBehaviour
                     StatesEnforce.Instance.AddElement(Element.Ice, 10);
                     StatesEnforce.Instance.AddElement(Element.Electricity, 10);
 
-                    sdk = GetComponent<StovePCSDKManager>();
-                    sdk.ButtonLoadConfig_Click();
+                    
                 }
                 break;
             case GameFlowState.WAITING_START:
@@ -295,14 +308,15 @@ public class MainGameManager : MonoBehaviour
         state = GameFlowState.LEVEL_FAIL;
     }
 
-    public void LevelSuccess()
+    public void LevelReset()
     {
-        state = GameFlowState.LEVEL_SUCCESS;
+        state = GameFlowState.IDLE;
     }
 
-    public void GameReStart()
+    public void LevelSuccess()
     {
-        SceneManager.LoadScene(0);
+        
+        state = GameFlowState.LEVEL_SUCCESS;
     }
     public void GamEnd()
     {

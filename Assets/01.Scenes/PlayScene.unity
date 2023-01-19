@@ -2343,205 +2343,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 172432748}
   m_CullTransparentMesh: 1
---- !u!1 &179909835
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 179909837}
-  - component: {fileID: 179909836}
-  - component: {fileID: 179909838}
-  - component: {fileID: 179909839}
-  - component: {fileID: 179909840}
-  m_Layer: 0
-  m_Name: MainGameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &179909836
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 179909835}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 834495b6557df884f909ed1f4c811933, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _endRound: 0
-  _currentRound: 20
-  _currentEnemyCount: 0
-  _health: 20
-  _money: 300
-  _positiveEffectList:
-  - {fileID: 11400000, guid: e6ffd6aa91904d44c9646a4aa1d065e5, type: 2}
-  - {fileID: 11400000, guid: 1e97006fc0dbb1447aac4cafe8f3f847, type: 2}
-  - {fileID: 11400000, guid: 5fc38736bd62b4143a4d05761364db74, type: 2}
-  - {fileID: 11400000, guid: 4d769b506d565e5468f1a412bf9bbafc, type: 2}
-  - {fileID: 11400000, guid: 8c309f05fc6af8846be74bce324f1deb, type: 2}
-  - {fileID: 11400000, guid: 0261c82b330211642b1c2f96f82d3476, type: 2}
-  - {fileID: 11400000, guid: 119a4376acf2668438469c1fcf8690d9, type: 2}
-  - {fileID: 11400000, guid: 474ddef4980270f42992ccbf9c30c35a, type: 2}
-  _negativeEffectList:
-  - {fileID: 11400000, guid: 7bb5f5df7ff60bd45ba93b9b61d4bb67, type: 2}
-  - {fileID: 11400000, guid: 7df9e8e854cd6184a931d3d2b27ac801, type: 2}
-  - {fileID: 11400000, guid: 0160ebe9f94a14c4a83b6b6eb98bd55a, type: 2}
-  - {fileID: 11400000, guid: fd87eb83394f7294b8c6ea60dc848b76, type: 2}
-  - {fileID: 11400000, guid: 73cd1d009367166499dcc9635b9076d2, type: 2}
-  - {fileID: 11400000, guid: 01f1c2a231c69cc4cba7dfd4bb6e55bb, type: 2}
-  - {fileID: 11400000, guid: 5b1de3906080bc949839ff5b65242649, type: 2}
-  - {fileID: 11400000, guid: 33e1a7fe1f175b04d8eb1203121a1340, type: 2}
-  - {fileID: 11400000, guid: c5c1dd8ffc3e6a942bb3beddf7767605, type: 2}
-  - {fileID: 11400000, guid: 5af957a60901eed40a028d0cae7663c1, type: 2}
-  - {fileID: 11400000, guid: 55d6276ad40e55e45845da0f3b0daf55, type: 2}
-  - {fileID: 11400000, guid: 35aab58df805626468ed9a07fe4e9189, type: 2}
-  - {fileID: 11400000, guid: fd8ae4ddb8146cf4289b31c527731c78, type: 2}
-  - {fileID: 11400000, guid: 88db6d411b8045b499b0f0c2f5e0fc7c, type: 2}
-  - {fileID: 11400000, guid: 5151794fa2b665149bad6b8eff988195, type: 2}
---- !u!4 &179909837
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 179909835}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 15
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &179909838
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 179909835}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e14341a02326f0b42a56defb79089f68, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &179909839
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 179909835}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 793abe6548f396e4c98928598b42b6d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  poolElements:
-  - name: Sound
-    prefab: {fileID: 2688872855312986836, guid: bbf0fa75ab57c2e49838e9c872db63da,
-      type: 3}
-    num: 50
-  - name: HitEffect
-    prefab: {fileID: 7915719370959275029, guid: da7e86767137bc0448453bd4b283118d,
-      type: 3}
-    num: 100
-  - name: PlayerBullet
-    prefab: {fileID: 8509475067699384722, guid: cc2aa40d7c1ad76458b96c23c1e72fe0,
-      type: 3}
-    num: 100
-  - name: SniperLine
-    prefab: {fileID: 7297206537140644763, guid: ceb5f2badc6104c4890fafefdb3c18cc,
-      type: 3}
-    num: 5
-  - name: "\uAE30\uBCF8\uBAAC\uC2A4\uD130"
-    prefab: {fileID: 946122636926815124, guid: e30e75873fb4a514686fe55eac603b7b, type: 3}
-    num: 50
-  - name: "\uACE8\uB818"
-    prefab: {fileID: 1067925524328404, guid: 6bbfea6690ef7724ba495c866081f855, type: 3}
-    num: 30
-  - name: "\uB9AC\uCE58"
-    prefab: {fileID: 1500939411536426, guid: 274c4c35ed05ea14c87492064b3cadfd, type: 3}
-    num: 30
-  - name: "\uC624\uD06C"
-    prefab: {fileID: 3155058319838657794, guid: 176299a76ecfc7544b22a66fae200ac7,
-      type: 3}
-    num: 50
-  - name: BaseBullet
-    prefab: {fileID: 272754515727314201, guid: 6e2361e736a0ee640877aaec47d28982, type: 3}
-    num: 100
-  - name: BoomBullet
-    prefab: {fileID: 272754515727314201, guid: e64289e9b0d52b14fa4fa8581e085449, type: 3}
-    num: 100
-  - name: BoomEffect
-    prefab: {fileID: 5243384695144515588, guid: 1aed4930d00c0934c92769be715ac8b6,
-      type: 3}
-    num: 100
-  - name: Barrier
-    prefab: {fileID: 5871624486232733469, guid: c056928966291f7408104520e48f9be4,
-      type: 3}
-    num: 20
-  - name: Shield
-    prefab: {fileID: 3498218146740629128, guid: 641d105b7c5087b40b3dc47c1b99ff53,
-      type: 3}
-    num: 20
-  - name: Smoke
-    prefab: {fileID: 2250122534679980736, guid: a14a6904461803743ad8b3b27b45efb1,
-      type: 3}
-    num: 20
-  - name: Tent
-    prefab: {fileID: 3460676153703845879, guid: 39e4751ef85d15949ba6c9291ac88e88,
-      type: 3}
-    num: 20
-  - name: Bend
-    prefab: {fileID: 3361211297634721524, guid: ba4f4e7c58321704f89ffcb122df95ce,
-      type: 3}
-    num: 20
-  - name: Immortality
-    prefab: {fileID: 6790952046064258630, guid: bc967b22fdafc514d988099ab11d1944,
-      type: 3}
-    num: 20
-  - name: Chilling
-    prefab: {fileID: 7594694071563269316, guid: f97ed0a4ddbda07418f38c155a869c14,
-      type: 3}
-    num: 20
-  - name: Burning
-    prefab: {fileID: 5512755929151027495, guid: 239796379ec4a704289e7834ea5ac97c,
-      type: 3}
-    num: 20
-  - name: Sparking
-    prefab: {fileID: 5279133905256777933, guid: 9c8a0c6abe7617e4cbf66eb64f7ec14b,
-      type: 3}
-    num: 20
-  - name: towerspawn
-    prefab: {fileID: 2677035564008548614, guid: a38bd369bc74cb843be8a2ddbf83c2ad,
-      type: 3}
-    num: 5
---- !u!114 &179909840
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 179909835}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90cd050de0d0bad4f9e39185f70d84ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Env: 
-  AppKey: 
-  AppSecret: 
-  GameId: 
-  LogLevel: 0
-  LogPath: 
 --- !u!1 &184039633
 GameObject:
   m_ObjectHideFlags: 0
@@ -5592,9 +5393,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 179909836}
-        m_TargetAssemblyTypeName: MainGameManager, Assembly-CSharp
-        m_MethodName: GamEnd
+      - m_Target: {fileID: 725182137}
+        m_TargetAssemblyTypeName: PlaySceneManager, Assembly-CSharp
+        m_MethodName: QuitScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6125,7 +5926,7 @@ Transform:
   m_Children:
   - {fileID: 870606566}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &528612487
 GameObject:
@@ -6354,6 +6155,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 550831895}
+  - component: {fileID: 550831896}
   m_Layer: 0
   m_Name: --------- UI ----------
   m_TagString: Untagged
@@ -6376,6 +6178,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &550831896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550831894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b0d99a6698df794bb514335ce23ed1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &556025765
 GameObject:
   m_ObjectHideFlags: 0
@@ -8291,6 +8105,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 725182136}
+  - component: {fileID: 725182137}
   m_Layer: 0
   m_Name: --------- Manager ----------
   m_TagString: Untagged
@@ -8313,6 +8128,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &725182137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 725182135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b0d99a6698df794bb514335ce23ed1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &736756774
 GameObject:
   m_ObjectHideFlags: 0
@@ -11828,9 +11655,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 179909836}
-        m_TargetAssemblyTypeName: MainGameManager, Assembly-CSharp
-        m_MethodName: GamEnd
+      - m_Target: {fileID: 725182137}
+        m_TargetAssemblyTypeName: PlaySceneManager, Assembly-CSharp
+        m_MethodName: QuitScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14909,9 +14736,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 179909836}
-        m_TargetAssemblyTypeName: MainGameManager, Assembly-CSharp
-        m_MethodName: GameReStart
+      - m_Target: {fileID: 725182137}
+        m_TargetAssemblyTypeName: PlaySceneManager, Assembly-CSharp
+        m_MethodName: ResetScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
