@@ -15,6 +15,7 @@ MonoBehaviour:
   _effect: 7
   _gain: 2
   _infomation: "\uB9AC\uCE58 \uCD94\uAC00 \uC18C\uD658"
+  _infomation_en: Summon more Lich
   _enemyName: "\uB9AC\uCE58"
   _enemyBuff: 7
   _enemyBuffInfomation: "\uC5ED\uC7A5"

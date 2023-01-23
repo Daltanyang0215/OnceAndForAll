@@ -1,0 +1,109 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Text Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Text
+  m_TableCollectionNameGuidString: 0d836150e7733a04ab15c1aa6ed559d5
+  m_Entries:
+  - m_Id: 546194530304
+    m_Key: Start_key
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14470029312
+    m_Key: "Start_key\uB192\uC740 \uACF5\uACA9\uB825"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 792882520064
+    m_Key: EndGame
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3083987525632
+    m_Key: Tutorial
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3845404696576
+    m_Key: NextRound
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5104719306752
+    m_Key: ReStart
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6182760292352
+    m_Key: GameEnd
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6265799122944
+    m_Key: "\uC885\uB8CC \uB77C\uC6B4\uB4DC"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9344552476672
+    m_Key: "\uD6A8\uACFC\uC5D0 \uB300\uD55C \uC124\uBA85"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10191814467584
+    m_Key: roundEnd
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10655012429824
+    m_Key: list
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11080834949120
+    m_Key: effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12251280646144
+    m_Key: "\uBCF4\uC2A4\uB4F1\uC7A5\uAE4C\uC9C0"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12427143618560
+    m_Key: Weapons
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12639228600320
+    m_Key: New Entry
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12873455312896
+    m_Key: New Entry 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12999133437952
+    m_Key: New Entry 2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13120378183680
+    m_Key: New Entry 3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14232153956352
+    m_Key: New Entry 4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14319181570048
+    m_Key: New Entry 5
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 5585934111047680028
+  references:
+    version: 2
+    RefIds:
+    - rid: 5585934111047680028
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables,
+        asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1674452184768

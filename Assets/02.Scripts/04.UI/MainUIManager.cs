@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Localization.Settings;
 
 public class MainUIManager : MonoBehaviour
 {
@@ -388,16 +389,28 @@ public class MainUIManager : MonoBehaviour
                                 switch (tower.GetElement(i))
                                 {
                                     case Element.Normal:
-                                        upgrade += $"타워의 기본 공격력이 {StatesEnforce.Instance.elementNomralDamageGain}배 증가 합니다 \n";
+                                        if (LocalizationSettings.SelectedLocale != LocalizationSettings.AvailableLocales.Locales[1])
+                                            upgrade += $"타워의 기본 공격력이 {StatesEnforce.Instance.elementNomralDamageGain}배 증가 합니다 \n";
+                                        else
+                                            upgrade += $"Tower base attack power is increased by {StatesEnforce.Instance.elementNomralDamageGain}X \n";
                                         break;
                                     case Element.Fire:
-                                        upgrade += $"타워의 기본 공격속성이 화속성으로 변경됩니다 \n";
+                                        if (LocalizationSettings.SelectedLocale != LocalizationSettings.AvailableLocales.Locales[1])
+                                            upgrade += $"타워의 기본 공격속성이 화속성으로 변경됩니다 \n";
+                                        else
+                                            upgrade += $"The basic attack attribute of the tower is changed to fire attribute \n";
                                         break;
                                     case Element.Ice:
-                                        upgrade += $"타워의 기본 공격속성이 얼음속성으로 변경됩니다 \n";
+                                        if (LocalizationSettings.SelectedLocale != LocalizationSettings.AvailableLocales.Locales[1])
+                                            upgrade += $"타워의 기본 공격속성이 얼음속성으로 변경됩니다 \n";
+                                        else
+                                            upgrade += $"The basic attack attribute of the tower is changed to ice attribute \n";
                                         break;
                                     case Element.Electricity:
-                                        upgrade += $"타워의 기본 공격속성이 번개속성으로 변경됩니다 \n";
+                                        if (LocalizationSettings.SelectedLocale != LocalizationSettings.AvailableLocales.Locales[1])
+                                            upgrade += $"타워의 기본 공격속성이 번개속성으로 변경됩니다 \n";
+                                        else
+                                            upgrade += $"Tower's basic attack attribute is changed to lightning attribute \n";
                                         break;
                                     default:
                                         break;
@@ -409,25 +422,46 @@ public class MainUIManager : MonoBehaviour
                                 switch (tower.GetElement(i))
                                 {
                                     case Element.Normal:
-                                        upgrade += $"타워의 기본 공격력이 {StatesEnforce.Instance.elementNomralDamageGain}배 증가 합니다 \n";
+                                        if (LocalizationSettings.SelectedLocale != LocalizationSettings.AvailableLocales.Locales[1])
+                                            upgrade += $"타워의 기본 공격력이 {StatesEnforce.Instance.elementNomralDamageGain}배 증가 합니다 \n";
+                                        else
+                                            upgrade += $"Tower base attack power is increased by {StatesEnforce.Instance.elementNomralDamageGain}X \n";
                                         break;
                                     case Element.Fire:
                                         if (tower is TowerTargetingBase)
-                                            upgrade += $"투사체가 폭발을 이르킵니다 \n";
+                                            if (LocalizationSettings.SelectedLocale != LocalizationSettings.AvailableLocales.Locales[1])
+                                                upgrade += $"투사체가 폭발을 이르킵니다 \n";
+                                            else
+                                                upgrade += $"Projectiles explode \n";
                                         else
+                                            if (LocalizationSettings.SelectedLocale != LocalizationSettings.AvailableLocales.Locales[1])
                                             upgrade += $"공격범위가 2배로 증가합니다 \n";
+                                        else
+                                            upgrade += $"Attack range 2X \n";
                                         break;
                                     case Element.Ice:
                                         if (tower is TowerTargetingBase)
-                                            upgrade += $"공격속도가 2배 증가합니다 \n";
+                                            if (LocalizationSettings.SelectedLocale != LocalizationSettings.AvailableLocales.Locales[1])
+                                                upgrade += $"공격속도가 2배로 증가합니다 \n";
+                                            else
+                                                upgrade += $"Attack Speed 2X \n";
                                         else
+                                            if (LocalizationSettings.SelectedLocale != LocalizationSettings.AvailableLocales.Locales[1])
                                             upgrade += $"공격주기가 1.5배 증가합니다 \n";
+                                        else
+                                            upgrade += $"Attack period is increased by 1.5 times \n";
                                         break;
                                     case Element.Electricity:
                                         if (tower is TowerTargetingBase)
-                                            upgrade += $"투사체가 몬스터를 1회 관통합니다 \n";
+                                            if (LocalizationSettings.SelectedLocale != LocalizationSettings.AvailableLocales.Locales[1])
+                                                upgrade += $"투사체가 몬스터를 1회 관통합니다 \n";
+                                            else
+                                                upgrade += $"A projectile pierces a monster 1 time \n";
                                         else
+                                             if (LocalizationSettings.SelectedLocale != LocalizationSettings.AvailableLocales.Locales[1])
                                             upgrade += $"타워의 기본 공격력이 {StatesEnforce.Instance.elementNomralDamageGain}배 증가 합니다 \n";
+                                        else
+                                            upgrade += $"Tower base attack power is increased by {StatesEnforce.Instance.elementNomralDamageGain}X \n";
                                         break;
                                     default:
                                         break;
@@ -439,16 +473,28 @@ public class MainUIManager : MonoBehaviour
                                 switch (tower.GetElement(i))
                                 {
                                     case Element.Normal:
-                                        upgrade += $"타워의 기본 공격력이 {StatesEnforce.Instance.elementNomralDamageGain}배 증가 합니다 \n";
+                                        if (LocalizationSettings.SelectedLocale != LocalizationSettings.AvailableLocales.Locales[1])
+                                            upgrade += $"타워의 기본 공격력이 {StatesEnforce.Instance.elementNomralDamageGain}배 증가 합니다 \n";
+                                        else
+                                            upgrade += $"Tower base attack power is increased by {StatesEnforce.Instance.elementNomralDamageGain}X \n";
                                         break;
                                     case Element.Fire:
-                                        upgrade += $"지속적인 피해를 주는 '점화' 효과를 부여합니다 \n";
+                                        if (LocalizationSettings.SelectedLocale != LocalizationSettings.AvailableLocales.Locales[1])
+                                            upgrade += $"지속적인 피해를 주는 '점화' 효과를 부여합니다  \n";
+                                        else
+                                            upgrade += $"Gives a 'ignite' effect that deals continuous damage\n";
                                         break;
                                     case Element.Ice:
-                                        upgrade += $"일정 시간 동안 이동속도를 감소 시키는 '둔화' 효과를 부여합니다 \n";
+                                        if (LocalizationSettings.SelectedLocale != LocalizationSettings.AvailableLocales.Locales[1])
+                                            upgrade += $"일정 시간 동안 이동속도를 감소 시키는 '둔화' 효과를 부여합니다 \n";
+                                        else
+                                            upgrade += $"Gives a 'slow' effect that reduces movement speed for a certain period of time \n";
                                         break;
                                     case Element.Electricity:
-                                        upgrade += $"일정 시간 동안 받는피해를 증가 시키는 '감전' 효과를 부여합니다 \n";
+                                        if (LocalizationSettings.SelectedLocale != LocalizationSettings.AvailableLocales.Locales[1])
+                                            upgrade += $"일정 시간 동안 받는피해를 증가 시키는 '감전' 효과를 부여합니다 \n";
+                                        else
+                                            upgrade += $"Gives an 'electrocution' effect that increases damage received for a certain period of time \n";
                                         break;
                                     default:
                                         break;

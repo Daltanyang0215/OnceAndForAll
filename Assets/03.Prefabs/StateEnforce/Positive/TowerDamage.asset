@@ -15,3 +15,7 @@ MonoBehaviour:
   _effect: 2
   _gain: 1.2
   _infomation: "\uBAA8\uB4E0 \uD0C0\uC6CC \uACF5\uACA9\uB825"
+  _infomation_en: All tower attack power
+  _enemyName: 
+  _enemyBuff: 0
+  _enemyBuffInfomation: 

@@ -1,0 +1,161 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Text_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 0d836150e7733a04ab15c1aa6ed559d5, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 14470029312
+    m_Localized: Start
+    m_Metadata:
+      m_Items: []
+  - m_Id: 546194530304
+    m_Localized: Start
+    m_Metadata:
+      m_Items: []
+  - m_Id: 792882520064
+    m_Localized: Quit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3083987525632
+    m_Localized: "This is the 13th Defense Command.\nDue to the urgency of the situation,
+      we will give you a detailed explanation later.\n\nThe creatures from the portal
+      ahead are attacking the barrier behind you for some reason.\n\nAre you checking
+      the reason? It's confirmed that the creatures can't do direct damage to you.\n\nPlease
+      use your weapons and turrets to block the advance of all creatures.\n\n                    
+      \"Start game with space bar\""
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3845404696576
+    m_Localized: Space bar to start next round
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5104719306752
+    m_Localized: Restart
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6182760292352
+    m_Localized: GameEnd
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6265799122944
+    m_Localized: 'End round :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9344552476672
+    m_Localized: explanation of the effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10191814467584
+    m_Localized: 'end of round
+
+      5 additional monsters are spawned
+
+      Choose
+      your reward'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10655012429824
+    m_Localized: List of applied effects
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11080834949120
+    m_Localized: Applied effects
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12251280646144
+    m_Localized: Boss Soon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12427143618560
+    m_Localized: '"3" mode switching
+
+      "1","2" weapon switching
+
+      "R" Reload
+
+      "Left
+      Click" fire
+
+      "Right Click" Weapon-Specific Ability'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12639228600320
+    m_Localized: '"3" mode switching
+
+      "1","2" weapon switching
+
+      "right
+      click" Change selection
+
+      "Left Click" Apply'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12873455312896
+    m_Localized: construction
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12999133437952
+    m_Localized: enhanced
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13120378183680
+    m_Localized: '''F'' interaction'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14232153956352
+    m_Localized: description of the effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14319181570048
+    m_Localized: 'Shield: The shield takes the damage received from the front instead,
+      and the shield is destroyed when a certain amount of damage is received.
+
+
+      Shield:
+      Ignores all types of damage 10 times, and the shield is destroyed when all
+      times are exhausted
+
+
+      Charge: Runs forward twice as fast before hitting
+      a tower. When it hits a wall, it returns to its original speed.
+
+
+      Enormous:
+      3x HP, 8x increase in size, 2x damage when reaching the barrier
+
+
+      Smoke
+      Screen: When a monster with the effect is defeated, a smoke screen is scattered
+      around it to obstruct vision. Smoke remains for 5 seconds
+
+
+      Immortality:
+      Monsters with the effect double in size, and nearby monsters cannot die.
+
+
+      Veil:
+      Summons a veil around the monsters with the effect to defend against attacks
+      coming from above.
+
+
+      Wind Band: Reduces damage taken by nearby monsters
+      by half, except for monsters with the effect.'
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

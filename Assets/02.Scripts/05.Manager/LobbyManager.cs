@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
 
 public class LobbyManager : MonoBehaviour
 {
@@ -30,4 +32,9 @@ public class LobbyManager : MonoBehaviour
         Application.Quit();
     }
 
+
+    public void ChangeText(int index)
+    {
+        LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[index];
+    }
 }

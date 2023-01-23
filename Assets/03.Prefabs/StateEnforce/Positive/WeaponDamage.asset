@@ -15,3 +15,7 @@ MonoBehaviour:
   _effect: 1
   _gain: 1.2
   _infomation: "\uBAA8\uB4E0 \uBB34\uAE30 \uACF5\uACA9\uB825"
+  _infomation_en: all weapon attack power
+  _enemyName: 
+  _enemyBuff: 0
+  _enemyBuffInfomation: 

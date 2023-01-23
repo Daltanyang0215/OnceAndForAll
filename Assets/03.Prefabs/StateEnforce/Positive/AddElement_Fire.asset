@@ -15,6 +15,7 @@ MonoBehaviour:
   _effect: 9
   _gain: 5
   _infomation: "\uBD88 \uC18D\uC131\uC758 \uC624\uBE0C\uB97C \uBC1B\uC2B5\uB2C8\uB2E4"
+  _infomation_en: Get an orb of fire attribute
   _enemyName: 
   _enemyBuff: 0
   _enemyBuffInfomation: 

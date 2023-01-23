@@ -15,6 +15,7 @@ MonoBehaviour:
   _effect: 12
   _gain: 5
   _infomation: "\uC131\uBCBD\uC758 \uB0B4\uAD6C\uB3C4\uB97C \uC0C1\uC2B9\uC2DC\uD0B5\uB2C8\uB2E4"
+  _infomation_en: Increases the durability of walls
   _enemyName: 
   _enemyBuff: 0
   _enemyBuffInfomation: 

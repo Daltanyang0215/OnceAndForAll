@@ -15,6 +15,7 @@ MonoBehaviour:
   _effect: 7
   _gain: 2
   _infomation: "\uACE8\uB818 \uCD94\uAC00 \uC18C\uD658"
+  _infomation_en: Summon more golems
   _enemyName: "\uACE8\uB818"
   _enemyBuff: 3
   _enemyBuffInfomation: "\uB3CC\uC9C4"
